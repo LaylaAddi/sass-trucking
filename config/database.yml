@@ -78,8 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: hrc_production
-  username: hrc
-  password: <%= ENV['HRC_DATABASE_PASSWORD'] %>
+production:  
+  adapter: postgresql
+  url: <%= ENV['POSTGRESQL_URL'] %> 
+  encoding: unicode
+  pool: 5
