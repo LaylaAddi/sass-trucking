@@ -1,7 +1,6 @@
 git add -A
-git commit -m "added carrier pack pub folder"
+git commit -m "removed shipper scaffold"
 git push -u origin master 
-git push dokku master  
 
 
 
