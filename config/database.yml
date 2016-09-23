@@ -63,7 +63,7 @@ production:
   adapter: postgresql
   url: <%= ENV['POSTGRESQL_URL'] %> #This is the environment variable created by Dokku command 
   encoding: unicode
-  pool: 5
+  pool: 5 
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
