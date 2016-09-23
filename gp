@@ -1,5 +1,5 @@
 git add -A
-git commit -m "update image url and css link for header image"
+git commit -m "renamed images"
 git push -u origin master 
 git push dokku master  
 
