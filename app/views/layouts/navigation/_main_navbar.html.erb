@@ -1,0 +1,10 @@
+<% if current_dispatch_user %>
+  <%= render "layouts/navigation/dispatch_user_nav" %>
+<% elsif current_driver_user %>
+  <%= render "layouts/navigation/driver_user_nav" %>  
+<% elsif current_shipper_user %>
+  <%= render "layouts/navigation/shipper_user_nav" %>    
+<% end %>  
+
+
+
