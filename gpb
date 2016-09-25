@@ -1,3 +1,3 @@
 git add -A
-git commit -m "base user sti setup"
-git push -u origin usermodels
+git commit -m "devise_group contains --- usertype setup in app model"
+git push -u origin usermethod
