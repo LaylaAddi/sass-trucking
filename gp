@@ -1,5 +1,5 @@
 git add -A
-git commit -m "merge devise_group contains --- usertype setup in app model"
+git commit -m "merge loads seeding users"
 git push -u origin master 
 
 
