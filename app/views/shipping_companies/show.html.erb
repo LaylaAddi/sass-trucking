@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shipping_company.name %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @shipping_company.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @shipping_company.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @shipping_company.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @shipping_company.zip %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @shipping_company.telephone %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @shipping_company.website %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @shipping_company.logo %>
+</p>
+
+<p>
+  <strong>Broker mc:</strong>
+  <%= @shipping_company.broker_mc %>
+</p>
+
+<p>
+  <strong>Carrier mc:</strong>
+  <%= @shipping_company.carrier_mc %>
+</p>
+
+<p>
+  <strong>Us dot:</strong>
+  <%= @shipping_company.us_dot %>
+</p>
+
+<p>
+  <strong>Shipper:</strong>
+  <%= @shipping_company.shipper_id %>
+</p>
+
+<%= link_to 'Edit', edit_shipping_company_path(@shipping_company) %> |
+<%= link_to 'Back', shipping_companies_path %>

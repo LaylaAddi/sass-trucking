@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924223431) do
+ActiveRecord::Schema.define(version: 20160925115647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "shipping_companies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "telephone"
+    t.string   "website"
+    t.string   "logo"
+    t.string   "broker_mc"
+    t.string   "carrier_mc"
+    t.string   "us_dot"
+    t.integer  "shipper_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

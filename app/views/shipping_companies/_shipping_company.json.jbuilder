@@ -1,0 +1,2 @@
+json.extract! shipping_company, :id, :name, :street, :city, :state, :zip, :telephone, :website, :logo, :broker_mc, :carrier_mc, :us_dot, :shipper_id, :created_at, :updated_at
+json.url shipping_company_url(shipping_company, format: :json)

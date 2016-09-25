@@ -25,23 +25,23 @@ city_data = [
   ]
 
 
-# 150.times do
-# driver = User.create(
-#   password: "password",
-#   password_confirmation: "password", 
-#   first_name: Faker::Name.first_name,
-#   last_name: Faker::Name.last_name,
-#   email: Faker::Internet.email,  
-#   street: Faker::Address.street_name,
-#   telephone:Faker::PhoneNumber.phone_number,
-#   city: city_data.sample,
-#   zip: "123456",
-#   type: "DriverUser" 
-#   )
-#   puts driver.inspect
-# end
+50.times do
+driver = User.create(
+  password: "password",
+  password_confirmation: "password", 
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,  
+  street: Faker::Address.street_name,
+  telephone:Faker::PhoneNumber.phone_number,
+  city: city_data.sample,
+  zip: "123456",
+  type: "DriverUser" 
+  )
+  puts driver.inspect
+end
 
-150.times do
+50.times do
 dispatcher = User.create(
   password: "password",
   password_confirmation: "password", 
@@ -57,7 +57,7 @@ dispatcher = User.create(
   puts dispatcher.inspect
 end
 
-150.times do
+50.times do
 shipper = User.create(
   password: "password",
   password_confirmation: "password", 
@@ -68,7 +68,7 @@ shipper = User.create(
   telephone:Faker::PhoneNumber.phone_number,
   city: city_data.sample,
   zip: "123456",
-  type: "ShipperUser" 
+  type: "ShipmentUser" 
   )
   puts shipper.inspect
 end

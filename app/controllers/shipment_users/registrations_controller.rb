@@ -1,10 +1,10 @@
-class ShipperUsers::RegistrationsController < Devise::RegistrationsController
+class ShipmentUsers::RegistrationsController < Devise::RegistrationsController
   
   
   private
 
 def sign_up_params
-  params.require(:shipper_user).permit(:password, 
+  params.require(:shipment_user).permit(:password, 
                                      :password_confirmation,
                                      :email,
                                      :first_name,
@@ -19,7 +19,7 @@ def sign_up_params
 end
 
 def account_update_params
-  params.require(:shipper_user).permit(:password, 
+  params.require(:shipment_user).permit(:password, 
                                        :password_confirmation,
                                        :current_password,
                                        :email,
