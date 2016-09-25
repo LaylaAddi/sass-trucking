@@ -22,6 +22,17 @@ gem 'frontend-generators', '~> 0.1.1'
 gem "font-awesome-rails"
 gem 'devise', '~> 4.2'
 gem 'faker', '~> 1.6', '>= 1.6.6'
+gem 'ransack', '~> 1.8', '>= 1.8.2'
+gem 'kaminari'
+
+
+
+
+
+
+
+
+
 
 group :development, :test do
   gem 'byebug', platform: :mri

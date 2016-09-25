@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-
-  before_action :authenticate_user! # Ensure someone is logged in
+  before_action :authenticate_user! 
   
   
   def index

@@ -1,0 +1,77 @@
+
+<div class="row">
+    <div class="col-xs-4">
+      <h2>HRC Users</h2>
+      <%= paginate @users %>
+    </div>
+    <div class="col-xs-4">
+      
+    </div>
+    <div class="col-xs-4">
+      
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-4">
+<%= search_form_for @search do |f| %>
+  <%= f.text_field :rs_user_cont %>
+  <%= button_tag "", type: 'submit', 
+  class: "glyphicon glyphicon-search btn btn-hrcsuccess btn-xs rounded" %>
+  <%= link_to "Reload", users_path, class: 'btn btn-hrcprimary btn-xs rounded'%>
+ <% end %>
+ 
+ 
+ 
+
+
+
+
+
+    </div>
+    <div class="col-xs-4">
+      
+    </div>
+    <div class="col-xs-4">
+      <label class='text-muted'>
+        Showing <%= pluralize(@users.count, "result") %> of
+          <%= pluralize(@count.count, "total record") %> 
+      </label>
+            
+    </div>
+</div>
+
+
+
+<table class="table table-bordered table-condensed table-responsive">
+	<thead>
+		<tr>
+		<th><%= sort_link @search, :id, "User ID" %></th>
+		<th><%= sort_link @search, :first_name, "Name" %></th>
+		<th>Telephone</th>
+		<th><%= sort_link @search, :city, "City" %></th>
+		<th><%= sort_link @search, :state, "State" %></th>
+		<th>User Type</th>
+		<th><%= sort_link @search, :updated_at, "Last Updated" %></th>
+		<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @users.each do |user| %>
+		<tr>
+			<td><%= user.id %></td>
+			<td><%= user.first_name %> <%= user.last_name %></td> 
+			<td><%= user.telephone %></td>
+			<td><%= user.city %></td>
+			<td><%= user.state %></td>
+			<td><%= user.type %></td>
+			<td><%= user.updated_at.strftime("%B %-d, %Y @ %-l:%M %P") %></td>			
+			<td>
+			  <%= link_to "Show User", user_path(user), class: 'btn btn-hrcprimary btn-xs' %>
+			  <%= link_to "Edit User", edit_user_path(user), class: 'btn btn-hrcinfo btn-xs' %>			  
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+ <%= paginate @users %>

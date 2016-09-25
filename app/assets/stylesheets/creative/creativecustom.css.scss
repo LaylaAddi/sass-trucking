@@ -225,4 +225,24 @@ fieldset[disabled] .btn-primary.active {
 
 /*footer end*/
 
-
+.navbar-default .navbar-nav > li > .dropdown-menu {
+  background-color: transparent;
+  color: #ff0039;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+  color: #ff0039;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: #fff;
+  background-color: #ff0039;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
+  background-color: #990021;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #990021;
+  background-color: #990021;
+}
