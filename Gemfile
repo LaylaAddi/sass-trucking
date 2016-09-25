@@ -21,6 +21,7 @@ gem 'mechanize', '~> 2.7', '>= 2.7.5'
 gem 'frontend-generators', '~> 0.1.1'
 gem "font-awesome-rails"
 gem 'devise', '~> 4.2'
+gem 'faker', '~> 1.6', '>= 1.6.6'
 
 group :development, :test do
   gem 'byebug', platform: :mri
