@@ -1,5 +1,5 @@
 git add -A
-git commit -m "merge loads seeding users"
+git commit -m "merge able to update users and list all users with search and pagi"
 git push -u origin master 
 
 
