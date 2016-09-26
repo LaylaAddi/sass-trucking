@@ -21,3 +21,22 @@ broker user admin can assign other broker users
 
 
 receipts driver and office uploader relation between hrc fuel expense and owner
+
+
+
+    t.string :name
+    t.string :contact_person
+    t.string :telephone
+    t.string :fax
+    t.string :broker_mc
+    t.string :carrier_mc
+    t.string :dot_number
+    t.string :website
+    t.string :street
+    t.string :city
+    t.string :state
+    t.string :zip
+    t.string :notes
+    t.date :date_formed
+    t.string :type
+    t.string :company_type

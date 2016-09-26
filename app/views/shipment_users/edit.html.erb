@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>Editing <%= @user.user_type %> <small><%= @user.full_name %></small></h1>
+</div>
+<%= simple_form_for @user do |f| %>
+<div class="form-actions">
+    <%= f.button :submit, "Update", class: "btn btn-success rounded" %>
+</div>
+
+
+  <div class="form-inputs">
+    <%= f.input :first_name, autofocus: true %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+    <%= f.input :mobile_email %>     
+    <%= f.input :telephone %>
+    <%= f.input :extention %> 
+    <%= f.input :street %> 
+    <%= f.input :city %>  
+    <%= f.input :state %> 
+    <%= f.input :zip %>  
+    <%= f.input :emergency_contact %> 
+    <%= f.input :emergency_contact_number%>
+    <%= f.input :type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update", class: "btn btn-success rounded" %>
+  </div>
+<% end %>
+
+<%= link_to "All Shippers", shipment_users_path, class: 'btn btn-hrcprimary btn-xs'%>
+<%= link_to "Show Shipper", shipment_user_path(@user), class: 'btn btn-hrcsuccess btn-xs' %>

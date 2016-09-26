@@ -1,20 +1,20 @@
 <div class="page-header">
-  <h1>Driver <small><%= @user.full_name %></small></h1>
+  <h1>Employee <small><%= @user.first_name %></small></h1>
 </div>
 
 <p><%= @user.email %></p>
 <p><%= @user.mobile_email %></p>
 <p><%= @user.telephone %></p>
+<p><%= @user.extention %></p>
 <p><%= @user.street %></p>
 <p><%= @user.city %></p>
 <p><%= @user.state %></p>
 <p><%= @user.zip %></p>
-<p>is a company administrator? <%= @user.company_admin %></p>
+<p>is an HRC administrator? <%= @user.admin %></p>
 <p><%= @user.emergency_contact %></p>
 <p><%= @user.emergency_contact_number %></p>
 
 <p>Updated <%= @user.updated_at.strftime("%B %-d, %Y @ %-l:%M %P") %></p>
 <p>Created <%= @user.created_at.strftime("%B %-d, %Y @ %-l:%M %P") %></p>
-
-<%= link_to "Edit Driver", edit_driver_user_path(@user), class: 'btn btn-hrcinfo btn-xs' %>	
-<%= link_to "All Driver", driver_users_path, class: 'btn btn-hrcprimary btn-xs'%>
+<%= link_to "Edit Employee", edit_office_user_path(@user), class: 'btn btn-hrcinfo btn-xs' %>	
+<%= link_to "All Employees", office_users_path, class: 'btn btn-hrcprimary btn-xs'%>

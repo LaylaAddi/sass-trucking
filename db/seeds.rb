@@ -23,52 +23,80 @@ city_data = [
   "Green Bay, Wisconsin",
   "Phoenix, Arizona"
   ]
+  
+  
+# 5.times do
+# manager = User.create(
+#   password: "password",
+#   password_confirmation: "password", 
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   email: Faker::Internet.email,  
+#   street: Faker::Address.street_name,
+#   telephone:Faker::PhoneNumber.phone_number,
+#   city: city_data.sample,
+#   zip: "123456",
+#   type: "ManagementUser" 
+#   )
+#   puts manager.inspect
+# end 
 
 
-50.times do
+100.times do
 driver = User.create(
   password: "password",
   password_confirmation: "password", 
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,  
+  email: Faker::Internet.email,
+  mobile_email: 'steve@hrclogistics.com',  
   street: Faker::Address.street_name,
   telephone:Faker::PhoneNumber.phone_number,
   city: city_data.sample,
   zip: "123456",
-  type: "DriverUser" 
+  type: "DriverUser",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number 
   )
   puts driver.inspect
 end
 
-50.times do
-dispatcher = User.create(
+5.times do
+office = User.create(
   password: "password",
   password_confirmation: "password", 
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,  
+  email: Faker::Internet.email, 
+  mobile_email: 's.chesnowitz@gmail.com',  
   street: Faker::Address.street_name,
-  telephone:Faker::PhoneNumber.phone_number,
+  telephone: Faker::PhoneNumber.phone_number,
+  extention: Faker::PhoneNumber.extension,  
   city: city_data.sample,
   zip: "123456",
-  type: "DispatchUser" 
+  type: "OfficeUser",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number 
   )
-  puts dispatcher.inspect
+  puts office.inspect
 end
 
-50.times do
+100.times do
 shipper = User.create(
   password: "password",
   password_confirmation: "password", 
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,  
+  email: Faker::Internet.email,
+  mobile_email: 'steve@hrclogistics.com',
   street: Faker::Address.street_name,
-  telephone:Faker::PhoneNumber.phone_number,
+  telephone: Faker::PhoneNumber.phone_number,
+  extention: Faker::PhoneNumber.extension,    
   city: city_data.sample,
   zip: "123456",
-  type: "ShipmentUser" 
+  type: "ShipmentUser",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number
   )
   puts shipper.inspect
 end

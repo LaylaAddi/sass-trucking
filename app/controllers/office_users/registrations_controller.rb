@@ -1,4 +1,4 @@
-class DispatchUsers::RegistrationsController < Devise::RegistrationsController
+class OfficeUsers::RegistrationsController < Devise::RegistrationsController
   
   
   private
@@ -10,11 +10,16 @@ def sign_up_params
                                         :first_name,
                                         :last_name,
                                         :telephone,
+                                        :extention,
+                                        :mobile_email,
                                         :street, 
                                         :city, 
                                         :state, 
                                         :zip,  
-                                        :type                                  
+                                        :type,
+                                        :emergency_contact,
+                                        :emergency_contact_number,
+                                        :company_admin,
                                         )
 end
 
@@ -26,12 +31,20 @@ def account_update_params
                                         :first_name,
                                         :last_name,
                                         :telephone,
+                                        :extention,
+                                        :mobile_email,
                                         :street, 
                                         :city, 
                                         :state, 
                                         :zip,  
-                                        :type                                  
+                                        :type,
+                                        :emergency_contact,
+                                        :emergency_contact_number,
+                                        :company_admin,
+                                        :admin,
+                                        :dispatcher
                                         )
                             
 end
 end      
+

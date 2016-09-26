@@ -6,11 +6,18 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.string :telephone
+      t.string :extention
+      t.string :mobile_email
       t.string :street 
       t.string :city 
       t.string :state 
       t.string :zip  
-      t.string :type 
+      t.string :type
+      t.string :emergency_contact
+      t.string :emergency_contact_number
+      t.boolean :company_admin, default: false
+      t.boolean :admin, default: false
+      t.boolean :dispatcher, default: false
       
       t.string :encrypted_password, null: false, default: ""
 

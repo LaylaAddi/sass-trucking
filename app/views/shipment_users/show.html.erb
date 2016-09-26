@@ -3,13 +3,18 @@
 </div>
 
 <p><%= @user.email %></p>
+<p><%= @user.mobile_email %></p>
 <p><%= @user.telephone %></p>
+<p><%= @user.extention %></p>
 <p><%= @user.street %></p>
 <p><%= @user.city %></p>
 <p><%= @user.state %></p>
-<p><%= @user.type %></p>
+<p><%= @user.zip %></p>
+<p>is an company administrator? <%= @user.company_admin %></p>
+<p><%= @user.emergency_contact %></p>
+<p><%= @user.emergency_contact_number %></p>
 <p>Updated <%= @user.updated_at.strftime("%B %-d, %Y @ %-l:%M %P") %></p>
 <p>Created <%= @user.created_at.strftime("%B %-d, %Y @ %-l:%M %P") %></p>
 
-<%= link_to "Edit User", edit_user_path(@user), class: 'btn btn-hrcinfo btn-xs' %>	
-<%= link_to "All Users", users_path, class: 'btn btn-hrcprimary btn-xs'%>
+<%= link_to "Edit User", edit_shipment_user_path(@user), class: 'btn btn-hrcinfo btn-xs' %>	
+<%= link_to "All Shippers", shipment_users_path, class: 'btn btn-hrcprimary btn-xs'%>

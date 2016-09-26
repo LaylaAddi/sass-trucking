@@ -1,31 +1,33 @@
-class DriverUsersController < ApplicationController
+class OfficeUsersController < ApplicationController
   
+
   def index
-    @search = DriverUser.search(params[:q])
+    @search = OfficeUser.search(params[:q])
     @users = @search.result.order(:id).page(params[:page]).per(25)
-    @count = DriverUser.all
+    @count = OfficeUser.all
   end
   
   def show
-    @user = DriverUser.find(params[:id])
+    @user = OfficeUser.find(params[:id])
   end  
-  
+
+
 
   def edit
-    @user= DriverUser.find(params[:id])
-  end  
+    @user = OfficeUser.find(params[:id])
+  end    
   
   
   def update
-    @user= DriverUser.find(params[:id])
-    if params[:driver_user][:password].blank?
-      params[:driver_user].delete(:password)
-      params[:driver_user].delete(:password_confirmation)
+    @user = OfficeUser.find(params[:id])
+    if params[:office_user][:password].blank?
+      params[:office_user].delete(:password)
+      params[:office_user].delete(:password_confirmation)
     end
     
-    if @driver_user.update!(user_params)
+    if @user.update!(user_params)
       flash[:success] = "The user was updated"
-      redirect_to @driver_user
+      redirect_to @office_user
     else
       flash[:error] = "There was a problem updating this user" 
       render :edit  
@@ -37,16 +39,15 @@ class DriverUsersController < ApplicationController
   
   private
 
-
-  
   def user_params
-    params.require(:driver_user).permit(:password, 
+    params.require(:office_user).permit(:password, 
                                         :password_confirmation,
                                         :current_password,
                                         :email,
                                         :first_name,
                                         :last_name,
                                         :telephone,
+                                        :extention,
                                         :mobile_email,
                                         :street, 
                                         :city, 
@@ -56,6 +57,8 @@ class DriverUsersController < ApplicationController
                                         :emergency_contact,
                                         :emergency_contact_number,
                                         :company_admin,
+                                        :admin,
+                                        :dispatcher                              
                                         )
  
   end  

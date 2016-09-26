@@ -4,15 +4,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :first_name, required: true, autofocus: true %> 
+    <%= f.input :first_name, required: true, autofocus: true %>
     <%= f.input :last_name, required: true %>
-    <%= f.input :email, required: true %>    
-    <%= f.input :telephone %>     
+    <%= f.input :email, required: true %>
+    <%= f.input :mobile_email, required: true %>     
+    <%= f.input :telephone %>    
+    <%= f.input :extention %>     
     <%= f.input :street %> 
     <%= f.input :city %>  
     <%= f.input :state %> 
     <%= f.input :zip %>  
-    <%= f.input :type %> 
+    <%= f.input :emergency_contact %> 
+    <%= f.input :emergency_contact_number %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

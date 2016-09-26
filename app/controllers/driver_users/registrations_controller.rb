@@ -10,11 +10,15 @@ def sign_up_params
                                       :first_name,
                                       :last_name,
                                       :telephone,
+                                      :mobile_email,
                                       :street, 
                                       :city, 
                                       :state, 
                                       :zip,  
-                                      :type                                  
+                                      :type,
+                                      :emergency_contact,
+                                      :emergency_contact_number,
+                                      :company_admin                                
                                       )
 end
 
@@ -26,11 +30,15 @@ def account_update_params
                                       :first_name,
                                       :last_name,
                                       :telephone,
+                                      :mobile_email,
                                       :street, 
                                       :city, 
                                       :state, 
                                       :zip,  
-                                      :type                                  
+                                      :type,
+                                      :emergency_contact,
+                                      :emergency_contact_number,
+                                      :company_admin                                   
                                       )
                             
 end

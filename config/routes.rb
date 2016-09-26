@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-
-  devise_for :dispatch_users, :controllers => { registrations: 'dispatch_users/registrations' }
-  resources :dispatch_users
+  # devise_for :managers, :controllers => { registrations: 'registrations/dispatchers' }
+  devise_for :office_users, :controllers => { registrations: 'office_users/registrations' }
+  resources :office_users
   devise_for :driver_users, :controllers => { registrations: 'driver_users/registrations' }
   resources :driver_users  
   devise_for :shipment_users, :controllers => { registrations: 'shipment_users/registrations' } 

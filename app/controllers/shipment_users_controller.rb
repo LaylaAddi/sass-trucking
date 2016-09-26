@@ -1,16 +1,24 @@
 class ShipmentUsersController < ApplicationController
-  before_action :authenticate_shipper!
+  #before_action :authenticate_shipper!
   
-  def dashboard
-    @user = current_user
-  end  
+  def index
+    @search = ShipmentUser.search(params[:q])
+    @users = @search.result.order(:id).page(params[:page]).per(25)
+    @count = ShipmentUser.all
+  end
   
   def show
     @user = ShipmentUser.find(params[:id])
   end  
 
+
+  def edit
+    @user = ShipmentUser.find(params[:id])
+  end    
+  
+
   def update
-    @user =ShipmentrUser.find(params[:id])
+    @user =ShipmentUser.find(params[:id])
     if params[:shipment_user][:password].blank?
       params[:shipment_user].delete(:password)
       params[:shipment_user].delete(:password_confirmation)
@@ -38,12 +46,17 @@ class ShipmentUsersController < ApplicationController
                                           :first_name,
                                           :last_name,
                                           :telephone,
+                                          :mobile_email,
                                           :street, 
                                           :city, 
                                           :state, 
                                           :zip,  
-                                          :type                                  
-                                          )
+                                          :type,
+                                          :emergency_contact,
+                                          :emergency_contact_number,
+                                          :company_admin
+                                          )                           
+
  
   end  
 end
