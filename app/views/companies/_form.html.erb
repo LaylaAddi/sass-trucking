@@ -1,0 +1,22 @@
+<%= simple_form_for(@company) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :street %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zip %>
+    <%= f.input :telephone %>
+    <%= f.input :website %>
+    <%= f.input :logo %>
+    <%= f.input :broker_mc %>
+    <%= f.input :carrier_mc %>
+    <%= f.input :us_dot %>
+    <%= f.input :company_manager_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

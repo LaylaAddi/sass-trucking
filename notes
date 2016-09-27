@@ -25,3 +25,17 @@ receipts driver and office uploader relation between hrc fuel expense and owner
 rails generate devise User
 
 get '/posts/new' => 'posts#new', as: :create_post
+
+      t.string :name
+      t.string :street
+      t.string :city
+      t.string :state
+      t.string :zip
+      t.string :telephone
+      t.string :website
+      t.string :logo
+      t.string :broker_mc
+      t.string :carrier_mc
+      t.string :us_dot
+      t.string :logo
+      t.integer :company_manager_id
