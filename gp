@@ -1,5 +1,5 @@
 git add -A
-git commit -m "set up devise no view or models"
+git commit -m "basic users set up STI"
 git push -u origin master 
 
 

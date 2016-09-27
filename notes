@@ -21,3 +21,7 @@ broker user admin can assign other broker users
 
 
 receipts driver and office uploader relation between hrc fuel expense and owner
+
+rails generate devise User
+
+get '/posts/new' => 'posts#new', as: :create_post

@@ -1,0 +1,2 @@
+class CompanyManager < User
+end
