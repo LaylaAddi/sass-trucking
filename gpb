@@ -1,3 +1,3 @@
 git add -A
-git commit -m "company created when manager sign up"
-git push -u origin addcompany
+git commit -m "added company scaffold"
+git push -u origin company1
