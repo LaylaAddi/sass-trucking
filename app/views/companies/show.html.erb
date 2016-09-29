@@ -1,29 +1,15 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to "Add Authority", new_company_operating_authority_path(@company) %>
 <p>
   <strong>Name:</strong>
   <%= @company.name %>
 </p>
 
 <p>
-  <strong>Street:</strong>
-  <%= @company.street %>
+  <strong>Address:</strong>
+  <%= @company.address %>
 </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @company.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @company.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @company.zip %>
-</p>
 
 <p>
   <strong>Telephone:</strong>
@@ -57,8 +43,16 @@
 
 <p>
   <strong>Company manager:</strong>
-  <%= @company.company_manager_id %>
+  <%= @company_manager.full_name %>
 </p>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+
+<% @oa.each do |oa| %>
+
+<p><%= oa.name %></p><%=link_to "Update Authority", edit_company_operating_authority_path(@company, oa) %>
+<p><%= oa.authority_type %></p>
+<p><%= oa.number %></p>
+<% end %>

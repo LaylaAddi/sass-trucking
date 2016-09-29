@@ -2,11 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :street %>
-    <%= f.input :city %>
-    <%= f.input :state %>
-    <%= f.input :zip %>
+    <%= f.input :name %> 
+    <%= f.input :address %>
     <%= f.input :telephone %>
     <%= f.input :website %>
     <%= f.input :logo %>
@@ -14,6 +11,10 @@
     <%= f.input :carrier_mc %>
     <%= f.input :us_dot %>
     <%= f.input :company_manager_id %>
+    <%= f.input :company_type %>
+    <%= f.input :has_broker_mc %>
+    <%= f.input :has_carrier_mc %>
+    <%= f.input :date_formed %>
   </div>
 
   <div class="form-actions">

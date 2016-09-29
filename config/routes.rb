@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   :controllers => { registrations: 'company_managers_registrations/registrations'}
   resources :company_managers
   
-  resources :companies
+  resources :companies do
+    resources :operating_authorities 
+  end
   
   get 'dashboard', to: 'users#dashboard'
   
@@ -23,5 +25,7 @@ Rails.application.routes.draw do
   get 'pages/index', to: 'pages#index'
   
   get 'creatives/carrier_package', to: 'creatives#download_carrier'
+  
+  get 'authorty', to: 'operating_authorities#scrape'
   
 end

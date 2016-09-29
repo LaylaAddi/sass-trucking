@@ -10,17 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927114804) do
+ActiveRecord::Schema.define(version: 20160929044746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
-    t.string   "street"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
+    t.string   "address"
     t.string   "telephone"
     t.string   "website"
     t.string   "logo"
@@ -28,10 +25,23 @@ ActiveRecord::Schema.define(version: 20160927114804) do
     t.string   "carrier_mc"
     t.string   "us_dot"
     t.integer  "company_manager_id"
-    t.integer  "company_type"
+    t.string   "company_type"
+    t.boolean  "has_broker_mc",      default: false
+    t.boolean  "has_carrier_mc",     default: false
     t.date     "date_formed"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "operating_authorities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "telephone"
+    t.string   "number"
+    t.string   "authority_type"
+    t.integer  "company_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160927114804) do
     t.boolean  "office",                   default: false
     t.boolean  "maintenance",              default: false
     t.boolean  "shipping_receiving",       default: false
+    t.boolean  "driver",                   default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
