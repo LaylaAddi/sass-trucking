@@ -26,13 +26,13 @@ class OperatingAuthoritiesController < ApplicationController
     session = Capybara::Session.new(:poltergeist)
     session.visit('https://safer.fmcsa.dot.gov/CompanySnapshot.aspx')
     session.choose('2')
-    session.fill_in('4', with: @name)
+    session.fill_in('4', with: @company.broker_mc)
     session.find('input[type="SUBMIT"]').click
     
     
     name = session.current_url
-    address = session.all('.queryfield')[0]  
-    telephone = session.all('.queryfield')[1] 
+    address = session.all('.queryfield')[0].text  
+    telephone = session.all('.queryfield')[1].text 
       
     
     @company = Company.find(params[:company_id])

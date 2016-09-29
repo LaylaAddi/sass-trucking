@@ -1,4 +1,4 @@
 git add -A
-git commit -m "test scrape working moving to create sti for authority_type"
+git commit -m "came back to test"
 git push -u origin scrapebroker
 
