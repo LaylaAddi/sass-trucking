@@ -78,8 +78,7 @@ class CompaniesController < ApplicationController
       :company_manager_id,
       :date_formed,
       :company_type,
-      :has_broker_mc,
-      :has_carrier_mc
+
       )
     end
 end

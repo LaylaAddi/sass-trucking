@@ -1,16 +1,16 @@
-class OperatingAuthoritiesController < ApplicationController
+class McsController < ApplicationController
   
   def new 
     @company = Company.find(params[:company_id])
-    @operating_authority = OperatingAuthority.new 
+    @mc = Mc.new 
   end
   
   def create
     @company = Company.find(params[:company_id])
-    @operating_authority = @company.operating_authorities.build(oa_params)
+    @mc = @company.operating_authorities.build(oa_params)
     
-    if @operating_authority.save
-      flash[:success] = "Your #{@operating_authority.authority_type} with number #{@operating_authority.number} has been saved"
+    if @mc.save
+      flash[:success] = "Your #{@mc.authority_type} with number #{@mc.number} has been saved"
       redirect_to @company
     else
       flash[:danger] = "There was a problem saving your Authority"
@@ -20,7 +20,7 @@ class OperatingAuthoritiesController < ApplicationController
   
   def edit
     @company = Company.find(params[:company_id])
-    @operating_authority = OperatingAuthority.find(params[:id]) 
+    @mc = Mc.find(params[:id]) 
     
     require 'capybara/poltergeist'
     session = Capybara::Session.new(:poltergeist)
@@ -36,9 +36,9 @@ class OperatingAuthoritiesController < ApplicationController
       
     
     @company = Company.find(params[:company_id])
-    @operating_authority = OperatingAuthority.find(params[:id]) 
-    if @operating_authority.update(name: name, address: address, telephone: telephone)
-      flash[:success] = "Your #{@operating_authority.authority_type} with number #{@operating_authority.number} has been updated"
+    @mc = Mc.find(params[:id]) 
+    if @mc.update(name: name, address: address, telephone: telephone)
+      flash[:success] = "Your #{@mc.authority_type} with number #{@mc.number} has been updated"
       redirect_to @company
     else
       flash[:danger] = "There was a problem saving your Authority"
@@ -48,9 +48,9 @@ class OperatingAuthoritiesController < ApplicationController
   
   def update
     # @company = Company.find(params[:company_id])
-    # @operating_authority = OperatingAuthority.find(params[:id]) 
-    # if @operating_authority.update(oa_params)
-    #   flash[:success] = "Your #{@operating_authority.authority_type} with number #{@operating_authority.number} has been updated"
+    # @mc = Mc.find(params[:id]) 
+    # if @mc.update(oa_params)
+    #   flash[:success] = "Your #{@mc.authority_type} with number #{@mc.number} has been updated"
     #   redirect_to @company
     # else
     #   flash[:danger] = "There was a problem saving your Authority"
