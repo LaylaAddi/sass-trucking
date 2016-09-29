@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to "Add Authority", new_company_operating_authority_path(@company) %>
+
 <p>
   <strong>Name:</strong>
   <%= @company.name %>
@@ -26,20 +26,6 @@
   <%= @company.logo %>
 </p>
 
-<p>
-  <strong>Broker mc:</strong>
-  <%= @company.broker_mc %>
-</p>
-
-<p>
-  <strong>Carrier mc:</strong>
-  <%= @company.carrier_mc %>
-</p>
-
-<p>
-  <strong>Us dot:</strong>
-  <%= @company.us_dot %>
-</p>
 
 <p>
   <strong>Company manager:</strong>
@@ -50,9 +36,9 @@
 <%= link_to 'Back', companies_path %>
 
 
-<% @oa.each do |oa| %>
+<% @bmc.each do |bmc| %>
 
-<p><%= oa.name %></p><%=link_to "Update Authority", edit_company_operating_authority_path(@company, oa) %>
-<p><%= oa.authority_type %></p>
-<p><%= oa.number %></p>
+<p>legal_name<%= bmc.legal_name %></p><%=link_to "Update Authority", edit_company_broker_mc_path(@company, bmc) %>
+<p>operating_status<%= bmc.operating_status %></p>
+<p>usdot_number<%= bmc.usdot_number %></p>
 <% end %>

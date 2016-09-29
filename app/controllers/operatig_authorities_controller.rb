@@ -70,14 +70,4 @@ class OperatingAuthoritiesController < ApplicationController
   
   private
   
-  def oa_params
-    params.require(:operating_authority).permit(
-      :name,
-      :address,
-      :telephone,
-      :number,
-      :authority_type,
-      :company_id
-      )
-  end
 end

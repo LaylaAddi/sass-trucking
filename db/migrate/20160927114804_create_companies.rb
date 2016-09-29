@@ -6,9 +6,7 @@ class CreateCompanies < ActiveRecord::Migration[5.0]
       t.string :telephone
       t.string :website
       t.string :logo
-      t.string :broker_mc
-      t.string :carrier_mc
-      t.string :us_dot
+
       t.integer :company_manager_id
       t.string :company_type
       t.boolean :has_broker_mc, default: false

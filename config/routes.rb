@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :company_managers
   
   resources :companies do
-    resources :operating_authorities 
+    resources :broker_mcs 
+    resources :carrier_mcs     
   end
   
   get 'dashboard', to: 'users#dashboard'

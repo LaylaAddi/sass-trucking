@@ -1,0 +1,26 @@
+<%= simple_form_for([@company, @broker_mc]) do |f| %>  
+
+  <%= f.input :type, disabled: true %>
+  <%= f.input :entity_type, disabled: true %>
+  <%= f.input :type, disabled: true %>
+  <%= f.input :operating_status, disabled: true	%>	
+  <%= f.input :out_of_service_date, disabled: true %>
+  <%= f.input :legal_name, disabled: true %>
+  <%= f.input :dba_name, disabled: true	%> 
+  <%= f.input :physical_address, disabled: true %>
+  <%= f.input :phone, disabled: true %>
+  <%= f.input :mailing_address, disabled: true %>
+  <%= f.input :usdot_number, disabled: true %> 	
+  <%= f.input :state_carrier_id_number, disabled: true %> 
+  <%= f.input :mc_mx_ff_numbers, disabled: true %>	
+  <%= f.input :duns_number, disabled: true %>
+  <%= f.input :power_units, disabled: true %>
+  <%= f.input :drivers, disabled: true %>
+  <%= f.input :mcs_150_form_date, disabled: true %>
+  <%= f.input :mcs_150_mileage_year, disabled: true %>  
+  
+  
+  <%= f.submit %>
+<% end %>
+
+
