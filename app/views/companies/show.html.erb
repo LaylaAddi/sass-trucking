@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to "Add Authority", new_company_operating_authority_path(@company) %>
+
 <p>
   <strong>Name:</strong>
   <%= @company.name %>
@@ -28,17 +28,17 @@
 
 <p>
   <strong>Broker mc:</strong>
-  <%= @company.broker_mc %>
+  <%= @company.broker_mc_number %>
 </p>
 
 <p>
   <strong>Carrier mc:</strong>
-  <%= @company.carrier_mc %>
+  <%= @company.carrier_mc_number %>
 </p>
 
 <p>
   <strong>Us dot:</strong>
-  <%= @company.us_dot %>
+  <%= @company.us_dot_number %>
 </p>
 
 <p>
@@ -50,9 +50,29 @@
 <%= link_to 'Back', companies_path %>
 
 
-<% @oa.each do |oa| %>
 
-<p><%= oa.name %></p><%=link_to "Update Authority", edit_company_operating_authority_path(@company, oa) %>
-<p><%= oa.authority_type %></p>
-<p><%= oa.address %></p>
-<% end %>
+<%=link_to "Update Carrier MC", edit_company_carrier_mc_path(@company, @cmc) %>
+<%=link_to "Show Carrier MC", company_carrier_mc_path(@company, @cmc) %>
+
+
+<p>Internal Entity Type: <%= @cmc.type %></p>
+<p>Entity Type: <%= @cmc.entity_type %></p>
+<p>Operating Status: <%= @cmc.operating_status %></p>
+<p>Out Of Service Date: <%= @cmc.out_of_service_date %></p>
+<p>Legal Name: <%= @cmc.legal_name %></p>
+<p>DBA Name: <%= @cmc.dba_name %></p>
+<p>Physical Address: <%= @cmc.physical_address %></p>
+<p>Telephone: <%= @cmc.phone %></p>
+<p>Mailing Address: <%= @cmc.mailing_address %></p>
+<p>US DOT Number: <%= @cmc.usdot_number %></p>
+<p>State Carrier ID:  <%= @cmc.state_carrier_id_number %></p>
+<p>MC MM FF Numbers: <%= @cmc.mc_mx_ff_numbers %></p>
+<p>DUNS Number: <%= @cmc.duns_number %></p>
+<p>Power Units: <%= @cmc.power_units %> </p>
+<p>Number of Drivers: <%= @cmc.driver_count %></p>
+<p>MCS 150 Form Date: <%= @cmc.mcs_150_form_date %></p>
+<p>MCS 150 Mileage Year: <%= @cmc.mcs_150_mileage_year %></p>
+
+
+                                       
+

@@ -1,0 +1,2 @@
+class UsDotsController < ApplicationController
+end

@@ -9,7 +9,9 @@ class CompaniesController < ApplicationController
 
   def show
     @company_manager = CompanyManager.find(params[:id])
-    @oa = @company.operating_authorities 
+    @cmc = @company.carrier_mc
+    @bmc = @company.broker_mc
+    @dot = @company.us_dot
   end
 
 
@@ -67,18 +69,19 @@ class CompaniesController < ApplicationController
 
     def company_params
       params.require(:company).permit(
-        :name, 
-      :address, 
-      :telephone, 
-      :website, 
-      :logo, 
-      :broker_mc, 
-      :carrier_mc, 
-      :us_dot, 
-      :company_manager_id,
-      :date_formed,
-      :company_type,
+                                       :name,
+                                       :address,
+                                       :telephone,
+                                       :website,
+                                       :logo,
+                                       :broker_mc_number,
+                                       :carrier_mc_number,
+                                       :us_dot_number,
+                                       :company_type,
+                                       :show_add_mc,
+                                       :date_formed,
+                                       :company_manager_id
 
-      )
+                                      )
     end
 end

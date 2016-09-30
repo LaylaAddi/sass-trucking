@@ -1,0 +1,2 @@
+class BrokerMcsController < ApplicationController
+end

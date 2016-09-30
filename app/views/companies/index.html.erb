@@ -1,7 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-
-
 <h1>Companies</h1>
 
 <table>
@@ -28,15 +24,15 @@
       <tr>
         <td><%= company.name %></td>
         <td><%= company.address %></td>
-        <td><%= company.carrier_mc %></td>
+        <td><%= company.carrier_mc_number %></td>
         <td><%=  %></td>
         <td><%=  %></td>
         <td><%=  %></td>
         <td><%= company.website %></td>
         <td><%= company.logo %></td>
-        <td><%= company.broker_mc %></td>
-        <td><%= company.carrier_mc %></td>
-        <td><%= company.us_dot %></td>
+        <td><%= company.broker_mc_number %></td>
+        <td><%= company.carrier_mc_number %></td>
+        <td><%= company.us_dot_number %></td>
         <td><%= company.company_manager_id %></td>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
