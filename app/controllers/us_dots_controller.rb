@@ -28,6 +28,7 @@ class UsDotsController < ApplicationController
     
     require 'capybara/poltergeist'
     session = Capybara::Session.new(:poltergeist)
+    session.driver.options[:phantomjs] = Phantomjs.path 
     session.visit('https://safer.fmcsa.dot.gov/CompanySnapshot.aspx')
     session.choose('1')
     session.fill_in('4', with: @company.us_dot_number) 
