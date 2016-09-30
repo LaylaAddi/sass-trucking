@@ -1,4 +1,4 @@
 git add -A
-git commit -m "carrier mc working added more fields"
+git commit -m "carrier mc scrape working all fields!!!!!!!"
 git push -u origin mcs
 

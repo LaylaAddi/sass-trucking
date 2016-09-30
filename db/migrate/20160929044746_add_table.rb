@@ -72,7 +72,24 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :cad_driver_out_of_service_percent, null: false, default: ""
       t.string :us_inspections_prev_24, null: false, default: ""
       t.string :cad_inspections_prev_24, null: false, default: ""
-      t.integer :company_id
+      
+      t.string :crash_results_24_prior 
+      t.string :cad_crash_results_24_prior 
+      t.string :cad_crash_fatal 
+      t.string :cad_crash_injury 
+      t.string :cad_crash_tow  
+      t.string :cad_crash_total 
+      t.string :us_inspection_results_for_24_months_prior_to
+      t.string :total_inspections
+      t.string :total_iep_inspections
+      t.string :crash_inspections
+      t.string :the_rating_below_is_current_as_of
+      t.string :rating_date 
+      t.string :review_date 
+      t.string :review_rating
+      t.string :review_type
+      t.string :company_id     
+
 
       t.timestamps
     end

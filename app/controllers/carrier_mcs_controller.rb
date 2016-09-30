@@ -50,65 +50,86 @@ class CarrierMcsController < ApplicationController
       driver_count = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(11) > td:nth-child(4) > font > b').text
       mcs_150_form_date = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(12) > td.queryfield').text
       mcs_150_mileage_year = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(12) > td:nth-child(4)').text 
-    general_freight = session.find(:css, '').text 
-    household_goods = session.find(:css, '').text 
-    metal_sheets_coils_rolls = session.find(:css, '').text 
-    motor_vehicles = session.find(:css, '').text 
-    drivetow_away = session.find(:css, '').text 
-    logs_poles_beams_lumber = session.find(:css, '').text 
-    building_materials = session.find(:css, '').text 
-    mobile_homes = session.find(:css, '').text 
-    machinery_large_objects = session.find(:css, '').text 
-    fresh_produce = session.find(:css, '').text 
-    safer_layout = session.find(:css, '').text 
-    liquids_gases = session.find(:css, '').text 
-    intermodal = session.find(:css, '').text  
-    passengers = session.find(:css, '').text 
-    oilfield_equipment = session.find(:css, '').text 
-    livestock = session.find(:css, '').text 
-    grain_feed_hay = session.find(:css, '').text 
-    coal_coke = session.find(:css, '').text 
-    meat = session.find(:css, '').text 
-    garbage_refuse = session.find(:css, '').text 
-    us_mail = session.find(:css, '').text 
-    chemicals = session.find(:css, '').text 
-    commodities_dry_bulk = session.find(:css, '').text 
-    refrigerated_food = session.find(:css, '').text 
-    beverages = session.find(:css, '').text 
-    paper_products = session.find(:css, '').text 
-    utilities = session.find(:css, '').text 
-    agricultural_farm_supplies = session.find(:css, '').text 
-    construction = session.find(:css, '').text 
-    water_well = session.find(:css, '').text 
-    driver_inspections_count = session.find(:css, '').text 
-    vehicle_inspections_count = session.find(:css, '').text 
-    hazmat_inspections_count = session.find(:css, '').text 
-    iep_inspections_count = session.find(:css, '').text 
-    driver_inspections_out_service = session.find(:css, '').text 
-    vehicle_inspections_out_service = session.find(:css, '').text 
-    hazmat_inspections_out_service = session.find(:css, '').text 
-    iep_inspections_out_service = session.find(:css, '').text 
-    driver_inspections_out_service_percent = session.find(:css, '').text 
-    vehicle_inspections_out_service_percent = session.find(:css, '').text 
-    hazmat_inspections_out_service_percent = session.find(:css, '').text 
-    iep_inspections_out_service_percent = session.find(:css, '').text 
-    crash_fatal = session.find(:css, '').text 
-    crash_injury = session.find(:css, '').text 
-    crash_tow = session.find(:css, '').text 
-    crash_total = session.find(:css, '').text 
-    cad_vehicle_inspections = session.find(:css, '').text 
-    cad_driver_inspections = session.find(:css, '').text 
-    cad_vehicle_out_of_service = session.find(:css, '').text 
-    cad_driver_out_of_service = session.find(:css, '').text 
-    cad_vehicle_out_of_service_percent = session.find(:css, '').text 
-    cad_driver_out_of_service_percent = session.find(:css, '').text 
-    us_inspections_prev_24 = session.find(:css, '').text 
-    cad_inspections_prev_24 = session.find(:css, '').text 
+
+      general_freight = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.queryfield').text 
+      household_goods = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(3) > td.queryfield').text 
+      metal_sheets_coils_rolls = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(4) > td.queryfield').text 
+      motor_vehicles = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(5) > td.queryfield').text 
+      drivetow_away = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(6) > td.queryfield').text 
+      logs_poles_beams_lumber = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(7) > td.queryfield').text 
+      building_materials = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(8) > td.queryfield').text 
+      mobile_homes = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(9) > td.queryfield').text 
+      machinery_large_objects = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(10) > td.queryfield').text 
+      fresh_produce = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(11) > td.queryfield').text 
+      liquids_gases = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td.queryfield').text 
+      intermodal = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td.queryfield').text  
+      passengers = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(4) > td.queryfield').text 
+      oilfield_equipment = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(5) > td.queryfield').text 
+      livestock = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(6) > td.queryfield').text 
+      grain_feed_hay = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(7) > td.queryfield').text 
+      coal_coke = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(8) > td.queryfield').text 
+      meat = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(9) > td.queryfield').text 
+      garbage_refuse = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(10) > td.queryfield').text 
+      us_mail = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(11) > td.queryfield').text 
+      chemicals = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(2) > td.queryfield').text 
+      commodities_dry_bulk = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(3) > td.queryfield').text 
+      refrigerated_food = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(4) > td.queryfield').text 
+      beverages = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(5) > td.queryfield').text 
+      paper_products = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(6) > td.queryfield').text 
+      utilities = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(7) > td.queryfield').text 
+      agricultural_farm_supplies = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(8) > td.queryfield').text 
+      construction = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(9) > td.queryfield').text 
+      water_well = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(19) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(10) > td.queryfield').text 
       
+      driver_inspections_count = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(2) > td:nth-child(3)').text 
+      vehicle_inspections_count = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(2) > td:nth-child(2)').text 
+      hazmat_inspections_count = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(2) > td:nth-child(4)').text 
+      iep_inspections_count = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(2) > td:nth-child(5)').text 
+      driver_inspections_out_service = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(3) > td:nth-child(3)').text 
+      vehicle_inspections_out_service = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(3) > td:nth-child(2)').text 
+      hazmat_inspections_out_service = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(3) > td:nth-child(4)').text 
+      iep_inspections_out_service = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(3) > td:nth-child(5)').text 
+      driver_inspections_out_service_percent = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(4) > td:nth-child(3)').text 
+      vehicle_inspections_out_service_percent = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(4) > td:nth-child(2)').text 
+      hazmat_inspections_out_service_percent = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(4) > td:nth-child(4)').text 
+      iep_inspections_out_service_percent = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(13) > table > tbody > tr:nth-child(4) > td:nth-child(5)').text 
+      crash_results_24_prior = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(16) > b:nth-child(1) > font').text 
+      crash_fatal = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(19) > table > tbody > tr:nth-child(2) > td:nth-child(2)').text 
+      crash_injury = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(19) > table > tbody > tr:nth-child(2) > td:nth-child(3)').text 
+      crash_tow = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(19) > table > tbody > tr:nth-child(2) > td:nth-child(4)').text 
+      crash_total = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(19) > table > tbody > tr:nth-child(2) > td:nth-child(5)').text 
+      cad_vehicle_inspections = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(29) > table > tbody > tr:nth-child(2) > td:nth-child(2)').text 
+      cad_driver_inspections = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(29) > table > tbody > tr:nth-child(2) > td:nth-child(3)').text 
+      cad_vehicle_out_of_service = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(29) > table > tbody > tr:nth-child(3) > td:nth-child(2)').text 
+      cad_driver_out_of_service = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(29) > table > tbody > tr:nth-child(3) > td:nth-child(3)').text 
+      cad_vehicle_out_of_service_percent = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(29) > table > tbody > tr:nth-child(4) > td:nth-child(2)').text 
+      cad_driver_out_of_service_percent = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(29) > table > tbody > tr:nth-child(4) > td:nth-child(3)').text 
+      us_inspections_prev_24 = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(10) > b:nth-child(1) > font').text 
+      cad_inspections_prev_24 = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(26) > b:nth-child(1) > font').text  
+      
+      cad_crash_results_24_prior = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(32) > b:nth-child(1) > font').text 
+      cad_crash_fatal = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(35) > table > tbody > tr:nth-child(2) > td:nth-child(2)').text 
+      cad_crash_injury = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(35) > table > tbody > tr:nth-child(2) > td:nth-child(3)').text
+      cad_crash_tow = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(35) > table > tbody > tr:nth-child(2) > td:nth-child(4)').text
+      cad_crash_total = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(35) > table > tbody > tr:nth-child(2) > td:nth-child(5)').text
+      
+      us_inspection_results_for_24_months_prior_to = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(10) > b:nth-child(1) > font').text 
+      total_inspections = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(10) > font:nth-child(4)').text
+      total_iep_inspections = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(10) > font:nth-child(6)').text
+      crash_inspections = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(26) > font').text 
+             
+      the_rating_below_is_current_as_of = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > font:nth-child(45) > b:nth-child(4) > font').text
+      rating_date = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(47) > table > tbody > tr:nth-child(2) > td:nth-child(2)').text
+      review_date = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(47) > table > tbody > tr:nth-child(2) > td:nth-child(4)').text
+      review_rating = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(47) > table > tbody > tr:nth-child(3) > td:nth-child(2)').text
+      review_type = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(47) > table > tbody > tr:nth-child(3) > td:nth-child(4)').text  
+            
+
+
     @company = Company.find(params[:company_id])
     @carrier_mc = CarrierMc.find(params[:id]) 
     if @carrier_mc.update(
-                          entity_type: entity_type,
+                          entity_type: entity_type, 
                           operating_status: operating_status,
                           out_of_service_date: out_of_service_date,
                           legal_name: legal_name,
@@ -134,7 +155,6 @@ class CarrierMcsController < ApplicationController
                           mobile_homes: mobile_homes,
                           machinery_large_objects: machinery_large_objects,
                           fresh_produce: fresh_produce,
-                          safer_layout: safer_layout,
                           liquids_gases: liquids_gases,
                           intermodal: intermodal, 
                           passengers: passengers,
@@ -177,7 +197,22 @@ class CarrierMcsController < ApplicationController
                           cad_vehicle_out_of_service_percent: cad_vehicle_out_of_service_percent,
                           cad_driver_out_of_service_percent: cad_driver_out_of_service_percent,
                           us_inspections_prev_24: us_inspections_prev_24,
-                          cad_inspections_prev_24: cad_inspections_prev_24                          
+                          cad_inspections_prev_24: cad_inspections_prev_24,
+                          crash_results_24_prior: crash_results_24_prior, 
+                          cad_crash_results_24_prior: cad_crash_results_24_prior, 
+                          cad_crash_fatal: cad_crash_fatal, 
+                          cad_crash_injury: cad_crash_injury, 
+                          cad_crash_tow: cad_crash_tow,  
+                          cad_crash_total: cad_crash_total, 
+                          us_inspection_results_for_24_months_prior_to: us_inspection_results_for_24_months_prior_to,
+                          total_inspections: total_inspections,
+                          total_iep_inspections: total_iep_inspections,
+                          crash_inspections: crash_inspections,
+                          the_rating_below_is_current_as_of: the_rating_below_is_current_as_of,
+                          rating_date: rating_date, 
+                          review_date: review_date, 
+                          review_rating: review_rating,
+                          review_type: review_type                          
                          )
                          
       flash[:success] = "Your #{@carrier_mc.entity_type} number #{@carrier_mc.mc_mx_ff_numbers} with an Operating Status of #{@carrier_mc.operating_status} has been updated."
@@ -275,6 +310,21 @@ class CarrierMcsController < ApplicationController
                                         :cad_driver_out_of_service_percent,
                                         :us_inspections_prev_24,
                                         :cad_inspections_prev_24,
+                                        :crash_results_24_prior, 
+                                        :cad_crash_results_24_prior, 
+                                        :cad_crash_fatal, 
+                                        :cad_crash_injury, 
+                                        :cad_crash_tow,  
+                                        :cad_crash_total, 
+                                        :us_inspection_results_for_24_months_prior_to,
+                                        :total_inspections,
+                                        :total_iep_inspections,
+                                        :crash_inspections,
+                                        :the_rating_below_is_current_as_of,
+                                        :rating_date, 
+                                        :review_date, 
+                                        :review_rating,
+                                        :review_type,
                                         :company_id 
                                        )
   end
