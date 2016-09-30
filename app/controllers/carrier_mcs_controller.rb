@@ -28,6 +28,7 @@ class CarrierMcsController < ApplicationController
     
     require 'capybara/poltergeist'
     session = Capybara::Session.new(:poltergeist)
+    session.driver.options[:phantomjs] = Phantomjs.path 
     session.visit('https://safer.fmcsa.dot.gov/CompanySnapshot.aspx')
     session.choose('2')
     session.fill_in('4', with: @company.carrier_mc_number)

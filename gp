@@ -1,5 +1,5 @@
 git add -A
-git commit -m "merge branch 'brkrmc' all scrapes working"
+git commit -m "session.driver.options[:phantomjs] = Phantomjs.path "
 git push -u origin master 
 git push dokku master 
 
