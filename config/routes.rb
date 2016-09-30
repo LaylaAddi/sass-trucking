@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   resources :company_managers
   
   resources :companies do
-    resources :carrier_mcs 
+    resources :carrier_mcs, only: [:show, :edit] 
       resources :broker_mcs 
-        resources :usdots
+        resources :us_dots
   end
   
   get 'dashboard', to: 'users#dashboard'

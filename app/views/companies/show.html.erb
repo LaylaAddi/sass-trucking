@@ -51,27 +51,31 @@
 
 
 
-<%=link_to "Update Carrier MC", edit_company_carrier_mc_path(@company, @cmc) %>
-<%=link_to "Show Carrier MC", company_carrier_mc_path(@company, @cmc) %>
+ 
+<%=link_to "Show Carrier MC", company_carrier_mc_path(@company, @carrier_mc) %>
+<%=link_to "Update Carrier MC", edit_company_carrier_mc_path(@company, @carrier_mc) %>
+<%=link_to "Show Broker MC", company_broker_mc_path(@company, @broker_mc) %>
+<%=link_to "Update Broker MC", edit_company_broker_mc_path(@company, @broker_mc) %>
+<%=link_to "Show Us DOT", company_us_dot_path(@company, @us_dot) %>
+<%=link_to "Update US DOT", edit_company_us_dot_path(@company, @us_dot) %>
 
-
-<p>Internal Entity Type: <%= @cmc.type %></p>
-<p>Entity Type: <%= @cmc.entity_type %></p>
-<p>Operating Status: <%= @cmc.operating_status %></p>
-<p>Out Of Service Date: <%= @cmc.out_of_service_date %></p>
-<p>Legal Name: <%= @cmc.legal_name %></p>
-<p>DBA Name: <%= @cmc.dba_name %></p>
-<p>Physical Address: <%= @cmc.physical_address %></p>
-<p>Telephone: <%= @cmc.phone %></p>
-<p>Mailing Address: <%= @cmc.mailing_address %></p>
-<p>US DOT Number: <%= @cmc.usdot_number %></p>
-<p>State Carrier ID:  <%= @cmc.state_carrier_id_number %></p>
-<p>MC MM FF Numbers: <%= @cmc.mc_mx_ff_numbers %></p>
-<p>DUNS Number: <%= @cmc.duns_number %></p>
-<p>Power Units: <%= @cmc.power_units %> </p>
-<p>Number of Drivers: <%= @cmc.driver_count %></p>
-<p>MCS 150 Form Date: <%= @cmc.mcs_150_form_date %></p>
-<p>MCS 150 Mileage Year: <%= @cmc.mcs_150_mileage_year %></p>
+<p>Internal Entity Type: <%= @carrier_mc.type %></p>
+<p>Entity Type: <%= @carrier_mc.entity_type %></p>
+<p>Operating Status: <%= @carrier_mc.operating_status %></p>
+<p>Out Of Service Date: <%= @carrier_mc.out_of_service_date %></p>
+<p>Legal Name: <%= @carrier_mc.legal_name %></p>
+<p>DBA Name: <%= @carrier_mc.dba_name %></p>
+<p>Physical Address: <%= @carrier_mc.physical_address %></p>
+<p>Telephone: <%= @carrier_mc.phone %></p>
+<p>Mailing Address: <%= @carrier_mc.mailing_address %></p>
+<p>US DOT Number: <%= @carrier_mc.usdot_number %></p>
+<p>State Carrier ID:  <%= @carrier_mc.state_carrier_id_number %></p>
+<p>MC MM FF Numbers: <%= @carrier_mc.mc_mx_ff_numbers %></p>
+<p>DUNS Number: <%= @carrier_mc.duns_number %></p>
+<p>Power Units: <%= @carrier_mc.power_units %> </p>
+<p>Number of Drivers: <%= @carrier_mc.driver_count %></p>
+<p>MCS 150 Form Date: <%= @carrier_mc.mcs_150_form_date %></p>
+<p>MCS 150 Mileage Year: <%= @carrier_mc.mcs_150_mileage_year %></p>
 
 
                                        

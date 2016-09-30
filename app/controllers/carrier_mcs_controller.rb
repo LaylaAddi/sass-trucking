@@ -2,7 +2,7 @@ class CarrierMcsController < ApplicationController
   
   def show
     @company = Company.find(params[:company_id])
-    @cmc = CarrierMc.find(params[:id])
+    @carrier_mc = CarrierMc.find(params[:id])
   end
   
   def new 
