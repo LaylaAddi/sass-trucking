@@ -1,20 +1,20 @@
-class CarrierMcsController < ApplicationController
+class UsDotsController < ApplicationController
   
   def show
     @company = Company.find(params[:company_id])
-    @carrier_mc = CarrierMc.find(params[:id])
-  end
-  
+    @us_dot = @company.us_dot
+  end 
+
   def new 
     @company = Company.find(params[:company_id])
-    @carrier_mc = CarrierMc.new 
+    @us_dot = UsDot.new 
   end
   
   def create
     @company = Company.find(params[:company_id])
-    @carrier_mc = @company.carrier_mcs.build(cmc_params) 
-    @carrier_mc.save
-    #   flash[:success] = "Your #{@carrier_mc.authority_type} with number #{@carrier_mc.number} has been saved"
+    @us_dot = @company.us_dots.build(dot_params) 
+    @us_dot.save
+    #   flash[:success] = "Your #{@us_dot.authority_type} with number #{@us_dot.number} has been saved"
     #   redirect_to @company
     # else
     #   flash[:danger] = "There was a problem saving your Authority"
@@ -23,14 +23,14 @@ class CarrierMcsController < ApplicationController
   end
   
   def edit
-    @company = Company.find(params[:company_id])
-    @carrier_mc = CarrierMc.find(params[:id]) 
+    @company = Company.find(params[:company_id]) 
+    @us_dot = @company.us_dot
     
     require 'capybara/poltergeist'
     session = Capybara::Session.new(:poltergeist)
     session.visit('https://safer.fmcsa.dot.gov/CompanySnapshot.aspx')
-    session.choose('2')
-    session.fill_in('4', with: @company.carrier_mc_number)
+    session.choose('1')
+    session.fill_in('4', with: @company.us_dot_number) 
     session.find('input[type="SUBMIT"]').click
     
     
@@ -127,8 +127,8 @@ class CarrierMcsController < ApplicationController
 
 
     @company = Company.find(params[:company_id])
-    @carrier_mc = CarrierMc.find(params[:id]) 
-    if @carrier_mc.update(
+    @us_dot = @company.us_dot
+    if @us_dot.update!(
                           entity_type: entity_type, 
                           operating_status: operating_status,
                           out_of_service_date: out_of_service_date,
@@ -214,8 +214,8 @@ class CarrierMcsController < ApplicationController
                           review_rating: review_rating,
                           review_type: review_type                          
                          )
-                         
-      flash[:success] = "Your #{@carrier_mc.entity_type} number #{@carrier_mc.mc_mx_ff_numbers} with an Operating Status of #{@carrier_mc.operating_status} has been updated."
+
+      flash[:success] = "Your #{@us_dot.entity_type} number #{@us_dot.mc_mx_ff_numbers} with an Operating Status of #{@us_dot.operating_status} has been updated."
       redirect_to @company
     else
       flash[:danger] = "There was a problem saving your Authority"
@@ -223,22 +223,11 @@ class CarrierMcsController < ApplicationController
     end
   end
   
-  def update
-    # @company = Company.find(params[:company_id])
-    # @carrier_mc = Mc.find(params[:id]) 
-    # if @carrier_mc.update(cmc_params)
-    #   flash[:success] = "Your #{@carrier_mc.authority_type} with number #{@carrier_mc.number} has been updated"
-    #   redirect_to @company
-    # else
-    #   flash[:danger] = "There was a problem saving your Authority"
-    #   render :edit
-    # end
-  end
 
   private
   
-  def cmc_params
-    params.require(:carrier_mc).permit(
+  def dot_params
+    params.require(:us_dot).permit(
                                         :type,
                                         :entity_type,
                                         :operating_status,

@@ -4,8 +4,8 @@ class Company < ApplicationRecord
   has_one :carrier_mc, dependent: :destroy
   has_one :us_dot, dependent: :destroy  
   before_create :build_carrier_mc
-  before_create :broker_mc
-  before_create :us_dot
+  before_create :build_broker_mc
+  before_create :build_us_dot
 end
 
      

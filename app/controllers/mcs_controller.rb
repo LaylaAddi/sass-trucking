@@ -1,5 +1,6 @@
 class McsController < ApplicationController
   
+
   def new 
     @company = Company.find(params[:company_id])
     @mc = Mc.new 
@@ -46,38 +47,12 @@ class McsController < ApplicationController
     end
   end
   
-  def update
-    # @company = Company.find(params[:company_id])
-    # @mc = Mc.find(params[:id]) 
-    # if @mc.update(oa_params)
-    #   flash[:success] = "Your #{@mc.authority_type} with number #{@mc.number} has been updated"
-    #   redirect_to @company
-    # else
-    #   flash[:danger] = "There was a problem saving your Authority"
-    #   render :edit
-    # end
-    
-    
-  end
-  
-  def scrape
-    
-  end
+
+ 
 
   
   
   
-  
-  private
-  
-  def oa_params
-    params.require(:operating_authority).permit(
-      :name,
-      :address,
-      :telephone,
-      :number,
-      :authority_type,
-      :company_id
-      )
-  end
+
+
 end

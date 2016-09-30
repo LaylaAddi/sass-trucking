@@ -9,9 +9,9 @@ class CompaniesController < ApplicationController
 
   def show
     @company_manager = CompanyManager.find(params[:id])
-    @cmc = @company.carrier_mc
-    @bmc = @company.broker_mc
-    @dot = @company.us_dot
+    @carrier_mc = @company.carrier_mc
+    @broker_mc = @company.broker_mc
+    @us_dot = @company.us_dot
   end
 
 

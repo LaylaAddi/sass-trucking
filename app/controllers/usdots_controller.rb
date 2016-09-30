@@ -1,2 +1,0 @@
-class UsDotsController < ApplicationController
-end
