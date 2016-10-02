@@ -15,24 +15,23 @@ ActiveRecord::Schema.define(version: 20160929044746) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "companies", force: :cascade do |t|
+  create_table "company_profiles", force: :cascade do |t|
     t.string   "name"
-    t.string   "address"
+    t.string   "location"
     t.string   "telephone"
     t.string   "website"
     t.string   "logo"
     t.string   "broker_mc_number"
     t.string   "carrier_mc_number"
     t.string   "us_dot_number"
-    t.string   "company_type"
-    t.boolean  "show_add_mc",        default: true
-    t.date     "date_formed"
-    t.integer  "company_manager_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.string   "updated_by"
+    t.string   "contact"
+    t.string   "profile_image"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
-  create_table "mcs", force: :cascade do |t|
+  create_table "us_dots", force: :cascade do |t|
     t.string   "type",                                         default: "", null: false
     t.string   "entity_type",                                  default: "", null: false
     t.string   "operating_status",                             default: "", null: false
@@ -119,7 +118,7 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "review_date"
     t.string   "review_rating"
     t.string   "review_type"
-    t.string   "company_id"
+    t.string   "company_profile_id"
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
   end
@@ -139,7 +138,9 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "type"
     t.string   "emergency_contact"
     t.string   "emergency_contact_number"
-    t.boolean  "company_admin",            default: false
+    t.string   "image"
+    t.string   "profile_image"
+    t.boolean  "company_profile_admin",    default: false
     t.boolean  "admin",                    default: false
     t.boolean  "dispatcher",               default: false
     t.boolean  "office",                   default: false

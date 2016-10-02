@@ -10,16 +10,15 @@ Rails.application.routes.draw do
   :controllers => { registrations: 'company_users_registrations/registrations'}
   resources :company_users
   
-  devise_for :company_managers, 
-  :controllers => { registrations: 'company_managers_registrations/registrations'}
-  resources :company_managers
 
-  resources :companies do
+  resources :company_profiles do
     resources :mcs 
       resources :carrier_mcs 
         resources :broker_mcs 
           resources :us_dots
   end
+  
+  resources :users
   
   get 'dashboard', to: 'users#dashboard'
   
@@ -29,6 +28,6 @@ Rails.application.routes.draw do
   
   get 'creatives/carrier_package', to: 'creatives#download_carrier'
   
-  get 'authorty', to: 'operating_authorities#scrape'
+
   
 end

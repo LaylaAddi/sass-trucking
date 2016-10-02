@@ -1,0 +1,19 @@
+<p><%= @user.email %></p>              
+<p><%= @user.full_name %></p>
+<p><%= @user.telephone %></p>
+<p><%= @user.extention %></p>
+<p><%= @user.cellphone %></p>
+<p><%= @user.street %></p> 
+<p><%= @user.city %></p> 
+<p><%= @user.state %></p> 
+<p><%= @user.zip %></p>  
+<p><%= @user.type %></p>
+<p><%= @user.emergency_contact %></p>
+<p><%= @user.emergency_contact_number %></p>
+<p><%= @user.image %></p>  
+<p><%= @user.profile_image %></p>
+<p><%= @user.user_position %></p>
+
+<%= link_to "Edit", edit_user_path(@user), class: "btn btn-hrcprimary btn-xs" %>
+
+<%= link_to "All Users", users_path, class: "btn btn-hrcsuccess btn-xs" %>

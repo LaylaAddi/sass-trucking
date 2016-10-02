@@ -1,7 +1,7 @@
-<h2>Broker MC<small> <%= @company.name %> </small></h2>
+<h2>Broker MC<small> <%= @company_profile.name %> </small></h2>
 
-<%=link_to "Update Broker MC", edit_company_broker_mc_path(@company, @broker_mc) %>
-<%=link_to "Show Broker MC", company_broker_mc_path(@company, @broker_mc) %>
+<%=link_to "Update Broker MC", edit_company_profile_broker_mc_path(@company_profile, @broker_mc) %>
+<%=link_to "Show Broker MC", company_profile_broker_mc_path(@company_profile, @broker_mc) %>
 
 
 <p>Internal Entity Type: <%= @broker_mc.type %></p>

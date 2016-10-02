@@ -1,5 +1,4 @@
-class Company < ApplicationRecord
-  belongs_to :company_manager
+class CompanyProfile < ApplicationRecord
   has_one :broker_mc, dependent: :destroy
   has_one :carrier_mc, dependent: :destroy
   has_one :us_dot, dependent: :destroy  

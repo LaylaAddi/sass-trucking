@@ -1,9 +1,9 @@
-<h2>Carrier MC<small> <%= @company.name %> </small></h2>
+<h2>Carrier MC<small> <%= @company_profile.name %> </small></h2>
 
 
                                        
-<%=link_to "Update Carrier MC", edit_company_carrier_mc_path(@company, @carrier_mc) %>
-<%=link_to "Show Carrier MC", company_carrier_mc_path(@company, @carrier_mc) %>
+<%=link_to "Update Carrier MC", edit_company_profile_carrier_mc_path(@company_profile, @carrier_mc) %>
+<%=link_to "Show Carrier MC", company_profile_carrier_mc_path(@company_profile, @carrier_mc) %>
 
 
 <p>Internal Entity Type: <%= @carrier_mc.type %></p>

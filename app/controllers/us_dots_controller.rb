@@ -1,21 +1,21 @@
 class UsDotsController < ApplicationController
   
   def show
-    @company = Company.find(params[:company_id])
-    @us_dot = @company.us_dot
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
+    @us_dot = @company_profile.us_dot
   end 
 
   def new 
-    @company = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
     @us_dot = UsDot.new 
   end
   
   def create
-    @company = Company.find(params[:company_id])
-    @us_dot = @company.us_dots.build(dot_params) 
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
+    @us_dot = @company_profile.us_dots.build(dot_params) 
     @us_dot.save
     #   flash[:success] = "Your #{@us_dot.authority_type} with number #{@us_dot.number} has been saved"
-    #   redirect_to @company
+    #   redirect_to @company_profile
     # else
     #   flash[:danger] = "There was a problem saving your Authority"
     #   render :new
@@ -23,15 +23,15 @@ class UsDotsController < ApplicationController
   end
   
   def edit
-    @company = Company.find(params[:company_id]) 
-    @us_dot = @company.us_dot
+    @company_profile = CompanyProfile.find(params[:company_profile_id]) 
+    @us_dot = @company_profile.us_dot
     
     require 'capybara/poltergeist'
     session = Capybara::Session.new(:poltergeist)
     session.driver.options[:phantomjs] = Phantomjs.path 
     session.visit('https://safer.fmcsa.dot.gov/CompanySnapshot.aspx')
     session.choose('1')
-    session.fill_in('4', with: @company.us_dot_number) 
+    session.fill_in('4', with: @company_profile.us_dot_number) 
     session.find('input[type="SUBMIT"]').click
     
     
@@ -127,8 +127,8 @@ class UsDotsController < ApplicationController
             
 
 
-    @company = Company.find(params[:company_id])
-    @us_dot = @company.us_dot
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
+    @us_dot = @company_profile.us_dot
     if @us_dot.update!(
                           entity_type: entity_type, 
                           operating_status: operating_status,
@@ -217,10 +217,10 @@ class UsDotsController < ApplicationController
                          )
 
       flash[:success] = "Your #{@us_dot.entity_type} number #{@us_dot.mc_mx_ff_numbers} with an Operating Status of #{@us_dot.operating_status} has been updated."
-      redirect_to @company
+      redirect_to @company_profile
     else
       flash[:danger] = "There was a problem saving your Authority"
-      redirect_to @company
+      redirect_to @company_profile
     end
   end
   
@@ -315,7 +315,7 @@ class UsDotsController < ApplicationController
                                         :review_date, 
                                         :review_rating,
                                         :review_type,
-                                        :company_id 
+                                        :company_profile_id 
                                        )
   end
 end

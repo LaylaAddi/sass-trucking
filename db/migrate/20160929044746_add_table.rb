@@ -1,6 +1,6 @@
 class AddTable < ActiveRecord::Migration[5.0]
   def change
-    create_table :mcs do |t|
+    create_table :us_dots do |t|
       t.string :type, null: false, default: ""
       t.string :entity_type, null: false, default: ""
       t.string :operating_status, null: false, default: ""
@@ -88,7 +88,7 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :review_date 
       t.string :review_rating
       t.string :review_type
-      t.string :company_id     
+      t.string :company_profile_id     
 
 
       t.timestamps

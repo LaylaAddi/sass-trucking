@@ -1,10 +1,11 @@
-<h1>Companies</h1>
+<h1>Company Profiles</h1>
 
-<table>
+<table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
-      <th>Address</th>
+      <th>Location</th>
       <th>MC</th>
       <th></th>
       <th></th>
@@ -14,16 +15,17 @@
       <th>Broker mc</th>
       <th>Carrier mc</th>
       <th>Us dot</th>
-      <th>Company manager</th>
+      <th>other stuff</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @companies.each do |company| %>
+    <% @company_profiles.each do |company| %>
       <tr>
+        <td><%= company.id %></td>
         <td><%= company.name %></td>
-        <td><%= company.address %></td>
+        <td><%= company.location %></td>
         <td><%= company.carrier_mc_number %></td>
         <td><%=  %></td>
         <td><%=  %></td>
@@ -33,9 +35,9 @@
         <td><%= company.broker_mc_number %></td>
         <td><%= company.carrier_mc_number %></td>
         <td><%= company.us_dot_number %></td>
-        <td><%= company.company_manager_id %></td>
+        <td><%= %></td>
         <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
+        <td><%= link_to 'Edit', edit_company_profile_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -44,4 +46,4 @@
 
 <br>
 
-<%= link_to 'New Company', new_company_path %>
+<%= link_to 'New Company', new_company_profile_path %>

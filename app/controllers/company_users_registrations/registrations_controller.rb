@@ -19,7 +19,7 @@ class CompanyUsersRegistrations::RegistrationsController < Devise::Registrations
                                           :type,
                                           :emergency_contact,
                                           :emergency_contact_number,
-                                          :company_admin,
+                                          :company_admin
                                           )
   end
 
@@ -38,12 +38,16 @@ class CompanyUsersRegistrations::RegistrationsController < Devise::Registrations
                                           :state, 
                                           :zip,  
                                           :type,
+                                          :image, 
+                                          :profile_image,
                                           :emergency_contact,
                                           :emergency_contact_number,
                                           :company_admin,
                                           :admin,
-                                          :dispatcher
+                                          :dispatcher,
+                                          :office
                                           )
+                              
                               
   end
 end      

@@ -16,13 +16,16 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :type
       t.string :emergency_contact
       t.string :emergency_contact_number
-      t.boolean :company_admin, default: false
+      t.string :image  
+      t.string :profile_image
+      t.boolean :company_profile_admin, default: false
       t.boolean :admin, default: false
       t.boolean :dispatcher, default: false
       t.boolean :office, default: false
       t.boolean :maintenance, default: false  
       t.boolean :shipping_receiving, default: false 
-      t.boolean :driver, default: false       
+      t.boolean :driver, default: false      
+      
       
  
       

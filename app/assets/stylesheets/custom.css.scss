@@ -4,6 +4,7 @@
 
 
 body {
+  overflow-x: hidden;
   padding-bottom: 80px;
   padding-top: 60px;
 }
@@ -13,7 +14,15 @@ body {
   display: none;
 }
 
+.shadow {
+  -webkit-box-shadow: 7px 9px 15px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 9px 15px -6px rgba(0,0,0,0.75);
+  box-shadow: 7px 9px 15px -6px rgba(0,0,0,0.75);
+}
 
+.round {
+  border-radius: 5px;
+}
 
 
 

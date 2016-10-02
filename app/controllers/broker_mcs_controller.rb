@@ -1,21 +1,21 @@
 class BrokerMcsController < ApplicationController
   
  def show
-    @company = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
     @broker_mc = BrokerMc.find(params[:id])
   end
   
   def new 
-    @company = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
     @broker_mc = BrokerMc.new 
   end
   
   def create
-    @company = Company.find(params[:company_id])
-    @broker_mc = @company.carrier_mcs.build(bmc_params) 
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
+    @broker_mc = @company_profile.carrier_mcs.build(bmc_params) 
     @broker_mc.save
     #   flash[:success] = "Your #{@broker_mc.authority_type} with number #{@broker_mc.number} has been saved"
-    #   redirect_to @company
+    #   redirect_to @company_profile
     # else
     #   flash[:danger] = "There was a problem saving your Authority"
     #   render :new
@@ -23,7 +23,7 @@ class BrokerMcsController < ApplicationController
   end
   
   def edit
-    @company = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
     @broker_mc = BrokerMc.find(params[:id]) 
     
     require 'capybara/poltergeist'
@@ -31,7 +31,7 @@ class BrokerMcsController < ApplicationController
     session.driver.options[:phantomjs] = Phantomjs.path 
     session.visit('https://safer.fmcsa.dot.gov/CompanySnapshot.aspx')
     session.choose('2')
-    session.fill_in('4', with: @company.carrier_mc_number)
+    session.fill_in('4', with: @company_profile.carrier_mc_number)
     session.find('input[type="SUBMIT"]').click
     
     
@@ -127,7 +127,7 @@ class BrokerMcsController < ApplicationController
             
 
 
-    @company = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
     @broker_mc = BrokerMc.find(params[:id]) 
     if @broker_mc.update(
                           entity_type: entity_type, 
@@ -217,19 +217,19 @@ class BrokerMcsController < ApplicationController
                          )
                          
       flash[:success] = "Your #{@broker_mc.entity_type} number #{@broker_mc.mc_mx_ff_numbers} with an Operating Status of #{@broker_mc.operating_status} has been updated."
-      redirect_to @company
+      redirect_to @company_profile
     else
       flash[:danger] = "There was a problem saving your Authority"
-      redirect_to @company
+      redirect_to @company_profile
     end
   end
   
   def update
-    # @company = Company.find(params[:company_id])
+    # @company_profile = Company.find(params[:company_profile_id])
     # @broker_mc = Mc.find(params[:id]) 
     # if @broker_mc.update(cmc_params)
     #   flash[:success] = "Your #{@broker_mc.authority_type} with number #{@broker_mc.number} has been updated"
-    #   redirect_to @company
+    #   redirect_to @company_profile
     # else
     #   flash[:danger] = "There was a problem saving your Authority"
     #   render :edit
@@ -326,7 +326,7 @@ class BrokerMcsController < ApplicationController
                                         :review_date, 
                                         :review_rating,
                                         :review_type,
-                                        :company_id 
+                                        :company_profile_id 
                                        )
   end
 end

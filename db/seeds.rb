@@ -1,3 +1,25 @@
+broker_mc = [
+  "131029",
+  "252947",
+  "211123",
+  "044128",
+  "322572",
+  "175953",
+  "985484"
+  ]
+  
+dot = [
+  "425389",
+ "2223295",
+  "221569",
+ "2211804",
+ "2921696"
+  ]  
+
+
+
+
+
 city_data = [
   "Chicago. Illinois",
   "Miami, Florida",
@@ -24,11 +46,57 @@ city_data = [
   "Phoenix, Arizona"
   ]
   
+user = AppUser.create(
+  password: "password",
+  password_confirmation: "password", 
+  first_name: "Steve",
+  last_name: "Chesnowtiz",
+  email: "steve@hrclogistics.com",
+  cellphone: "716.986.4324",  
+  street: Faker::Address.street_name,
+  telephone: Faker::PhoneNumber.phone_number,
+  city: city_data.sample,
+  zip: "123456",
+  type: "AppUser",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number,
+  office: "false",
+  maintenance: "false",
+  shipping_receiving: "false",
+  dispatcher: "true",
+  admin: "false"
+  )
+  
+  
+10.times do
+appuser = AppUser.create(
+  password: "password",
+  password_confirmation: "password", 
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  cellphone: Faker::PhoneNumber.phone_number,  
+  street: Faker::Address.street_name,
+  telephone: Faker::PhoneNumber.phone_number,
+  city: city_data.sample,
+  zip: "123456",
+  type: "AppUser",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number,
+  office: "false",
+  maintenance: "false",
+  shipping_receiving: "false",
+  dispatcher: "true",
+  admin: "false"
+  )
+  puts appuser.inspect
+end
+  
   
 
 
 100.times do
-driver = User.create(
+companyuser = CompanyUser.create(
   password: "password",
   password_confirmation: "password", 
   first_name: Faker::Name.first_name,
@@ -42,19 +110,29 @@ driver = User.create(
   type: "CompanyUser",
   emergency_contact: Faker::Name.first_name,
   emergency_contact_number: Faker::PhoneNumber.phone_number,
-  company_admin: Faker::Boolean.boolean,
-  dispatcher: Faker::Boolean.boolean,
-  office: Faker::Boolean.boolean,
-  maintenance: Faker::Boolean.boolean,
-  shipping_receiving: Faker::Boolean.boolean,
-  driver: "true"
+  dispatcher: boolean.sample,
+  office: boolean.sample,
+  maintenance: boolean.sample,
+  shipping_receiving: boolean.sample,
+  driver: boolean.sample
   )
-  puts driver.inspect
+  puts companyuser.inspect
 end
 
-      t.boolean :company_admin, default: false
-      t.boolean :admin, default: false
-      t.boolean :dispatcher, default: false
-      t.boolean :office, default: false
-      t.boolean :maintenance, default: false  
-      t.boolean :shipping_receiving, default: false 
+
+500.times do     
+companyprofile = CompanyProfile.create!(
+name: Faker::Company.name, 
+location: "Anywhere Ville",
+telephone: "555.555.5555",
+website: Faker::Internet.url,
+logo:"",
+broker_mc_number: broker_mc.sample,
+carrier_mc_number: broker_mc.sample,
+us_dot_number: dot.sample,
+updated_by:"",
+contact: Faker::Name.first_name,
+profile_image:"" 
+  )
+ puts companyprofile.inspect
+end

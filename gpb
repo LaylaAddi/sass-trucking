@@ -1,4 +1,4 @@
 git add -A
-git commit -m ""
-git push -u origin brkrmc
+git commit -m "set up user edit and views"
+git push -u origin loaded
 

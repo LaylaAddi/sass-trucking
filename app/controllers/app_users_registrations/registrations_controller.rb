@@ -5,46 +5,47 @@ class AppUsersRegistrations::RegistrationsController < Devise::RegistrationsCont
 
   def sign_up_params
     params.require(:app_user).permit(:password, 
-                                              :password_confirmation,
-                                              :email,
-                                              :first_name,
-                                              :last_name,
-                                              :telephone,
-                                              :extention,
-                                              :cellphone,
-                                              :street, 
-                                              :city, 
-                                              :state, 
-                                              :zip,  
-                                              :type,
-                                              :emergency_contact,
-                                              :emergency_contact_number,
-                                              :company_admin,
-                                              )
+                                     :password_confirmation,
+                                     :email,
+                                     :first_name,
+                                     :last_name,
+                                     :telephone,
+                                     :extention,
+                                     :cellphone,
+                                     :street, 
+                                     :city, 
+                                     :state, 
+                                     :zip,  
+                                     :type,
+                                     :emergency_contact,
+                                     :emergency_contact_num 
+                                     )
   end
 
   def account_update_params
     params.require(:app_user).permit(:password, 
-                                              :password_confirmation,
-                                              :current_password,
-                                              :email,
-                                              :first_name,
-                                              :last_name,
-                                              :telephone,
-                                              :extention,
-                                              :cellphone,
-                                              :street, 
-                                              :city, 
-                                              :state, 
-                                              :zip,  
-                                              :type,
-                                              :emergency_contact,
-                                              :emergency_contact_number,
-                                              :company_admin,
-                                              :admin,
-                                              :dispatcher,
-                                              :office
-                                              )
+                                     :password_confirmation,
+                                     :current_password,
+                                     :email,
+                                     :first_name,
+                                     :last_name,
+                                     :telephone,
+                                     :extention,
+                                     :cellphone,
+                                     :street, 
+                                     :city, 
+                                     :state, 
+                                     :zip,  
+                                     :type,
+                                     :image, 
+                                     :profile_image,
+                                     :emergency_contact,
+                                     :emergency_contact_number,
+                                     :company_admin,
+                                     :admin,
+                                     :dispatcher,
+                                     :office
+                                     )
                               
   end
 end      

@@ -1,0 +1,33 @@
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Company</th>
+			<th>Position</th>
+			<th>Type</th>
+			<th>[HEADER]</th>
+			<th>[HEADER]</th>
+			<th>[HEADER]</th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @users.each do |user| %>
+		<tr>
+			<td><%= user.id %></td>
+			
+			<td><%= link_to user_path(user) do %>
+			  <%= user.full_name %>
+			  <% end %>
+			</td>
+			
+			<td>Company</td>
+			<td><%= truncate(user.user_position, lenght: 15) %> </td> 
+			<td><%= user.type %></td>
+			<td>[CONTENT]</td>
+			<td>[CONTENT]</td>
+			<td>[CONTENT]</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

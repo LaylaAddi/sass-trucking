@@ -1,5 +1,5 @@
-<h2><small>Editing my profile</small></h2>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<h2><small>Editing <%= @user.full_name %></small></h2>
+<%= simple_form_for @user do |f| %>
 <%= f.error_notification %>
 <div class="row">
   <div class="col-md-8 col-xs-offset-2 shadow">
@@ -45,15 +45,12 @@
             </div>
           </div>
           <hr>
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-          <% end %>
           <div class="row">
             <div class="col-md-4">
               <%= f.input :emergency_contact %> 
             </div>
             <div class="col-md-4">
-              <%= f.input :emergency_contact_number%>  
+              <%= f.input :emergency_contact_number %>  
             </div>
             <div class="col-md-4">
             </div>
@@ -62,17 +59,21 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <%= f.input :current_password, 
-              hint: "we need your current password to confirm your changes", 
-              required: true %>
+<%= f.input :image %>  
+
           </div>
           <div class="col-md-4">
-            <%= f.input :password, label: "New password", autocomplete: "off", 
-              hint: "leave it blank if you don't want to change it", required: false %>
+<%= f.input :profile_image %>
           </div>
           <div class="col-md-4">
-            <%= f.input :password_confirmation, label: "New password confirmation", 
-              autocomplete: "off", hint: "confirm your new password", required: false %>
+<%= f.input :admin %>
+<%= f.input :company_profile_admin %>
+
+<%= f.input :dispatcher %>
+<%= f.input :office %>
+<%= f.input :maintenance %>
+<%= f.input :shipping_receiving %>
+<%= f.input :driver %>
           </div>
         </div>
         <div class="form-actions">

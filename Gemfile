@@ -18,12 +18,15 @@ gem 'bootstrap-sass-extras', '~> 0.0.7'
 gem 'simple_form', '~> 3.2', '>= 3.2.1' 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
-gem 'mechanize', '~> 2.7', '>= 2.7.5' 
 gem 'frontend-generators', '~> 0.1.1'
 gem "font-awesome-rails"
 gem 'devise', '~> 4.2'
 gem 'poltergeist', '~> 1.10'
 gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
+gem 'faker', '~> 1.6', '>= 1.6.6'
+
+
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

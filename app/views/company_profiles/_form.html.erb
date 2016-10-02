@@ -1,0 +1,55 @@
+<%= simple_form_for(@company_profile) do |f| %>
+<div class="row">
+  <%= f.error_notification %>
+  <div class="col-md-8 col-xs-offset-2 shadow">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="form-inputs">
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.input :name %>
+            </div>
+            <div class="col-md-4">
+              <%= f.input :telephone %>
+            </div>
+            <div class="col-md-4">
+              <%= f.input :website %>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.input :location, label: "Location" %>
+            </div>
+            <div class="col-md-4">
+              <%= f.input :contact %>
+            </div>
+            <div class="col-md-4">
+              <%= f.input :logo, as: :file %>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.input :us_dot_number %>
+            </div>
+            <div class="col-md-4">
+              <%= f.input :broker_mc_number %>
+            </div>
+            <div class="col-md-4">
+              <%= f.input :carrier_mc_number %>
+            </div>
+          </div>
+          <hr>
+          <div class="form-actions">
+            <%= f.button :submit, class: "btn btn-primary btn-xs round" %>
+            <br />
+            <br />
+            <%= link_to 'All Companies', company_profiles_path, class: "btn btn-hrcinfo btn-xs" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

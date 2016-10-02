@@ -14,33 +14,22 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a class="page-scroll" href="#about">About</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#services">Services</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#portfolio">Interact</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#contact">Contact</a>
-        </li>
- <li class="dropdown">
+        <li><a class="page-scroll" href="#about">About</a></li>  
+        <li><a class="page-scroll" href="#services">Services</a></li>  
+        <li><a class="page-scroll" href="#portfolio">Interact</a></li>  
+        <li><a class="page-scroll" href="#contact">Contact</a></li> 
+        <li><a class="page-scroll" href="/company_users/sign_up">New User Registrations</a></li> 
+
+  
+         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-            aria-haspopup="true" aria-expanded="false">Login/Register 
+            aria-haspopup="true" aria-expanded="false">Login 
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "App User", new_app_user_session_path %></li>
-            <li><%= link_to "Company Manager", new_company_manager_session_path %></li>
-            <li><%= link_to "Company User", new_company_user_session_path %></li>
-
-         
+            <li><%= link_to "Shipper/Carrier", new_company_user_session_path %></li>
+            <li><%= link_to "HRC Staff", new_app_user_session_path %></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to "HRC User", new_app_user_registration_path %></li> 
-            <li><%= link_to "Company Manager", new_company_manager_registration_path %></li>  
-            <li><%= link_to "Company User", new_company_user_registration_path %></li>             
-        
           </ul>
         </li>
       </ul>
