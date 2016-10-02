@@ -1,6 +1,6 @@
 class AddTable < ActiveRecord::Migration[5.0]
   def change
-    create_table :us_dots do |t|
+    create_table :mcs do |t|
       t.string :type, null: false, default: ""
       t.string :entity_type, null: false, default: ""
       t.string :operating_status, null: false, default: ""

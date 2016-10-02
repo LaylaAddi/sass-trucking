@@ -36,7 +36,32 @@
     <div class="container">
 
         <hr>
-
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <strong>
+            <%= link_to @company_profile.us_dot_number, 
+            company_profile_us_dot_path(@company_profile, @us_dot)  %>  
+            <%=link_to "Update US DOT", 
+            edit_company_profile_us_dot_path(@company_profile, @us_dot) %>
+        </strong>
+        <strong>
+            <%= link_to @company_profile.broker_mc_number, 
+            company_profile_broker_mc_path(@company_profile, @broker_mc)  %>  
+            <%=link_to "Update Broker MC", 
+            edit_company_profile_broker_mc_path(@company_profile, @broker_mc) %>
+        </strong>
+        <strong>
+            <%= link_to @company_profile.carrier_mc_number, 
+            company_profile_carrier_mc_path(@company_profile, @carrier_mc)  %>  
+            <%=link_to "Update Carrier MC", 
+            edit_company_profile_carrier_mc_path(@company_profile, @carrier_mc) %>
+        </strong>     
+        
+        
+    </div>
+</div>
         <div class="row">
             <div class="col-sm-8">
                 <h2>What We Do</h2>

@@ -1,4 +1,4 @@
-class CarrierMcsController < ApplicationController
+class CarrierMcsController < McsController
   
   def show
     @company_profile = CompanyProfile.find(params[:company_profile_id])
@@ -330,4 +330,3 @@ class CarrierMcsController < ApplicationController
                                        )
   end
 end
-

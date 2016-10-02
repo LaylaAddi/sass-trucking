@@ -1,13 +1,19 @@
 class McsController < ApplicationController
   
-
+ def show
+    @company_profile = CompanyProfile.find(params[:company_profile_id])
+    @dot = @company_profile.us_dot
+    @carrier_mc = @company_profile.carrier_mc
+    @broker_mc = @company_profile.broker_mc
+  end
+  
   def new 
-    @company_profile = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_id])
     @mc = Mc.new 
   end
   
   def create
-    @company_profile = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_id])
     @mc = @company_profile.operating_authorities.build(oa_params)
     
     if @mc.save
@@ -20,7 +26,7 @@ class McsController < ApplicationController
   end
   
   def edit
-    @company_profile = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_id])
     @mc = Mc.find(params[:id]) 
     
     require 'capybara/poltergeist'
@@ -36,7 +42,7 @@ class McsController < ApplicationController
     telephone = session.all('.queryfield')[1].text 
       
     
-    @company_profile = Company.find(params[:company_id])
+    @company_profile = CompanyProfile.find(params[:company_id])
     @mc = Mc.find(params[:id]) 
     if @mc.update(name: name, address: address, telephone: telephone)
       flash[:success] = "Your #{@mc.authority_type} with number #{@mc.number} has been updated"
@@ -46,13 +52,5 @@ class McsController < ApplicationController
       render :edit
     end
   end
-  
-
- 
-
-  
-  
-  
-
-
 end
+

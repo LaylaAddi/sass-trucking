@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "us_dots", force: :cascade do |t|
+  create_table "mcs", force: :cascade do |t|
     t.string   "type",                                         default: "", null: false
     t.string   "entity_type",                                  default: "", null: false
     t.string   "operating_status",                             default: "", null: false

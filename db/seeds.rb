@@ -16,7 +16,10 @@ dot = [
  "2921696"
   ]  
 
-
+boolean = [
+  "true",
+  "false"
+  ]
 
 
 
@@ -120,16 +123,16 @@ companyuser = CompanyUser.create(
 end
 
 
-500.times do     
+100.times do     
 companyprofile = CompanyProfile.create!(
 name: Faker::Company.name, 
 location: "Anywhere Ville",
 telephone: "555.555.5555",
 website: Faker::Internet.url,
 logo:"",
-broker_mc_number: broker_mc.sample,
-carrier_mc_number: broker_mc.sample,
-us_dot_number: dot.sample,
+broker_mc_number: "985484",
+carrier_mc_number: "985484",
+us_dot_number: "2921696",
 updated_by:"",
 contact: Faker::Name.first_name,
 profile_image:"" 

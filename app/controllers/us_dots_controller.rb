@@ -1,4 +1,4 @@
-class UsDotsController < ApplicationController
+class UsDotsController < McsController
   
   def show
     @company_profile = CompanyProfile.find(params[:company_profile_id])
@@ -319,4 +319,7 @@ class UsDotsController < ApplicationController
                                        )
   end
 end
+
+
+
 
