@@ -1,0 +1,2 @@
+class HrcUser < User
+end

@@ -1,0 +1,2 @@
+class ShipperUser < User
+end

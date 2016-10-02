@@ -2,15 +2,20 @@ Rails.application.routes.draw do
   
    
 
-  devise_for :app_users, 
-  :controllers => { registrations: 'app_users_registrations/registrations'} 
-  resources :app_users
+  devise_for :hrc_users, 
+  :controllers => { registrations: 'hrc_users_registrations/registrations'} 
+  resources :hrc_users
   
-  devise_for :company_users, 
-  :controllers => { registrations: 'company_users_registrations/registrations'}
-  resources :company_users
+  devise_for :shipper_users, 
+  :controllers => { registrations: 'shipper_users_registrations/registrations'}
+  resources :shipper_users
   
-
+  devise_for :driver_users, 
+  :controllers => { registrations: 'driver_users_registrations/registrations'}
+  resources :driver_users
+  
+  resources :users
+  
   resources :company_profiles do
     resources :mcs 
       resources :carrier_mcs 
@@ -18,7 +23,7 @@ Rails.application.routes.draw do
           resources :us_dots
   end
   
-  resources :users
+
   
   get 'dashboard', to: 'users#dashboard'
   

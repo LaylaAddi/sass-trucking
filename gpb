@@ -1,4 +1,4 @@
 git add -A
-git commit -m "mc and dot updaters"
-git push -u origin mcprofile
+git commit -m "switched user types sti"
+git push -u origin userss
 

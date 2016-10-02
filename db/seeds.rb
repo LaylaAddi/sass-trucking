@@ -49,7 +49,8 @@ city_data = [
   "Phoenix, Arizona"
   ]
   
-user = AppUser.create(
+
+steve = HrcUser.create(
   password: "password",
   password_confirmation: "password", 
   first_name: "Steve",
@@ -60,19 +61,16 @@ user = AppUser.create(
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
   zip: "123456",
-  type: "AppUser",
   emergency_contact: Faker::Name.first_name,
   emergency_contact_number: Faker::PhoneNumber.phone_number,
-  office: "false",
-  maintenance: "false",
-  shipping_receiving: "false",
-  dispatcher: "true",
-  admin: "false"
+  dispatcher: "true"
   )
+  puts steve.inspect
+
   
   
 10.times do
-appuser = AppUser.create(
+hrcuser = HrcUser.create(
   password: "password",
   password_confirmation: "password", 
   first_name: Faker::Name.first_name,
@@ -83,7 +81,6 @@ appuser = AppUser.create(
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
   zip: "123456",
-  type: "AppUser",
   emergency_contact: Faker::Name.first_name,
   emergency_contact_number: Faker::PhoneNumber.phone_number,
   office: "false",
@@ -92,14 +89,28 @@ appuser = AppUser.create(
   dispatcher: "true",
   admin: "false"
   )
-  puts appuser.inspect
+  puts hrcuser.inspect
 end
   
-  
+driver = DriverUser.create(
+ password: "password",
+  password_confirmation: "password", 
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  cellphone: Faker::PhoneNumber.phone_number,  
+  street: Faker::Address.street_name,
+  telephone: Faker::PhoneNumber.phone_number,
+  city: city_data.sample,
+  zip: "123456",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number,
+  )
+  puts driver.inspect
 
 
 100.times do
-companyuser = CompanyUser.create(
+shipperuser = ShipperUser.create(
   password: "password",
   password_confirmation: "password", 
   first_name: Faker::Name.first_name,
@@ -110,7 +121,6 @@ companyuser = CompanyUser.create(
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
   zip: "123456",
-  type: "CompanyUser",
   emergency_contact: Faker::Name.first_name,
   emergency_contact_number: Faker::PhoneNumber.phone_number,
   dispatcher: boolean.sample,
@@ -119,7 +129,7 @@ companyuser = CompanyUser.create(
   shipping_receiving: boolean.sample,
   driver: boolean.sample
   )
-  puts companyuser.inspect
+  puts shipperuser.inspect
 end
 
 

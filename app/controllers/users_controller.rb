@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
   
   def dashboard
-    @company_user = current_company_user
-    @app_user = current_app_user
-    @user = current_user
+    @user = current_user 
   end
   
   def index
@@ -22,13 +20,13 @@ class UsersController < ApplicationController
 
 end  
 
-class AppUsersController < UsersController 
+class HrcUsersController < UsersController 
 
   def update
     @user = User.find(params[:id])
-    if params[:app_user][:password].blank?
-      params[:app_user].delete(:password)
-      params[:app_user].delete(:password_confirmation) 
+    if params[:hrc_user][:password].blank? 
+      params[:hrc_user].delete(:password)
+      params[:hrc_user].delete(:password_confirmation) 
     end
     
     if @user.update!(user_params)
@@ -42,43 +40,43 @@ class AppUsersController < UsersController
 private
 
   def user_params
-    params.require(:app_user).permit(:password, 
-                                    :password_confirmation,
-                                    :current_password,
-                                    :email,
-                                    :first_name,
-                                    :last_name,
-                                    :telephone,
-                                    :extention,
-                                    :cellphone,
-                                    :street, 
-                                    :city, 
-                                    :state, 
-                                    :zip,  
-                                    :type,
-                                    :image, 
-                                    :profile_image,
-                                    :emergency_contact,
-                                    :emergency_contact_number,
-                                    :company_profile_admin,
-                                    :admin,
-                                    :dispatcher,
-                                    :office,
-                                    :maintenance,
-                                    :shipping_receiving,
-                                    :driver 
-                                    )
+    params.require(:hrc_user).permit(:password, 
+                                     :password_confirmation,
+                                     :current_password,
+                                     :email,
+                                     :first_name,
+                                     :last_name,
+                                     :telephone,
+                                     :extention,
+                                     :cellphone,
+                                     :street, 
+                                     :city, 
+                                     :state, 
+                                     :zip,  
+                                     :type,
+                                     :image, 
+                                     :profile_image,
+                                     :emergency_contact,
+                                     :emergency_contact_number,
+                                     :company_profile_admin,
+                                     :admin,
+                                     :dispatcher,
+                                     :office,
+                                     :maintenance,
+                                     :shipping_receiving,
+                                     :driver 
+                                     )
                               
   end
 end
 
-class CompanyUsersController < UsersController 
+class DriverUsersController < UsersController 
 
   def update
     @user = User.find(params[:id])
-    if params[:company_user][:password].blank?
-      params[:company_user].delete(:password)
-      params[:company_user].delete(:password_confirmation) 
+    if params[:driver_user][:password].blank?
+      params[:driver_user].delete(:password)
+      params[:driver_user].delete(:password_confirmation) 
     end
     
     if @user.update!(user_params)
@@ -92,7 +90,7 @@ class CompanyUsersController < UsersController
 private
 
   def user_params
-    params.require(:company_user).permit(:password, 
+    params.require(:driver_user).permit(:password, 
                                         :password_confirmation,
                                         :current_password,
                                         :email,
@@ -109,16 +107,57 @@ private
                                         :image, 
                                         :profile_image,
                                         :emergency_contact,
-                                        :emergency_contact_number,
-                                        :company_profile_admin,
-                                        :admin,
-                                        :dispatcher,
-                                        :office,
-                                        :maintenance,
-                                        :shipping_receiving,
-                                        :driver 
+                                        :emergency_contact_number
                                         )
                               
   end
 end
 
+class ShipperUsersController < UsersController 
+
+  def update
+    @user = User.find(params[:id])
+    if params[:shipper_user][:password].blank?
+      params[:shipper_user].delete(:password)
+      params[:shipper_user].delete(:password_confirmation) 
+    end
+    
+    if @user.update!(user_params)
+      flash[:success] = "The user was updated"
+      redirect_to user_path(@user)
+    else
+      flash[:error] = "There was a problem" 
+      render :edit  
+    end
+  end 
+private
+
+  def user_params
+    params.require(:shipper_user).permit(:password, 
+                                         :password_confirmation,
+                                         :current_password,
+                                         :email,
+                                         :first_name,
+                                         :last_name,
+                                         :telephone,
+                                         :extention,
+                                         :cellphone,
+                                         :street, 
+                                         :city, 
+                                         :state, 
+                                         :zip,  
+                                         :type,
+                                         :image, 
+                                         :profile_image,
+                                         :emergency_contact,
+                                         :emergency_contact_number,
+                                         :company_profile_admin,
+                                         :dispatcher,
+                                         :office,
+                                         :maintenance,
+                                         :shipping_receiving,
+                                         :driver 
+                                         )
+                              
+  end
+end

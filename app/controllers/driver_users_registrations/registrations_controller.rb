@@ -1,10 +1,10 @@
-class CompanyUsersRegistrations::RegistrationsController < Devise::RegistrationsController 
+class ShipperUsersRegistrations::RegistrationsController < Devise::RegistrationsController 
   
   
   private
 
   def sign_up_params
-    params.require(:company_users).permit(:password, 
+    params.require(:driver_users).permit(:password, 
                                           :password_confirmation,
                                           :email,
                                           :first_name,
@@ -18,13 +18,12 @@ class CompanyUsersRegistrations::RegistrationsController < Devise::Registrations
                                           :zip,  
                                           :type,
                                           :emergency_contact,
-                                          :emergency_contact_number,
-                                          :company_admin
+                                          :emergency_contact_number
                                           )
   end
 
   def account_update_params
-    params.require(:company_users).permit(:password, 
+    params.require(:driver_users).permit(:password, 
                                           :password_confirmation,
                                           :current_password,
                                           :email,
@@ -41,11 +40,7 @@ class CompanyUsersRegistrations::RegistrationsController < Devise::Registrations
                                           :image, 
                                           :profile_image,
                                           :emergency_contact,
-                                          :emergency_contact_number,
-                                          :company_admin,
-                                          :admin,
-                                          :dispatcher,
-                                          :office
+                                          :emergency_contact_number
                                           )
                               
                               

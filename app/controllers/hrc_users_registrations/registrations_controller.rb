@@ -1,10 +1,10 @@
-class AppUsersRegistrations::RegistrationsController < Devise::RegistrationsController 
+class HrcUsersRegistrations::RegistrationsController < Devise::RegistrationsController 
   
   
   private
 
   def sign_up_params
-    params.require(:app_user).permit(:password, 
+    params.require(:hrc_user).permit(:password, 
                                      :password_confirmation,
                                      :email,
                                      :first_name,
@@ -23,7 +23,7 @@ class AppUsersRegistrations::RegistrationsController < Devise::RegistrationsCont
   end
 
   def account_update_params
-    params.require(:app_user).permit(:password, 
+    params.require(:hrc_user).permit(:password, 
                                      :password_confirmation,
                                      :current_password,
                                      :email,
