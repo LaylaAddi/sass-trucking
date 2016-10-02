@@ -1,5 +1,5 @@
 git add -A
-git commit -m "session.driver.options[:phantomjs] = Phantomjs.path "
+git commit -m "merge user edit and show page"
 git push -u origin master 
 git push dokku master 
 
