@@ -91,7 +91,7 @@ hrcuser = HrcUser.create(
   )
   puts hrcuser.inspect
 end
-  
+100.times do
 driver = DriverUser.create(
  password: "password",
   password_confirmation: "password", 
@@ -107,7 +107,7 @@ driver = DriverUser.create(
   emergency_contact_number: Faker::PhoneNumber.phone_number,
   )
   puts driver.inspect
-
+end
 
 100.times do
 shipperuser = ShipperUser.create(

@@ -122,6 +122,14 @@ module Dropdown
     ['Repairs', 'Repairs'],
     ['Other', 'Other']    
   ]     
+  
+  LoadStatusStatus =
+  [
+  "Pending",
+   "Active",
+ "Complete",
+  "Cancelled"
+  ]
       
     
     

@@ -1,0 +1,41 @@
+<h1>Loads</h1>
+
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <tr>
+      <th>Commodity</th>
+      <th>Weight</th>
+      <th>Units</th>
+      <th>Load size</th>
+      <th>Rate</th>
+      <th>Distance</th>
+      <th>Pick up time</th>
+      <th>Delevery time</th>
+      <th>Equipment type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loads.each do |load| %>
+      <tr>
+        <td><%= load.commodity %></td>
+        <td><%= load.weight %></td>
+        <td><%= load.units %></td>
+        <td><%= load.load_size %></td>
+        <td><%= load.rate %></td>
+        <td><%= load.distance %></td>
+        <td><%= load.pick_up_time %></td>
+        <td><%= load.delevery_time %></td>
+        <td><%= load.equipment_type %></td>
+        <td><%= link_to 'Show', load %></td>
+        <td><%= link_to 'Edit', edit_load_path(load) %></td>
+        <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load', new_load_path %>

@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Created By:</strong>
+  <%= @load.hrc_user.full_name %>
+</p>
+
+<p>
+  <strong>Assigned To:</strong>
+    <% if @load.driver_user.present? %>
+      <%= @load.driver_user.full_name %>
+    <% else %>
+      No Driver Assigned
+    <% end %>
+</p>
+
+<p>
+  <strong>Commodity:</strong>
+  <%= @load.commodity %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @load.weight %>
+</p>
+
+<p>
+  <strong>Units:</strong>
+  <%= @load.units %>
+</p>
+
+<p>
+  <strong>Load size:</strong>
+  <%= @load.load_size %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @load.rate %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @load.distance %>
+</p>
+
+<p>
+  <strong>Pick up time:</strong>
+  <%= @load.pick_up_time %>
+</p>
+
+<p>
+  <strong>Delevery time:</strong>
+  <%= @load.delevery_time %>
+</p>
+
+<p>
+  <strong>Equipment type:</strong>
+  <%= @load.equipment_type %>
+</p>
+
+<%= link_to 'Edit', edit_load_path(@load) %> |
+<%= link_to 'Back', loads_path %>

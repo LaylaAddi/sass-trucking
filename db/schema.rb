@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929044746) do
+ActiveRecord::Schema.define(version: 20161002155212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,25 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "profile_image"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "loads", force: :cascade do |t|
+    t.string   "commodity"
+    t.string   "weight"
+    t.string   "units"
+    t.string   "load_size"
+    t.decimal  "rate"
+    t.integer  "distance"
+    t.datetime "pick_up_time"
+    t.datetime "delevery_time"
+    t.string   "equipment_type"
+    t.string   "status_name"
+    t.integer  "hrc_user_id"
+    t.integer  "driver_user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
+    t.index ["hrc_user_id"], name: "index_loads_on_hrc_user_id", using: :btree
   end
 
   create_table "mcs", force: :cascade do |t|
