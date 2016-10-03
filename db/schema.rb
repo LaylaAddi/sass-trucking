@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20161002155212) do
     t.string   "status_name"
     t.integer  "hrc_user_id"
     t.integer  "driver_user_id"
+    t.string   "updated_by"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
@@ -143,8 +144,8 @@ ActiveRecord::Schema.define(version: 20161002155212) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                    default: "",    null: false
-    t.string   "encrypted_password",       default: "",    null: false
+    t.string   "email",                    default: "",        null: false
+    t.string   "encrypted_password",       default: "",        null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "telephone"
@@ -166,10 +167,11 @@ ActiveRecord::Schema.define(version: 20161002155212) do
     t.boolean  "maintenance",              default: false
     t.boolean  "shipping_receiving",       default: false
     t.boolean  "driver",                   default: false
+    t.string   "employment_status",        default: "pending"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",            default: 0,     null: false
+    t.integer  "sign_in_count",            default: 0,         null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -178,11 +180,11 @@ ActiveRecord::Schema.define(version: 20161002155212) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",          default: 0,     null: false
+    t.integer  "failed_attempts",          default: 0,         null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

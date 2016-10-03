@@ -13,6 +13,7 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.string :status_name 
       t.integer :hrc_user_id, index: true
       t.integer :driver_user_id, index: true
+      t.string :updated_by
 
       t.timestamps
     end

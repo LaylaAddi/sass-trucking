@@ -1,3 +1,16 @@
+    EmploymentStatus =
+  [
+    "submitted",
+    "pending",
+    "approved",
+    "declined",
+    "active",
+    "sick_leave",
+    "suspended",
+    "vacation",
+    "fired"
+  ]  
+
 broker_mc = [
   "131029",
   "252947",
@@ -63,7 +76,8 @@ steve = HrcUser.create(
   zip: "123456",
   emergency_contact: Faker::Name.first_name,
   emergency_contact_number: Faker::PhoneNumber.phone_number,
-  dispatcher: "true"
+  dispatcher: "true",
+  employment_status: "active"
   )
   puts steve.inspect
 
@@ -91,7 +105,7 @@ hrcuser = HrcUser.create(
   )
   puts hrcuser.inspect
 end
-100.times do
+10.times do
 driver = DriverUser.create(
  password: "password",
   password_confirmation: "password", 
@@ -105,11 +119,12 @@ driver = DriverUser.create(
   zip: "123456",
   emergency_contact: Faker::Name.first_name,
   emergency_contact_number: Faker::PhoneNumber.phone_number,
+  employment_status: EmploymentStatus.sample
   )
   puts driver.inspect
 end
 
-100.times do
+10.times do
 shipperuser = ShipperUser.create(
   password: "password",
   password_confirmation: "password", 
@@ -133,7 +148,7 @@ shipperuser = ShipperUser.create(
 end
 
 
-100.times do     
+10.times do     
 companyprofile = CompanyProfile.create!(
 name: Faker::Company.name, 
 location: "Anywhere Ville",

@@ -1,18 +1,24 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Created By:</strong>
-  <%= @load.hrc_user.full_name %>
+  <%= link_to @load.hrc_user.full_name, user_path(@load.hrc_user_id) %>
+</p>
+
+<p>
+  <strong>Updated By:</strong>
+  <%= @load.updated_by %>
 </p>
 
 <p>
   <strong>Assigned To:</strong>
     <% if @load.driver_user.present? %>
-      <%= @load.driver_user.full_name %>
+      <%= link_to @load.driver_user.full_name, user_path(@load.driver_user_id) %>
+
     <% else %>
       No Driver Assigned
     <% end %>
 </p>
+
+
 
 <p>
   <strong>Commodity:</strong>

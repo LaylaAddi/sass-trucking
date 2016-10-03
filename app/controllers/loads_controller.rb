@@ -15,17 +15,18 @@ class LoadsController < ApplicationController
 
   def new
     @load = current_user.loads.build
+    @driver = DriverUser.where(["employment_status = ?", "active"])
   end
 
 
   def edit
-
+    @driver = DriverUser.where(["employment_status = ?", "active"])
+    @hrc_user = current_user
   end
 
 
   def create
     @load = current_user.loads.build(load_params)
-
     respond_to do |format|
       if @load.save
         format.html { redirect_to @load, notice: 'Load was successfully created.' }
@@ -79,7 +80,8 @@ class LoadsController < ApplicationController
         :delevery_time, 
         :equipment_type,
         :status_name,
-        :driver_user_id 
+        :driver_user_id,
+        :updated_by
         )
     end
 end

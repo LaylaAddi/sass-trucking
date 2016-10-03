@@ -24,7 +24,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :office, default: false
       t.boolean :maintenance, default: false  
       t.boolean :shipping_receiving, default: false 
-      t.boolean :driver, default: false      
+      t.string :employment_status, default: "pending"
       
       
  
