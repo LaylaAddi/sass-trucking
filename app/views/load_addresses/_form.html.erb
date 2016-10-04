@@ -1,9 +1,35 @@
 <%= simple_form_for [@load, @load_address] do |f| %>
   <%= f.error_notification %>
-
+<form role="form">
+  <div class="form-group input-group">
+    <span class="input-group-addon">@</span>
+    <%= f.input :address_type, label: false, placeholder: "Origin/Destination" %>
+  </div>
+  <div class="form-group input-group">
+    <span class="input-group-addon">.00</span>
+        <%= f.input :street, label: false, placeholder: "Street Address" %>
+  </div>
+  <div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-eur"></i>
+    </span>
+    <input type="text" class="form-control" placeholder="Font Awesome Icon">
+  </div>
+  <div class="form-group input-group">
+    <span class="input-group-addon">$</span>
+    <input type="text" class="form-control">
+    <span class="input-group-addon">.00</span>
+  </div>
+  <div class="form-group input-group">
+    <input type="text" class="form-control">
+    <span class="input-group-btn">
+    <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+    </button>
+    </span>
+  </div>
+</form>
   <div class="form-inputs">
-    <%= f.input :address_type %>
-    <%= f.input :street %>
+    
+
     <%= f.input :latitude %>
     <%= f.input :longitude %>
     <%= f.input :street2 %>
