@@ -1,7 +1,7 @@
 git add -A
-git commit -m "merger loadaddress adding additional address"
+git commit -m "forms"
 git push -u origin master 
-
+git push dokku master
 
 
 
