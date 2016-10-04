@@ -1,49 +1,71 @@
 <div class="row">
   <div class="col-sm-6">
-<address>
-  <strong>Pick up: <%= @load.consignor_name %></strong><br>
-  <%= @load.origin_street %> <%= @load.origin_street2 %><br>
-  <%= @load.origin_city  %> <%= @load.origin_state  %> <%= @load.origin_zip  %><br>
-  <small>Phone: </small><%= @load.origin_phone  %><br />
-  <small>Contact: </small><%= @load.origin_contact  %>
-</address>
+    <address>
+      <strong>Pick up: <%= @load.consignor_name %></strong><br>
+      <%= @load.origin_street %> <%= @load.origin_street2 %><br>
+      <%= @load.origin_city  %> <%= @load.origin_state  %> <%= @load.origin_zip  %><br>
+      <small>Phone: </small><%= @load.origin_phone  %><br />
+      <small>Contact: </small><%= @load.origin_contact  %>
+    </address>
   </div>
   <div class="col-sm-6">
-<address>
-  <strong>Delivery: <%= @load.consignee_name%></strong><br>
-  <%= @load.destination_street %> <%= @load.destination_street2 %><br>
-  <%= @load.destination_city  %> <%= @load.destination_state  %> <%= @load.destination_zip  %><br>
-  <small>Phone: </small><%= @load.destination_phone %><br />
-  <small>Contact: </small><%= @load.destination_contact %>
-</address>
+    <address>
+      <strong>Delivery: <%= @load.consignee_name%></strong><br>
+      <%= @load.destination_street %> <%= @load.destination_street2 %><br>
+      <%= @load.destination_city  %> <%= @load.destination_state  %> <%= @load.destination_zip  %><br>
+      <small>Phone: </small><%= @load.destination_phone %><br />
+      <small>Contact: </small><%= @load.destination_contact %>
+    </address>
   </div>
 </div>
 <p>
   <strong>
-    Pick up Notes: 
+  Pick up Notes: 
   </strong>
-    <% if @load.pick_up_notes.present? %>
-      <%= @load.pick_up_notes %>
-    <% else %>
-      No pick up notes were entered.
-    <% end %>
+  <% if @load.pick_up_notes.present? %>
+  <%= @load.pick_up_notes %>
+  <% else %>
+  No pick up notes were entered.
+  <% end %>
 </p>
 <p>
   <strong>
-    Delivery Notes: 
+  Delivery Notes: 
   </strong>
-    <% if @load.delevery_notes.present? %>
-      <%= @load.delevery_notes %>
-    <% else %>
-      No delevery notes were entered.
-    <% end %>
+  <% if @load.delevery_notes.present? %>
+  <%= @load.delevery_notes %>
+  <% else %>
+  No delevery notes were entered.
+  <% end %>
 </p>
 <p>
   <strong>Special Instructions: 
   </strong>
-    <% if @load.special_instructions.present? %>
-      <%= @load.special_instructions %>
-    <% else %>
-      No special instructions were entered.
-    <% end %>
+  <% if @load.special_instructions.present? %>
+  <%= @load.special_instructions %>
+  <% else %>
+  No special instructions were entered.
+  <% end %>
 </p>
+<% @addresses.each do |address| %>
+<div class="col-sm-6">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      Additional Delivery!
+    </div>
+    <div class="panel-body">
+      <p>
+      <address>
+        <strong>Pick up: <%= address.company %></strong><br>
+        <%= address.street %> <%= address.street2 %><br>
+        <%= address.city  %> <%= address.state  %> <%= address.zip  %><br>
+        <small>Phone: </small><%= address.phone  %><br />
+        <small>Contact: </small><%= address.contact  %>
+      </address>
+      </p>
+    </div>
+  </div>
+</div>
+<% end %>
+<%= link_to "Add Address", new_load_load_address_path(@load), 
+class: "btn btn-danger round" %>

@@ -9,7 +9,7 @@ class LoadsController < ApplicationController
 
 
   def show
-
+    @addresses = @load.load_addresses
   end
 
 

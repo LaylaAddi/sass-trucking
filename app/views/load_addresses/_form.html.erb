@@ -1,0 +1,22 @@
+<%= simple_form_for [@load, @load_address] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :address_type %>
+    <%= f.input :street %>
+    <%= f.input :latitude %>
+    <%= f.input :longitude %>
+    <%= f.input :street2 %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zip %>
+    <%= f.input :company %>
+    <%= f.input :contact %>
+    <%= f.input :phone %>
+    <%= f.input :load_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

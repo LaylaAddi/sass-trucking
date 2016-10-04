@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
   
+
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users
@@ -25,10 +26,8 @@ Rails.application.routes.draw do
   
     
   resources :loads do
-
+    resources :load_addresses
   end 
-   
-
   
   get 'dashboard', to: 'users#dashboard'
   
@@ -37,7 +36,5 @@ Rails.application.routes.draw do
   get 'pages/index', to: 'pages#index'
   
   get 'creatives/carrier_package', to: 'creatives#download_carrier'
-  
 
-  
 end

@@ -10,21 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002155212) do
+ActiveRecord::Schema.define(version: 20161004111801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "address_type"
-    t.string "street"
-    t.string "street2"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.string "notes"
-    t.string "load_id"
-  end
 
   create_table "company_profiles", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +29,23 @@ ActiveRecord::Schema.define(version: 20161002155212) do
     t.string   "profile_image"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "load_addresses", force: :cascade do |t|
+    t.string   "address_type"
+    t.string   "street"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "company"
+    t.string   "contact"
+    t.string   "phone"
+    t.integer  "load_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "loads", force: :cascade do |t|
@@ -177,6 +183,7 @@ ActiveRecord::Schema.define(version: 20161002155212) do
     t.string   "company_profile_id"
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
+    t.index ["company_profile_id"], name: "index_mcs_on_company_profile_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
