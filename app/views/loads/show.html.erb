@@ -1,69 +1,46 @@
-<p>
-  <strong>Created By:</strong>
-  <%= link_to @load.hrc_user.full_name, user_path(@load.hrc_user_id) %>
-</p>
-
-<p>
-  <strong>Updated By:</strong>
-  <%= @load.updated_by %>
-</p>
-
-<p>
-  <strong>Assigned To:</strong>
-    <% if @load.driver_user.present? %>
-      <%= link_to @load.driver_user.full_name, user_path(@load.driver_user_id) %>
-
-    <% else %>
-      No Driver Assigned
-    <% end %>
-</p>
-
-
-
-<p>
-  <strong>Commodity:</strong>
-  <%= @load.commodity %>
-</p>
-
-<p>
-  <strong>Weight:</strong>
-  <%= @load.weight %>
-</p>
-
-<p>
-  <strong>Units:</strong>
-  <%= @load.units %>
-</p>
-
-<p>
-  <strong>Load size:</strong>
-  <%= @load.load_size %>
-</p>
-
-<p>
-  <strong>Rate:</strong>
-  <%= @load.rate %>
-</p>
-
-<p>
-  <strong>Distance:</strong>
-  <%= @load.distance %>
-</p>
-
-<p>
-  <strong>Pick up time:</strong>
-  <%= @load.pick_up_time %>
-</p>
-
-<p>
-  <strong>Delevery time:</strong>
-  <%= @load.delevery_time %>
-</p>
-
-<p>
-  <strong>Equipment type:</strong>
-  <%= @load.equipment_type %>
-</p>
-
-<%= link_to 'Edit', edit_load_path(@load) %> |
-<%= link_to 'Back', loads_path %>
+<div class="row">
+    <div class="col-sm-6">
+<div class="col-lg-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Shipper Name
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+      <!-- Nav tabs -->
+      <ul class="nav nav-pills">
+        <li class="active"><a href="#home-pills" data-toggle="tab" aria-expanded="true">Details</a>
+        </li>
+        <li class=""><a href="#profile-pills" data-toggle="tab" aria-expanded="false">Pick up/Delivery</a>
+        </li>
+        <li class=""><a href="#messages-pills" data-toggle="tab" aria-expanded="false">Destinations</a>
+        </li>
+        <li class=""><a href="#settings-pills" data-toggle="tab" aria-expanded="false">Settings</a>
+        </li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane fade active in" id="home-pills">
+          <h4>Current Status |<%= @load.status_name %>|</h4>
+          <p><%= render "loads/partials/tabs/details" %></p>
+        </div>
+        <div class="tab-pane fade" id="profile-pills">
+          <h4>Current Status |<%= @load.status_name %>|</h4>
+          <p><%= render "loads/partials/tabs/pick_up_delivery" %></p>
+        </div>
+        <div class="tab-pane fade" id="messages-pills">
+          <h4>Current Status |<%= @load.status_name %>|</h4>
+          <p><%= render "loads/partials/tabs/destinations" %></p>
+        </div>
+        <div class="tab-pane fade" id="settings-pills">
+          <h4>Current Status |<%= @load.status_name %>|</h4>
+          <p><%= render "loads/partials/tabs/destinations" %></p>
+        </div>
+      </div>
+    </div>
+    <!-- /.panel-body -->
+  </div>
+  <!-- /.panel -->
+</div>
+    </div>
+   

@@ -105,7 +105,7 @@ hrcuser = HrcUser.create(
   )
   puts hrcuser.inspect
 end
-10.times do
+50.times do
 driver = DriverUser.create(
  password: "password",
   password_confirmation: "password", 
@@ -141,8 +141,7 @@ shipperuser = ShipperUser.create(
   dispatcher: boolean.sample,
   office: boolean.sample,
   maintenance: boolean.sample,
-  shipping_receiving: boolean.sample,
-  driver: boolean.sample
+  shipping_receiving: boolean.sample
   )
   puts shipperuser.inspect
 end

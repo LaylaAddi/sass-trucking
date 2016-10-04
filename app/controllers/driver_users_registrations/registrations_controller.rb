@@ -1,10 +1,10 @@
-class ShipperUsersRegistrations::RegistrationsController < Devise::RegistrationsController 
+class DriverUsersRegistrations::RegistrationsController < Devise::RegistrationsController 
   
   
   private
 
   def sign_up_params
-    params.require(:driver_users).permit(:password, 
+    params.require(:driver_user).permit(:password, 
                                           :password_confirmation,
                                           :email,
                                           :first_name,
@@ -23,7 +23,7 @@ class ShipperUsersRegistrations::RegistrationsController < Devise::Registrations
   end
 
   def account_update_params
-    params.require(:driver_users).permit(:password, 
+    params.require(:driver_user).permit(:password, 
                                           :password_confirmation,
                                           :current_password,
                                           :email,

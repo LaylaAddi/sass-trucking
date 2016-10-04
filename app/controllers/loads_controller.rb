@@ -70,6 +70,7 @@ class LoadsController < ApplicationController
 
     def load_params
       params.require(:load).permit(
+        :name,
         :commodity, 
         :weight, 
         :units, 
@@ -81,7 +82,32 @@ class LoadsController < ApplicationController
         :equipment_type,
         :status_name,
         :driver_user_id,
-        :updated_by
+        :updated_by,
+        :pick_up_notes,
+        :delevery_notes,
+        :special_instructions,
+        :dimentions,
+        :destination_street,
+        :destination_street2,
+        :destination_city,  
+        :destination_state,
+        :destination_zip,
+        :origin_street,
+        :origin_street2,
+        :origin_city,  
+        :origin_state,
+        :origin_zip,
+        :origin_latitude,
+        :origin_longitude,
+        :destination_latitude,
+        :destination_longitude,
+        :origin_phone,
+        :origin_contact,
+        :destination_phone,
+        :destination_contact,
+        :consignor_name,
+        :consignee_name        
         )
     end
 end
+

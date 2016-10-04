@@ -49,16 +49,10 @@ class User < ApplicationRecord
     end
   end 
   
-  def driver_user
-    if self.driver == true
-      return  "Driver"
-    else
-      return ""       
-    end
-  end   
+ 
   
   def user_position
-    [driver_user, shipping_user, maintenance_user, office_user, dispatcher_user,
+    [shipping_user, maintenance_user, office_user, dispatcher_user,
     profile_admin_user].join(" ")
   end
 

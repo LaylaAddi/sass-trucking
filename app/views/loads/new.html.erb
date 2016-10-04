@@ -4,24 +4,46 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :hrc_user_id %>
-    
 
 
+<%= f.input :name, input_html: {value: "Niagara Falls To Miami"} %>
    <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
    :id, :full_name, include_blank: true %>
 
-
+    <%= f.input :equipment_type, input_html: {value: "Van"} %>
     <%= f.input :status_name, collection: ApplicationRecord::LoadStatusStatus %> 
-    <%= f.input :commodity %>
-    <%= f.input :weight %>
-    <%= f.input :units %>
-    <%= f.input :load_size %>
-    <%= f.input :rate %>
-    <%= f.input :distance %>
+    <%= f.input :commodity, input_html: {value: "Crack"} %>
+    <%= f.input :weight, input_html: {value: 32589} %>
+    <%= f.input :units, input_html: {value: "Metric" }%>
+    <%= f.input :load_size, input_html: {value: "FTL"} %>
+    <%= f.input :rate, input_html: {value: 1200} %>
+    <%= f.input :distance, input_html: {value: 1450 }%>
     <%= f.input :pick_up_time %>
+    <%= f.input :pick_up_notes, input_html: {value: "e suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generato" } %>
     <%= f.input :delevery_time %>
-    <%= f.input :equipment_type %>
+    <%= f.input :delevery_notes, input_html: {value: "Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ip" } %>
+    <%= f.input :special_instructions, input_html: {value: "don't be a fool" } %>
+    <%= f.input :dimentions, input_html: {value: "22x33"}%>
+    <%= f.input :consignor_name, input_html: {value: "Daks backs and kacks"} %>
+    <%= f.input :origin_street, input_html: {value: "origin Any Street"}%>
+    <%= f.input :origin_street2, input_html: {value: "origin Any Street22"} %>
+    <%= f.input :origin_city, input_html: {value: "Buffalo"}  %>  
+    <%= f.input :origin_state, collection: ApplicationRecord::States %>
+    <%= f.input :origin_zip, input_html: {value: "14301"} %>
+    <%= f.input :origin_phone, input_html: {value: "555.336.6585"} %>
+    <%= f.input :origin_contact, input_html: {value: "Frank or willy"} %>
+    <%= f.input :origin_latitude %>
+    <%= f.input :origin_longitude %>
+    <%= f.input :consignee_name, input_html: {value: "Friks Fraks and Snaks"} %>
+    <%= f.input :destination_street, input_html: {value: "Any Street"} %>
+    <%= f.input :destination_street2, input_html: {value: "Any Street 2"} %>
+    <%= f.input :destination_city, input_html: {value: "Dallas"} %>  
+    <%= f.input :destination_state, collection: ApplicationRecord::States %>
+    <%= f.input :destination_zip, input_html: {value: "12345"} %>
+    <%= f.input :destination_phone, input_html: {value: "545.323.3698"} %>
+    <%= f.input :destination_contact, input_html: {value: "Big Tex"} %>
+    <%= f.input :destination_latitude %>
+    <%= f.input :destination_longitude %> 
   </div>
 
   <div class="form-actions">

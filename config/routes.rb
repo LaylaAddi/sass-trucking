@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   
-   
 
-  resources :loads
+  
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users
@@ -24,6 +23,11 @@ Rails.application.routes.draw do
           resources :us_dots
   end
   
+    
+  resources :loads do
+
+  end 
+   
 
   
   get 'dashboard', to: 'users#dashboard'

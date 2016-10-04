@@ -15,6 +15,17 @@ ActiveRecord::Schema.define(version: 20161002155212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "address_type"
+    t.string "street"
+    t.string "street2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "notes"
+    t.string "load_id"
+  end
+
   create_table "company_profiles", force: :cascade do |t|
     t.string   "name"
     t.string   "location"
@@ -32,6 +43,7 @@ ActiveRecord::Schema.define(version: 20161002155212) do
   end
 
   create_table "loads", force: :cascade do |t|
+    t.string   "name"
     t.string   "commodity"
     t.string   "weight"
     t.string   "units"
@@ -39,14 +51,38 @@ ActiveRecord::Schema.define(version: 20161002155212) do
     t.decimal  "rate"
     t.integer  "distance"
     t.datetime "pick_up_time"
+    t.string   "pick_up_notes"
     t.datetime "delevery_time"
+    t.string   "delevery_notes"
     t.string   "equipment_type"
     t.string   "status_name"
     t.integer  "hrc_user_id"
     t.integer  "driver_user_id"
     t.string   "updated_by"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "special_instructions"
+    t.string   "dimentions"
+    t.string   "origin_street"
+    t.string   "origin_street2"
+    t.string   "origin_city"
+    t.string   "origin_state"
+    t.string   "origin_zip"
+    t.string   "origin_phone"
+    t.string   "origin_contact"
+    t.float    "origin_latitude"
+    t.float    "origin_longitude"
+    t.string   "destination_street"
+    t.string   "destination_street2"
+    t.string   "destination_city"
+    t.string   "destination_state"
+    t.string   "destination_zip"
+    t.string   "destination_phone"
+    t.string   "destination_contact"
+    t.float    "destination_latitude"
+    t.float    "destination_longitude"
+    t.string   "consignor_name"
+    t.string   "consignee_name"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
     t.index ["hrc_user_id"], name: "index_loads_on_hrc_user_id", using: :btree
   end
@@ -166,7 +202,6 @@ ActiveRecord::Schema.define(version: 20161002155212) do
     t.boolean  "office",                   default: false
     t.boolean  "maintenance",              default: false
     t.boolean  "shipping_receiving",       default: false
-    t.boolean  "driver",                   default: false
     t.string   "employment_status",        default: "pending"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -1,6 +1,11 @@
 module Dropdown
   extend ActiveSupport::Concern
   
+  AddressType =
+  [ "Origin",
+    "Destination"
+    ]
+  
    States = 
   [
   'Alabama', 

@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-6">
+<address>
+  <strong>Pick up: <%= @load.consignor_name %></strong><br>
+  <%= @load.origin_street %> <%= @load.origin_street2 %><br>
+  <%= @load.origin_city  %> <%= @load.origin_state  %> <%= @load.origin_zip  %><br>
+  <small>Phone: </small><%= @load.origin_phone  %><br />
+  <small>Contact: </small><%= @load.origin_contact  %>
+</address>
+  </div>
+  <div class="col-sm-6">
+<address>
+  <strong>Delivery: <%= @load.consignee_name%></strong><br>
+  <%= @load.destination_street %> <%= @load.destination_street2 %><br>
+  <%= @load.destination_city  %> <%= @load.destination_state  %> <%= @load.destination_zip  %><br>
+  <small>Phone: </small><%= @load.destination_phone %><br />
+  <small>Contact: </small><%= @load.destination_contact %>
+</address>
+  </div>
+</div>
+<p><strong>Pick up Notes: </strong><%= @load.pick_up_notes %></p>
+<p><strong>Delivery Notes: </strong><%= @load.delevery_notes %></p>
+<p><strong>Special Instructions: </strong><%= @load.special_instructions %></p>

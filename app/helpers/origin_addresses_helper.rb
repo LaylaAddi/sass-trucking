@@ -1,0 +1,2 @@
+module OriginAddressesHelper
+end

@@ -4,7 +4,7 @@ class ShipperUsersRegistrations::RegistrationsController < Devise::Registrations
   private
 
   def sign_up_params
-    params.require(:shipper_users).permit(:password, 
+    params.require(:shipper_user).permit(:password, 
                                           :password_confirmation,
                                           :email,
                                           :first_name,
@@ -23,7 +23,7 @@ class ShipperUsersRegistrations::RegistrationsController < Devise::Registrations
   end
 
   def account_update_params
-    params.require(:company_users).permit(:password, 
+    params.require(:shipper_user).permit(:password, 
                                           :password_confirmation,
                                           :current_password,
                                           :email,
