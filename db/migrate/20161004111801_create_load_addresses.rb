@@ -12,7 +12,7 @@ class CreateLoadAddresses < ActiveRecord::Migration[5.0]
       t.string :company
       t.string :contact
       t.string :phone
-      t.integer :load_id index: true
+      t.integer :load_id, index: true   
 
       t.timestamps
     end
