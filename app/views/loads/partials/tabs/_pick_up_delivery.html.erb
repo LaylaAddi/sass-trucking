@@ -62,10 +62,14 @@
         <small>Phone: </small><%= address.phone  %><br />
         <small>Contact: </small><%= address.contact  %>
       </address>
+<%= link_to "Edit Me", edit_load_load_address_path(@load, address),  
+class: "btn btn-warning round btn-xs" %>
+<%= link_to "Delete Me", load_load_address_path(@load, address), method: :delete, 
+class: "btn btn-primary round btn-xs" %>
       </p>
     </div>
   </div>
 </div>
 <% end %>
 <%= link_to "Add Address", new_load_load_address_path(@load), 
-class: "btn btn-danger round" %>
+class: "btn btn-success round btn-sm" %>
