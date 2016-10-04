@@ -18,6 +18,32 @@
 </address>
   </div>
 </div>
-<p><strong>Pick up Notes: </strong><%= @load.pick_up_notes %></p>
-<p><strong>Delivery Notes: </strong><%= @load.delevery_notes %></p>
-<p><strong>Special Instructions: </strong><%= @load.special_instructions %></p>
+<p>
+  <strong>
+    Pick up Notes: 
+  </strong>
+    <% if @load.pick_up_notes.present? %>
+      <%= @load.pick_up_notes %>
+    <% else %>
+      No pick up notes were entered.
+    <% end %>
+</p>
+<p>
+  <strong>
+    Delivery Notes: 
+  </strong>
+    <% if @load.delevery_notes.present? %>
+      <%= @load.delevery_notes %>
+    <% else %>
+      No delevery notes were entered.
+    <% end %>
+</p>
+<p>
+  <strong>Special Instructions: 
+  </strong>
+    <% if @load.special_instructions.present? %>
+      <%= @load.special_instructions %>
+    <% else %>
+      No special instructions were entered.
+    <% end %>
+</p>

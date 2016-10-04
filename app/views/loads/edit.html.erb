@@ -1,52 +1,5 @@
-<h1>Editing Load</h1>
-<%= simple_form_for(@load) do |f| %>
-
-<%= f.input :name %>
-  <div class="form-inputs">
-    <%= f.input :hrc_user_id %>
-   <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
-   :id, :full_name, include_blank: true %>
-
-    <%= f.input :updated_by, input_html:{ :value => @hrc_user.full_name } %> 
-    <%= f.input :status_name, collection: ApplicationRecord::LoadStatusStatus %> 
-    <%= f.input :commodity %>
-    <%= f.input :weight %>
-    <%= f.input :units %>
-    <%= f.input :load_size %>
-    <%= f.input :rate %>
-    <%= f.input :distance %>
-    <%= f.input :pick_up_time %>
-    <%= f.input :delevery_time %>
-    <%= f.input :equipment_type %>
-    <%= f.input :special_instructions %>
-    <%= f.input :dimentions %>
-    <%= f.input :consignor_name %>
-    <%= f.input :origin_street %>
-    <%= f.input :origin_street2 %>
-    <%= f.input :origin_city %>  
-    <%= f.input :origin_state %>
-    <%= f.input :origin_zip %>
-    <%= f.input :origin_phone %>
-    <%= f.input :origin_contact %>
-    <%= f.input :origin_latitude %>
-    <%= f.input :origin_longitude %>
-    <%= f.input :consignee_name %>
-    <%= f.input :destination_street %>
-    <%= f.input :destination_street2 %>
-    <%= f.input :destination_city %>  
-    <%= f.input :destination_state %>
-    <%= f.input :destination_zip %>
-    <%= f.input :destination_phone %>
-    <%= f.input :destination_contact %>
-    <%= f.input :destination_latitude %>
-    <%= f.input :destination_longitude %>      
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
-
+<h1>Editing Load<small> <%= @load.name %></small></h1>
+<%= render "form" %>
 
 
 <%= link_to 'Show', @load %> |
