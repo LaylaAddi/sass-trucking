@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 20161004111801) do
     t.integer  "load_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["load_id"], name: "index_load_addresses_on_load_id", using: :btree
+  end
+
+  create_table "load_bookings", force: :cascade do |t|
+    t.integer "load_id"
+    t.integer "company_profile_id"
+    t.index ["company_profile_id", "load_id"], name: "index_load_bookings_on_company_profile_id_and_load_id", using: :btree
+    t.index ["company_profile_id"], name: "index_load_bookings_on_company_profile_id", using: :btree
+    t.index ["load_id", "company_profile_id"], name: "index_load_bookings_on_load_id_and_company_profile_id", using: :btree
+    t.index ["load_id"], name: "index_load_bookings_on_load_id", using: :btree
   end
 
   create_table "loads", force: :cascade do |t|

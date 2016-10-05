@@ -3,5 +3,5 @@ class ApplicationController < ActionController::Base
   devise_group :user, contains: [:hrc_user, :shipper_user, :driver_user]  
   before_action :authenticate_user!
 
-  
+
 end

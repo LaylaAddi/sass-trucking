@@ -5,6 +5,8 @@ class CompanyProfile < ApplicationRecord
   before_create :build_carrier_mc
   before_create :build_broker_mc
   before_create :build_us_dot
+  has_many :load_bookings
+  has_many :loads, through: :load_bookings
 end
 
      

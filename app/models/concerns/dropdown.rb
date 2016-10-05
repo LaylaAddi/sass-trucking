@@ -1,6 +1,8 @@
 module Dropdown
   extend ActiveSupport::Concern
-  
+  LoadSize =
+  ["FTL",
+   "LTL"]
   AddressType =
   [ "Origin",
     "Destination"
@@ -126,7 +128,17 @@ module Dropdown
     ['Maintenance', 'Maintenance'],
     ['Repairs', 'Repairs'],
     ['Other', 'Other']    
+  ]    
+  
+    EquipmentType =   
+  [
+    ['Van', 'Van'],
+    ['Flatbed', 'Flatbed'],
+    ['Reefer', 'Reefer'],
+    ['RGN', 'RGN'],
+    ['Other', 'Other']    
   ]     
+  
   
   LoadStatusStatus =
   [

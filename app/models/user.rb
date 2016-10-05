@@ -55,7 +55,16 @@ class User < ApplicationRecord
     [shipping_user, maintenance_user, office_user, dispatcher_user,
     profile_admin_user].join(" ")
   end
-
+  
+  def type_of_user
+    if self.type == "DriverUser"
+      return "Driver"
+    elsif self.type == "ShipperUser"
+      return "Broker/Shipper"
+    elsif self.type == "HrcUser"
+      return "HRC User"  
+    end
+  end
 
 end
    

@@ -16,12 +16,14 @@ class LoadsController < ApplicationController
   def new
     @load = current_user.loads.build
     @driver = DriverUser.where(["employment_status = ?", "active"])
+    @company_profile = CompanyProfile.all
   end
 
 
   def edit
     @driver = DriverUser.where(["employment_status = ?", "active"])
     @hrc_user = current_user
+    @company_profile = CompanyProfile.all   
   end
 
 
@@ -106,7 +108,8 @@ class LoadsController < ApplicationController
         :destination_phone,
         :destination_contact,
         :consignor_name,
-        :consignee_name        
+        :consignee_name,
+        :company_profile_ids 
         )
     end
 end
