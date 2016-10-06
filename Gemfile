@@ -24,7 +24,7 @@ gem 'devise', '~> 4.2'
 gem 'poltergeist', '~> 1.10'
 gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
 gem 'faker', '~> 1.6', '>= 1.6.6'
-
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 
 group :development, :test do

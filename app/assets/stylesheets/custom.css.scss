@@ -24,5 +24,15 @@ body {
   border-radius: 5px;
 }
 
+.bring_front {
+  position: relative; z-index: 100000;
+}
 
+.vertical-text {
+	transform: rotate(90deg);
+}
+
+.white-smoke {
+  background: #e6e6e6;
+}
 

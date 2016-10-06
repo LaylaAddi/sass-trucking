@@ -8,10 +8,12 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.string :load_size
       t.decimal :rate
       t.integer :distance
-      t.datetime :pick_up_time
+      t.date :pick_up_date
+      t.time :pick_up_time
       t.string :pick_up_notes
-      t.datetime :delevery_time
-      t.string :delevery_notes      
+      t.date :delivery_date
+      t.time :delivery_time
+      t.string :delivery_notes      
       t.string :equipment_type
       t.string :status_name 
       t.integer :hrc_user_id, index: true

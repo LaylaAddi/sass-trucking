@@ -89,13 +89,16 @@ Booked by: <%= link_to @load.hrc_user.full_name,
 </p>
 
 <p>
-  Pick up time:
-  <%= @load.pick_up_time %>
+  Pick up Date:
+  <%= @load.pick_up_date.strftime("%B %-d, %Y") %> 
+  Time <%= (@load.pick_up_time.strftime("%-l:%M %p")) %>
 </p>
 
 <p>
   Delevery time:
-  <%= @load.delevery_time %>
+  <%= @load.delivery_date.strftime("%B %-d, %Y") %> 
+  Time <%= (@load.delivery_time.strftime("%-l:%M %p")) %>
+  
 </p>
 <%= link_to 'Edit', edit_load_path(@load), class: "btn btn-hrcprimary btn-xs" %>
-
+<%= Time.now.strftime("%-l:%M %p") %>
