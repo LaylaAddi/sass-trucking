@@ -1,7 +1,7 @@
 git add -A
-git commit -m "forms"
+git commit -m "merger date branch"
 git push -u origin master 
-git push dokku master
+
 
 
 
