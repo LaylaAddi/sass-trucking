@@ -1,104 +1,80 @@
 <h3><%= @load.name %></h3>
 <p>
-  <div class="row">
-    <div class="col-sm-9">
-<% if @load.driver_user.present? %>
-  Driver: <%= link_to @load.driver_user.full_name, user_path(@load.driver_user_id) %>
-<% else %>
-  No Driver Assigned
-<% end %>
-    </div>
-    <div class="col-sm-3">
-     Equipment: <%= @load.equipment_type %>
-    </div>
+<div class="row">
+  <div class="col-sm-9">
+    <% if @load.driver_user.present? %>
+    Driver: <%= link_to @load.driver_user.full_name, user_path(@load.driver_user_id) %>
+    <% else %>
+    No Driver Assigned
+    <% end %>
   </div>
+  <div class="col-sm-3">
+    Equipment: <%= @load.equipment_type %>
+  </div>
+</div>
 </p>
-
-
-
 <p>
-Booked by: <%= link_to @load.hrc_user.full_name, 
-      user_path(@load.hrc_user_id) %>
+  Booked by: <%= link_to @load.hrc_user.full_name, 
+    user_path(@load.hrc_user_id) %>
 </p>
-
 <p>
   Updated by:
-    <% if @load.updated_by.present? %>
-      <%= @load.updated_by %>
-    <% else %>
-      No Updates
-    <% end %>  
+  <% if @load.updated_by.present? %>
+  <%= @load.updated_by %>
+  <% else %>
+  No Updates
+  <% end %>  
 </p>
-
 <p>
-  <div class="row">
-    <div class="col-sm-9">
-  Commodity:
-  <%= @load.commodity %>
-    </div>
-    <div class="col-sm-3">
-  Load size:
-  <%= @load.load_size %>
-    </div>
+<div class="row">
+  <div class="col-sm-9">
+    Commodity:
+    <%= @load.commodity %>
   </div>
+  <div class="col-sm-3">
+    Load size:
+    <%= @load.load_size %>
+  </div>
+</div>
 </p>
-
 <p>
-  <div class="row">
-    <div class="col-sm-9">
-      Weight:
-        <%= @load.weight %>
-    </div>
-    <div class="col-sm-3">
-     Units: <%= @load.units %>
-    </div>
+<div class="row">
+  <div class="col-sm-9">
+    Weight:
+    <%= @load.weight %>
   </div>
+  <div class="col-sm-3">
+    Units: <%= @load.units %>
+  </div>
+</div>
 </p>
-
 <p>
-  <div class="row">
-    <div class="col-sm-9">
-  Rate:
-  <%= @load.rate %>
-    </div>
-    <div class="col-sm-3">
-  Distance:
-  <%= @load.distance %>
-    </div>
+<div class="row">
+  <div class="col-sm-9">
+    Rate:
+    <%= @load.rate %>
   </div>
+  <div class="col-sm-3">
+    Distance:
+    <%= @load.distance %>
+  </div>
+</div>
 </p>
-
-
-
 <p>
   Dimentions: 
-    <% if @load.dimentions.present? %>
+  <% if @load.dimentions.present? %>
   <%= @load.dimentions %>
   <% else %>
   None Given
   <% end %>
 </p>
-
 <p>
   Special Instructions:
-    <% if @load.special_instructions.present? %>
-      <%= @load.special_instructions %>
-    <% else %>
-      No Special Instructions
-    <% end %>
+  <% if @load.special_instructions.present? %>
+  <%= @load.special_instructions %>
+  <% else %>
+  No Special Instructions
+  <% end %>
 </p>
 
-<p>
-  Pick up Date:
-  <%= @load.pick_up_date.strftime("%B %-d, %Y") %> 
-  Time <%= (@load.pick_up_time.strftime("%-l:%M %p")) %>
-</p>
-
-<p>
-  Delevery time:
-  <%= @load.delivery_date.strftime("%B %-d, %Y") %> 
-  Time <%= (@load.delivery_time.strftime("%-l:%M %p")) %>
-  
-</p>
-<%= link_to 'Edit', edit_load_path(@load), class: "btn btn-hrcprimary btn-xs" %>
 <%= Time.now.strftime("%-l:%M %p") %>

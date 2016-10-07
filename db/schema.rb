@@ -16,9 +16,13 @@ ActiveRecord::Schema.define(version: 20161004111801) do
   enable_extension "plpgsql"
 
   create_table "company_profiles", force: :cascade do |t|
-    t.string   "name"
-    t.string   "location"
+    t.string   "company_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
     t.string   "telephone"
+    t.string   "fax"
     t.string   "website"
     t.string   "logo"
     t.string   "broker_mc_number"
@@ -26,7 +30,7 @@ ActiveRecord::Schema.define(version: 20161004111801) do
     t.string   "us_dot_number"
     t.string   "updated_by"
     t.string   "contact"
-    t.string   "profile_image"
+    t.string   "email"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -43,19 +47,11 @@ ActiveRecord::Schema.define(version: 20161004111801) do
     t.string   "company"
     t.string   "contact"
     t.string   "phone"
+    t.string   "notes"
     t.integer  "load_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["load_id"], name: "index_load_addresses_on_load_id", using: :btree
-  end
-
-  create_table "load_bookings", force: :cascade do |t|
-    t.integer "load_id"
-    t.integer "company_profile_id"
-    t.index ["company_profile_id", "load_id"], name: "index_load_bookings_on_company_profile_id_and_load_id", using: :btree
-    t.index ["company_profile_id"], name: "index_load_bookings_on_company_profile_id", using: :btree
-    t.index ["load_id", "company_profile_id"], name: "index_load_bookings_on_load_id_and_company_profile_id", using: :btree
-    t.index ["load_id"], name: "index_load_bookings_on_load_id", using: :btree
   end
 
   create_table "loads", force: :cascade do |t|
@@ -68,19 +64,21 @@ ActiveRecord::Schema.define(version: 20161004111801) do
     t.integer  "distance"
     t.date     "pick_up_date"
     t.time     "pick_up_time"
+    t.string   "pick_up_time_notes"
     t.string   "pick_up_notes"
     t.date     "delivery_date"
     t.time     "delivery_time"
+    t.string   "delivery_time_notes"
     t.string   "delivery_notes"
     t.string   "equipment_type"
     t.string   "status_name"
     t.integer  "hrc_user_id"
     t.integer  "driver_user_id"
+    t.integer  "company_profile_id"
     t.string   "updated_by"
     t.string   "special_instructions"
     t.string   "dimentions"
     t.string   "origin_street"
-    t.string   "origin_street2"
     t.string   "origin_city"
     t.string   "origin_state"
     t.string   "origin_zip"
@@ -89,7 +87,6 @@ ActiveRecord::Schema.define(version: 20161004111801) do
     t.float    "origin_latitude"
     t.float    "origin_longitude"
     t.string   "destination_street"
-    t.string   "destination_street2"
     t.string   "destination_city"
     t.string   "destination_state"
     t.string   "destination_zip"
@@ -101,6 +98,7 @@ ActiveRecord::Schema.define(version: 20161004111801) do
     t.string   "consignee_name"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.index ["company_profile_id"], name: "index_loads_on_company_profile_id", using: :btree
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
     t.index ["hrc_user_id"], name: "index_loads_on_hrc_user_id", using: :btree
   end

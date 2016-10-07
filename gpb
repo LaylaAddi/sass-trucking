@@ -1,4 +1,4 @@
 git add -A
-git commit -m "load form style and association to company profiles"
+git commit -m "validations on load times - forms - show page "
 git push -u origin date
 

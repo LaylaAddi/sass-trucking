@@ -1,6 +1,20 @@
+<span class="input-group-addon"><i class="fa fa-map-signs"></i></span>
+         <%= f.input :notes, label: false, placeholder: "Notes" %>
+        </div>
+
+
+FF0000	BF3030	A60000	FF4040	FF7373
+Secondary Color A:
+009999	1D7373	006363	33CCCC	5CCCCC
+Secondary Color B:
+9FEE00	86B32D	679B00	B9F73E	C9F76F
+
+#ff0039
+<%= s.select :shipment_category_id, ShipmentCategory.all.map{ |category| [ category.name, category.id ]} %>
 check for phone traker software
 csv uploader downloader
-
+<div class="col-sm-12 col-sm-offset-0 shadow round white-smoke">
+  <div class="well white-smoke">
 geo
  
 time zones
@@ -23,3 +37,176 @@ broker user admin can assign other broker users
 receipts driver and office uploader relation between hrc fuel expense and owner
 
 
+<%= simple_form_for(@load) do |f| %>
+<%= f.error_notification %>
+<div class="col-sm-12 col-sm-offset-0 shadow round animated">
+  <div class="well animated">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group input-group">  
+          <span class="input-group-addon"><i class="fa fa-building"></i></span>
+          <%= f.input :name, label: false, 
+            placeholder: 'Description - e.g. "Miami to Buffalo"', 
+            input_html: {value: "Niagara Falls To Miami"} %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+          <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+            :id, :full_name, include_blank: "Select Driver"  %> 
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-ship"></i></span>
+          <%= f.collection_select :company_profile_ids, @company_profile.all.order(:name),
+            :id, :name, include_blank: "Broker/Shipper" %>  
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-wrench"></i></span>
+          <%= f.input :equipment_type, collection: ApplicationRecord::EquipmentType, 
+            label: false, include_blank: "Equipment Type" %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-clock-o"></i> </span>
+          <%= f.input :status_name, collection: ApplicationRecord::LoadStatusStatus, 
+            label: false, include_blank: "Booking Status" %> 
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-cubes"></i>
+          </span>
+          <%= f.input :commodity, label: false, placeholder: "Commodity" %>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>
+          <%= f.input :weight, label: false, placeholder: 'Weignt e.g "25000"' %>
+          <span class="input-group-addon">Pounds</span>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-2 col-sm-offset-1">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-cogs"></i></span>
+          <%= f.input :units, label: false, 
+            placeholder: "Imperial/Metric", input_html: {value: "Imperial" }%>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-road"></i></span>
+          <%= f.input :load_size, collection: ApplicationRecord::LoadSize, 
+            label: false, include_blank: "e.g. 'FTL, LTL'" %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.input :rate, label: false, placeholder: "Rate"  %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+           <span class="input-group-addon"><i class="fa fa-arrows-h"></i></span>
+          <%= f.input :distance, label: false, placeholder: "Distance" %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <span class="input-group-addon">e.g. 33x22</span>
+          <%= f.input :dimentions, label: false, placeholder: "Dimentions" %>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group input-group">
+          <span class="input-group-addon">
+            <p class="vertical-text">Consignor</p>
+          </span>
+          <%= f.input :consignor_name, label: false, placeholder: "Pick Up Company Name"  %>
+          <%= f.input :origin_street, label: false, placeholder: "Street Address" %>
+          <%= f.input :origin_street2, label: false, placeholder: "Extra Street Info" %>
+          <%= f.input :origin_city, label: false, placeholder: "City"  %>  
+          <%= f.input :origin_state, label: false, 
+            collection: ApplicationRecord::States, include_blank: "State" %>
+          <%= f.input :origin_zip, label: false, placeholder: "zip code" %>
+          <%= f.input :origin_phone, label: false, placeholder: "Telephone" %>
+          <%= f.input :origin_contact, label: false, placeholder: "Contact Person" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group input-group">
+          <span class="input-group-addon">
+            <p class="vertical-text">Consignee</p>
+          </span>
+          <%= f.input :consignee_name, label: false, placeholder: "Deliver to Company Name"  %>
+          <%= f.input :destination_street, label: false, placeholder: "Street Address" %>
+          <%= f.input :destination_street2, label: false, placeholder: "Extra Street Info" %>
+          <%= f.input :destination_city, label: false, placeholder: "City"  %>  
+          <%= f.input :destination_state, label: false, 
+            collection: ApplicationRecord::States, include_blank: "State" %>
+          <%= f.input :destination_zip, label: false, placeholder: "zip code" %>
+          <%= f.input :destination_phone, label: false, placeholder: "Telephone" %>
+          <%= f.input :destination_contact, label: false, placeholder: "Contact Person" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-0">
+        <div class="form-group input-group">
+          <span class="input-group-addon">
+            <p class="vertical-text">Pick Up Time/Notes</p>
+          </span>
+          <%= f.text_field :pick_up_date, class: "bring_front",
+            placeholder: " Select Date" %>
+          <%= f.input :pick_up_time, label: false, discard_month: true, 
+            discard_day: true, discard_year: true, 
+            prompt: {hour: 'Choose Hour', minute: 'Choose Minute'}, ampm: true %>
+          <%= f.input :pick_up_notes, label: false, placeholder: "Pick Up Notes" %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-sm-offset-0">
+        <div class="form-group input-group">
+          <span class="input-group-addon">
+            <p class="vertical-text">Delivery Time/Notes</p>
+          </span>
+          <%= f.text_field :delivery_date, class: "bring_front", 
+          placeholder: " Select Date" %> 
+          <%= f.input :delivery_time, label: false,  discard_month: true, 
+            discard_day: true, discard_year: true, 
+            prompt: {hour: 'Choose Hour', minute: 'Choose Minute'}, ampm: true %>
+          <%= f.input :delivery_notes, label: false, placeholder: "Delivery Notes" %>  
+        </div>
+      </div>
+<div class="col-sm-6 col-sm-offset-3">
+        <div class="form-group input-group">
+           <span class="input-group-addon"><i class="fa fa-warning"></i></span>
+                <%= f.input :special_instructions, label: false, 
+        placeholder: "Special Instructions" %>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-success btn-sm round" %>
+      <%= link_to 'All Loads', loads_path, class: "btn btn-info btn-sm round" %>
+    </div>
+  </div>
+</div>
+<% end %>

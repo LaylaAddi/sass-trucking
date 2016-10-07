@@ -10,19 +10,21 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.integer :distance
       t.date :pick_up_date
       t.time :pick_up_time
+      t.string :pick_up_time_notes
       t.string :pick_up_notes
       t.date :delivery_date
       t.time :delivery_time
+      t.string :delivery_time_notes 
       t.string :delivery_notes      
       t.string :equipment_type
       t.string :status_name 
       t.integer :hrc_user_id, index: true
       t.integer :driver_user_id, index: true
+      t.integer :company_profile_id, index: true       
       t.string :updated_by
       t.string :special_instructions
       t.string :dimentions
       t.string :origin_street
-      t.string :origin_street2
       t.string :origin_city  
       t.string :origin_state
       t.string :origin_zip
@@ -31,7 +33,6 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.float :origin_latitude
       t.float :origin_longitude
       t.string :destination_street
-      t.string :destination_street2
       t.string :destination_city  
       t.string :destination_state
       t.string :destination_zip

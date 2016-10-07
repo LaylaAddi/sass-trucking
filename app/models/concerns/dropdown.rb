@@ -1,12 +1,32 @@
+
+
 module Dropdown
   extend ActiveSupport::Concern
+  
+  PickupTimeNotes =
+  [
+    "Appointment Booked At"
+  ]
+  
+  DeliveryTimeNotes =
+  [
+    "Appointment Booked At",
+    "Multiple Deliveries",
+    "Appointments with Multiple Deliveries"
+  ]
+     
+  
+
   LoadSize =
   ["FTL",
    "LTL"]
+   
   AddressType =
-  [ "Origin",
-    "Destination"
-    ]
+  
+  [ 
+    "Destination",
+    "Origin"
+  ]
   
    States = 
   [

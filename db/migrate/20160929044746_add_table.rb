@@ -1,12 +1,7 @@
 class AddTable < ActiveRecord::Migration[5.0]
   def change
     
-    create_table :load_bookings do |t|
-      t.integer :load_id, index: true
-      t.integer :company_profile_id, index: true
-      t.index [:load_id, :company_profile_id]
-      t.index [:company_profile_id, :load_id]
-    end
+
 
     create_table :mcs do |t|
       t.string :type, null: false, default: ""

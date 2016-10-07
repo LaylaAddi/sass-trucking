@@ -74,7 +74,8 @@ class LoadAddressesController < ApplicationController
         :company, 
         :contact, 
         :phone, 
-        :load_id
+        :load_id,
+        :notes            
         )
     end
 end

@@ -7,4 +7,4 @@ jQuery ->
     
 jQuery ->
   $('#load_delivery_date').datepicker 
-    dateFormat: 'yy-mm-dd'    
+    dateFormat: 'yy-mm-dd'     

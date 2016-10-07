@@ -1,34 +1,32 @@
 <%= simple_form_for [@load, @load_address] do |f| %>
 <%= f.error_notification %>
-<div class="col-sm-10 col-sm-offset-1 shadow">
-  <div class="well">
+<div class="col-sm-10 col-sm-offset-1 shadow animated">
+  <div class="well animated"> 
     <div class="row">
       <div class="col-sm-4">
         <div class="form-group input-group">  
-          <span class="input-group-addon">|</span>
-          <%= f.input :address_type, collection: ApplicationRecord::AddressType, 
-          label: false, placeholder: "Origin/Destination" %>
+          <span class="input-group-addon"><i class="fa fa-location-arrow"></i></span>
+          <%= f.input :address_type, label: false, 
+          collection: ApplicationRecord::AddressType, label: false, prompt: "Origin/Destination" %>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4">
         <div class="form-group input-group">
-          <span class="input-group-addon">|</span>
+          <span class="input-group-addon"><i class="fa fa-institution"></i></span>
           <%= f.input :company, label: false, placeholder: "Company Name" %>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="form-group input-group">
-          <span class="input-group-addon"><i class="fa fa-eur"></i>
-          </span>
+          <span class="input-group-addon"><i class="fa fa-user-plus"></i></span>
           <%= f.input :contact, label: false, placeholder: "Contact Person" %>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="form-group input-group">
-          <span class="input-group-addon"><i class="fa fa-eur"></i>
-          </span>
+          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
           <%= f.input :phone, label: false, placeholder: "Telephone" %>
         </div>
       </div>
@@ -36,15 +34,13 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group input-group">
-          <span class="input-group-addon"><i class="fa fa-eur"></i>
-          </span>
+          <span class="input-group-addon"><i class="fa fa-map-signs"></i></span>
           <%= f.input :street, label: false, placeholder: "Street Address" %>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group input-group">
-          <span class="input-group-addon"><i class="fa fa-eur"></i>
-          </span>
+          <span class="input-group-addon"><i class="fa fa-map-pin"></i></span>
           <%= f.input :street2, label: false, placeholder: "Street Address Contineud..." %>
         </div>
       </div>
@@ -52,33 +48,38 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="form-group input-group">
-          <span class="input-group-addon">|</span>
+          <span class="input-group-addon"><i class="fa fa-map"></i></span>
           <%= f.input :city, label: false, placeholder: "City" %>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="form-group input-group">
-          <span class="input-group-addon"><i class="fa fa-eur"></i>
-          </span>
+          <span class="input-group-addon"><i class="fa fa-map-o"></i></span>
           <%= f.input :state, collection: ApplicationRecord::States, label: false %>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="form-group input-group">
-          <span class="input-group-addon"><i class="fa fa-eur"></i>
-          </span>
+          <span class="input-group-addon"><i class="fa fa-map"></i></span>
+          
           <%= f.input :zip, label: false, placeholder: "zip code" %>
         </div>
       </div>
     </div>
-    <%= f.button :submit, class: 'btn btn-hrcprimary btn-xs' %>
-    <%= link_to 'Back to Load', load_path(@load), class: 'btn btn-hrcprimary btn-xs' %>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
+          <%= f.input :notes, label: false, placeholder: "Notes" %>
+        </div>
+      </div>
+    </div>
+    
+    <%= f.button :submit, class: 'btn btn-success btn-sm round' %> 
+    <%= link_to 'Back to Load', load_path(@load), class: 'btn btn-hrcprimary btn-sm round' %>
     <% end %>
   </div>
 </div>
-
-
-
 
 
 

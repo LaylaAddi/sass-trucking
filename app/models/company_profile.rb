@@ -5,8 +5,17 @@ class CompanyProfile < ApplicationRecord
   before_create :build_carrier_mc
   before_create :build_broker_mc
   before_create :build_us_dot
-  has_many :load_bookings
-  has_many :loads, through: :load_bookings
+  has_many :loads
+  
+  def self.as_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |item|
+        csv << item.attributes.values_at(*column_names)
+      end
+    end 
+  end
+  
 end
 
-     
+      

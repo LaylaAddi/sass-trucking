@@ -1,51 +1,86 @@
 <div class="row">
   <div class="col-sm-6">
+    <h4>Pick Up</h4>
     <address>
-      <strong>Pick up: <%= @load.consignor_name %></strong><br>
+      <strong><%= @load.consignor_name %></strong><br>
       <%= @load.origin_street %> <%= @load.origin_street2 %><br>
       <%= @load.origin_city  %> <%= @load.origin_state  %> <%= @load.origin_zip  %><br>
       <small>Phone: </small><%= @load.origin_phone  %><br />
       <small>Contact: </small><%= @load.origin_contact  %>
     </address>
+    <h4>Pick Up Time Details</h4>
+    <p>
+      <% if @load.pick_up_date.present? %>
+      <%= (@load.pick_up_date.strftime("%A %B %-d, %Y")) %><br> 
+      <% if @load.pick_up_time.present? %>
+      Appointment Booked @ <%= (@load.pick_up_time.strftime("%-l:%M %p")) %><br /> 
+      <% else %>
+      <% end %>
+      <% if @load.pick_up_notes.present? %>
+      <span>(see pick up notes)</span>
+      <% else %>
+      <% end %>
+      <% else %>
+      No Pick Up Date Set
+      <% end %>
   </div>
   <div class="col-sm-6">
+    <h4>Delivery</h4>
     <address>
-      <strong>Delivery: <%= @load.consignee_name%></strong><br>
+      <strong><%= @load.consignee_name%></strong><br>
       <%= @load.destination_street %> <%= @load.destination_street2 %><br>
       <%= @load.destination_city  %> <%= @load.destination_state  %> <%= @load.destination_zip  %><br>
       <small>Phone: </small><%= @load.destination_phone %><br />
       <small>Contact: </small><%= @load.destination_contact %>
     </address>
+    <h4>Delivery Time Details</h4>
+    <p>
+      <% if @load.delivery_date.present? %>
+      <%= (@load.delivery_date.strftime("%A %B %-d, %Y")) %><br /> 
+      <% if @load.delivery_time.present? %>
+      Appointment Booked @ <%= (@load.delivery_time.strftime("%-l:%M %p")) %>
+      <% else %>
+      <% end %>
+      <% if @load.delivery_notes.present? %><br />
+      <span>(see delivery up notes)</span>
+      <% else %>
+      <% end %>
+      <% if @load.load_addresses.present? %>
+      <strong class="text-red">This load has multiple stops!</strong>
+      <% else %>
+      <% end %>
+      <% else %>
+      No Delivery Date Set 
+      <% end %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    </p>
+    <h4>Pick Up Notes</h4>
+    <% if @load.pick_up_notes.present? %>
+    <%= @load.pick_up_notes %>
+    <% else %>
+    No pick up notes were entered.
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+    <h4>Delivery Notes</h4>
+    <% if @load.delivery_notes.present? %>
+    <%= @load.delivery_notes %>
+    <% else %>
+    No delivery notes were entered.
+    <% end %>
   </div>
 </div>
 <p>
-  <strong>
-  Pick up Notes: 
-  </strong>
-  <% if @load.pick_up_notes.present? %>
-  <%= @load.pick_up_notes %>
-  <% else %>
-  No pick up notes were entered.
-  <% end %>
-</p>
-<p>
-  <strong>
-  Delivery Notes: 
-  </strong>
-  <% if @load.delevery_notes.present? %>
-  <%= @load.delevery_notes %>
-  <% else %>
-  No delevery notes were entered.
-  <% end %>
-</p>
-<p>
-  <strong>Special Instructions: 
-  </strong>
-  <% if @load.special_instructions.present? %>
-  <%= @load.special_instructions %>
-  <% else %>
-  No special instructions were entered.
-  <% end %>
+<h5>Special Instructions</h5>
+<% if @load.special_instructions.present? %>
+<%= @load.special_instructions %>
+<% else %>
+No special instructions were entered.
+<% end %>
 </p>
 <% @addresses.each do |address| %>
 <div class="col-sm-6">
@@ -56,20 +91,26 @@
     <div class="panel-body">
       <p>
       <address>
-        <strong>Pick up: <%= address.company %></strong><br>
+        <strong><%= address.company %></strong><br>
         <%= address.street %> <%= address.street2 %><br>
         <%= address.city  %> <%= address.state  %> <%= address.zip  %><br>
         <small>Phone: </small><%= address.phone  %><br />
-        <small>Contact: </small><%= address.contact  %>
+        <small>Contact: </small><%= address.contact  %><br />
       </address>
-<%= link_to "Edit Me", edit_load_load_address_path(@load, address),  
-class: "btn btn-warning round btn-xs" %>
-<%= link_to "Delete Me", load_load_address_path(@load, address), method: :delete, 
-class: "btn btn-primary round btn-xs" %>
+      <% if address.notes.present? %>
+      <strong>Notes</strong>
+      <%= address.notes %>  
+      <% else %>
+      <% end %>
+      <%= link_to "Edit Me", edit_load_load_address_path(@load, address),  
+        class: "btn btn-warning round btn-xs" %>
+      <%= link_to "Delete Me", load_load_address_path(@load, address), method: :delete, 
+        class: "btn btn-primary round btn-xs" %>
       </p>
     </div>
+    <% end %>
   </div>
 </div>
-<% end %>
 <%= link_to "Add Address", new_load_load_address_path(@load), 
-class: "btn btn-success round btn-sm" %>
+  class: "btn btn-success round btn-sm" %>
+<%= link_to 'Edit', edit_load_path(@load), class: "btn btn-hrcprimary round btn-sm" %>

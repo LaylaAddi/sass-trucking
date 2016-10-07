@@ -4,6 +4,13 @@ class CompanyProfilesController < ApplicationController
 
   def index
     @company_profiles = CompanyProfile.all
+    
+    
+    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @company_profiles.as_csv } 
+    end
   end
 
 
@@ -68,18 +75,22 @@ class CompanyProfilesController < ApplicationController
 
     def company_profile_params
       params.require(:company_profile).permit(
-                                       :name,
-                                       :location,
-                                       :telephone,
-                                       :website,
-                                       :logo,
-                                       :broker_mc_number,
-                                       :carrier_mc_number,
-                                       :us_dot_number,
-                                       :company_type,
-                                       :updated_by,
-                                       :contact,
-                                       :profile_image 
-                                      )
+                                              :company_name,
+                                              :street,
+                                              :city,
+                                              :state,
+                                              :zip,  
+                                              :telephone,
+                                              :fax,
+                                              :website,
+                                              :logo,
+                                              :broker_mc_number,
+                                              :carrier_mc_number,
+                                              :us_dot_number,
+                                              :updated_by,
+                                              :contact,
+                                              :email
+                                              )
     end
 end
+
