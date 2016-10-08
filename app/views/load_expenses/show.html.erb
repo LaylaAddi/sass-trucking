@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @load_expense.expense_type %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @load_expense.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @load_expense.longitude %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @load_expense.amount %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @load_expense.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @load_expense.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @load_expense.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @load_expense.zip %>
+</p>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @load_expense.business_name %>
+</p>
+
+<p>
+  <strong>Load:</strong>
+  <%= @load_expense.load_id %>
+</p>
+
+<%= link_to 'Edit', edit_load_load_expense_path(@load, @load_expense),
+class: "btn btn-info btn-sm round" %> |
+<%= link_to 'Back', load_path(@load),
+class: "btn btn-success btn-sm round" %> 
+<%= link_to 'Destroy', load_load_expense_path(@load, @load_expense), 
+method: :delete, data: { confirm: 'Are you sure?' },
+class: "btn btn-danger btn-sm round" %>

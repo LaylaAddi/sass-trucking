@@ -1,0 +1,35 @@
+<% @addresses.each do |address| %>
+<div class="col-lg-6">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      Additional Delivery!
+    </div>
+    <div class="panel-body">
+      <p>
+      <address>
+        <strong><%= address.company %></strong><br>
+        <%= address.street %> <%= address.street2 %><br>
+        <%= address.city  %> <%= address.state  %> <%= address.zip  %><br>
+        <small>Phone: </small><%= address.phone  %><br />
+        <small>Contact: </small><%= address.contact  %><br />
+      </address>
+      <% if address.notes.present? %>
+      <strong>Notes</strong>
+      <%= address.notes %>  
+      <% else %>
+      <% end %>
+      </p>
+    </div>
+    <div class="panel-footer">
+      <%= link_to "Edit Me", edit_load_load_address_path(@load, address),  
+        class: "btn btn-warning round btn-xs" %>
+      <%= link_to "Delete Me", load_load_address_path(@load, address), method: :delete, 
+        class: "btn btn-primary round btn-xs" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+
+

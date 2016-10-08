@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004111801) do
+ActiveRecord::Schema.define(version: 20161007151514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,22 @@ ActiveRecord::Schema.define(version: 20161004111801) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["load_id"], name: "index_load_addresses_on_load_id", using: :btree
+  end
+
+  create_table "load_expenses", force: :cascade do |t|
+    t.string   "expense_type"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.decimal  "amount"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "business_name"
+    t.integer  "load_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["load_id"], name: "index_load_expenses_on_load_id", using: :btree
   end
 
   create_table "loads", force: :cascade do |t|

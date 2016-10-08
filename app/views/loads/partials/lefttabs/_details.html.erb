@@ -1,3 +1,5 @@
+<h4>Current Status |<%= @load.status_name %>|</h4>
+<p>
 <h3><%= @load.name %></h3>
 <p>
 <div class="row">
@@ -76,5 +78,4 @@
   No Special Instructions
   <% end %>
 </p>
-
-<%= Time.now.strftime("%-l:%M %p") %>
+<%= Time.now.strftime("%-l:%M %p") %> 

@@ -1,0 +1,46 @@
+<%= simple_form_for [@load, LoadExpense.new] do |f| %>
+<%= f.error_notification %> 
+<div class="col-sm-12 col-sm-offset-0">
+<div class="well">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group input-group">
+      <span class="input-group-addon"><i class="fa fa-info"></i></span>
+      <%= f.input :expense_type, 
+        collection: ApplicationRecord::ExpenseType, label: false, 
+        prompt: "Type of Expense" %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group input-group">
+      <span class="input-group-addon"><i class="fa fa-institution"></i></span>
+      <%= f.input :business_name, label: false, 
+        placeholder: "Business Name" %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group input-group">
+      <span class="input-group-addon"><i class="fa fa-money"></i></span>
+      <%= f.input :amount, label: false, placeholder: "Amount" %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group input-group">
+      <span class="input-group-addon"><i class="fa fa-at"></i></span>
+      <%= f.input :street, label: false, placeholder: "Street" %>
+      <%= f.input :city, label: false, placeholder: "City" %>
+      <%= f.input :state, label: false, placeholder: "State" %>
+      <%= f.input :zip, label: false, placeholder: "zip" %>
+    </div>
+  </div>
+  <%= f.button :submit, class: "btn btn-info btn-sm round" %>
+</div>
+<% end %>
+
+
+
+
+
+

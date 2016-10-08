@@ -11,7 +11,9 @@ class LoadsController < ApplicationController
 
   def show
     @addresses = @load.load_addresses
-    @company_profile = @load.company_profile      
+    @company_profile = @load.company_profile    
+
+    @load_expenses = @load.load_expenses
   end
 
 

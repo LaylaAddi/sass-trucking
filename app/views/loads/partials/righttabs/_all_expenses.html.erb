@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Load Expenses</h1>
+
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Entered On</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>City</th>
+      <th>Business name</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    		<% running_total = 0.00 %>
+    <% @load_expenses.each do |load_expense| %>
+      <tr>
+       <td><%= load_expense.id %></td>
+       <td><%= load_expense.created_at.strftime("%B %-d, %Y at %-l:%M %p") %></td>
+        <td><%= load_expense.expense_type %></td>
+        <td><%= number_to_currency(load_expense.amount) %></td>
+         <td><%= load_expense.city %></td>
+        <td><%= load_expense.business_name %></td>
+        <td><%= link_to 'Show', load_load_expense_path(@load, load_expense),
+        class: "btn btn-info btn-xs round"%></td>
+        <td><%= link_to 'Edit', edit_load_load_expense_path(@load, load_expense),
+        class: "btn btn-hrcprimary btn-xs round"%></td>
+        
+      </tr>
+      <% running_total = running_total + load_expense.amount %>
+    <% end %>
+    <p>Total Expenses <strong><%= number_to_currency(running_total) %></strong></p>
+  </tbody>
+</table>
+
+<br>
