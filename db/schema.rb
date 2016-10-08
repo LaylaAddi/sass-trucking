@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007151514) do
+ActiveRecord::Schema.define(version: 20161008184425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "company_profile_memberships", force: :cascade do |t|
+    t.integer  "company_profile_id"
+    t.integer  "user_id"
+    t.string   "membership_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["company_profile_id"], name: "index_company_profile_memberships_on_company_profile_id", using: :btree
+    t.index ["user_id", "company_profile_id"], name: "user_company_profile", using: :btree
+    t.index ["user_id"], name: "index_company_profile_memberships_on_user_id", using: :btree
+  end
 
   create_table "company_profiles", force: :cascade do |t|
     t.string   "company_name"

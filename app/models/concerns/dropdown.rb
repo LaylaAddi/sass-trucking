@@ -1,7 +1,10 @@
-
-
 module Dropdown
-  extend ActiveSupport::Concern
+  extend ActiveSupport::Concern   
+  
+CompanyProfileMembershipStatus =
+[ "Member",
+  "Non Member"
+]
   
   PickupTimeNotes =
   [
