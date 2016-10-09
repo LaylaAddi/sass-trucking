@@ -6,8 +6,11 @@ class CompanyProfile < ApplicationRecord
   before_create :build_broker_mc
   before_create :build_us_dot
   has_many :loads
-  has_many :company_profile_membership
+  has_many :company_profile_membership, dependent: :destroy
   has_many :users, through: :company_profile_membership
+  has_many :vendor_profiles, dependent: :destroy 
+  
+  
   def self.as_csv
     CSV.generate do |csv|
       csv << column_names

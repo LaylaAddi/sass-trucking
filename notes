@@ -1,3 +1,5 @@
+GET BACK TO VENDORS IN EXPENSE SET UP
+
 create vedors
 
 company profile is company carrier filter from list on create load
@@ -35,7 +37,6 @@ broker user admin can assign other broker users
 
 receipts driver and office uploader relation between hrc fuel expense and owner
 
-rails g scaffold VendorProfile company_name street city state zip telephone fax website logo contact_name email
 
 
 end

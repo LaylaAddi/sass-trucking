@@ -1,5 +1,5 @@
 class CompanyProfilesController < ApplicationController
-  before_action :set_company_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_company_profile, only: [:show, :edit, :update, :destroy, :vendors]
 
 
   def index
@@ -18,6 +18,7 @@ class CompanyProfilesController < ApplicationController
     @carrier_mc = @company_profile.carrier_mc
     @broker_mc = @company_profile.broker_mc
     @us_dot = @company_profile.us_dot
+
   end
 
 
@@ -65,6 +66,7 @@ class CompanyProfilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
   private
 

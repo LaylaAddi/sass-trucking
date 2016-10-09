@@ -18,9 +18,16 @@
         <td><%= company_profile_membership.company_profile_id %></td>
         <td><%= company_profile_membership.user_id %></td>
         <td><%= company_profile_membership.membership_type %></td>
-        <td><%= link_to 'Show', company_profile_membership %></td>
-        <td><%= link_to 'Edit', edit_company_profile_membership_path(company_profile_membership) %></td>
-        <td><%= link_to 'Destroy', company_profile_membership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', 
+        company_profile_company_profile_membership_path(@company_profile, 
+        company_profile_membership) %></td>
+        <td><%= link_to 'Edit', 
+        edit_company_profile_company_profile_membership_path(@company_profile, 
+        company_profile_membership) %></td>
+        <td><%= link_to 'Destroy', 
+        company_profile_company_profile_membership_path(@company_profile, 
+        company_profile_membership), method: :delete, 
+        data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +35,5 @@
 
 <br>
 
-<%= link_to 'New Company Profile Membership', new_company_profile_membership_path %>
+<%= link_to 'New Company Profile Membership', 
+new_company_profile_company_profile_membership_path(@company_profile, @company_profile_membership) %> 

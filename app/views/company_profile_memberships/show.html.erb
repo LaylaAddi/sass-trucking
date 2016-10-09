@@ -17,5 +17,7 @@
   <p></p><%= @company_profile_membership.membership_type %>
 </p>
 
-<%= link_to 'Edit', edit_company_profile_membership_path(@company_profile_membership) %> |
-<%= link_to 'Back', company_profile_memberships_path %>
+<%= link_to 'Edit', 
+edit_company_profile_company_profile_membership_path(@company_profile, 
+@company_profile_membership) %>  |
+<%= link_to 'Back', company_profile_company_profile_memberships_path %>

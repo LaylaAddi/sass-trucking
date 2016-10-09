@@ -1,0 +1,8 @@
+<h1>Editing Vendor Profile</h1>
+
+<%= render 'form', vendor_profile: @vendor_profile %>
+
+<%= link_to 'Show', 
+company_profile_vendor_profile_path(@company_profile, 
+@vendor_profile) %>
+<%= link_to 'Back', company_profile_vendor_profiles_path %>

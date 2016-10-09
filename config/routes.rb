@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+
+  
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users
@@ -14,12 +16,14 @@ Rails.application.routes.draw do
   resources :driver_users
   
   resources :users
-  
+ 
   resources :company_profiles do
     resources :mcs 
       resources :carrier_mcs 
         resources :broker_mcs 
           resources :us_dots
+            resources :vendor_profiles
+              resources :company_profile_memberships
   end
   
     
@@ -28,11 +32,12 @@ Rails.application.routes.draw do
       resources :load_addresses
   end 
   
-  resources :company_profile_memberships
+  
   
   get 'dashboard', to: 'users#dashboard'
   
   root to: 'creatives#index' 
+
   
   get 'pages/index', to: 'pages#index'
   

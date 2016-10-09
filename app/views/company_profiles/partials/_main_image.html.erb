@@ -37,31 +37,25 @@
 
         <hr>
 <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4"></div>
+    <div class="col-sm-2"> 
+<span data-toggle="collapse" data-target="#vendors">Vendors</span>
+<div id="vendors" class="collapse">
+<%= link_to "Add A New Vendor", 
+new_company_profile_vendor_profile_path(@company_profile) %><br /> 
+<%= link_to "All Vendors", 
+company_profile_vendor_profiles_path(@company_profile) %>
+</div>
+    </div>
+    <div class="col-sm-2">
+<%= link_to "All Company Members", company_profile_company_profile_memberships_path(@company_profile) %>
+            
+    </div>
     <div class="col-sm-4">
-        <strong>
-            <%= link_to @company_profile.us_dot_number, 
-            company_profile_us_dot_path(@company_profile, @us_dot)  %>  
-            <%=link_to "Update US DOT", 
-            edit_company_profile_us_dot_path(@company_profile, @us_dot) %>
-        </strong>
-        <strong>
-            <%= link_to @company_profile.broker_mc_number, 
-            company_profile_broker_mc_path(@company_profile, @broker_mc)  %>  
-            <%=link_to "Update Broker MC", 
-            edit_company_profile_broker_mc_path(@company_profile, @broker_mc) %>
-        </strong>
-        <strong>
-            <%= link_to @company_profile.carrier_mc_number, 
-            company_profile_carrier_mc_path(@company_profile, @carrier_mc)  %>  
-            <%=link_to "Update Carrier MC", 
-            edit_company_profile_carrier_mc_path(@company_profile, @carrier_mc) %>
-        </strong>     
-        
+
         
     </div>
 </div>
+
         <div class="row">
             <div class="col-sm-8">
                 <h2>What We Do</h2>
@@ -84,6 +78,24 @@
                     <br>
                     <abbr title="Email">E:</abbr> <a href="mailto:#">name@example.com</a>
                 </address>
+                        <p>
+            US DOT <%= link_to @company_profile.us_dot_number, 
+            company_profile_us_dot_path(@company_profile, @us_dot)  %>  
+            <%=link_to "Update US DOT", 
+            edit_company_profile_us_dot_path(@company_profile, @us_dot) if current_user.try(:admin?) %>
+        </p>
+        <p>
+         Broker MC <%= link_to @company_profile.broker_mc_number, 
+            company_profile_broker_mc_path(@company_profile, @broker_mc)  %>  
+            <%=link_to "Update Broker MC", 
+            edit_company_profile_broker_mc_path(@company_profile, @broker_mc) if current_user.try(:admin?) %>
+        </p>
+        <p>
+        Carrier MC <%= link_to @company_profile.carrier_mc_number, 
+            company_profile_carrier_mc_path(@company_profile, @carrier_mc)  %>  
+            <%=link_to "Update Carrier MC", 
+            edit_company_profile_carrier_mc_path(@company_profile, @carrier_mc) if current_user.try(:admin?) %>
+        </p> 
             </div>
         </div>
         <!-- /.row -->

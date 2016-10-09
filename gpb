@@ -1,4 +1,4 @@
 git add -A
-git commit -m "user company join done"
-git push -u origin group0
+git commit -m "user company join as nested"
+git push -u origin vendors
 

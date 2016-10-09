@@ -222,4 +222,20 @@ email: Faker::Internet.email
  puts companyprofile.inspect
 end
 
+hrcprofile = CompanyProfile.create!(
+company_name: "HRC Logistics LLC", 
+telephone: "469.301.2226",
+street: "14241 Dallas Parkway Suite 650",
+city: "Dallas",
+state: "Texas",
+zip: "75254",
+fax: "469.301.2226",
+contact: "Kathy", 
+website: "hrclogistics.com",
+broker_mc_number: "985484",
+carrier_mc_number: "985484",
+us_dot_number: "2921696",
+email: "support@hrclogistics.com"
+)
+
 
