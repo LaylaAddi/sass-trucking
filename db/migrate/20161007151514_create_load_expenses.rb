@@ -11,6 +11,7 @@ class CreateLoadExpenses < ActiveRecord::Migration[5.0]
       t.string :zip
       t.string :business_name
       t.integer :load_id
+      t.integer :vendor_profile_id, index: true
 
       t.timestamps
     end

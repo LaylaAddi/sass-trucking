@@ -4,9 +4,6 @@ class CompanyProfilesController < ApplicationController
 
   def index
     @company_profiles = CompanyProfile.all
-    
-    
-    
     respond_to do |format|
       format.html
       format.csv { send_data @company_profiles.as_csv } 

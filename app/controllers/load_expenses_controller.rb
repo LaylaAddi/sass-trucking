@@ -17,11 +17,13 @@ class LoadExpensesController < ApplicationController
   def new
     @load = Load.find(params[:load_id])
     @load_expense = @load.load_expenses.new
-  end
+    @vendor_profile = VendorProfile.all
+  end 
 
   # GET /load_expenses/1/edit
   def edit
     @load = Load.find(params[:load_id])
+    @vendor_profile = VendorProfile.all
   end
 
   # POST /load_expenses
@@ -75,6 +77,18 @@ class LoadExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def load_expense_params
-      params.require(:load_expense).permit(:expense_type, :latitude, :longitude, :amount, :street, :city, :state, :zip, :business_name, :load_id)
+      params.require(:load_expense).permit(
+                                            :expense_type, 
+                                            :latitude, 
+                                            :longitude, 
+                                            :amount, 
+                                            :street, 
+                                            :city, 
+                                            :state, 
+                                            :zip, 
+                                            :business_name, 
+                                            :load_id,
+                                            :vendor_profile_id
+                                            )
     end
 end

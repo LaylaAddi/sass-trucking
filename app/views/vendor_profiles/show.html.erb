@@ -55,10 +55,7 @@
   <%= @vendor_profile.email %>
 </p>
 
-<p>
-  <strong>Company profile:</strong>
-  <%= @vendor_profile.company_profile_id %>
-</p>
 
-<%= link_to 'Edit', edit_company_profile_vendor_profile_path(@company_profile, @vendor_profile) %>|
-<%= link_to 'Back', company_profile_vendor_profiles_path %>
+
+<%= link_to 'Edit', vendor_profile_path(@vendor_profile) %>|
+<%= link_to 'Back', vendor_profiles_path %>

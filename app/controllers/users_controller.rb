@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
   
-  def dashboard
-    @user = current_user 
+  def hrc_dashboard
+    @user = current_user
+    @loads = current_user.loads.where(["status_name = ? OR status_name = ?", "Active", "Pending"]) 
   end
+  
+  
+  def driver_dashboard
+    @user = current_user
+  end
+  
+
+  def shipper_dashboard
+    @user = current_user
+  end
+  
   
   def index
     @users = User.all
@@ -15,9 +27,6 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end 
-  
-  
-
 end  
 
 class HrcUsersController < UsersController 

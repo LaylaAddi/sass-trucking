@@ -129,29 +129,20 @@
          <hr>
           <div class="row">
             <div class="col-md-4">
-              <label><small>your current password confirms any changes</small></label>
+              <label><small>Choose a password</small></label>
               <div class="form-group input-group">
                 <span class="input-group-addon"><i class="fa fa-unlock"></i>
                 </span>
-                <%= f.input :current_password, label: false, 
+                <%= f.input :password, label: false, 
                   required: true %>
               </div>
             </div>
             <div class="col-md-4">
-              <label><small>wanna new password?</small></label>
+              <label><small>Confirm your password</small></label>
               <div class="form-group input-group">
                 <span class="input-group-addon"><i class="fa fa-user-secret"></i>
                 </span>
-                <%= f.input :password, label: false, autocomplete: "off", required: false %>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label><small>confirm your new password</small></label>
-              <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-unlock-alt"></i>
-                </span>
-                <%= f.input :password_confirmation, label: false, 
-                  autocomplete: "off", required: false %>
+                <%= f.input :password_confirmation, label: false, autocomplete: "off", required: false %>
               </div>
             </div>
           </div>

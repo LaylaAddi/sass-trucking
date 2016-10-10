@@ -76,9 +76,11 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.string   "zip"
     t.string   "business_name"
     t.integer  "load_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "vendor_profile_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.index ["load_id"], name: "index_load_expenses_on_load_id", using: :btree
+    t.index ["vendor_profile_id"], name: "index_load_expenses_on_vendor_profile_id", using: :btree
   end
 
   create_table "loads", force: :cascade do |t|
@@ -282,10 +284,10 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.string   "logo"
     t.string   "contact_name"
     t.string   "email"
-    t.string   "company_profile_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.index ["company_profile_id"], name: "index_vendor_profiles_on_company_profile_id", using: :btree
+    t.string   "load_expense_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["load_expense_id"], name: "index_vendor_profiles_on_load_expense_id", using: :btree
   end
 
 end

@@ -5,7 +5,7 @@
     <%= f.input :company_name %>
     <%= f.input :street %>
     <%= f.input :city %>
-    <%= f.input :state %>
+    <%= f.input :state, collection: ApplicationRecord::States %>
     <%= f.input :zip %>
     <%= f.input :telephone %>
     <%= f.input :fax %>
@@ -13,7 +13,6 @@
     <%= f.input :logo %>
     <%= f.input :contact_name %>
     <%= f.input :email %>
-    <%= f.input :company_profile_id %>
   </div>
 
   <div class="form-actions">

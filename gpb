@@ -1,4 +1,4 @@
 git add -A
-git commit -m "user company join as nested"
+git commit -m "set up loads show for hrc users with filtering for load status"
 git push -u origin vendors
 

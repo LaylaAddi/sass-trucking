@@ -12,10 +12,8 @@ class CreateVendorProfiles < ActiveRecord::Migration[5.0]
       t.string :logo
       t.string :contact_name
       t.string :email
-      t.string :company_profile_id
-
       t.timestamps
     end
-    add_index :vendor_profiles, :company_profile_id
+
   end
 end

@@ -1,5 +1,6 @@
-GET BACK TO VENDORS IN EXPENSE SET UP
-
+      <%= f.input :expense_type, 
+        collection: ApplicationRecord::ExpenseType, label: false, 
+        prompt: "Type of Expense" %>
 create vedors
 
 company profile is company carrier filter from list on create load

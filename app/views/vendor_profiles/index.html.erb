@@ -1,49 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Vendor Profiles<small> <%= link_to @company_profile.company_name, 
-company_profile_path(@company_profile)%></small></h2> 
+<h1>Vendor Profiles</h1>
 
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Date Added</th>
-      <th>Vendor Name</th>
+      <th>Company name</th>
+      <th>Street</th>
       <th>City</th>
       <th>State</th>
+      <th>Zip</th>
       <th>Telephone</th>
+      <th>Fax</th>
+      <th>Website</th>
+      <th>Logo</th>
       <th>Contact name</th>
-        <th colspan="3"></th>
+      <th>Email</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @vendor_profiles.each do |vendor_profile| %>
       <tr>
-        <td><%= vendor_profile.id %></td>
-        <td><%= (vendor_profile.created_at.strftime("%A %B %-d, %Y")) %></td>
         <td><%= vendor_profile.company_name %></td>
+        <td><%= vendor_profile.street %></td>
         <td><%= vendor_profile.city %></td>
         <td><%= vendor_profile.state %></td>
+        <td><%= vendor_profile.zip %></td>
         <td><%= vendor_profile.telephone %></td>
+        <td><%= vendor_profile.fax %></td>
+        <td><%= vendor_profile.website %></td>
+        <td><%= vendor_profile.logo %></td>
         <td><%= vendor_profile.contact_name %></td>
-
-        <td>
-          <%= vendor_profile.company_profile_id %>
-          <%= link_to 'Show', 
-          company_profile_vendor_profile_path(@company_profile, 
-          vendor_profile) %>
-        </td>
-        <td>
-          <%= link_to 'Edit', 
-          edit_company_profile_vendor_profile_path(@company_profile, 
-          vendor_profile) %>
-        </td>
-        <td>
-          <%= link_to 'Destroy', 
-          company_profile_vendor_profile_path(@company_profile, vendor_profile), 
-          method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <td><%= vendor_profile.email %></td>
+        <td><%= link_to 'Show', vendor_profile %></td>
+        <td><%= link_to 'Edit', edit_vendor_profile_path(vendor_profile) %></td>
+        <td><%= link_to 'Destroy', vendor_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -51,4 +44,4 @@ company_profile_path(@company_profile)%></small></h2>
 
 <br>
 
-<%= link_to 'New Vendor Profile', new_company_profile_vendor_profile_path %>
+<%= link_to 'New Vendor Profile', new_vendor_profile_path %>

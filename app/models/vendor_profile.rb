@@ -1,3 +1,3 @@
 class VendorProfile < ApplicationRecord
-  belongs_to :company_profile
+  has_many :load_expenses, dependent: :destroy 
 end
