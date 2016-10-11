@@ -1,0 +1,1 @@
+json.array! @load_financials, partial: 'load_financials/load_financial', as: :load_financial

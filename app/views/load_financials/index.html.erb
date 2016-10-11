@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Load Financials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gross rate</th>
+      <th>Percent deducted</th>
+      <th>Miles</th>
+      <th>Gross rpm</th>
+      <th>Dollars deducted based on percent</th>
+      <th>Gross rate after percent</th>
+      <th>After percent deducted rpm</th>
+      <th>Load expense</th>
+      <th>Net load rate</th>
+      <th>Net rpm</th>
+      <th>Load</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @load_financials.each do |load_financial| %>
+      <tr>
+        <td><%= load_financial.gross_rate %></td>
+        <td><%= load_financial.percent_deducted %></td>
+        <td><%= load_financial.miles %></td>
+        <td><%= load_financial.gross_rpm %></td>
+        <td><%= load_financial.dollars_deducted_based_on_percent %></td>
+        <td><%= load_financial.gross_rate_after_percent %></td>
+        <td><%= load_financial.after_percent_deducted_rpm %></td>
+        <td><%= load_financial.load_expense %></td>
+        <td><%= load_financial.net_load_rate %></td>
+        <td><%= load_financial.net_rpm %></td>
+        <td><%= load_financial.load_id %></td>
+        <td><%= link_to 'Show', load_financial %></td>
+        <td><%= link_to 'Edit', edit_load_financial_path(load_financial) %></td>
+        <td><%= link_to 'Destroy', load_financial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load Financial', new_load_financial_path %>

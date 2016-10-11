@@ -1,0 +1,1 @@
+json.partial! "load_financials/load_financial", load_financial: @load_financial

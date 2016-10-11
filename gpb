@@ -1,4 +1,4 @@
 git add -A
-git commit -m "set up loads show for hrc users with filtering for load status"
-git push -u origin vendors
+git commit -m "able to update loadfinancials based on load inputs"
+git push -u origin loadfinancial
 

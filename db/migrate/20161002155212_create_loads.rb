@@ -42,6 +42,7 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.float :destination_longitude 
       t.string :consignor_name
       t.string :consignee_name
+      t.decimal :load_percent
 
       t.timestamps
     end

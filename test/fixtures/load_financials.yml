@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gross_rate: 9.99
+  percent_deducted: 9.99
+  miles: 1
+  gross_rpm: 9.99
+  percent_deducted: 9.99
+  dollars_deducted_based_on_percent: 9.99
+  gross_rate_after_percent: 9.99
+  after_percent_deducted_rpm: 9.99
+  load_expense: 9.99
+  net_load_rate: 9.99
+  net_rpm: 9.99
+  load_id: 1
+
+two:
+  gross_rate: 9.99
+  percent_deducted: 9.99
+  miles: 1
+  gross_rpm: 9.99
+  percent_deducted: 9.99
+  dollars_deducted_based_on_percent: 9.99
+  gross_rate_after_percent: 9.99
+  after_percent_deducted_rpm: 9.99
+  load_expense: 9.99
+  net_load_rate: 9.99
+  net_rpm: 9.99
+  load_id: 1

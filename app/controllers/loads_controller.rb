@@ -120,7 +120,8 @@ class LoadsController < ApplicationController
         :consignee_name,
         :company_profile_id,
         :pick_up_time_notes,
-        :delivery_time_notes
+        :delivery_time_notes,
+        :load_percent
         )
     end
 end

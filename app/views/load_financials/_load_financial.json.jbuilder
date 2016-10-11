@@ -1,0 +1,2 @@
+json.extract! load_financial, :id, :gross_rate, :percent_deducted, :miles, :gross_rpm, :dollars_deducted_based_on_percent, :gross_rate_after_percent, :after_percent_deducted_rpm, :load_expense, :net_load_rate, :net_rpm, :load_id, :created_at, :updated_at
+json.url load_financial_url(load_financial, format: :json)

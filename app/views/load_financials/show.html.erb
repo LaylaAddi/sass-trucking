@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gross rate:</strong>
+  <%= @load_financial.gross_rate %>
+</p>
+
+<p>
+  <strong>Percent deducted:</strong>
+  <%= @load_financial.percent_deducted %>
+</p>
+
+<p>
+  <strong>Miles:</strong>
+  <%= @load_financial.miles %>
+</p>
+
+<p>
+  <strong>Gross rpm:</strong>
+  <%= @load_financial.gross_rpm %>
+</p>
+
+
+<p>
+  <strong>Dollars deducted based on percent:</strong>
+  <%= @load_financial.dollars_deducted_based_on_percent %>
+</p>
+
+<p>
+  <strong>Gross rate after percent:</strong>
+  <%= @load_financial.gross_rate_after_percent %>
+</p>
+
+<p>
+  <strong>After percent deducted rpm:</strong>
+  <%= @load_financial.after_percent_deducted_rpm %>
+</p>
+
+<p>
+  <strong>Load expense:</strong>
+  <%= @load_financial.load_expense %>
+</p>
+
+<p>
+  <strong>Net load rate:</strong>
+  <%= @load_financial.net_load_rate %>
+</p>
+
+<p>
+  <strong>Net rpm:</strong>
+  <%= @load_financial.net_rpm %>
+</p>
+
+<p>
+  <strong>Load:</strong>
+  <%= @load_financial.load_id %>
+</p>
+
+<%= link_to 'Edit', edit_load_financial_path(@load_financial) %> |
+<%= link_to 'Back', load_financials_path %>

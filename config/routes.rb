@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :load_financials
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users

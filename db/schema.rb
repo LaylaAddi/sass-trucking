@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008214707) do
+ActiveRecord::Schema.define(version: 20161011181535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,23 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.index ["vendor_profile_id"], name: "index_load_expenses_on_vendor_profile_id", using: :btree
   end
 
+  create_table "load_financials", force: :cascade do |t|
+    t.decimal  "gross_rate"
+    t.decimal  "percent_deducted"
+    t.integer  "miles"
+    t.decimal  "gross_rpm"
+    t.decimal  "dollars_deducted_based_on_percent"
+    t.decimal  "gross_rate_after_percent"
+    t.decimal  "after_percent_deducted_rpm"
+    t.decimal  "load_expense"
+    t.decimal  "net_load_rate"
+    t.decimal  "net_rpm"
+    t.integer  "load_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["load_id"], name: "index_load_financials_on_load_id", using: :btree
+  end
+
   create_table "loads", force: :cascade do |t|
     t.string   "name"
     t.string   "commodity"
@@ -125,6 +142,7 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.float    "destination_longitude"
     t.string   "consignor_name"
     t.string   "consignee_name"
+    t.decimal  "load_percent"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["company_profile_id"], name: "index_loads_on_company_profile_id", using: :btree
@@ -284,10 +302,8 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.string   "logo"
     t.string   "contact_name"
     t.string   "email"
-    t.string   "load_expense_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["load_expense_id"], name: "index_vendor_profiles_on_load_expense_id", using: :btree
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
