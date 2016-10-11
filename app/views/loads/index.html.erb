@@ -3,9 +3,13 @@
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Driver</th> 
+      <th>Shipper/Broker</th> 
+
       <th>Commodity</th>
       <th>Weight</th>
-      <th>Units</th>
       <th>Load size</th>
       <th>Rate</th>
       <th>Distance</th>
@@ -19,18 +23,42 @@
   <tbody>
     <% @loads.each do |load| %>
       <tr>
+        <td>
+          <%= link_to load do %>
+          <%= load.id %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to load do %>
+          <%= load.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to user_path(load.driver_user_id) do %>
+            <%= load.driver_user.full_name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to company_profile_path(load.company_profile) do %>
+          <%= load.company_profile.company_name %>
+          <% end %>
+  
+        </td>
         <td><%= load.commodity %></td>
         <td><%= load.weight %></td>
-        <td><%= load.units %></td>
         <td><%= load.load_size %></td>
         <td><%= load.rate %></td>
         <td><%= load.distance %></td>
-        <td><%= load.pick_up_time %></td>
-        <td><%= load.delivery_time %></td>
+        <td>
+<%= (load.pick_up_date.strftime("%A %B %-d, %Y")) %>
+@ <%= (load.pick_up_time.strftime("%-l:%M %p")) %> 
+        </td>
+        <td>
+<%= (load.delivery_date.strftime("%A %B %-d, %Y")) %>
+@ <%= (load.delivery_time.strftime("%-l:%M %p")) %>
+        </td>
         <td><%= load.equipment_type %></td>
-        <td><%= link_to 'Show', load %></td>
-        <td><%= link_to 'Edit', edit_load_path(load) %></td>
-        <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>

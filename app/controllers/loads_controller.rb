@@ -5,6 +5,7 @@ class LoadsController < ApplicationController
 
 
   def index
+    @company_profile = CompanyProfile.all
     @loads = Load.all
   end
 

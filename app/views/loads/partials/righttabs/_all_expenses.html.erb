@@ -15,6 +15,7 @@
   </thead>
 
   <tbody>
+        <%= number_to_currency(@load.rate) %>
     		<% running_total = 0.00 %>
     <% @load_expenses.each do |load_expense| %>
       <tr>
