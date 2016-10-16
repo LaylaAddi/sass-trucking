@@ -1,25 +1,29 @@
 <div class="col-lg-6">
   <div class="panel panel-default">
     <div class="panel-heading">
-    <h3><%= link_to @load.company_profile.company_name, 
-    company_profile_path(@company_profile) %></h3>
+      <h3>
+        <%= @load.name if current_driver_user %>(<small> <%= @load.miles %> Miles</small>)
+        <%= link_to @load.company_profile.company_name, 
+        company_profile_path(@company_profile) if current_hrc_user %>
+      </h3>
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
       <!-- Nav tabs -->
       <ul class="nav nav-pills">
-        <li class="active"><a href="#details" data-toggle="tab">Details</a>
-        </li>
-        <li><a href="#pud" data-toggle="tab">Pick Up/Delivery</a>
-        </li>
+        <li><a href="#overview" data-toggle="tab">Overview</a></li>
+        <li class="active"><a href="#pud" data-toggle="tab">Pick Up/Delivery</a></li>
+        
+        
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane fade in active" id="details">
-          <%= render "loads/partials/lefttabs/details" %>
-        </div>
+
         <div class="tab-pane fade" id="pud"> 
         <%= render "loads/partials/lefttabs/pick_up_delivery" %>
+        </div>
+        <div class="tab-pane fade in active" id="overview">
+          <%= render "loads/partials/lefttabs/details" %>
         </div>
 
       </div>

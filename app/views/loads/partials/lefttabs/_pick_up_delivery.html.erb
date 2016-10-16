@@ -14,9 +14,11 @@
     <p>
       <% if @load.pick_up_date.present? %>
       <%= (@load.pick_up_date.strftime("%A %B %-d, %Y")) %><br> 
-      <% if @load.pick_up_time.present? %>
-      Appointment Booked @ <%= (@load.pick_up_time.strftime("%-l:%M %p")) %><br /> 
+      <% if @load.pick_up_time == "2000-01-01 00:00:00" %>
+      <span class="text-red">See notes for details</span>
       <% else %>
+Appointment Booked @ <%= (@load.pick_up_time.strftime("%-l:%M %p")) %><br /> 
+See notes for more details
       <% end %>
       <% if @load.pick_up_notes.present? %>
       <span>(see pick up notes)</span>
@@ -39,12 +41,14 @@
     <p>
       <% if @load.delivery_date.present? %>
       <%= (@load.delivery_date.strftime("%A %B %-d, %Y")) %><br /> 
-      <% if @load.delivery_time.present? %>
-      Appointment Booked @ <%= (@load.delivery_time.strftime("%-l:%M %p")) %>
+      <% if @load.delivery_time == "2000-01-01 00:00:00" %>
+      
+     <span class="text-red">See notes for details</span>
       <% else %>
+      Appointment Booked @ <%= (@load.delivery_time.strftime("%-l:%M %p")) %><br />
       <% end %>
       <% if @load.delivery_notes.present? %><br />
-      <span>(see delivery up notes)</span>
+      <span>(see delivery notes)</span>
       <% else %>
       <% end %>
       <% if @load.load_addresses.present? %><br />
@@ -89,6 +93,4 @@
 </div>
 <p><%= render "loads/partials/lefttabs/address" %></p>
 <%= link_to "Add Address", new_load_load_address_path(@load), 
-  class: "btn btn-success round btn-sm" %>
-<%= link_to 'Edit', edit_load_path(@load), 
-  class: "btn btn-hrcprimary round btn-sm" %>
+  class: "btn btn-success round btn-xs" %>

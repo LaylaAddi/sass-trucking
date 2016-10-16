@@ -1,6 +1,24 @@
 module Dropdown
   extend ActiveSupport::Concern   
   
+PercentageSelect =
+  [
+    ['20%', ".20"],
+    ['5%', ".05"],
+    ['8%', ".08"],
+    ['10%', ".10"],
+    ['12%', ".12"],
+    ['15%', ".15"],
+    ['18%', ".18"],
+    ['22%', ".22"],
+    ['24%', ".24"],
+    ['25%', ".25"],
+    ['28%', ".28"],
+    ['30%', ".30"],
+    ['35%', ".35"]
+  ] 
+  
+  
 CompanyProfileMembershipStatus =
 [ "Member",
   "Non Member"

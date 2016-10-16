@@ -33,7 +33,7 @@ class CompanyProfilesController < ApplicationController
 
     respond_to do |format|
       if @company_profile.save
-        format.html { redirect_to @company_profile, notice: 'Company was successfully created.' }
+        format.html { redirect_to new_load_path, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company_profile }
       else
         format.html { render :new }

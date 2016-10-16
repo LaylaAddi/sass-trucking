@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def hrc_dashboard
     @user = current_user
     @loads = current_user.loads.where(["status_name = ? OR status_name = ?", "Active", "Pending"]) 
+
   end
   
   
@@ -22,6 +23,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @completed_loads = current_user.loads.where(["status_name = ?", "Completed"])
+    @live_loads = current_user.loads.where(["status_name = ? OR status_name = ?", "Active", "Pending"])
   end
   
   def edit

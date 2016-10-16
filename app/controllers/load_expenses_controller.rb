@@ -1,5 +1,6 @@
 class LoadExpensesController < ApplicationController
   before_action :set_load_expense, only: [:show, :edit, :update, :destroy]
+  before_action :validate_hrc_user
 
   # GET /load_expenses
   # GET /load_expenses.json
@@ -70,6 +71,10 @@ class LoadExpensesController < ApplicationController
   end
 
   private
+  
+    def validate_hrc_user
+      !current_hrc_user flash[:danger] = "Stay Out!"
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_load_expense
       @load_expense = LoadExpense.find(params[:id])

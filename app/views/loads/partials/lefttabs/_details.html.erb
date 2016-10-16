@@ -1,14 +1,28 @@
-<h4>Current Status |<%= @load.status_name %>|</h4>
+<h4>
+Load Status
+<% if @load.status_name == "Active" %>
+<span class="label label-success round">
+   <%= @load.status_name %>
+</span>
+<% elsif @load.status_name == "Pending" %>
+<span class="label label-warning round">
+   <%= @load.status_name %>
+</span>         
+<% elsif @load.status_name == "Complete" %>
+<span class="label label-info round">
+   <%= @load.status_name %>
+<% elsif @load.status_name == "Cancelled" %>
+<span class="label label-danger round">
+   <%= @load.status_name %>
+<% end %>
+</span>    
+</h4>
 <p>
-<h3><%= @load.name %></h3>
+<h3><%= @load.name if current_hrc_user %></h3>
 <p>
 <div class="row">
   <div class="col-sm-9">
-    <% if @load.driver_user.present? %>
-    Driver: <%= link_to @load.driver_user.full_name, user_path(@load.driver_user_id) %>
-    <% else %>
-    No Driver Assigned
-    <% end %>
+
   </div>
   <div class="col-sm-3">
     Equipment: <%= @load.equipment_type %>
@@ -46,19 +60,18 @@
     <%= @load.weight %>
   </div>
   <div class="col-sm-3">
-    Units: <%= @load.units %>
+  <% @load.units %>
   </div>
 </div>
 </p>
 <p>
 <div class="row">
   <div class="col-sm-9">
-    Rate:
-    <%= @load.rate %>
+      <% @load.rate %>
   </div>
   <div class="col-sm-3">
     Distance:
-    <%= @load.distance %>
+    <%= @load.miles %>
   </div>
 </div>
 </p>
@@ -78,6 +91,5 @@
   No Special Instructions
   <% end %>
 </p>
-<%= link_to 'Edit', edit_load_path(@load), 
-  class: "btn btn-hrcprimary round btn-sm" %>
+
 <%= Time.now.strftime("%-l:%M %p") %> 

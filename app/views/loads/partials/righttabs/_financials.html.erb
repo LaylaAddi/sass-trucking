@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <% if @load_expenses.present? %>
+    <tr>
+      <th>ID</th>
+      <th>Company</th>
+      <th>Entered On</th>
+      <th>Type</th>
+      <th>Amount</th>
+    </tr>
+    <% end %>
+  </thead>
+  <tbody>
+    <% running_total = 0.00 %>
+    <% @load_expenses.each do |load_expense| %>
+    <tr>
+      <td><%= load_expense.id %></td>
+      <td>
+        <%= link_to load_load_expense_path(@load, load_expense) do %>
+        <%= load_expense.vendor_profile.company_name %>
+        <% end %>   
+      </td>
+      <td><%= load_expense.created_at.strftime("%B %-d, %Y at %-l:%M %p") %></td>
+      <td><%= load_expense.expense_type %></td>
+      <td><%= number_to_currency(load_expense.amount) %></td>
+    </tr>
+    <% running_total = running_total + load_expense.amount %>
+    <% end %>
+  </tbody>
+</table>
+<% net_dollars = @load.rapd - running_total %> 
+<% net_rpm = net_dollars / @load.miles %>  
+
+<table class="table table-bordered table-condensed table-responsive">
+  <thead>
+    <tr>
+      <% if current_hrc_user %>
+      <td class="text-center">
+        <strong>Base Rate</strong><br />
+        <%= number_to_currency(@load.rate) %>
+      </td>
+      <td class="text-center"> 
+        <strong>% to HRC</strong><br />
+        <%= number_to_percentage(@load.percent_deducted * 100) %>
+      </td>
+      <td class="text-center"> 
+        <strong>$ to HRC</strong><br />
+        <%= number_to_currency(@load.ddbop)  %>
+      </td>
+      <td class="text-center">
+        <strong>Gross RPM</strong><br />
+        <%= number_to_currency(@load.grpm) %>
+        <% end %>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">
+        <strong>Driver Load Rate</strong><br />
+        <%= number_to_currency(@load.rapd) %>
+      </td>
+      <td class="text-center"> 
+        <strong>Driver RPM</strong><br /> 
+        <%= number_to_currency(@load.rpmapd) %>
+      </td>
+      <td class="text-center"> 
+        <strong>Driver Expenses</strong><br />
+        <%= number_to_currency(running_total) %>
+      </td>
+      <td class="text-center">
+        <strong>RPM After Expenses</strong><br />
+        <%= number_to_currency(net_rpm) %>
+      </td>
+      <td class="text-center">
+        <strong>Load Rate</strong><br />
+        <%= (@load.rapd) - (running_total) %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

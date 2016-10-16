@@ -1,5 +1,6 @@
 class LoadsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! 
+  before_action :validate_hrc_user, only: [:edit, :update, :destroy]
   before_action :set_load, only: [:show, :edit, :update, :destroy]
 
 
@@ -13,8 +14,8 @@ class LoadsController < ApplicationController
   def show
     @addresses = @load.load_addresses
     @company_profile = @load.company_profile    
-
     @load_expenses = @load.load_expenses
+    @vendor_profile = VendorProfile.all
   end
 
 
@@ -71,7 +72,11 @@ class LoadsController < ApplicationController
   end
 
   private
-  
+    def validate_hrc_user
+      if !current_hrc_user flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
+        redirect_to root_path
+      end
+    end
 
 
     def set_load
@@ -87,7 +92,8 @@ class LoadsController < ApplicationController
         :units, 
         :load_size, 
         :rate, 
-        :distance, 
+        :percent_deducted,      
+        :miles,
         :pick_up_date,
         :pick_up_time,
         :delivery_date,
@@ -120,7 +126,8 @@ class LoadsController < ApplicationController
         :consignee_name,
         :company_profile_id,
         :pick_up_time_notes,
-        :delivery_time_notes
+        :delivery_time_notes,
+        :total_hrc_expenses
         )
     end
 end

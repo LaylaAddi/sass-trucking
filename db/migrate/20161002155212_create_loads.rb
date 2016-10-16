@@ -7,7 +7,9 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.string :units
       t.string :load_size
       t.decimal :rate
-      t.integer :distance
+      t.decimal :percent_deducted      
+      t.integer :miles
+      t.decimal :total_hrc_expenses
       t.date :pick_up_date
       t.time :pick_up_time
       t.string :pick_up_time_notes

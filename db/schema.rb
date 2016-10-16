@@ -90,7 +90,9 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.string   "units"
     t.string   "load_size"
     t.decimal  "rate"
-    t.integer  "distance"
+    t.decimal  "percent_deducted"
+    t.integer  "miles"
+    t.decimal  "total_hrc_expenses"
     t.date     "pick_up_date"
     t.time     "pick_up_time"
     t.string   "pick_up_time_notes"
@@ -284,10 +286,8 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.string   "logo"
     t.string   "contact_name"
     t.string   "email"
-    t.string   "load_expense_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["load_expense_id"], name: "index_vendor_profiles_on_load_expense_id", using: :btree
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
