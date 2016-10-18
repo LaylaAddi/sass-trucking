@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Insurance1:</strong>
+  <%= @driver_statement.insurance1 %>
+</p>
+
+<p>
+  <strong>Insurance2 integer:</strong>
+  <%= @driver_statement.insurance2_integer %>
+</p>
+
+<p>
+  <strong>Trailer rent:</strong>
+  <%= @driver_statement.trailer_rent %>
+</p>
+
+<p>
+  <strong>Truck rent:</strong>
+  <%= @driver_statement.truck_rent %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @driver_statement.notes %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @driver_statement.id %> 
+</p>
+  <%= render "loads" %> 
+<%= link_to 'Edit', edit_driver_user_driver_statement_path(@driver, @driver_statement) %> |
+<%= link_to 'Back', driver_user_driver_statements_path %>

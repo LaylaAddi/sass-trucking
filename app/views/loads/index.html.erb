@@ -8,7 +8,7 @@
       <th>Driver</th> 
       <th>Shipper/Broker</th> 
 
-      <th>Commodity</th>
+      <th>Status</th>
       <th>Weight</th>
       <th>Load size</th>
       <th>Rate</th>
@@ -30,7 +30,7 @@
         </td>
         <td>
           <%= link_to load do %>
-          <%= load.name %>
+          <%= load.load_title %>
           <% end %>
         </td>
         <td>
@@ -44,7 +44,7 @@
           <% end %>
   
         </td>
-        <td><%= load.commodity %></td>
+        <td><%= load.status_name %></td>
         <td><%= load.weight %></td>
         <td><%= load.load_size %></td>
         <td><%= load.rate %></td>

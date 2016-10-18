@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Driver Statements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Insurance1</th>
+      <th>Insurance2 integer</th>
+      <th>Trailer rent</th>
+      <th>Truck rent</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @driver_statements.each do |driver_statement| %>
+      <tr>
+        <td><%= driver_statement.insurance1 %></td>
+        <td><%= driver_statement.insurance2_integer %></td>
+        <td><%= driver_statement.trailer_rent %></td>
+        <td><%= driver_statement.truck_rent %></td>
+        <td><%= driver_statement.notes %></td>
+        <td><%= link_to 'Show', driver_user_driver_statement_path(@driver, driver_statement) %></td>
+        <td><%= link_to 'Edit', edit_driver_user_driver_statement_path(@driver, driver_statement) %></td>
+        <td><%= link_to 'Destroy', driver_user_driver_statement_path(@driver, driver_statement),
+        method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Driver Statement', new_driver_user_driver_statement_path %>

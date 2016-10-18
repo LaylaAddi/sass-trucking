@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  insurance1: 1
+  insurance2_integer: MyString
+  trailer_rent: 1
+  truck_rent: 1
+  notes: MyString
+
+two:
+  insurance1: 1
+  insurance2_integer: MyString
+  trailer_rent: 1
+  truck_rent: 1
+  notes: MyString

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008214707) do
+ActiveRecord::Schema.define(version: 20161017121832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,18 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.string   "email"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "driver_statements", force: :cascade do |t|
+    t.decimal  "insurance1"
+    t.string   "insurance2_integer"
+    t.decimal  "trailer_rent"
+    t.decimal  "truck_rent"
+    t.string   "notes"
+    t.integer  "driver_user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["driver_user_id"], name: "index_driver_statements_on_driver_user_id", using: :btree
   end
 
   create_table "load_addresses", force: :cascade do |t|
@@ -83,6 +95,14 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.index ["vendor_profile_id"], name: "index_load_expenses_on_vendor_profile_id", using: :btree
   end
 
+  create_table "load_payment_categories", force: :cascade do |t|
+    t.boolean "paid",                default: false
+    t.integer "load_id"
+    t.integer "driver_statement_id"
+    t.index ["driver_statement_id"], name: "index_load_payment_categories_on_driver_statement_id", using: :btree
+    t.index ["load_id"], name: "index_load_payment_categories_on_load_id", using: :btree
+  end
+
   create_table "loads", force: :cascade do |t|
     t.string   "name"
     t.string   "commodity"
@@ -106,6 +126,7 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.integer  "hrc_user_id"
     t.integer  "driver_user_id"
     t.integer  "company_profile_id"
+    t.integer  "load_payment_category_id"
     t.string   "updated_by"
     t.string   "special_instructions"
     t.string   "dimentions"
@@ -127,11 +148,12 @@ ActiveRecord::Schema.define(version: 20161008214707) do
     t.float    "destination_longitude"
     t.string   "consignor_name"
     t.string   "consignee_name"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["company_profile_id"], name: "index_loads_on_company_profile_id", using: :btree
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
     t.index ["hrc_user_id"], name: "index_loads_on_hrc_user_id", using: :btree
+    t.index ["load_payment_category_id"], name: "index_loads_on_load_payment_category_id", using: :btree
   end
 
   create_table "mcs", force: :cascade do |t|

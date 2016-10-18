@@ -72,12 +72,6 @@ class LoadsController < ApplicationController
   end
 
   private
-    def validate_hrc_user
-      if !current_hrc_user flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
-        redirect_to root_path
-      end
-    end
-
 
     def set_load
       @load = Load.find(params[:id])
@@ -127,7 +121,9 @@ class LoadsController < ApplicationController
         :company_profile_id,
         :pick_up_time_notes,
         :delivery_time_notes,
-        :total_hrc_expenses
+        :total_hrc_expenses,
+        :load_payment_category_id, 
+        :paid
         )
     end
 end

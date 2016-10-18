@@ -1,6 +1,11 @@
 class AddTable < ActiveRecord::Migration[5.0]
   def change
     
+    create_table :load_payment_categories do |t|  
+      t.boolean :paid, default: false
+      t.integer :load_id, index: true
+      t.integer :driver_statement_id, index: true
+    end
 
     create_table :mcs do |t|
       t.string :type, null: false, default: ""

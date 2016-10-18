@@ -4,21 +4,25 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Load Description</th>
-      <th>Driver</th>
+      <th>Description</th>
+      <th>Driver</th> 
+      <th>Shipper/Broker</th> 
+
       <th>Status</th>
+      <th>Weight</th>
       <th>Load size</th>
       <th>Rate</th>
       <th>Distance</th>
       <th>Pick up time</th>
       <th>Delivery time</th>
+      <th>Equipment type</th>
+      <th></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-
-    <% @loads.each do |load|  %>
-
+    <% @loads.each do |load| %>
       <tr>
         <td>
           <%= link_to load do %>
@@ -27,29 +31,38 @@
         </td>
         <td>
           <%= link_to load do %>
-          <%= load.name %>
+          <%= load.load_title %>
           <% end %>
         </td>
         <td>
           <%= link_to user_path(load.driver_user_id) do %>
             <%= load.driver_user.full_name %>
           <% end %>
-        </td> 
-        <td><%= load.load_title %></td> 
+        </td>
+        <td>
+          <%= link_to company_profile_path(load.company_profile) do %>
+          <%= load.company_profile.company_name %>
+          <% end %>
+  
+        </td>
+        <td><%= load.status_name %></td>
+        <td><%= load.weight %></td>
         <td><%= load.load_size %></td>
         <td><%= load.rate %></td>
         <td><%= load.miles %></td>
-        <td><%= (load.pick_up_time.strftime("%A %B %-d, %Y")) %></td>
-        <td><%= (load.delivery_time.strftime("%A %B %-d, %Y")) %></td>
+        <td> 
+<%= (load.pick_up_date.strftime("%A %B %-d, %Y")) %>
+@ <%= (load.pick_up_time.strftime("%-l:%M %p")) %> 
+        </td>
+        <td>
+<%= (load.delivery_date.strftime("%A %B %-d, %Y")) %>
+@ <%= (load.delivery_time.strftime("%-l:%M %p")) %>
+        </td>
         <td><%= load.equipment_type %></td>
 
       </tr>
-
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Load', new_load_path, 
-  class: "btn btn-hrcprimary round btn-sm" %>

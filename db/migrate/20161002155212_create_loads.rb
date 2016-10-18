@@ -22,7 +22,8 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.string :status_name 
       t.integer :hrc_user_id, index: true
       t.integer :driver_user_id, index: true
-      t.integer :company_profile_id, index: true       
+      t.integer :company_profile_id, index: true   
+      t.integer :load_payment_category_id, index: true  
       t.string :updated_by
       t.string :special_instructions
       t.string :dimentions

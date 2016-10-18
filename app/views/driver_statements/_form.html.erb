@@ -1,0 +1,18 @@
+<%= simple_form_for [@driver, @driver_statement] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :insurance1 %>
+    <%= f.input :insurance2_integer %>
+    <%= f.input :trailer_rent %>
+    <%= f.input :truck_rent %>
+    <%= f.input :notes %>
+    <%= f.input :driver_user_id %>
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
