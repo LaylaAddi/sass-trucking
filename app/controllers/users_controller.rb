@@ -21,10 +21,14 @@ class UsersController < ApplicationController
     @users = User.all
   end
   
-  def show
-    @user = User.find(params[:id])
-    @completed_loads = current_user.loads.where(["status_name = ?", "Completed"])
-    @live_loads = current_user.loads.where(["status_name = ? OR status_name = ?", "Active", "Pending"])
+  def show 
+    @user = User.find(params[:id]) 
+    @driver = DriverUser.find(params[:id]) 
+    
+    if @driver.type == "DriverUser"
+      @completed_loads = @driver.loads.where(["status_name = ?", "Complete"])
+      @live_loads = @driver.loads.where(["status_name = ? OR status_name = ?", "Active", "Pending"])
+    end
   end
   
   def edit
