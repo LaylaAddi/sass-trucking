@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
   
   devise_for :driver_users, 
   :controllers => { registrations: 'driver_users_registrations/registrations'}
-  resources :driver_users
+  resources :driver_users do
+    resources :statements
+  end
   
   resources :users
  

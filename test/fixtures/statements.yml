@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  insurance_payment: 9.99
+  trailer_rental: 9.99
+  truck_rental: 9.99
+  escrow: 9.99
+  driver_user_id: 1
+
+two:
+  insurance_payment: 9.99
+  trailer_rental: 9.99
+  truck_rental: 9.99
+  escrow: 9.99
+  driver_user_id: 1

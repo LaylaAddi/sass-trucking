@@ -18,6 +18,7 @@
   <li>
     <%= link_to load.load_title, load %>
     <p><%= load.miles %></p>
+    <p><%= load.id %></p>
     <p><%= number_to_currency(load.rate, unit: '$') %></p>
     <p>Quantity: <%= qty %></p>
   </li>
@@ -27,3 +28,4 @@
 <% end %>
 
 <b>Total: <%= number_to_currency(total, unit: '$') %></b>
+

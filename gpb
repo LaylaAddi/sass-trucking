@@ -1,4 +1,4 @@
 git add -A
-git commit -m "base cart working"
-git push -u origin dstatement
+git commit -m "added statement"
+git push -u origin state
 

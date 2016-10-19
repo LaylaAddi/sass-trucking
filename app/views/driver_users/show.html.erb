@@ -28,13 +28,13 @@
             <p>
               
               <span class="badge">
-
+                <%= @live_loads.count if @driver.type == "DriverUser" %>
               </span> Live Loads
             </p>
             <p>
-
+              <%= link_to "new statement", new_driver_user_statement_path(@driver) %>
               <span class="badge">
-
+                <%= @completed_loads.count if @driver.type == "DriverUser"  %>
               </span> Completed Loads
             </p>
 
