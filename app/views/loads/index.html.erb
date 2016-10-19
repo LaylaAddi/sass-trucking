@@ -58,7 +58,7 @@
 @ <%= (load.delivery_time.strftime("%-l:%M %p")) %>
         </td>
         <td><%= load.equipment_type %></td>
-
+<td><a href="/cart/<%= load.id %>">Add to Cart</a></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,29 @@
+<h1>Your cart</h1>
+<% if @cart.empty? %>
+  <p></p>
+<% else %>
+<%= link_to "Empty cart", cart_clear_path %>
+<% end %>
+<br><br><br>
+
+<% total = 0 %>
+
+<!-- Accessing the cart session hash ["1",1], where "1" is the product id.
+-->
+
+<% @cart.each do |id, qty| %>
+  <% load = Load.find_by_id(id) %>
+  
+  <ul>
+  <li>
+    <%= link_to load.load_title, load %>
+    <p><%= load.miles %></p>
+    <p><%= number_to_currency(load.rate, unit: '$') %></p>
+    <p>Quantity: <%= qty %></p>
+  </li>
+  </ul>
+
+  <% total += qty*load.rate %>
+<% end %>
+
+<b>Total: <%= number_to_currency(total, unit: '$') %></b>

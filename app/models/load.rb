@@ -27,5 +27,9 @@ class Load < ApplicationRecord
   def rpmapd #rate per mile after percent deducted
    rapd / self.miles
   end
+  
+  def load_title
+    self.origin_city + ", " + origin_state + " TO: " + destination_city + ", " + destination_state   
+  end
 
 end

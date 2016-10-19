@@ -29,15 +29,18 @@ Rails.application.routes.draw do
       resources :load_addresses
   end 
   
- resources :vendor_profiles
+  resources :vendor_profiles
 
+  get '/cart' => 'cart#index'
+  get '/cart/clear' => 'cart#clearCart'
+  get '/cart/:id' => 'cart#add'
+  
   
   get 'hrc_dashboard', to: 'users#hrc_dashboard'
   get 'driver_dashboard', to: 'users#driver_dashboard'
   get 'shipper_dashboard', to: 'users#shipper_dashboard'
   root to: 'creatives#index' 
 
-  
   get 'pages/index', to: 'pages#index'
   
   get 'creatives/carrier_package', to: 'creatives#download_carrier'
