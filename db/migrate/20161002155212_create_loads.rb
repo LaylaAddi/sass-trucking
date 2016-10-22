@@ -10,6 +10,7 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.decimal :percent_deducted      
       t.integer :miles
       t.decimal :total_hrc_expenses
+      t.decimal :rate_to_driver
       t.date :pick_up_date
       t.time :pick_up_time
       t.string :pick_up_time_notes
@@ -44,6 +45,8 @@ class CreateLoads < ActiveRecord::Migration[5.0]
       t.float :destination_longitude 
       t.string :consignor_name
       t.string :consignee_name
+      t.string :type
+      t.integer :load_statement_id, index: true  
 
       t.timestamps
     end

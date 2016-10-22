@@ -5,6 +5,10 @@ class VendorProfilesController < ApplicationController
   # GET /vendor_profiles.json
   def index
     @vendor_profiles = VendorProfile.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @vendor_profiles.as_csv } 
+    end
   end
 
   # GET /vendor_profiles/1

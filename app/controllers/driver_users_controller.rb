@@ -2,6 +2,10 @@ class DriverUsersController < UsersController
   
   def index
     @drivers = DriverUser.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @drivers.as_csv } 
+    end
   end
 
   def update
@@ -22,13 +26,21 @@ class DriverUsersController < UsersController
   
   def show 
     @driver = DriverUser.find(params[:id]) 
+
     
     if @driver.type == "DriverUser"
       @completed_loads = @driver.loads.where(["status_name = ?", "Complete"])
       @live_loads = @driver.loads.where(["status_name = ? OR status_name = ?", "Active", "Pending"])
+
     end
   end
-private
+  
+  def import
+    DriverUser.import(params[:file])
+    redirect_to drivers_path, notice: 'Drivers have been uploaded.'
+  end 
+  
+  private
 
   def user_params
     params.require(:driver_user).permit(:password, 

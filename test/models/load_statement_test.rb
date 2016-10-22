@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StatementTest < ActiveSupport::TestCase
+class LoadStatementTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

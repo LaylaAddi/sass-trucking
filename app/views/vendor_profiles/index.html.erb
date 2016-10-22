@@ -45,3 +45,7 @@
 <br>
 
 <%= link_to 'New Vendor Profile', new_vendor_profile_path %>
+<h4>Export Vendors</h4>
+  <%= link_to "Download Vendors", vendor_profiles_path(format: :csv), 
+  class: "btn btn-primary btn-xs round" %> 
+

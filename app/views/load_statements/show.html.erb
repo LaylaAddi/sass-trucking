@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Trailer rent:</strong>
+  <%= @load_statement.trailer_rent %>
+</p>
+
+<p>
+  <strong>Truck rent:</strong>
+  <%= @load_statement.truck_rent %>
+</p>
+
+<p>
+  <strong>Insurance:</strong>
+  <%= @load_statement.insurance %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @load_statement.notes %>
+</p>
+
+<%= link_to 'Edit', edit_load_statement_path(@load_statement) %> |
+<%= link_to 'Back', load_statements_path %>

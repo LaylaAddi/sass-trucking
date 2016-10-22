@@ -1,6 +1,12 @@
 class AddTable < ActiveRecord::Migration[5.0]
   def change
     
+    create_table :statement_loads do |t|  
+      t.integer :load_id, index: true
+      t.integer :load_statement_id, index: true
+      t.index [:load_id, :load_statement_id], name: 'load_id_load_statement_id_index'
+      t.timestamps
+    end
 
     create_table :mcs do |t|
       t.string :type, null: false, default: ""

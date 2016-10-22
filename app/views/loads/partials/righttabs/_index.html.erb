@@ -3,7 +3,9 @@
     <div class="panel-heading">
       <h3>    
         <% if @load.driver_user.present? %>
-        <%= link_to @load.driver_user.full_name, user_path(@load.driver_user_id) %>
+        <%= link_to @load.driver_user.full_name, 
+        driver_user_path(@load.driver_user_id) %> 
+        
         <% else %>
         No Driver Assigned
         <% end %>

@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.as_csv } 
+    end
   end
   
   def show 
@@ -51,6 +55,12 @@ class HrcUsersController < UsersController
   def show 
     @hrc_user = HrcUser.find(params[:id]) 
   end
+  
+	def self.import(file)	
+  	CSV.foreach(file.path, headers: true) do |row|
+    	User.create! row.to_hash
+  	end
+  end   
   
 private
 

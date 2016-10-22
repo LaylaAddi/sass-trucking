@@ -1,5 +1,4 @@
 class LoadsController < ApplicationController
-  before_action :authenticate_user! 
   before_action :validate_hrc_user, only: [:edit, :update, :destroy]
   before_action :set_load, only: [:show, :edit, :update, :destroy]
 
@@ -16,6 +15,7 @@ class LoadsController < ApplicationController
     @company_profile = @load.company_profile    
     @load_expenses = @load.load_expenses
     @vendor_profile = VendorProfile.all
+
   end
 
 
@@ -30,6 +30,7 @@ class LoadsController < ApplicationController
     @driver = DriverUser.where(["employment_status = ?", "active"])
     @hrc_user = current_hrc_user
     @company_profile = CompanyProfile.all   
+ 
   end
 
 
@@ -56,6 +57,7 @@ class LoadsController < ApplicationController
         format.html { redirect_to @load, notice: 'Load was successfully updated.' }
         format.json { render :show, status: :ok, location: @load }
       else
+        flash[:error] = @load.errors.full_messages.to_sentence
         format.html { render :edit }
         format.json { render json: @load.errors, status: :unprocessable_entity }
       end
@@ -86,49 +88,49 @@ class LoadsController < ApplicationController
 
     def load_params
       params.require(:load).permit(
-        :name,
-        :commodity, 
-        :weight, 
-        :units, 
-        :load_size, 
-        :rate, 
-        :percent_deducted,      
-        :miles,
-        :pick_up_date,
-        :pick_up_time,
-        :delivery_date,
-        :delivery_time,
-        :equipment_type, 
-        :status_name,
-        :driver_user_id,
-        :updated_by,
-        :pick_up_notes,
-        :delivery_notes,
-        :special_instructions,
-        :dimentions,
-        :destination_street,
-        :destination_city,  
-        :destination_state,
-        :destination_zip,
-        :origin_street,
-        :origin_city,  
-        :origin_state,
-        :origin_zip,
-        :origin_latitude,
-        :origin_longitude,
-        :destination_latitude,
-        :destination_longitude,
-        :origin_phone,
-        :origin_contact,
-        :destination_phone,
-        :destination_contact,
-        :consignor_name,
-        :consignee_name,
-        :company_profile_id,
-        :pick_up_time_notes,
-        :delivery_time_notes,
-        :total_hrc_expenses
-        )
+                                    :name,
+                                    :commodity, 
+                                    :weight, 
+                                    :units, 
+                                    :load_size, 
+                                    :rate, 
+                                    :percent_deducted,      
+                                    :miles,
+                                    :pick_up_date,
+                                    :pick_up_time,
+                                    :delivery_date,
+                                    :delivery_time,
+                                    :equipment_type, 
+                                    :status_name,
+                                    :driver_user_id,
+                                    :updated_by,
+                                    :pick_up_notes,
+                                    :delivery_notes,
+                                    :special_instructions,
+                                    :dimentions,
+                                    :destination_street,
+                                    :destination_city,  
+                                    :destination_state,
+                                    :destination_zip,
+                                    :origin_street,
+                                    :origin_city,  
+                                    :origin_state,
+                                    :origin_zip,
+                                    :origin_latitude,
+                                    :origin_longitude,
+                                    :destination_latitude,
+                                    :destination_longitude,
+                                    :origin_phone,
+                                    :origin_contact,
+                                    :destination_phone,
+                                    :destination_contact,
+                                    :consignor_name,
+                                    :consignee_name,
+                                    :company_profile_id,
+                                    :pick_up_time_notes,
+                                    :delivery_time_notes,
+                                    :total_hrc_expenses
+                                    )
     end
 end
 

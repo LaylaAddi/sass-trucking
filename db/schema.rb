@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019042454) do
+ActiveRecord::Schema.define(version: 20161021121425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 20161019042454) do
     t.index ["vendor_profile_id"], name: "index_load_expenses_on_vendor_profile_id", using: :btree
   end
 
+  create_table "load_statements", force: :cascade do |t|
+    t.decimal  "trailer_rent"
+    t.decimal  "truck_rent"
+    t.decimal  "insurance"
+    t.string   "notes"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "loads", force: :cascade do |t|
     t.string   "name"
     t.string   "commodity"
@@ -127,11 +136,14 @@ ActiveRecord::Schema.define(version: 20161019042454) do
     t.float    "destination_longitude"
     t.string   "consignor_name"
     t.string   "consignee_name"
+    t.string   "type"
+    t.integer  "load_statement_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["company_profile_id"], name: "index_loads_on_company_profile_id", using: :btree
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
     t.index ["hrc_user_id"], name: "index_loads_on_hrc_user_id", using: :btree
+    t.index ["load_statement_id"], name: "index_loads_on_load_statement_id", using: :btree
   end
 
   create_table "mcs", force: :cascade do |t|
@@ -227,15 +239,14 @@ ActiveRecord::Schema.define(version: 20161019042454) do
     t.index ["company_profile_id"], name: "index_mcs_on_company_profile_id", using: :btree
   end
 
-  create_table "statements", force: :cascade do |t|
-    t.decimal  "insurance_payment"
-    t.decimal  "trailer_rental"
-    t.decimal  "truck_rental"
-    t.decimal  "escrow"
-    t.integer  "driver_user_id"
+  create_table "statement_loads", force: :cascade do |t|
+    t.integer  "load_id"
+    t.integer  "load_statement_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["driver_user_id"], name: "index_statements_on_driver_user_id", using: :btree
+    t.index ["load_id", "load_statement_id"], name: "load_id_load_statement_id_index", using: :btree
+    t.index ["load_id"], name: "index_statement_loads_on_load_id", using: :btree
+    t.index ["load_statement_id"], name: "index_statement_loads_on_load_statement_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

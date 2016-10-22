@@ -7,7 +7,7 @@
         <div class="profile-info-left">
           <div class="text-center">
             <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="avatar img-circle">
-            <h2><%= @driver.full_name %> <small>(<%= @driver.type_of_user %>)</small></h2>
+            <h2><%= @user.full_name %> <small>(<%= @user.type_of_user %>)</small></h2>
           </div>
           <div class="action-buttons">
             <div class="row">
@@ -43,29 +43,29 @@
           <div class="section">
             <h3>Social</h3>
             <ul class="list-unstyled list-social">
-              <li><i class="fa fa-paper-plane"></i> <%= @driver.email %></li>
-              <li><i class="fa fa-mobile-phone"></i> <%= @driver.cellphone %></li>
+              <li><i class="fa fa-paper-plane"></i> <%= @user.email %></li>
+              <li><i class="fa fa-mobile-phone"></i> <%= @user.cellphone %></li>
               <li>
-                <% if @driver.telephone.present? %>
-                <i class="fa fa-phone"></i> <%= @driver.telephone %>
+                <% if @user.telephone.present? %>
+                <i class="fa fa-phone"></i> <%= @user.telephone %>
                 <% end %>
-                <% if @driver.extention.present? %>
-                ext. <%= @driver.extention %>
+                <% if @user.extention.present? %>
+                ext. <%= @user.extention %>
                 <% end %>
                 </li>
                <div>
                 <strong>Emergency Contact</strong>
-              <li><i class="fa fa-heart-o"></i> <%= @driver.emergency_contact %></li>
-              <li><i class="fa fa-user-md"></i> <%= @driver.emergency_contact_number %></li>
+              <li><i class="fa fa-heart-o"></i> <%= @user.emergency_contact %></li>
+              <li><i class="fa fa-user-md"></i> <%= @user.emergency_contact_number %></li>
               </div>
               <hr>
               <div>
                 <strong>Home Address</strong>
               <address>
-                <%= @driver.street %><br />
-                <%= @driver.city %><br />
-                <%= @driver.state %> 
-                <%= @driver.zip %>
+                <%= @user.street %><br />
+                <%= @user.city %><br />
+                <%= @user.state %> 
+                <%= @user.zip %>
               </address>
       </div>
        
@@ -337,5 +337,5 @@
   </div>
 </div>
 
-<%= link_to "Edit", edit_user_path(@driver), class: "btn btn-hrcprimary btn-xs" %>
+<%= link_to "Edit", edit_user_path(@user), class: "btn btn-hrcprimary btn-xs" %>
 <%= link_to "All Users", users_path, class: "btn btn-hrcsuccess btn-xs" %>

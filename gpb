@@ -1,4 +1,4 @@
 git add -A
-git commit -m "added statement"
-git push -u origin state
+git commit -m "push up"
+git push -u origin loadsti
 

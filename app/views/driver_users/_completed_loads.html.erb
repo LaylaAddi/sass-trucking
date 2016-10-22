@@ -1,26 +1,18 @@
-<h1>Loads</h1>
-
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
       <th>ID</th>
       <th>Description</th>
 
-      <th>Driver</th> 
-      <th>Shipper/Broker</th> 
-
 
       <th>Commodity</th>
       <th>Weight</th>
       <th>Load size</th>
+      <th>Expense</th> 
 
-      <% if current_hrc_user %>
-      <th>HRC Rate</th>
-      <th>Driver Rate</th>
-      <% end %>
-      <% if current_driver_user %>
+
       <th>Rate</th>
-      <% end %>
+
       <th>Distance</th>
       <th>Pick up time</th>
       <th>Delivery time</th>
@@ -30,7 +22,7 @@
   </thead>
 
   <tbody>
-    <% @loads.each do |load| %>
+    <% @completed_loads.each do |load| %>
       <tr>
         <td>
           <%= link_to load do %>
@@ -42,24 +34,15 @@
           <%= load.load_title %> 
           <% end %>
         </td> 
-        <td>
-      <% if current_hrc_user %>
-          <%= link_to driver_user_path(load.driver_user_id) do %>
-            <%= load.driver_user.full_name %>
-          <% end %>
-      <% end %>
-        </td>
-        <td>
-          <%= link_to company_profile_path(load.company_profile) do %>
-          <%= load.company_profile.company_name %>
-          <% end %>
-  
-        </td>
+
+
         <td><%= load.commodity %></td>
         <td><%= load.weight %></td>
         <td><%= load.load_size %></td>
         <td>
-
+          <% load.load_expenses.each do |le| %>
+          <%= number_to_currency(le.amount) %>
+          <% end %>
         </td>
         <td><%= number_to_currency(load.rate) %></td>
         <td><%= load.miles %></td>
@@ -80,4 +63,3 @@
 
 <br>
 
-<%= link_to 'New Load', new_load_path %>
