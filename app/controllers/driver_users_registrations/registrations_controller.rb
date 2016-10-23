@@ -1,5 +1,6 @@
 class DriverUsersRegistrations::RegistrationsController < Devise::RegistrationsController 
   
+
   
   private
 

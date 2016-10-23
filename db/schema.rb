@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021121425) do
+ActiveRecord::Schema.define(version: 20160929044746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,15 +83,6 @@ ActiveRecord::Schema.define(version: 20161021121425) do
     t.index ["vendor_profile_id"], name: "index_load_expenses_on_vendor_profile_id", using: :btree
   end
 
-  create_table "load_statements", force: :cascade do |t|
-    t.decimal  "trailer_rent"
-    t.decimal  "truck_rent"
-    t.decimal  "insurance"
-    t.string   "notes"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "loads", force: :cascade do |t|
     t.string   "name"
     t.string   "commodity"
@@ -102,6 +93,7 @@ ActiveRecord::Schema.define(version: 20161021121425) do
     t.decimal  "percent_deducted"
     t.integer  "miles"
     t.decimal  "total_hrc_expenses"
+    t.decimal  "rate_to_driver"
     t.date     "pick_up_date"
     t.time     "pick_up_time"
     t.string   "pick_up_time_notes"
@@ -237,16 +229,6 @@ ActiveRecord::Schema.define(version: 20161021121425) do
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
     t.index ["company_profile_id"], name: "index_mcs_on_company_profile_id", using: :btree
-  end
-
-  create_table "statement_loads", force: :cascade do |t|
-    t.integer  "load_id"
-    t.integer  "load_statement_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["load_id", "load_statement_id"], name: "load_id_load_statement_id_index", using: :btree
-    t.index ["load_id"], name: "index_statement_loads_on_load_id", using: :btree
-    t.index ["load_statement_id"], name: "index_statement_loads_on_load_statement_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

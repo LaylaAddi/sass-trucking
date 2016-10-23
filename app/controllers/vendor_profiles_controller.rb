@@ -64,6 +64,11 @@ class VendorProfilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def import
+    VendorProfile.import(params[:file])
+    redirect_to vendor_profiles_path, notice: 'Vendors have been uploaded.'
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

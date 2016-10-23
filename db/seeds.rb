@@ -162,24 +162,24 @@ hrcuser = HrcUser.create(
   )
   puts hrcuser.inspect
 end
-50.times do
-driver = DriverUser.create(
- password: "password",
-  password_confirmation: "password", 
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,
-  cellphone: Faker::PhoneNumber.phone_number,  
-  street: Faker::Address.street_name,
-  telephone: Faker::PhoneNumber.phone_number,
-  city: city_data.sample,
-  zip: "123456",
-  emergency_contact: Faker::Name.first_name,
-  emergency_contact_number: Faker::PhoneNumber.phone_number,
-  employment_status: EmploymentStatus.sample
-  )
-  puts driver.inspect
-end
+# 50.times do
+# driver = DriverUser.create(
+# password: "password",
+#   password_confirmation: "password", 
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   email: Faker::Internet.email,
+#   cellphone: Faker::PhoneNumber.phone_number,  
+#   street: Faker::Address.street_name,
+#   telephone: Faker::PhoneNumber.phone_number,
+#   city: city_data.sample,
+#   zip: "123456",
+#   emergency_contact: Faker::Name.first_name,
+#   emergency_contact_number: Faker::PhoneNumber.phone_number,
+#   employment_status: EmploymentStatus.sample
+#   )
+#   puts driver.inspect
+# end
 
 10.times do
 shipperuser = ShipperUser.create(

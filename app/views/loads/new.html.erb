@@ -43,7 +43,7 @@
       <div class="col-sm-3">
         <div class="form-group input-group">
           <%= f.input :percent_deducted, collection:
-           ApplicationRecord::PercentageSelect, label: false, include_blank: "Percentage" %>
+           Load::PercentageSelect, label: false, prompt: "Percentage" %>
           <span class="input-group-addon"><i class="fa fa-percent"></i></span>
         </div>
       </div>

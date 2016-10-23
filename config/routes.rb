@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   devise_for :driver_users, 
   :controllers => { registrations: 'driver_users_registrations/registrations'}
   
-  resources :driver_users
+  resources :driver_users do
+    collection {post :import}
+  end 
   resources :users do
     collection {post :import}
   end 
@@ -33,7 +35,9 @@ Rails.application.routes.draw do
       resources :load_addresses
   end 
 
-  resources :vendor_profiles
+  resources :vendor_profiles do
+    collection {post :import}
+  end   
 
 
   

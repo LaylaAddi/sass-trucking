@@ -4,12 +4,4 @@ class ApplicationController < ActionController::Base
   devise_group :hrc_user, contains: [:hrc_user] 
   before_action :authenticate_user!
 
-  #Makes cart available in views.
-  helper_method :cart 
-  
-  # Ensure cart session hash exists, if not, it creates a new one with its Value to a blank hash.
-  
-  def cart  
-    session[:cart] ||= {}
-  end
 end

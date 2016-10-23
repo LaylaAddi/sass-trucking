@@ -56,11 +56,7 @@ class HrcUsersController < UsersController
     @hrc_user = HrcUser.find(params[:id]) 
   end
   
-	def self.import(file)	
-  	CSV.foreach(file.path, headers: true) do |row|
-    	User.create! row.to_hash
-  	end
-  end   
+
   
 private
 

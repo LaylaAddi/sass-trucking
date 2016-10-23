@@ -37,8 +37,8 @@ class DriverUsersController < UsersController
   
   def import
     DriverUser.import(params[:file])
-    redirect_to drivers_path, notice: 'Drivers have been uploaded.'
-  end 
+    redirect_to driver_users_path, notice: 'Drivers have been uploaded.'
+  end  
   
   private
 

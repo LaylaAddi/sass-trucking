@@ -1,17 +1,19 @@
 class Load < ApplicationRecord
-
+  
+  before_save :set_rate_to_driver
+  before_update :set_rate_to_driver
   belongs_to :hrc_user 
   belongs_to :driver_user, optional: true  
   belongs_to :company_profile 
-  validates_presence_of :driver_user_id
   has_many :load_addresses, dependent: :destroy  
   has_many :load_expenses, dependent: :destroy
-
   accepts_nested_attributes_for :load_expenses
-  validates_presence_of :company_profile 
   before_validation :delivery_date, date: { after_or_equal_to: Proc.new { :pick_up_date }, 
   message: "(error) Delivery can't be before pick up" }, on: :create
-
+  validates_presence_of :driver_user_id
+  validates_presence_of :company_profile 
+  validates_presence_of :percent_deducted
+  validates_numericality_of :percent_deducted
 
   def grpm
     self.rate / self.miles 
@@ -25,13 +27,22 @@ class Load < ApplicationRecord
    self.rate - ddbop 
   end
   
-  def rpmapd #rate per mile after percent deducted
-   rapd / self.miles
+
+  def set_rate_to_driver
+    self.rate_to_driver = rapd
   end
   
   def load_title
-    self.origin_city + ", " + origin_state + " TO: " + destination_city + ", " + destination_state   
+    self.origin_city + ", " + self.origin_state + " TO: " + self.destination_city + ", " + self.destination_state   
   end
 
+  def self.as_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |item|
+        csv << item.attributes.values_at(*column_names)
+      end
+    end
+  end
 
 end

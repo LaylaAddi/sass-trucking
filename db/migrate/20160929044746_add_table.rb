@@ -1,12 +1,137 @@
 class AddTable < ActiveRecord::Migration[5.0]
   def change
     
-    create_table :statement_loads do |t|  
-      t.integer :load_id, index: true
-      t.integer :load_statement_id, index: true
-      t.index [:load_id, :load_statement_id], name: 'load_id_load_statement_id_index'
+    create_table :company_profiles do |t|
+      t.string :company_name
+      t.string :street
+      t.string :city
+      t.string :state
+      t.string :zip  
+      t.string :telephone
+      t.string :fax
+      t.string :website
+      t.string :logo
+      t.string :broker_mc_number
+      t.string :carrier_mc_number
+      t.string :us_dot_number
+      t.string :updated_by
+      t.string :contact
+      t.string :email 
+
       t.timestamps
     end
+    
+ create_table :loads do |t|
+      t.string :name 
+      t.string :commodity
+      t.string :weight
+      t.string :units
+      t.string :load_size
+      t.decimal :rate
+      t.decimal :percent_deducted      
+      t.integer :miles
+      t.decimal :total_hrc_expenses
+      t.decimal :rate_to_driver
+      t.date :pick_up_date
+      t.time :pick_up_time
+      t.string :pick_up_time_notes
+      t.string :pick_up_notes
+      t.date :delivery_date
+      t.time :delivery_time
+      t.string :delivery_time_notes 
+      t.string :delivery_notes      
+      t.string :equipment_type
+      t.string :status_name 
+      t.integer :hrc_user_id, index: true
+      t.integer :driver_user_id, index: true
+      t.integer :company_profile_id, index: true       
+      t.string :updated_by
+      t.string :special_instructions
+      t.string :dimentions
+      t.string :origin_street
+      t.string :origin_city  
+      t.string :origin_state
+      t.string :origin_zip
+      t.string :origin_phone
+      t.string :origin_contact      
+      t.float :origin_latitude
+      t.float :origin_longitude
+      t.string :destination_street
+      t.string :destination_city  
+      t.string :destination_state
+      t.string :destination_zip
+      t.string :destination_phone 
+      t.string :destination_contact        
+      t.float :destination_latitude
+      t.float :destination_longitude 
+      t.string :consignor_name
+      t.string :consignee_name
+      t.string :type
+      t.integer :load_statement_id, index: true  
+
+      t.timestamps
+    end
+    
+    create_table :load_addresses do |t|
+      t.string :address_type
+      t.string :street
+      t.float :latitude
+      t.float :longitude
+      t.string :street2
+      t.string :city
+      t.string :state
+      t.string :zip
+      t.string :company
+      t.string :contact
+      t.string :phone
+      t.string :notes
+      t.integer :load_id, index: true   
+
+      t.timestamps
+    end
+    
+    create_table :load_expenses do |t|
+      t.string :expense_type
+      t.float :latitude
+      t.float :longitude
+      t.decimal :amount
+      t.string :street
+      t.string :city
+      t.string :state
+      t.string :zip
+      t.string :business_name
+      t.integer :load_id, index: true
+      t.integer :vendor_profile_id, index: true
+
+      t.timestamps
+    end
+    
+    create_table :company_profile_memberships do |t|
+      t.integer :company_profile_id, index: true
+      t.integer :user_id, index: true
+      t.string :membership_type
+      t.index [:user_id, :company_profile_id], name: 'user_company_profile'
+
+      t.timestamps
+    end
+    
+
+    
+    create_table :vendor_profiles do |t|
+      t.string :company_name
+      t.string :street
+      t.string :city
+      t.string :state
+      t.string :zip
+      t.string :telephone
+      t.string :fax
+      t.string :website
+      t.string :logo
+      t.string :contact_name
+      t.string :email
+      t.timestamps
+    end
+    
 
     create_table :mcs do |t|
       t.string :type, null: false, default: ""
@@ -97,11 +222,8 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :review_rating
       t.string :review_type
       t.string :company_profile_id, index: true     
-
-
       t.timestamps
     end
-    
-  
+
   end
 end

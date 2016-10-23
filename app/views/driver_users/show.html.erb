@@ -1,26 +1,28 @@
 <%= render "users/partials/show_css" %>
 <div class="container">
   <div class="user-profile">
-    <div class="profile-header-background"><img src="http://demo.thedevelovers.com/dashboard/queenadmin-1.2/assets/img/city.jpg" alt="Profile Header Background"></div>
+    <div class="profile-header-background">
+      <%= image_tag("homeheader.jpg", class: "img-rounded img-responsive") %>  
+    </div>
     <div class="row">
       <div class="col-md-4">
         <div class="profile-info-left">
-          <div class="text-center">
-            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="avatar img-circle">
+          <div class="text-center"> 
+                 <%= image_tag("noUserPhoto.jpg", class: "img-rounded img-responsive img-circle") %> 
             <h2><%= @driver.full_name %> <small>(<%= @driver.type_of_user %>)</small></h2>
           </div>
           <div class="action-buttons">
             <div class="row">
               <div class="col-xs-6">
-                <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Follow</a>
+              
               </div>
               <div class="col-xs-6">
-                <a href="#" class="btn btn-primary btn-block"><i class="fa fa-android-mail"></i> Message</a>
+             
               </div>
             </div>
           </div>
           <div class="section">
-            <h3>About Me</h3>
+            <h3></h3>
             <p></p>  
           </div>
           <div class="section">
@@ -39,10 +41,10 @@
               </span> Completed Loads
             </p>
 
-            <p><span class="badge">620</span> Likes</p>
+
           </div>
           <div class="section">
-            <h3>Social</h3>
+            <h3>Contact <%= @driver.first_name %></h3>
             <ul class="list-unstyled list-social">
               <li><i class="fa fa-paper-plane"></i> <%= @driver.email %></li>
               <li><i class="fa fa-mobile-phone"></i> <%= @driver.cellphone %></li>
@@ -102,10 +104,6 @@
   </div>
 </div>
 
-<%= link_to "Edit", edit_user_path(@driver), class: "btn btn-hrcprimary btn-xs" %>
-<%= link_to "All Users", users_path, class: "btn btn-hrcsuccess btn-xs" %>
+<%= link_to "Edit", edit_user_path(@driver), class: "btn btn-hrcprimary round btn-xs" %>
+<%= link_to "All Users", users_path, class: "btn btn-hrcsuccess round btn-xs" %>
 
-
-<% @completed_loads.each do |cl| %>
-<%= cl.origin_city %>
-<% end %>

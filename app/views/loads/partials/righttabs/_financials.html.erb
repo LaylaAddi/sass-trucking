@@ -59,23 +59,25 @@
     <tr>
       <td class="text-center">
         <strong>Driver Load Rate</strong><br />
-        <%= number_to_currency(@load.rapd) %>
+        <%= @load.rate_to_driver %>
       </td>
       <td class="text-center"> 
         <strong>Driver RPM</strong><br /> 
-        <%= number_to_currency(@load.rpmapd) %>
+        <%= number_to_currency(@load.rate_to_driver / @load.miles)    %>
       </td>
       <td class="text-center"> 
         <strong>Driver Expenses</strong><br />
         <%= number_to_currency(running_total) %>
       </td>
       <td class="text-center">
-        <strong>RPM After Expenses</strong><br />
-        <%= number_to_currency(net_rpm) %>
+        <strong>Rate After Expenses</strong><br />
+                <%= number_to_currency(@load.rate_to_driver - running_total) %> 
+        
       </td>
       <td class="text-center">
-        <strong>Load Rate</strong><br />
-        <%= (@load.rapd) - (running_total) %>
+        <strong>RPM After Expenses</strong><br />
+<%= number_to_currency(net_rpm) %>
+ 
       </td>
     </tr>
   </tbody>

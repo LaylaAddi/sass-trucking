@@ -1,12 +1,16 @@
 class LoadsController < ApplicationController
-  before_action :validate_hrc_user, only: [:edit, :update, :destroy]
+  before_action :validate_admin_user, only: [:destroy]
+  before_action :validate_admin_user, only: [:edit, :update]
   before_action :set_load, only: [:show, :edit, :update, :destroy]
-
 
 
   def index
     @company_profile = CompanyProfile.all
     @loads = Load.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @loads.as_csv }  
+    end
   end
 
 
@@ -52,6 +56,8 @@ class LoadsController < ApplicationController
 
 
   def update
+    @driver = DriverUser.where(["employment_status = ?", "active"]) 
+    @company_profile = CompanyProfile.all  
     respond_to do |format|
       if @load.update(load_params)
         format.html { redirect_to @load, notice: 'Load was successfully updated.' }
@@ -74,9 +80,17 @@ class LoadsController < ApplicationController
   end
 
   private
-    def validate_hrc_user
-      if !current_hrc_user flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
+    def validate_admin_user
+      if !current_hrc_user.admin? 
         redirect_to root_path
+      flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
+      end
+    end
+    
+    def validate_hrc_user
+      if !current_hrc_user
+        redirect_to root_path
+      flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
       end
     end
 

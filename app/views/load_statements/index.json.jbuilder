@@ -1,1 +1,0 @@
-json.array! @load_statements, partial: 'load_statements/load_statement', as: :load_statement
