@@ -1,4 +1,4 @@
-<%= render "users/partials/show_css" %>
+<%= render "layouts/view_partials/user_show_css" %>
 <div class="container">
   <div class="user-profile">
     <div class="profile-header-background">
@@ -28,16 +28,18 @@
           <div class="section">
             <h3>Load Statistics</h3>
             <p>
-             
-
               <span class="badge">
-                <%= @live_loads.count if @driver.type == "DriverUser" %>
+                <%= @active_loads.count if @driver.type == "DriverUser" %>
               </span> Live Loads
             </p>
             <p>
-              
               <span class="badge">
                 <%= @completed_loads.count if @driver.type == "DriverUser"  %>
+              </span> Completed Loads
+            </p>
+            <p>
+              <span class="badge">
+                <%= @paid_loads.count if @driver.type == "DriverUser"  %>
               </span> Completed Loads
             </p>
 
@@ -79,17 +81,21 @@
       <div class="col-md-8">
         <div class="profile-info-right">
           <ul class="nav nav-pills nav-pills-custom-minimal custom-minimal-bottom">
-            <li><a href="#LiveLoads" data-toggle="tab">Live Loads</a></li>
+            <li class="active"><a href="#activeLoads" data-toggle="tab">Active Loads</a></li>
             <li><a href="#CompletedLoads" data-toggle="tab">Completed Loads</a></li>
+            <li><a href="#PaidLoads" data-toggle="tab">Paid Loads</a></li> 
             <li><a href="#Maps" data-toggle="tab">Maps</a></li>
             <li><a href="#Chat" data-toggle="tab">Chat</a></li> 
           </ul>
           <div class="tab-content">
-            <div class="tab-pane fade" id="LiveLoads">
-            <%= render "live_loads" %>
+            <div class="tab-pane fade active" id="activeLoads">
+            <%= render "active_loads" %> 
             </div>
             <div class="tab-pane fade" id="CompletedLoads">
             <%= render "completed_loads" %>
+            </div>
+            <div class="tab-pane fade" id="PaidLoads">
+            <%= render "paid_loads" %>  
             </div>
             <div class="tab-pane fade" id="Maps">
             <%= render "maps" %>

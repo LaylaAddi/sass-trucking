@@ -24,20 +24,13 @@ PercentageSelect =
     ['60%', ".60"],
     ['65%', ".65"],
     ['70%', ".70"],
-    ['75%', ".75"],
-    ['80%', ".80"],
-    ['85%', ".85"] 
-
-  
-  
-
-    
+    ['100%', "100"]
 
 
-  
-  
 CompanyProfileMembershipStatus =
-[ "Member",
+[ 
+  
+  "Member",
   "Non Member"
 ]
   
@@ -56,8 +49,10 @@ CompanyProfileMembershipStatus =
   
 
   LoadSize =
-  ["FTL",
-   "LTL"]
+  [
+    "FTL",
+    "LTL"
+   ]
    
   AddressType =
   
@@ -125,42 +120,36 @@ CompanyProfileMembershipStatus =
       
     EmploymentStatus =
   [
-    "submitted",
-    "pending",
-    "approved",
-    "declined",
-    "active",
-    "sick_leave",
-    "suspended",
-    "vacation",
-    "fired"
+    ["submitted", "submitted"],
+    ["pending", "pending"],
+    ["approved", "approved"],
+    ["declined", "declined"],
+    ["active", "active"],
+    ["sick_leave", "sick_leave"],
+    ["suspended", "suspended"], 
+    ["vacation", "vacation"],
+    ["fired", "fired"]
   ]  
   
     DeliveryStatus =
   [
-    "Waiting For Load",    
-    "Driving to Pick Up",
-    "At Pick Up - Waiting",
-    "At Pick Up - Loading",
-    "Driving to Deliver",
-    "At Delivery - Waiting",
-    "At Delivery - Unloading",
-    "Off Duty"
+    ["Waiting For Load"],    
+    ["Driving to Pick Up"],
+    ["At Pick Up - Waiting"],
+    ["At Pick Up - Loading"],
+    ["Driving to Deliver"],
+    ["At Delivery - Waiting"],
+    ["At Delivery - Unloading"],
+    ["Off Duty"]
   ]    
   
   OfficeLocation =  
   [
-    "Chicago",
-    "Dallas",
-    "Sofiia"
+    ["Buffalo"],
+    ["Dallas"]
   ]     
     
-    UserType =
-  [ "registered",
-    "office",
-    "dispatch",
-    "admin"
-  ]   
+
   
     Yard = 
   [
@@ -185,6 +174,8 @@ CompanyProfileMembershipStatus =
     ['Food', 'Food'],
     ['Maintenance', 'Maintenance'],
     ['Repairs', 'Repairs'],
+    ['Insurance', 'Insurance'],
+    ['Trailer Rent', 'Trailer Rent'],
     ['Other', 'Other']    
   ]    
   
@@ -200,12 +191,20 @@ CompanyProfileMembershipStatus =
   
   LoadStatusStatus =
   [
-  "Pending",
-   "Active",
- "Complete",
-  "Cancelled"
+    ["Active", "Active" ],
+    ["Pending", "Pending" ],
+    ["Complete", "Complete" ],
+    ["Paid", "Paid" ],
+    ["Cancelled", "Cancelled" ]
+  ]
+  
+  LoadDocumentType =
+  [
+    ["Load Confirmation", "Load Confirmation"],
+    ["BOL", "BOL"],
+    ["Other", "Other"]
   ]
       
-    
-    
+ 
 end
+

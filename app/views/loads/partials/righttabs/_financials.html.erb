@@ -37,7 +37,15 @@
     <tr>
       <% if current_hrc_user %>
       <td class="text-center">
-        <strong>Base Rate</strong><br />
+        <strong>Invoice Price</strong><br />
+        <%= number_to_currency(@load.invoice_price) %>
+      </td>
+      <td class="text-center">
+        <strong>Booking Fee</strong><br />
+        <%= number_to_currency(@load.booking_fee) %>
+      </td>
+      <td class="text-center">
+        <strong>Rate After Fee</strong><br />
         <%= number_to_currency(@load.rate) %>
       </td>
       <td class="text-center"> 
@@ -59,7 +67,7 @@
     <tr>
       <td class="text-center">
         <strong>Driver Load Rate</strong><br />
-        <%= @load.rate_to_driver %>
+        <%= number_to_currency(@load.rate_to_driver) %>
       </td>
       <td class="text-center"> 
         <strong>Driver RPM</strong><br /> 

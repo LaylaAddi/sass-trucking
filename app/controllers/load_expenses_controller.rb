@@ -2,34 +2,32 @@ class LoadExpensesController < ApplicationController
   before_action :set_load_expense, only: [:show, :edit, :update, :destroy]
   before_action :validate_hrc_user
 
-  # GET /load_expenses
-  # GET /load_expenses.json
+
   def index
     @load_expenses = LoadExpense.all
   end
 
-  # GET /load_expenses/1
-  # GET /load_expenses/1.json
+
   def show
     @load = Load.find(params[:load_id])  
   end
 
-  # GET /load_expenses/new
+
   def new
     @load = Load.find(params[:load_id])
     @load_expense = @load.load_expenses.new
     @vendor_profile = VendorProfile.all
   end 
 
-  # GET /load_expenses/1/edit
+
   def edit
     @load = Load.find(params[:load_id])
     @vendor_profile = VendorProfile.all
   end
 
-  # POST /load_expenses
-  # POST /load_expenses.json
+
   def create
+    @vendor_profile = VendorProfile.all
     @load = Load.find(params[:load_id])
     @load_expense = @load.load_expenses.create(load_expense_params)
 
@@ -44,8 +42,7 @@ class LoadExpensesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /load_expenses/1
-  # PATCH/PUT /load_expenses/1.json
+
   def update
     @load = Load.find(params[:load_id])
     respond_to do |format|
@@ -59,8 +56,7 @@ class LoadExpensesController < ApplicationController
     end
   end
 
-  # DELETE /load_expenses/1
-  # DELETE /load_expenses/1.json
+
   def destroy
     @load = Load.find(params[:load_id])
     @load_expense.destroy
@@ -72,15 +68,18 @@ class LoadExpensesController < ApplicationController
 
   private
   
-    def validate_hrc_user
-      !current_hrc_user flash[:danger] = "Stay Out!"
-    end
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_load_expense
       @load_expense = LoadExpense.find(params[:id])
     end
+    
+    def validate_hrc_user
+      if !current_hrc_user
+        redirect_to root_path
+      flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
+      end
+    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def load_expense_params
       params.require(:load_expense).permit(
                                             :expense_type, 

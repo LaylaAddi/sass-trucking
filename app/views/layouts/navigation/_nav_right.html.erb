@@ -1,6 +1,6 @@
 <% if current_hrc_user %>  
 
-  <li></li>
+
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
       aria-haspopup="true" aria-expanded="false"><%= current_hrc_user.full_name %> 
@@ -12,6 +12,7 @@
         method: :delete %></li>
     </ul>
   </li>
+  
 
 <% end %>
 

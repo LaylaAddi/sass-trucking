@@ -6,7 +6,9 @@ class LoadsController < ApplicationController
 
   def index
     @company_profile = CompanyProfile.all
-    @loads = Load.all
+  	@search = Load.search(params[:q])
+  	@loads = @search.result.order(:id).page(params[:page]).per(1000) 
+  	
     respond_to do |format|
       format.html
       format.csv { send_data @loads.as_csv }  
@@ -19,6 +21,7 @@ class LoadsController < ApplicationController
     @company_profile = @load.company_profile    
     @load_expenses = @load.load_expenses
     @vendor_profile = VendorProfile.all
+    @load_doc = @load.load_documents 
 
   end
 
@@ -78,6 +81,11 @@ class LoadsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def import
+    Load.import(params[:file])
+    redirect_to loads_path, notice: 'Loads have been uploaded.'
+  end  
 
   private
     def validate_admin_user
@@ -143,7 +151,9 @@ class LoadsController < ApplicationController
                                     :company_profile_id,
                                     :pick_up_time_notes,
                                     :delivery_time_notes,
-                                    :total_hrc_expenses
+                                    :total_hrc_expenses,
+                                    :booking_fee,
+                                    :invoice_price
                                     )
     end
 end

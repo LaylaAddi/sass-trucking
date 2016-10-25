@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File:</strong>
+  <%= @load_document.file %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @load_document.note %>
+</p>
+
+<p>
+  <strong>Load:</strong>
+  <%= @load_document.load_id %>
+</p>
+
+<%= link_to 'Edit', edit_load_document_path(@load_document) %> |
+<%= link_to 'Back', load_documents_path %>

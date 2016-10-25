@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.index ["load_id"], name: "index_load_addresses_on_load_id", using: :btree
   end
 
+  create_table "load_documents", force: :cascade do |t|
+    t.string   "file"
+    t.string   "file_type"
+    t.string   "note"
+    t.integer  "load_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["load_id"], name: "index_load_documents_on_load_id", using: :btree
+  end
+
   create_table "load_expenses", force: :cascade do |t|
     t.string   "expense_type"
     t.float    "latitude"
@@ -90,6 +100,8 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "units"
     t.string   "load_size"
     t.decimal  "rate"
+    t.decimal  "booking_fee"
+    t.decimal  "invoice_price"
     t.decimal  "percent_deducted"
     t.integer  "miles"
     t.decimal  "total_hrc_expenses"

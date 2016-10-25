@@ -126,6 +126,24 @@ steve = HrcUser.create(
   first_name: "Steve",
   last_name: "Chesnowtiz",
   email: "steve@hrclogistics.com",
+  cellphone: "716.986.4010",  
+  street: Faker::Address.street_name,
+  telephone: Faker::PhoneNumber.phone_number,
+  city: city_data.sample,
+  zip: "123456",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number,
+  dispatcher: "true",
+  admin: "true",
+  employment_status: "active"
+  )
+  puts steve.inspect
+kathy = HrcUser.create(
+  password: "password",
+  password_confirmation: "password", 
+  first_name: "Kathy",
+  last_name: "Rodriguez",
+  email: "kathy@hrclogistics.com",
   cellphone: "716.986.4324",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
@@ -134,10 +152,10 @@ steve = HrcUser.create(
   emergency_contact: Faker::Name.first_name,
   emergency_contact_number: Faker::PhoneNumber.phone_number,
   dispatcher: "true",
+  admin: "true",
   employment_status: "active"
   )
-  puts steve.inspect
-
+  puts kathy.inspect
   
   
 10.times do

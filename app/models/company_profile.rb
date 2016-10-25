@@ -18,6 +18,12 @@ class CompanyProfile < ApplicationRecord
     end 
   end
   
+	def self.import(file)	
+  	CSV.foreach(file.path, headers: true) do |row|
+    	CompanyProfile.create! row.to_hash     
+  	end
+  end  
+  
 end
 
       

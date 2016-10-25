@@ -16,18 +16,25 @@
 	  <% @users.each do |user| %>
 		<tr>
 			<td><%= user.id %></td>
-			
-			<td><%= link_to user_path(user) do %>
-			  <%= user.full_name %>
-			  <% end %>
-			</td>
-			
-			<td>Company</td>
+			<td><%= user.full_name %></td>
 			<td><%= truncate(user.user_position, lenght: 15) %> </td> 
 			<td><%= user.type_of_user %></td>
 			<td><%= user.employment_status %></td> 
-			<td>[CONTENT]</td>
-			<td>[CONTENT]</td>
+<td>
+  <div class="btn-group pull-right activity-actions">
+    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
+    <i class="fa fa-th"></i>
+    <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+      <li></li>
+      <li><%= link_to 'Edit', edit_user_path(user) %></li> 
+      <li class="divider"></li>
+      <li><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+  </div>
+</td>
+
 		</tr>
 		<% end %>
 	</tbody>

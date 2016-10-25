@@ -26,7 +26,11 @@ gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'date_validator', '~> 0.9.0'
- 
+gem 'ransack', '~> 1.8', '>= 1.8.2'
+gem 'kaminari', '~> 0.17.0'
+
+
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

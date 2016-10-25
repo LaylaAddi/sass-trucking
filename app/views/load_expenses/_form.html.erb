@@ -6,8 +6,11 @@
     <div class="form-group input-group">
       <span class="input-group-addon"><i class="fa fa-money"></i></span>
       <%= f.collection_select :vendor_profile_id, @vendor_profile.all.order(:company_name),
-        :id, :company_name, include_blank: "Select Vendor"  %>
+        :id, :company_name %>
+        <%= f.input :business_name, label: false, placeholder: "Biz Name (if no vendor)" %>
+      <%= f.input :expense_type, collection: Load::ExpenseType, label: false, placeholder: "Type" %>
       <%= f.input :amount, label: false, placeholder: "Amount" %>
+      
     </div>
   </div>
   <div class="col-sm-6">

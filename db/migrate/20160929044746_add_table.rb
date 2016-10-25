@@ -28,6 +28,8 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :units
       t.string :load_size
       t.decimal :rate
+      t.decimal :booking_fee
+      t.decimal :invoice_price
       t.decimal :percent_deducted      
       t.integer :miles
       t.decimal :total_hrc_expenses
@@ -224,6 +226,14 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :company_profile_id, index: true     
       t.timestamps
     end
+    
+    create_table :load_documents do |t|
+      t.string :file
+      t.string :file_type
+      t.string :note
+      t.integer :load_id, index: true
 
+      t.timestamps
+    end
   end
 end

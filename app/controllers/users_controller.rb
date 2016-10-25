@@ -1,23 +1,9 @@
 class UsersController < ApplicationController
   
-  def hrc_dashboard
-    @user = current_user
-    @loads = current_user.loads.where(["status_name = ? OR status_name = ?", "Active", "Pending"]) 
 
-  end
-  
-  
-  def driver_dashboard
-    @user = current_user
-  end
-  
-
-  def shipper_dashboard
-    @user = current_user
-  end
-  
-  
   def index
+  	@search = Load.search(params[:q])
+  	@loads = @search.result.order(:id).page(params[:page]).per(1000) 
     @users = User.all
     respond_to do |format|
       format.html
@@ -25,122 +11,15 @@ class UsersController < ApplicationController
     end
   end
   
-  def show 
-    @user = User.find(params[:id]) 
-  end
+  # def show 
+  #   @user = User.find(params[:id]) 
+  # end
   
   def edit
     @user = User.find(params[:id])
   end 
 end  
 
-class HrcUsersController < UsersController 
-
-  def update
-    @user = User.find(params[:id])
-    if params[:hrc_user][:password].blank? 
-      params[:hrc_user].delete(:password)
-      params[:hrc_user].delete(:password_confirmation) 
-    end
-    
-    if @user.update!(user_params)
-      flash[:success] = "The user was updated"
-      redirect_to user_path(@user)
-    else
-      flash[:error] = "There was a problem" 
-      render :edit  
-    end
-  end 
-  
-  def show 
-    @hrc_user = HrcUser.find(params[:id]) 
-  end
-  
-
-  
-private
-
-  def user_params
-    params.require(:hrc_user).permit(:password, 
-                                     :password_confirmation,
-                                     :current_password,
-                                     :email,
-                                     :first_name,
-                                     :last_name,
-                                     :telephone,
-                                     :extention,
-                                     :cellphone,
-                                     :street, 
-                                     :city, 
-                                     :state, 
-                                     :zip,  
-                                     :type,
-                                     :image, 
-                                     :profile_image,
-                                     :emergency_contact,
-                                     :emergency_contact_number,
-                                     :company_profile_admin,
-                                     :admin,
-                                     :dispatcher,
-                                     :office,
-                                     :maintenance,
-                                     :shipping_receiving,
-                                     :driver,
-                                     :employment_status 
-                                     )
-                              
-  end
-end
 
 
-
-class ShipperUsersController < UsersController 
-
-  def update
-    @user = User.find(params[:id])
-    if params[:shipper_user][:password].blank?
-      params[:shipper_user].delete(:password)
-      params[:shipper_user].delete(:password_confirmation) 
-    end
-    
-    if @user.update!(user_params)
-      flash[:success] = "The user was updated"
-      redirect_to user_path(@user)
-    else
-      flash[:error] = "There was a problem" 
-      render :edit  
-    end
-  end 
-private
-
-  def user_params
-    params.require(:shipper_user).permit(:password, 
-                                         :password_confirmation,
-                                         :current_password,
-                                         :email,
-                                         :first_name,
-                                         :last_name,
-                                         :telephone,
-                                         :extention,
-                                         :cellphone,
-                                         :street, 
-                                         :city, 
-                                         :state, 
-                                         :zip,  
-                                         :type,
-                                         :image, 
-                                         :profile_image,
-                                         :emergency_contact,
-                                         :emergency_contact_number,
-                                         :company_profile_admin,
-                                         :dispatcher,
-                                         :office,
-                                         :maintenance,
-                                         :shipping_receiving,
-                                         :driver,
-                                         :employment_status 
-                                         )
-                              
-  end
-end
 

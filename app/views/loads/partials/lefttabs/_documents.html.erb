@@ -1,0 +1,6 @@
+<% @load_doc.each do |doc| %>
+<%= doc.file %>
+<%= doc.note %> 
+<% end %>
+<%= link_to 'Add Documents', new_load_load_document_path(@load), 
+class: "btn btn-info btn-xs round pull-right" %>

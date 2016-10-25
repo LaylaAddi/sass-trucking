@@ -1,0 +1,78 @@
+<h1>Active Loads</h1>
+
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Booked On</th>
+      <th>Description</th>
+      <th>Rate</th>
+      <th>Distance (Miles)</th>
+      <th>Load Expenses</th>
+      <th>Pick up time</th>
+      <th>Delivery time</th>
+      <th>Status</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% expense_running_total = 0.00 %>
+    <% hrc_load_running_total = 0.00 %>
+    <% total_miles = 0 %>
+    <% driver_load_running_total = 0.00 %>
+    <% @active_loads.each do |load| %> 
+    <tr>
+      
+      <td><%= load.id %></td>
+      <td><%= (load.created_at.strftime("%A %B %-d, %Y")) %></td>      
+      <td>
+        <%= link_to load do %>
+        <%= load.load_title %> 
+        <% end %>
+      </td>
+      <td><%= number_to_currency(load.rate_to_driver) %></td>
+      <td><%= load.miles %> </td>
+      <td>
+        <% load.load_expenses.each do |le| %>
+        (<%= le.expense_type %> <%= number_to_currency(le.amount) %> 
+        <%= le.vendor_profile.company_name %> <%= le.city %>)  
+        <% expense_running_total = expense_running_total + le.amount %>
+        <% end %>
+      </td>
+      <td>
+        <%= (load.pick_up_date.strftime("%A %B %-d, %Y")) %>
+        @ <%= (load.pick_up_time.strftime("%-l:%M %p")) %> 
+      </td>
+      <td>
+        <%= (load.delivery_date.strftime("%A %B %-d, %Y")) %>
+        @ <%= (load.delivery_time.strftime("%-l:%M %p")) %>
+      </td>
+      <td><%= load.status_name %></td>
+    </tr>
+    <% hrc_load_running_total = hrc_load_running_total + load.rate %> 
+    <% driver_load_running_total = driver_load_running_total + load.rate_to_driver %> 
+    <% total_miles = total_miles + load.miles %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<% driver_net = driver_load_running_total - expense_running_total %>
+<% hrc_net = hrc_load_running_total - driver_load_running_total %>
+<div class="col-lg-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <p>Total <%= number_to_currency(driver_load_running_total) %></p>
+      <p>Total Miles <%= total_miles %></p>
+    </div>
+    <div class="panel-body">
+      <p>Expenses <%= number_to_currency(expense_running_total) %></p>
+
+      <p>Driver Gross RPM <%= number_to_currency(driver_load_running_total / total_miles) %></p>
+      <p>Driver Net RPM <%= number_to_currency(driver_net / total_miles) %></p>
+    </div>
+    <div class="panel-footer">
+      <p>Income After Expenses <%= number_to_currency(driver_net) %></p>
+    </div>
+  </div>
+</div>

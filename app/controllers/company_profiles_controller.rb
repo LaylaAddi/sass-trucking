@@ -64,6 +64,11 @@ class CompanyProfilesController < ApplicationController
     end
   end
   
+  def import
+    CompanyProfile.import(params[:file])
+    redirect_to company_profiles_path, notice: 'Companies/Shippers/Brokers have been uploaded.'
+  end 
+  
 
   private
 
