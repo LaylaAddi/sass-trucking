@@ -70,10 +70,10 @@ class LoadDocumentsController < ApplicationController
 
     def load_document_params
       params.require(:load_document).permit(
-                                            :file, 
+                                            :doc_file, 
                                             :note, 
                                             :load_id, 
-                                            :file_type
+                                            :file_type 
                                             )
     end
 end

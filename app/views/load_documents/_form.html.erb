@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.input :file_type, collection: ApplicationRecord::LoadDocumentType, 
     include_blank: true, placeholder: "Document Type" %> 
-    <%= f.input :file %>
+    <%= f.input :doc_file, as: :file, label: "Add Image/PDF" %>
     <%= f.input :note %>
     <%= f.input :load_id %>
   </div>

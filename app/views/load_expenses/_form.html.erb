@@ -21,8 +21,11 @@
       <%= f.input :state, label: false, placeholder: "State" %>
       <%= f.input :zip, label: false, placeholder: "zip" %>
     </div>
-    <%= link_to "Add New Vendor", new_vendor_profile_path, class: "btn btn-success btn-sm round" %>
+<br />   
+<br /> 
+    <%= link_to "Add New Vendor", new_vendor_profile_path, 
+    class: "btn btn-success btn-sm round pull-left" %>
   </div>
-  <%= f.button :submit, class: "btn btn-info btn-sm round" %>
+  <%= f.button :submit, class: "btn btn-info btn-sm round pull-left" %>
 </div>
 <% end %>

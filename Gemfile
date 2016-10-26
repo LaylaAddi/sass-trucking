@@ -28,8 +28,8 @@ gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'date_validator', '~> 0.9.0'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
 gem 'kaminari', '~> 0.17.0'
-
-
+gem 'carrierwave', '~> 1.0.0.beta'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri

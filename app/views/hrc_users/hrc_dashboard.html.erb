@@ -26,20 +26,25 @@
             <p></p>  
           </div>
           <div class="section">
-            <h3>Load Statistics</h3>
+                       <h3>Load Statistics</h3>
             <p>
              
 
               <span class="badge">
-                <%= @live_loads.count if @hrc_user.type == "DriverUser" %>
-              </span> Live Loads
+                <%= @active_loads.count %>
+              </span> Active Loads 
             </p>
             <p>
-              
               <span class="badge">
-                <%= @completed_loads.count if @hrc_user.type == "DriverUser"  %>
+                <%= @completed_loads.count  %>
               </span> Completed Loads
             </p>
+            <p>
+              <span class="badge">
+                <%= @paid_loads.count  %>
+              </span> Paid Loads
+            </p>
+
 
 
           </div>

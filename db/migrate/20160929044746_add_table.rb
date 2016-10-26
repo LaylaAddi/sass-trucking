@@ -228,7 +228,7 @@ class AddTable < ActiveRecord::Migration[5.0]
     end
     
     create_table :load_documents do |t|
-      t.string :file
+      t.string :doc_file
       t.string :file_type
       t.string :note
       t.integer :load_id, index: true

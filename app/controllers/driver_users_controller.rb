@@ -20,7 +20,7 @@ class DriverUsersController < UsersController
     
     if @user.update!(user_params)
       flash[:success] = "The user was updated"
-      redirect_to users_path(@user)
+      redirect_to root_path
     else
       flash[:error] = "There was a problem" 
       render :edit  

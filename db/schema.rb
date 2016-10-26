@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20160929044746) do
   end
 
   create_table "load_documents", force: :cascade do |t|
-    t.string   "file"
+    t.string   "doc_file"
     t.string   "file_type"
     t.string   "note"
     t.integer  "load_id"
