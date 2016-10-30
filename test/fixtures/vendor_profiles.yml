@@ -12,7 +12,6 @@ one:
   logo: MyString
   contact_name: MyString
   email: MyString
-  company_profile_id: MyString
 
 two:
   company_name: MyString
@@ -26,4 +25,3 @@ two:
   logo: MyString
   contact_name: MyString
   email: MyString
-  company_profile_id: MyString

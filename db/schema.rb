@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929044746) do
+ActiveRecord::Schema.define(version: 20161027032434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.decimal  "first_week_hb"
+    t.decimal  "escrow_total"
+    t.string   "notes_1"
+    t.string   "notes_2"
+    t.decimal  "acct_dec_1"
+    t.decimal  "acct_dec_2"
+    t.decimal  "acct_dec_3"
+    t.string   "acct_str_1"
+    t.string   "acct_str_2"
+    t.string   "acct_str_3"
+    t.integer  "acct_int_1"
+    t.integer  "acct_int_2"
+    t.integer  "accountable_id"
+    t.string   "accountable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["accountable_id", "accountable_type"], name: "index_accounts_on_accountable_id_and_accountable_type", using: :btree
+  end
 
   create_table "company_profile_memberships", force: :cascade do |t|
     t.integer  "company_profile_id"
@@ -241,6 +261,58 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
     t.index ["company_profile_id"], name: "index_mcs_on_company_profile_id", using: :btree
+  end
+
+  create_table "trailers", force: :cascade do |t|
+    t.string   "year"
+    t.string   "make"
+    t.string   "model"
+    t.string   "color"
+    t.string   "number"
+    t.string   "service_status"
+    t.string   "vin"
+    t.string   "image"
+    t.string   "notes"
+    t.integer  "driver_user_id"
+    t.string   "length"
+    t.string   "door_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["driver_user_id"], name: "index_trailers_on_driver_user_id", using: :btree
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.decimal  "week_pay"
+    t.decimal  "escrow_pay"
+    t.decimal  "trans_dec_1"
+    t.decimal  "trans_dec_2"
+    t.decimal  "trans_dec_3"
+    t.integer  "trans_int_1"
+    t.integer  "trans_int_2"
+    t.string   "trans_str_1"
+    t.string   "trans_str_2"
+    t.string   "trans_str_3"
+    t.integer  "account_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["account_id"], name: "index_transactions_on_account_id", using: :btree
+  end
+
+  create_table "trucks", force: :cascade do |t|
+    t.boolean  "belongs_to_hrc", default: false
+    t.string   "year"
+    t.string   "make"
+    t.string   "model"
+    t.string   "color"
+    t.string   "number"
+    t.string   "vin"
+    t.string   "image"
+    t.string   "notes"
+    t.string   "service_status"
+    t.integer  "driver_user_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["driver_user_id"], name: "index_trucks_on_driver_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

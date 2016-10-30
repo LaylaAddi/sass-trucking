@@ -5,8 +5,6 @@
   <%= @vendor_profile.company_name %>
 </p>
 
-
-
 <p>
   <strong>Street:</strong>
   <%= @vendor_profile.street %>
@@ -57,7 +55,5 @@
   <%= @vendor_profile.email %>
 </p>
 
-
-
-<%= link_to 'Edit', vendor_profile_path(@vendor_profile) %>|
+<%= link_to 'Edit', edit_vendor_profile_path(@vendor_profile) %> |
 <%= link_to 'Back', vendor_profiles_path %>

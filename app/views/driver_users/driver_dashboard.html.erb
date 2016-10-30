@@ -7,71 +7,94 @@
     <div class="row">
       <div class="col-md-4">
         <div class="profile-info-left">
-          <div class="text-center"> 
-                 <%= image_tag("noUserPhoto.jpg", class: "img-rounded img-responsive img-circle") %> 
-            <h2><%= @hrc_user.full_name %> <small>(<%= @hrc_user.type_of_user %>)</small></h2>
+          <div class="text-center">
+            <%= image_tag("noUserPhoto.jpg", class: "img-rounded img-responsive img-circle") %> 
+            <h2><%= @driver.full_name %> <small>(<%= @driver.type_of_user %>)</small></h2>
           </div>
           <div class="action-buttons">
             <div class="row">
               <div class="col-xs-6">
-              
               </div>
               <div class="col-xs-6">
-             
               </div>
             </div>
           </div>
           <div class="section">
-            <h3></h3>
-            <p></p>  
+            <h3>Equipment</h3>
+            <p>
+              <% if @trucks.each do |truck| %>
+              <%= link_to truck do %>
+              Truck Number: <%= truck.number %>
+              <br />
+              <%= truck.year %> 
+              <%= truck.make %> 
+              <%= truck.model %>
+              <% end %>
+              <% end.empty? %>
+              <%= @driver.first_name %> has no truck assigned.
+              <% end %>
+            </p>
+            <p>
+              <% if @trailers.each do |trailer| %>
+              <%= link_to trailer do %>
+              Trailer Number: <%= trailer.number %>
+              <br />
+              <%= trailer.year %> 
+              <%= trailer.make %> 
+              <%= trailer.model %>
+              <% end %>
+              <br />
+              <% end.empty? %>
+              <%= @driver.first_name %> has no trailer(s) assigned.
+              <% end %>
+            </p>
           </div>
           <div class="section">
             <h3>Load Statistics</h3>
             <p>
-             
-
               <span class="badge">
-                <%= @live_loads.count if @hrc_user.type == "DriverUser" %>
+              <%= @active_loads.count if @driver.type == "DriverUser" %>
               </span> Live Loads
             </p>
             <p>
-              
               <span class="badge">
-                <%= @completed_loads.count if @hrc_user.type == "DriverUser"  %>
+              <%= @completed_loads.count if @driver.type == "DriverUser"  %>
               </span> Completed Loads
             </p>
-
-
+            <p>
+              <span class="badge">
+              <%= @paid_loads.count if @driver.type == "DriverUser"  %>
+              </span> Paid Loads
+            </p>
           </div>
           <div class="section">
-            <h3>Contact <%= @hrc_user.first_name %></h3>
+            <h3>Contact <%= @driver.first_name %></h3>
             <ul class="list-unstyled list-social">
-              <li><i class="fa fa-paper-plane"></i> <%= @hrc_user.email %></li>
-              <li><i class="fa fa-mobile-phone"></i> <%= @hrc_user.cellphone %></li>
+              <li><i class="fa fa-paper-plane"></i> <%= @driver.email %></li>
+              <li><i class="fa fa-mobile-phone"></i> <%= @driver.cellphone %></li>
               <li>
-                <% if @hrc_user.telephone.present? %>
-                <i class="fa fa-phone"></i> <%= @hrc_user.telephone %>
+                <% if @driver.telephone.present? %>
+                <i class="fa fa-phone"></i> <%= @driver.telephone %>
                 <% end %>
-                <% if @hrc_user.extention.present? %>
-                ext. <%= @hrc_user.extention %>
+                <% if @driver.extention.present? %>
+                ext. <%= @driver.extention %>
                 <% end %>
-                </li>
-               <div>
+              </li>
+              <div>
                 <strong>Emergency Contact</strong>
-              <li><i class="fa fa-heart-o"></i> <%= @hrc_user.emergency_contact %></li>
-              <li><i class="fa fa-user-md"></i> <%= @hrc_user.emergency_contact_number %></li>
+                <li><i class="fa fa-heart-o"></i> <%= @driver.emergency_contact %></li>
+                <li><i class="fa fa-user-md"></i> <%= @driver.emergency_contact_number %></li>
               </div>
               <hr>
               <div>
                 <strong>Home Address</strong>
-              <address>
-                <%= @hrc_user.street %><br />
-                <%= @hrc_user.city %><br />
-                <%= @hrc_user.state %> 
-                <%= @hrc_user.zip %>
-              </address>
-      </div>
-       
+                <address>
+                  <%= @driver.street %><br />
+                  <%= @driver.city %><br />
+                  <%= @driver.state %> 
+                  <%= @driver.zip %>
+                </address>
+              </div>
             </ul>
           </div>
         </div>
@@ -81,25 +104,25 @@
           <ul class="nav nav-pills nav-pills-custom-minimal custom-minimal-bottom">
             <li class="active"><a href="#activeLoads" data-toggle="tab">Active Loads</a></li>
             <li><a href="#CompletedLoads" data-toggle="tab">Completed Loads</a></li>
-            <li><a href="#PaidLoads" data-toggle="tab">Paid Loads</a></li> 
+            <li><a href="#PaidLoads" data-toggle="tab">Paid Loads</a></li>
             <li><a href="#Maps" data-toggle="tab">Maps</a></li>
-            <li><a href="#Chat" data-toggle="tab">Chat</a></li> 
+            <li><a href="#Chat" data-toggle="tab">Chat</a></li>
           </ul>
           <div class="tab-content">
-            <div class="tab-pane fade active" id="activeLoads">
-            <%= render "active_loads" %> 
+            <div class="tab-pane active" id="activeLoads">
+              <%= render "active_loads" %> 
             </div>
             <div class="tab-pane fade" id="CompletedLoads">
-            <%= render "completed_loads" %>
+              <%= render "completed_loads" %>
             </div>
             <div class="tab-pane fade" id="PaidLoads">
-            <%= render "paid_loads" %>  
+              <%= render "paid_loads" %>  
             </div>
             <div class="tab-pane fade" id="Maps">
-            <%= render "maps" %>
+              <%= render "maps" %>
             </div>
             <div class="tab-pane fade" id="Chat">
-            <%= render "chat" %> 
+              <%= render "chat" %> 
             </div>
           </div>
         </div>
@@ -107,3 +130,5 @@
     </div>
   </div>
 </div>
+<%= link_to "Edit", edit_user_path(@driver), class: "btn btn-hrcprimary round btn-xs" %>
+<%= link_to "All Users", users_path, class: "btn btn-hrcsuccess round btn-xs" %>

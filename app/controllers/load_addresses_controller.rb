@@ -1,6 +1,7 @@
 class LoadAddressesController < ApplicationController
   before_action :set_load_address, only: [:show, :edit, :update, :destroy]
-
+  before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy]
+  
   def index
     @load_addresses = LoadAddress.all
   end

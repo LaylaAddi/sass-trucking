@@ -1,5 +1,5 @@
 class HrcUsersController < UsersController 
-  
+  before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy]
   def index
   	@search = HrcUser.search(params[:q])
   	@hrc_users = @search.result.order(:id).page(params[:page]).per(1000) 

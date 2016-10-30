@@ -17,7 +17,7 @@ class VendorProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create vendor_profile" do
     assert_difference('VendorProfile.count') do
-      post vendor_profiles_url, params: { vendor_profile: { city: @vendor_profile.city, company_name: @vendor_profile.company_name, company_profile_id: @vendor_profile.company_profile_id, contact_name: @vendor_profile.contact_name, email: @vendor_profile.email, fax: @vendor_profile.fax, logo: @vendor_profile.logo, state: @vendor_profile.state, street: @vendor_profile.street, telephone: @vendor_profile.telephone, website: @vendor_profile.website, zip: @vendor_profile.zip } }
+      post vendor_profiles_url, params: { vendor_profile: { city: @vendor_profile.city, company_name: @vendor_profile.company_name, contact_name: @vendor_profile.contact_name, email: @vendor_profile.email, fax: @vendor_profile.fax, logo: @vendor_profile.logo, state: @vendor_profile.state, street: @vendor_profile.street, telephone: @vendor_profile.telephone, website: @vendor_profile.website, zip: @vendor_profile.zip } }
     end
 
     assert_redirected_to vendor_profile_url(VendorProfile.last)
@@ -34,7 +34,7 @@ class VendorProfilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update vendor_profile" do
-    patch vendor_profile_url(@vendor_profile), params: { vendor_profile: { city: @vendor_profile.city, company_name: @vendor_profile.company_name, company_profile_id: @vendor_profile.company_profile_id, contact_name: @vendor_profile.contact_name, email: @vendor_profile.email, fax: @vendor_profile.fax, logo: @vendor_profile.logo, state: @vendor_profile.state, street: @vendor_profile.street, telephone: @vendor_profile.telephone, website: @vendor_profile.website, zip: @vendor_profile.zip } }
+    patch vendor_profile_url(@vendor_profile), params: { vendor_profile: { city: @vendor_profile.city, company_name: @vendor_profile.company_name, contact_name: @vendor_profile.contact_name, email: @vendor_profile.email, fax: @vendor_profile.fax, logo: @vendor_profile.logo, state: @vendor_profile.state, street: @vendor_profile.street, telephone: @vendor_profile.telephone, website: @vendor_profile.website, zip: @vendor_profile.zip } }
     assert_redirected_to vendor_profile_url(@vendor_profile)
   end
 

@@ -1,6 +1,7 @@
 class HrcUser < User
   has_many :loads
   has_many :driver_users, through: :loads
+
   
  ransack_alias :hrc_search_params, 
   :first_name_or_last_name_or_email 

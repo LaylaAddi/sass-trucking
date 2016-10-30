@@ -17,12 +17,13 @@ driver_users_path, class: 'btn btn-hrcprimary btn-xs round'%>
 <table class="table table-bordered table-striped table-condensed table-responsive">
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>Name</th>
+			<th>ID</th> 
+			<th><%= sort_link @search, :first_name, "Name" %></th>
 			<th>Email</th>
+			<th>Cellphone</th>
 			<th>Type</th>
-			<th>Employment Status</th>
-			<th> Status</th>
+			<th><%= sort_link @search, :employment_status, "Employment Status" %></th>
+
 
 		</tr>
 	</thead>
@@ -32,11 +33,12 @@ driver_users_path, class: 'btn btn-hrcprimary btn-xs round'%>
 			<td><%= driver.id %></td>
 			
 			<td><%= link_to driver_user_path(driver) do %>
-			  <%= driver.full_name %>
+			  <%= driver.first_name %> <%= driver.last_name %>
 			  <% end %>
 			</td>
 			
 			<td><%= driver.email %></td>
+			<td><%= driver.cellphone %></td>
 			<td><%= driver.type_of_user %></td>
 			<td><%= driver.employment_status %></td> 
 <td>

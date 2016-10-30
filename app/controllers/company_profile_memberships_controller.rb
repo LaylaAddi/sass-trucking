@@ -1,5 +1,6 @@
 class CompanyProfileMembershipsController < ApplicationController
   before_action :set_company_profile_membership, only: [:show, :edit, :update, :destroy]
+  before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy]
 
   # GET /company_profile_memberships
   # GET /company_profile_memberships.json

@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @trailer.year %>
+</p>
+
+<p>
+  <strong>Make:</strong>
+  <%= @trailer.make %>
+</p>
+
+
+
+<p>
+  <strong>Model:</strong>
+  <%= @trailer.model %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @trailer.length %>
+</p>
+
+<p>
+  <strong>Doors:</strong>
+  <%= @trailer.door_type %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @trailer.color %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @trailer.number %>
+</p>
+
+<p>
+  <strong>Service status:</strong>
+  <%= @trailer.service_status %>
+</p>
+
+<p>
+  <strong>Vin:</strong>
+  <%= @trailer.vin %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @trailer.image %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @trailer.notes %>
+</p>
+
+<p>
+  <strong>Driver user:</strong>
+  <%= @trailer.driver_user_id %>
+</p>
+
+<%= link_to 'Edit', edit_trailer_path(@trailer) %> |
+<%= link_to 'Back', trailers_path %>

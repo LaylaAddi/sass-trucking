@@ -1,4 +1,5 @@
 class DriverUsersController < UsersController 
+  before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy]
   
   def index
   	@search = DriverUser.search(params[:q])
@@ -45,6 +46,9 @@ class DriverUsersController < UsersController
     @cancelled = @driver.loads.where(["status_name = ?", "Complete"])
   	@search_cancelled = @cancelled.search(params[:q])
   	@completed_loads = @search_cancelled.result.order(:id).page(params[:page]).per(1000) 
+  	
+  	@trucks = @driver.trucks 
+  	@trailers = @driver.trailers 
   end
     
   def driver_dashboard
@@ -65,6 +69,9 @@ class DriverUsersController < UsersController
     @cancelled = @driver.loads.where(["status_name = ?", "Complete"])
   	@search_cancelled = @cancelled.search(params[:q])
   	@completed_loads = @search_cancelled.result.order(:id).page(params[:page]).per(1000) 
+  	
+  	@trucks = @driver.trucks 
+  	@trailers = @driver.trailers 
   end
  
   def import
@@ -75,6 +82,15 @@ class DriverUsersController < UsersController
 
   
   private
+  
+
+    
+    def validate_driver_user
+      if !current_driver_user
+        redirect_to root_path
+      flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
+      end
+    end
 
   def user_params
     params.require(:driver_user).permit(:password, 

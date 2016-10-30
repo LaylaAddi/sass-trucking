@@ -1,6 +1,6 @@
 class LoadsController < ApplicationController
   before_action :validate_admin_user, only: [:destroy]
-  before_action :validate_admin_user, only: [:edit, :update]
+  before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy] 
   before_action :set_load, only: [:show, :edit, :update, :destroy]
 
 
@@ -95,12 +95,7 @@ class LoadsController < ApplicationController
       end
     end
     
-    def validate_hrc_user
-      if !current_hrc_user
-        redirect_to root_path
-      flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
-      end
-    end
+
 
 
     def set_load

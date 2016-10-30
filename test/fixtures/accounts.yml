@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_week_hb: 9.99
+  escrow_total: 9.99
+  notes_1: MyString
+  notes_2: MyString
+  acct_dec_1: 9.99
+  acct_dec_2: 9.99
+  acct_dec_3: 9.99
+  acct_str_1: MyString
+  acct_str_2: MyString
+  acct_str_3: MyString
+  acct_int_1: 1
+  acct_int_2: 1
+
+two:
+  first_week_hb: 9.99
+  escrow_total: 9.99
+  notes_1: MyString
+  notes_2: MyString
+  acct_dec_1: 9.99
+  acct_dec_2: 9.99
+  acct_dec_3: 9.99
+  acct_str_1: MyString
+  acct_str_2: MyString
+  acct_str_3: MyString
+  acct_int_1: 1
+  acct_int_2: 1

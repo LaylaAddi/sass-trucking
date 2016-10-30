@@ -2,7 +2,5 @@
 
 <%= render 'form', vendor_profile: @vendor_profile %>
 
-<%= link_to 'Show', 
-company_profile_vendor_profile_path(@company_profile, 
-@vendor_profile) %>
-<%= link_to 'Back', company_profile_vendor_profiles_path %>
+<%= link_to 'Show', @vendor_profile, class: "btn btn-success btn-sm round" %> |
+<%= link_to 'Back', vendor_profiles_path, class: "btn btn-hrcinfo btn-sm round" %>

@@ -1,4 +1,4 @@
 git add -A
-git commit -m "push up"
+git commit -m "push up 2"
 git push -u origin load-doc 
 

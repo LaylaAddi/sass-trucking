@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @truck.year %>
+</p>
+
+<p>
+  <strong>Make:</strong>
+  <%= @truck.make %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @truck.model %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @truck.color %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @truck.number %>
+</p>
+
+<p>
+  <strong>Vin:</strong>
+  <%= @truck.vin %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @truck.image %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @truck.notes %>
+</p>
+
+<p>
+  <strong>Service Status:</strong>
+  <%= @truck.service_status %> 
+</p>
+
+<p>
+  <strong>Driver user:</strong>
+  <%= link_to @truck.driver_user.full_name, driver_user_path(@driver) %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_truck_path(@truck) %> |
+<%= link_to 'Back', trucks_path %>

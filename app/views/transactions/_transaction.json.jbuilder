@@ -1,0 +1,2 @@
+json.extract! transaction, :id, :week_pay, :escrow_pay, :trans_dec_1, :trans_dec_2, :trans_dec_3, :trans_int_1, :trans_int_2, :trans_str_1, :trans_str_2, :trans_str_3, :created_at, :updated_at
+json.url transaction_url(transaction, format: :json)

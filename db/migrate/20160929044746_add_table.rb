@@ -116,7 +116,7 @@ class AddTable < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    
+
 
     
     create_table :vendor_profiles do |t|
@@ -234,6 +234,42 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.integer :load_id, index: true
 
       t.timestamps
+      
+    end
+    
+    create_table :trucks do |t|
+      t.boolean :belongs_to_hrc, default: false
+      t.string :year
+      t.string :make
+      t.string :model
+      t.string :color
+      t.string :number
+      t.string :vin
+      t.string :image
+      t.string :notes
+      t.string :service_status
+      t.integer :driver_user_id, index: true
+
+
+      t.timestamps
+    end  
+    
+    create_table :trailers do |t|
+      t.string :year
+      t.string :make
+      t.string :model
+      t.string :color
+      t.string :number
+      t.string :service_status
+      t.string :vin
+      t.string :image
+      t.string :notes
+      t.integer :driver_user_id, index: true
+      t.string :length
+      t.string :door_type
+      t.timestamps
     end
   end
+  
+  
 end

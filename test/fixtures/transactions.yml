@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  week_pay: 9.99
+  escrow_pay: 9.99
+  trans_dec_1: 9.99
+  trans_dec_2: 
+  trans_dec_3: 9.99
+  trans_int_1: 1
+  trans_int_2: 1
+  trans_str_1: MyString
+  trans_str_2: MyString
+  trans_str_3: MyString
+
+two:
+  week_pay: 9.99
+  escrow_pay: 9.99
+  trans_dec_1: 9.99
+  trans_dec_2: 
+  trans_dec_3: 9.99
+  trans_int_1: 1
+  trans_int_2: 1
+  trans_str_1: MyString
+  trans_str_2: MyString
+  trans_str_3: MyString

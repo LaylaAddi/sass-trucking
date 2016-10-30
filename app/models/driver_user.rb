@@ -1,5 +1,8 @@
 class DriverUser < User
   has_many :loads
+  has_many :trucks  
+  has_many :trailers 
+
 
  ransack_alias :driver_search_params,
   :first_name_or_last_name_or_email 

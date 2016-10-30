@@ -5,11 +5,13 @@ class VendorProfilesController < ApplicationController
   # GET /vendor_profiles.json
   def index
     @vendor_profiles = VendorProfile.all
+    
     respond_to do |format|
       format.html
-      format.csv { send_data @vendor_profiles.as_csv } 
+      format.csv { send_data @vendor_profiles.as_csv }  
     end
   end
+
 
   # GET /vendor_profiles/1
   # GET /vendor_profiles/1.json
@@ -32,7 +34,7 @@ class VendorProfilesController < ApplicationController
 
     respond_to do |format|
       if @vendor_profile.save
-        format.html { redirect_to root_path, notice: 'Vendor profile was successfully created.' }
+        format.html { redirect_to @vendor_profile, notice: 'Vendor profile was successfully created.' }
         format.json { render :show, status: :created, location: @vendor_profile }
       else
         format.html { render :new }
@@ -46,7 +48,7 @@ class VendorProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @vendor_profile.update(vendor_profile_params)
-        format.html { redirect_to root_path, notice: 'Vendor profile was successfully updated.' }
+        format.html { redirect_to @vendor_profile, notice: 'Vendor profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @vendor_profile }
       else
         format.html { render :edit }
@@ -60,15 +62,15 @@ class VendorProfilesController < ApplicationController
   def destroy
     @vendor_profile.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Vendor profile was successfully destroyed.' }
+      format.html { redirect_to vendor_profiles_url, notice: 'Vendor profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
   
   def import
     VendorProfile.import(params[:file])
-    redirect_to vendor_profiles_path, notice: 'Vendors have been uploaded.'
-  end 
+    redirect_to vendor_profiles_path, notice: 'Loads have been uploaded.' 
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -78,18 +80,6 @@ class VendorProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vendor_profile_params
-      params.require(:vendor_profile).permit(
-                                            :company_name, 
-                                            :street, 
-                                            :city, 
-                                            :state, 
-                                            :zip, 
-                                            :telephone, 
-                                            :fax, 
-                                            :website, 
-                                            :logo, 
-                                            :contact_name, 
-                                            :email 
-                                            )
+      params.require(:vendor_profile).permit(:company_name, :street, :city, :state, :zip, :telephone, :fax, :website, :logo, :contact_name, :email)
     end
 end

@@ -1,5 +1,5 @@
 class BrokerMcsController < McsController
-  
+  before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy] 
  def show
     @company_profile = CompanyProfile.find(params[:company_profile_id])
     @broker_mc = BrokerMc.find(params[:id])

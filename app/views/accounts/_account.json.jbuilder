@@ -1,0 +1,2 @@
+json.extract! account, :id, :first_week_hb, :escrow_total, :notes_1, :notes_2, :acct_dec_1, :acct_dec_2, :acct_dec_3, :acct_str_1, :acct_str_2, :acct_str_3, :acct_int_1, :acct_int_2, :created_at, :updated_at
+json.url account_url(account, format: :json)

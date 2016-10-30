@@ -1,5 +1,6 @@
+
 <% if current_hrc_user %> 
-<li>
+<li> 
   <%= link_to root_path do %>
     <span class="fa fa-dashboard"></span> 
       Dashboard 
@@ -22,6 +23,8 @@
     <li><%= link_to "Loads", loads_path %></li>
     <li><%= link_to "Companies", company_profiles_path %></li>
     <li><%= link_to "Vendors", vendor_profiles_path %></li> 
+    <li><%= link_to "Trucks", trucks_path %></li>  
+    <li><%= link_to "Trailers", trailers_path %></li>   
     <li role="separator" class="divider"></li>
     <li><%= link_to "Drivers", driver_users_path %></li>
     <li role="separator" class="divider"></li>
@@ -47,35 +50,20 @@
 <% end %>
 
 <% if current_driver_user %> 
-<li><%= link_to "Home", root_path %></li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-  aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">One more separated link</a></li>
-  </ul>
+<li> 
+  <%= link_to root_path do %>
+    <span class="fa fa-dashboard"></span> 
+      Dashboard 
+  <% end %>
 </li>
 <% end %>
 
+
 <% if current_shipper_user %> 
-<li><%= link_to "Home", root_path %></li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-  aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">One more separated link</a></li>
-  </ul>
+<li> 
+  <%= link_to root_path do %>
+    <span class="fa fa-dashboard"></span> 
+      Dashboard 
+  <% end %>
 </li>
 <% end %>
