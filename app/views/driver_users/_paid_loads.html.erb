@@ -59,20 +59,25 @@
 <br>
 <% driver_net = driver_load_running_total - expense_running_total %>
 <% hrc_net = hrc_load_running_total - driver_load_running_total %>
-<div class="col-lg-4">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <p>Total <%= number_to_currency(driver_load_running_total) %></p>
-      <p>Total Miles <%= total_miles %></p>
-    </div>
-    <div class="panel-body">
-      <p>Expenses <%= number_to_currency(expense_running_total) %></p>
-
-      <p>Driver Gross RPM <%= number_to_currency(driver_load_running_total / total_miles) %></p>
-      <p>Driver Net RPM <%= number_to_currency(driver_net / total_miles) %></p>
-    </div>
-    <div class="panel-footer">
-      <p>Income After Expenses <%= number_to_currency(driver_net) %></p>
-    </div>
-  </div>
-</div>
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+      <th>Total</th>
+      <th>Total Miles</th>
+      <th>Gross RPM</th>
+      <th>Expenses</th>
+      <th>Net RPM</th>
+      <th>Income After Expenses</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			  <td><%= number_to_currency(driver_load_running_total) %></td>
+        <td><%= total_miles %></td>
+        <td><%= number_to_currency(driver_load_running_total / total_miles) %></td>
+        <td>- <%= number_to_currency(expense_running_total) %></td>
+        <td><%= number_to_currency(driver_net / total_miles) %></td>
+        <td><%= number_to_currency(driver_net) %></td>
+		</tr>
+	</tbody>
+</table>

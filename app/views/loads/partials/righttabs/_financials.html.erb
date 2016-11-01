@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
-    <% if @load_expenses.present? %>
+    <% if @transactions.present? %>
     <tr>
       <th>ID</th>
-      <th>Company</th>
+      <th>Business</th>
       <th>Entered On</th>
       <th>Type</th>
       <th>Amount</th>
@@ -13,19 +13,18 @@
   </thead>
   <tbody>
     <% running_total = 0.00 %>
-    <% @load_expenses.each do |load_expense| %>
+    <% @transactions.each do |transaction| %>
     <tr>
-      <td><%= load_expense.id %></td>
+      <td><%= transaction.id %></td>
       <td>
-        <%= link_to load_load_expense_path(@load, load_expense) do %>
-        <%= load_expense.vendor_profile.company_name %>
+        <%= link_to load_transaction_path(@load, transaction) do %>
         <% end %>   
       </td>
-      <td><%= load_expense.created_at.strftime("%B %-d, %Y at %-l:%M %p") %></td>
-      <td><%= load_expense.expense_type %></td>
-      <td><%= number_to_currency(load_expense.amount) %></td>
+      <td><%= transaction.created_at.strftime("%B %-d, %Y at %-l:%M %p") %></td>
+      <td><%= transaction.expense_type %></td>
+      <td><%= number_to_currency(transaction.debit) %></td>
     </tr>
-    <% running_total = running_total + load_expense.amount %>
+    <% running_total = running_total + transaction.debit %>
     <% end %>
   </tbody>
 </table>
@@ -74,16 +73,16 @@
         <%= number_to_currency(@load.rate_to_driver / @load.miles)    %>
       </td>
       <td class="text-center"> 
-        <strong>Driver Expenses</strong><br />
+        <strong>Transactions</strong><br />
         <%= number_to_currency(running_total) %>
       </td>
       <td class="text-center">
-        <strong>Rate After Expenses</strong><br />
+        <strong>Rate After Transactions</strong><br />
                 <%= number_to_currency(@load.rate_to_driver - running_total) %> 
         
       </td>
       <td class="text-center">
-        <strong>RPM After Expenses</strong><br />
+        <strong>RPM After Transactions</strong><br />
 <%= number_to_currency(net_rpm) %>
  
       </td>

@@ -8,7 +8,7 @@
       <th>Description</th>
       <th>Rate</th>
       <th>Distance (Miles)</th>
-      <th>Load Expenses</th>
+      <th>Transactions</th>
       <th>Pick up time</th>
       <th>Delivery time</th>
       <th>Status</th>
@@ -34,10 +34,10 @@
       <td><%= number_to_currency(load.rate_to_driver) %></td>
       <td><%= load.miles %> </td>
       <td>
-        <% load.load_expenses.each do |le| %>
-        (<%= le.expense_type %> <%= number_to_currency(le.amount) %> 
-        <%= le.vendor_profile.company_name %> <%= le.city %>)  
-        <% expense_running_total = expense_running_total + le.amount %>
+        <% load.transactions.each do |le| %>
+        (<%= le.expense_type %> <%= number_to_currency(le.debit) %> 
+        <%= le.business_name %> <%= le.city %>)  
+        <% expense_running_total = expense_running_total + le.debit %>
         <% end %>
       </td>
       <td>
@@ -59,20 +59,26 @@
 <br>
 <% driver_net = driver_load_running_total - expense_running_total %>
 <% hrc_net = hrc_load_running_total - driver_load_running_total %>
-<div class="col-lg-4">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <p>Total <%= number_to_currency(driver_load_running_total) %></p>
-      <p>Total Miles <%= total_miles %></p>
-    </div>
-    <div class="panel-body">
-      <p>Expenses <%= number_to_currency(expense_running_total) %></p>
 
-      <p>Driver Gross RPM <%= number_to_currency(driver_load_running_total / total_miles) %></p>
-      <p>Driver Net RPM <%= number_to_currency(driver_net / total_miles) %></p>
-    </div>
-    <div class="panel-footer">
-      <p>Income After Expenses <%= number_to_currency(driver_net) %></p>
-    </div>
-  </div>
-</div>
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+      <th>Total</th>
+      <th>Total Miles</th>
+      <th>Gross RPM</th>
+      <th>Expenses</th>
+      <th>Net RPM</th>
+      <th>Income After Expenses</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			  <td><%= number_to_currency(driver_load_running_total) %></td>
+        <td><%= total_miles %></td>
+        <td><%= number_to_currency(driver_load_running_total / total_miles) %></td>
+        <td>- <%= number_to_currency(expense_running_total) %></td>
+        <td><%= number_to_currency(driver_net / total_miles) %></td>
+        <td><%= number_to_currency(driver_net) %></td>
+		</tr>
+	</tbody>
+</table>

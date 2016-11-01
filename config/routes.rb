@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   resources :loads do
     collection {post :import}
       resources :load_documents, only: [:new, :create, :update] 
-        resources :load_expenses
+        resources :transactions
           resources :load_addresses
   end 
   

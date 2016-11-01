@@ -92,18 +92,17 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     
-    create_table :load_expenses do |t|
+    create_table :transactions do |t|
       t.string :expense_type
-      t.float :latitude
-      t.float :longitude
-      t.decimal :amount
+      t.decimal :debit
+      t.decimal :credit
       t.string :street
       t.string :city
       t.string :state
       t.string :zip
+      t.integer :transactionable_id
+      t.string  :transactionable_type
       t.string :business_name
-      t.integer :load_id, index: true
-      t.integer :vendor_profile_id, index: true
 
       t.timestamps
     end

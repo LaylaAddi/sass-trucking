@@ -19,7 +19,7 @@ class LoadsController < ApplicationController
   def show
     @addresses = @load.load_addresses
     @company_profile = @load.company_profile    
-    @load_expenses = @load.load_expenses
+    @transactions = @load.transactions  
     @vendor_profile = VendorProfile.all
     @load_doc = @load.load_documents 
 

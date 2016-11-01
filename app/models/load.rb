@@ -6,8 +6,8 @@ class Load < ApplicationRecord
   belongs_to :driver_user, optional: true  
   belongs_to :company_profile 
   has_many :load_addresses, dependent: :destroy  
-  has_many :load_expenses, dependent: :destroy
-  accepts_nested_attributes_for :load_expenses 
+  has_many :transactions, as: :transactionable
+  accepts_nested_attributes_for :transactions 
 
   
   has_many :load_documents, dependent: :destroy  

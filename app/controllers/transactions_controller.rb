@@ -1,10 +1,10 @@
-class LoadExpensesController < ApplicationController
+class TransactionsController < ApplicationController
   before_action :set_load_expense, only: [:show, :edit, :update, :destroy]
   before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy]
 
 
   def index
-    @load_expenses = LoadExpense.all
+    @transactions = Transaction.all
   end
 
 
@@ -15,7 +15,7 @@ class LoadExpensesController < ApplicationController
 
   def new
     @load = Load.find(params[:load_id])
-    @load_expense = @load.load_expenses.new
+    @transaction = @load.transactions.new
     @vendor_profile = VendorProfile.all
   end 
 
@@ -29,15 +29,15 @@ class LoadExpensesController < ApplicationController
   def create
     @vendor_profile = VendorProfile.all
     @load = Load.find(params[:load_id])
-    @load_expense = @load.load_expenses.create(load_expense_params)
+    @transaction = @load.transactions.create(transaction_params)
 
     respond_to do |format|
-      if @load_expense.save
+      if @transaction.save
         format.html { redirect_to @load, notice: 'Load expense was successfully created.' }
-        format.json { render :show, status: :created, location: @load_expense }
+        format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new }
-        format.json { render json: @load_expense.errors, status: :unprocessable_entity }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,12 +46,12 @@ class LoadExpensesController < ApplicationController
   def update
     @load = Load.find(params[:load_id])
     respond_to do |format|
-      if @load_expense.update(load_expense_params)
+      if @transaction.update(transaction_params)
         format.html { redirect_to @load, notice: 'Load expense was successfully updated.' }
-        format.json { render :show, status: :ok, location: @load_expense }
+        format.json { render :show, status: :ok, location: @transaction }
       else
         format.html { render :edit }
-        format.json { render json: @load_expense.errors, status: :unprocessable_entity }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,7 +59,7 @@ class LoadExpensesController < ApplicationController
 
   def destroy
     @load = Load.find(params[:load_id])
-    @load_expense.destroy
+    @transaction.destroy
     respond_to do |format|
       format.html { redirect_to @load, notice: 'Load expense was successfully destroyed.' }
       format.json { head :no_content }
@@ -70,7 +70,7 @@ class LoadExpensesController < ApplicationController
   
 
     def set_load_expense
-      @load_expense = LoadExpense.find(params[:id])
+      @transaction = Transaction.find(params[:id])
     end
     
     def validate_hrc_user
@@ -80,19 +80,18 @@ class LoadExpensesController < ApplicationController
       end
     end
 
-    def load_expense_params
-      params.require(:load_expense).permit(
+    def transaction_params
+      params.require(:transaction).permit(
                                             :expense_type, 
-                                            :latitude, 
-                                            :longitude, 
-                                            :amount, 
+                                            :debit, 
+                                            :credit,
                                             :street, 
                                             :city, 
                                             :state, 
                                             :zip, 
                                             :business_name, 
-                                            :load_id,
-                                            :vendor_profile_id
+                                            :transactionable_id,
+                                            :transactionable_type
                                             )
     end
 end
