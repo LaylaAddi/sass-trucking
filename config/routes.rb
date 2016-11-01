@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
 
 
-  resources :transactions
-  resources :accounts
-  resources :vendor_profiles
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users do
