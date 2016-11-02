@@ -73,7 +73,11 @@
         <% end %>
       </td>
       <td>
-
+        <% load.transactions.each do |le| %>
+        (<%= le.expense_type %> <%= number_to_currency(le.debit) %> 
+        <%= le.business_name %> <%= le.city %>)  
+        <% expense_running_total = expense_running_total + le.debit %>
+        <% end %>
       </td>
       <td><%= load.commodity %></td>
       <td><%= load.weight %></td>
