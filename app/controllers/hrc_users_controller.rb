@@ -60,9 +60,9 @@ class HrcUsersController < UsersController
   	@search_paid = @paid.search(params[:q])
   	@paid_loads = @search_paid.result.order(:id).page(params[:page]).per(1000) 
   	
-    @cancelled = @hrc_user.loads.where(["status_name = ?", "Cancelled"])
+    @cancelled = @hrc_user.loads.where(["status_name = ?", "Complete"])
   	@search_cancelled = @cancelled.search(params[:q])
-  	@cancelled_loads = @search_cancelled.result.order(:id).page(params[:page]).per(1000) 
+  	@completed_loads = @search_cancelled.result.order(:id).page(params[:page]).per(1000)
   end
   
   def import
