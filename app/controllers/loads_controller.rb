@@ -5,7 +5,7 @@ class LoadsController < ApplicationController
 
 
   def index
-    @all_loads = Load.where(["status_name = ?", "Active"])
+    @all_loads = Load.all
   	@search_loads = @all_loads.search(params[:q])
   	@loads = @search_loads.result.order(:id).page(params[:page]).per(1000)
   	
