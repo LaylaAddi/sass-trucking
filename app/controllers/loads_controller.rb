@@ -5,10 +5,9 @@ class LoadsController < ApplicationController
 
 
   def index
-    @company_profile = CompanyProfile.all
-  	@search = Load.search(params[:q])
-  	@loads = @search.result.order(:id).page(params[:page]).per(1000) 
-  	#@transactions = @loads.transactions
+    @all_loads = Load.where(["status_name = ?", "Active"])
+  	@search_loads = @all_loads.search(params[:q])
+  	@loads = @search_loads.result.order(:id).page(params[:page]).per(1000)
   	
     respond_to do |format|
       format.html
