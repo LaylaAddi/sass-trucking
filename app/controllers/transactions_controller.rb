@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = Transaction.all
+    @load = Load.find(params[:load_id]) 
   end
 
 
@@ -16,7 +17,7 @@ class TransactionsController < ApplicationController
   def new
     @load = Load.find(params[:load_id])
     @transaction = @load.transactions.new
-    @vendor_profile = VendorProfile.all
+    #@vendor_profile = VendorProfile.all
   end 
 
 

@@ -16,13 +16,13 @@
     <% @transactions.each do |transaction| %>
     <tr>
       <td><%= transaction.id %></td>
-      <td>
-        <%= link_to load_transaction_path(@load, transaction) do %>
-        <% end %>   
-      </td>
       <td><%= transaction.created_at.strftime("%B %-d, %Y at %-l:%M %p") %></td>
       <td><%= transaction.expense_type %></td>
-      <td><%= number_to_currency(transaction.debit) %></td>
+      <td>
+        <%= link_to load_transaction_path(@load, transaction) do %>
+        <%= number_to_currency(transaction.debit) %>
+        <% end %> 
+      </td>
     </tr>
     <% running_total = running_total + transaction.debit %>
     <% end %>
