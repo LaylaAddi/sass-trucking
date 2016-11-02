@@ -86,9 +86,9 @@
       <td><%= number_to_currency(load.rate_to_driver) %></td>
       <td><%= load.miles %> </td>
       <td>
-        <% load.transactions.each do |le| %> 
-        <%= number_to_currency(le.debit) %>
-        <% expense_running_total = expense_running_total + le.debit %>
+        <% load.transactions.each do |lt| %> 
+        <%= number_to_currency(lt.debit) %>
+        <% expense_running_total = expense_running_total + lt.debit %>
         <% end %>
       </td>
       <td>

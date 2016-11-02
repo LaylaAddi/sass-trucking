@@ -8,6 +8,7 @@ class LoadsController < ApplicationController
     @company_profile = CompanyProfile.all
   	@search = Load.search(params[:q])
   	@loads = @search.result.order(:id).page(params[:page]).per(1000) 
+  	#@transactions = @loads.transactions
   	
     respond_to do |format|
       format.html
