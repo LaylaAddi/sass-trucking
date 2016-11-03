@@ -84,4 +84,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { host: 'http://hrclogistics.com/'}
+ActionMailer::Base.delivery_method = :smtp  
+ActionMailer::Base.smtp_settings = {            
+  :address              => "smtp.zoho.com", 
+  :port                 => 465,                 
+  :user_name            => ENV["ZOHO_USERNAME"],
+  :password             => ENV["ZOHO_PASSWORD"],         
+  :authentication       => :login,
+  :ssl                  => true,
+  :tls                  => true,
+  :enable_starttls_auto => true    
+}
+
 end

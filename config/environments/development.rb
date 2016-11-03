@@ -27,10 +27,10 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
-
+  # config.action_mailer.perform_deliveries = true
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -51,5 +51,18 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  config.action_mailer.default_url_options = { host: 'https://trucksass-chesnowitz.c9users.io/'}
+
+config.action_mailer.default_url_options = { host: 'localhost:8080' } 
+ActionMailer::Base.delivery_method = :smtp  
+ActionMailer::Base.smtp_settings = {            
+  :address              => "smtp.zoho.com", 
+  :port                 => 2587,                  
+  :user_name            => ENV["ZOHO_USERNAME"],
+  :password             => ENV["ZOHO_PASSWORD"],         
+  :authentication       => :login,
+  :ssl                  => true,
+  :tls                  => true,
+  :enable_starttls_auto => true    
+}
+
 end
