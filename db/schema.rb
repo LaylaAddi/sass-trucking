@@ -122,14 +122,11 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.float    "destination_longitude"
     t.string   "consignor_name"
     t.string   "consignee_name"
-    t.string   "type"
-    t.integer  "load_statement_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["company_profile_id"], name: "index_loads_on_company_profile_id", using: :btree
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
     t.index ["hrc_user_id"], name: "index_loads_on_hrc_user_id", using: :btree
-    t.index ["load_statement_id"], name: "index_loads_on_load_statement_id", using: :btree
   end
 
   create_table "mcs", force: :cascade do |t|

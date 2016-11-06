@@ -68,8 +68,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.float :destination_longitude 
       t.string :consignor_name
       t.string :consignee_name
-      t.string :type
-      t.integer :load_statement_id, index: true  
 
       t.timestamps
     end
