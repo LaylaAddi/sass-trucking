@@ -304,6 +304,7 @@ ActiveRecord::Schema.define(version: 20161106152459) do
     t.boolean  "maintenance",              default: false
     t.boolean  "shipping_receiving",       default: false
     t.string   "employment_status",        default: "pending"
+    t.string   "time_zone"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

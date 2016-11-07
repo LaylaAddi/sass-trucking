@@ -18,7 +18,8 @@ class HrcUsersRegistrations::RegistrationsController < Devise::RegistrationsCont
                                      :zip,  
                                      :type,
                                      :emergency_contact,
-                                     :emergency_contact_num 
+                                     :emergency_contact_num, 
+                                     :time_zone 
                                      )
   end
 
@@ -44,7 +45,8 @@ class HrcUsersRegistrations::RegistrationsController < Devise::RegistrationsCont
                                      :company_admin,
                                      :admin,
                                      :dispatcher,
-                                     :office
+                                     :office,
+                                     :time_zone 
                                      )
                               
   end

@@ -13,8 +13,10 @@
                 </span>
                 <%= f.input :first_name, autofocus: true, 
                   label: false, placeholder: "First Name" %>
+
               </div>
             </div>
+
             <div class="col-md-4">
               <div class="form-group input-group">
                 <span class="input-group-addon"><i class="fa fa-check-circle-o"></i>
@@ -32,6 +34,10 @@
               </div>
             </div>
           </div>
+                  <label>Change my TimeZone</label>
+                  <br />
+                  <%= f.time_zone_select :time_zone, 
+                  ActiveSupport::TimeZone.us_zones, prompt: "select a zone"%>
           <hr>
           <div class="row">
             <div class="col-md-4">
@@ -126,6 +132,7 @@
             </div>
           </div>
          <hr>
+
           <div class="row">
             <div class="col-md-4">
               <label><small>your current password confirms any changes</small></label>

@@ -29,7 +29,7 @@
   <thead>
     <tr>
       <th><%= sort_link @search_loads, :id, "ID" %></th>
-      <th><%= sort_link @search_loads, :created_at, "Booked On" %></th>
+      <th class="col-xs-3"><%= sort_link @search_loads, :created_at, "Booked On" %></th>
       <th>Description</th>
       <th>Driver</th>
       <th>Shipper/Broker</th>
@@ -43,7 +43,7 @@
       <th>Booking Fee</th> 
       <th><%= sort_link @search_loads, :equipment_type, "Trailer Type" %></th>
       <th><%= sort_link @search_loads, :status_name, "Status" %></th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -59,7 +59,10 @@
         <%= load.id %>
         <% end %>
       </td>
-      <td><%= (load.created_at.strftime("%A %B %-d, %Y")) %></td> 
+      <td><%= (load.created_at.strftime("%A %B %-d, %Y")) %>
+      <br>
+      <%= (load.created_at.strftime("%-l:%M %p %Z")) %>
+      </td> 
       <td>
         <%= link_to load do %>
         <%= load.load_title %> 

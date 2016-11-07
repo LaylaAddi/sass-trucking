@@ -1,4 +1,4 @@
 git add -A
-git commit -m "getting statements associated"
-git push -u origin statement
+git commit -m "timezone resetup"
+git push -u origin time2
 

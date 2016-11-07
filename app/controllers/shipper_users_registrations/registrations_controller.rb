@@ -18,7 +18,8 @@ class ShipperUsersRegistrations::RegistrationsController < Devise::Registrations
                                           :zip,  
                                           :type,
                                           :emergency_contact,
-                                          :emergency_contact_number
+                                          :emergency_contact_number,
+                                          :time_zone 
                                           )
   end
 
@@ -45,7 +46,8 @@ class ShipperUsersRegistrations::RegistrationsController < Devise::Registrations
                                           :dispatcher,
                                           :office,
                                           :office,
-                                          :maintenance
+                                          :maintenance,
+                                          :time_zone 
                                           )
                               
                               
