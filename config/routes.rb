@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
 
 
+
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users do
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   
   resources :driver_users do
     collection {post :import}
+      resources :driver_statements
   end 
   
   resources :users do
@@ -71,5 +73,6 @@ Rails.application.routes.draw do
   get 'pages/index', to: 'pages#index'
   
   get 'creatives/carrier_package', to: 'creatives#download_carrier'
+
 
 end

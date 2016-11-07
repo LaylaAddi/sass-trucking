@@ -148,7 +148,8 @@ class LoadsController < ApplicationController
                                     :delivery_time_notes,
                                     :total_hrc_expenses,
                                     :booking_fee,
-                                    :invoice_price
+                                    :invoice_price,
+                                    :driver_statement_id
                                     )
     end
 end

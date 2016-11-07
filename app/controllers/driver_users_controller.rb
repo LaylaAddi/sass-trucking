@@ -30,18 +30,15 @@ class DriverUsersController < UsersController
   
   def show 
     @driver = DriverUser.find(params[:id]) 
-    
+  	@driver_statements = @driver.driver_statements
     @active = @driver.loads.where(["status_name = ?", "Active"])
   	@search_active = @active.search(params[:q])
   	@active_loads = @search_active.result.order(:id).page(params[:page]).per(1000) 
   	
-    @complete = @driver.loads.where(["status_name = ?", "Complete"])
+
+    @complete = @driver.loads.where(["status_name = ?", "Complete"]) 
   	@search_complete = @complete.search(params[:q])
   	@completed_loads = @search_complete.result.order(:id).page(params[:page]).per(1000) 
-  	
-    @paid = @driver.loads.where(["status_name = ?", "Paid"])
-  	@search_paid = @paid.search(params[:q])
-  	@paid_loads = @search_paid.result.order(:id).page(params[:page]).per(1000) 
   	
     @cancelled = @driver.loads.where(["status_name = ?", "Complete"])
   	@search_cancelled = @cancelled.search(params[:q])
@@ -49,11 +46,12 @@ class DriverUsersController < UsersController
   	
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
+
   end
     
   def driver_dashboard
     @driver = current_driver_user
-
+  	@driver_statements = @driver.driver_statements
     @active = @driver.loads.where(["status_name = ?", "Active"])
   	@search_active = @active.search(params[:q])
   	@active_loads = @search_active.result.order(:id).page(params[:page]).per(1000) 
@@ -62,16 +60,13 @@ class DriverUsersController < UsersController
   	@search_complete = @complete.search(params[:q])
   	@completed_loads = @search_complete.result.order(:id).page(params[:page]).per(1000) 
   	
-    @paid = @driver.loads.where(["status_name = ?", "Paid"])
-  	@search_paid = @paid.search(params[:q])
-  	@paid_loads = @search_paid.result.order(:id).page(params[:page]).per(1000) 
-  	
     @cancelled = @driver.loads.where(["status_name = ?", "Complete"])
   	@search_cancelled = @cancelled.search(params[:q])
   	@completed_loads = @search_cancelled.result.order(:id).page(params[:page]).per(1000) 
   	
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
+
   end
  
   def import

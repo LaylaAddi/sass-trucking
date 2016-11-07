@@ -67,7 +67,8 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.float :destination_latitude
       t.float :destination_longitude 
       t.string :consignor_name
-      t.string :consignee_name
+      t.string :consignee_name 
+      t.integer :driver_statement_id
 
       t.timestamps
     end

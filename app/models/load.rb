@@ -8,7 +8,7 @@ class Load < ApplicationRecord
   has_many :load_addresses, dependent: :destroy  
   has_many :transactions, as: :transactionable
   accepts_nested_attributes_for :transactions 
-
+  belongs_to :driver_statement, optional: true 
   
   has_many :load_documents, dependent: :destroy  
 

@@ -1,4 +1,4 @@
 git add -A
-git commit -m "push up 4"
-git push -u origin poly-exp 
+git commit -m "getting statements associated"
+git push -u origin statement
 

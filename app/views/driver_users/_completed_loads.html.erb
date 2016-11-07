@@ -22,6 +22,8 @@
     <% total_miles = 0 %>
     <% driver_load_running_total = 0.00 %>
     <% @completed_loads.each do |load| %>
+    <% if load.driver_statement_id.present? %>
+    <% else %>
     <tr>
       
       <td><%= load.id %></td>
@@ -50,6 +52,7 @@
       </td>
       <td><%= load.status_name %></td>
     </tr>
+          <% end %>
     <% hrc_load_running_total = hrc_load_running_total + load.rate %> 
     <% driver_load_running_total = driver_load_running_total + load.rate_to_driver %> 
     <% total_miles = total_miles + load.miles %>
@@ -79,5 +82,6 @@
         <td><%= number_to_currency(driver_net / total_miles) %></td>
         <td><%= number_to_currency(driver_net) %></td>
 		</tr>
+		
 	</tbody>
 </table>

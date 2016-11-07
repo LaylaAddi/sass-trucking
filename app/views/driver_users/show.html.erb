@@ -13,7 +13,10 @@
           </div>
           <div class="action-buttons">
             <div class="row">
+
               <div class="col-xs-6">
+               <%= link_to "New Statement", 
+               new_driver_user_driver_statement_path(@driver) if current_hrc_user %>
               </div>
               <div class="col-xs-6">
               </div>
@@ -63,8 +66,8 @@
             </p>
             <p>
               <span class="badge">
-              <%= @paid_loads.count if @driver.type == "DriverUser"  %>
-              </span> Paid Loads
+              <%= @driver_statements.count if @driver.type == "DriverUser"  %>
+              </span> My Statements
             </p>
           </div>
           <div class="section">
@@ -104,7 +107,7 @@
           <ul class="nav nav-pills nav-pills-custom-minimal custom-minimal-bottom">
             <li class="active"><a href="#activeLoads" data-toggle="tab">Active Loads</a></li>
             <li><a href="#CompletedLoads" data-toggle="tab">Completed Loads</a></li>
-            <li><a href="#PaidLoads" data-toggle="tab">Paid Loads</a></li>
+            <li><a href="#DriverStatement" data-toggle="tab">Statements</a></li>
             <li><a href="#Maps" data-toggle="tab">Maps</a></li>
             <li><a href="#Chat" data-toggle="tab">Chat</a></li>
           </ul>
@@ -115,8 +118,8 @@
             <div class="tab-pane fade" id="CompletedLoads">
               <%= render "completed_loads" %>
             </div>
-            <div class="tab-pane fade" id="PaidLoads">
-              <%= render "paid_loads" %>  
+            <div class="tab-pane fade" id="DriverStatement">
+              <%= render "driver_statements" %>  
             </div>
             <div class="tab-pane fade" id="Maps">
               <%= render "maps" %>

@@ -1,0 +1,28 @@
+<h1>Statements</h1>
+
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @driver_statements.each do |driver_statement| %>
+      <tr>
+        <td><%= driver_statement.id %></td>
+        <td><%= driver_statement.notes %></td>
+        <td><%= driver_statement.driver_user.full_name %></td>     
+        <td><%= link_to 'Show', driver_user_driver_statement_path(@driver, driver_statement) %></td>
+        <td><%= link_to 'Edit', edit_driver_user_driver_statement_path(@driver, driver_statement) %></td>
+        <td><%= link_to 'Destroy', driver_user_driver_statement_path(@driver, driver_statement), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
