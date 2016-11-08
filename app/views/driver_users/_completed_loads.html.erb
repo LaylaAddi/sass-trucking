@@ -1,5 +1,7 @@
 <h1>Completed Loads</h1>
-
+ <%= link_to "Create Statement", 
+ new_driver_user_driver_statement_path(@driver),
+ class: 'btn btn-hrcprimary btn-xs round'if current_hrc_user %>
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
@@ -73,6 +75,7 @@
       <th>Income After Expenses</th>
 		</tr>
 	</thead>
+
 	<tbody>
 		<tr>
 			  <td><%= number_to_currency(driver_load_running_total) %></td>
@@ -82,6 +85,6 @@
         <td><%= number_to_currency(driver_net / total_miles) %></td>
         <td><%= number_to_currency(driver_net) %></td>
 		</tr>
-		
+
 	</tbody>
 </table>

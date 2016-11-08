@@ -19,7 +19,8 @@ class DriverStatementsController < ApplicationController
   def new
     @driver = DriverUser.find(params[:driver_user_id])
     @driver_statement = @driver.driver_statements.new
-    @loads = @driver.loads.where(["status_name = ?", "Complete"]).order(:id)
+    #@loads = @driver.loads.where(["status_name = ?", "Complete"]).order(:id) 
+    @loads = @driver.loads.where("driver_statement_id is  NULL")
   end
 
   def edit
@@ -33,6 +34,7 @@ class DriverStatementsController < ApplicationController
     @driver = DriverUser.find(params[:driver_user_id])
     @driver_statement = @driver.driver_statements.new(driver_statement_params)
     @loads = @driver.loads.where(["status_name = ?", "Complete"]) 
+
     respond_to do |format|
       if @driver_statement.save
         format.html { redirect_to driver_user_driver_statements_path(@driver, @driver_statement), notice: 'Driver statement was successfully created.' }
@@ -80,6 +82,6 @@ class DriverStatementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def driver_statement_params
-      params.require(:driver_statement).permit(:notes, :driver_user_id, load_ids: []) 
+      params.require(:driver_statement).permit(:notes, :driver_user_id, load_ids: [] )
     end
 end

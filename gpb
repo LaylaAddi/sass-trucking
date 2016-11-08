@@ -1,4 +1,4 @@
 git add -A
-git commit -m "timezone resetup"
-git push -u origin time2
+git commit -m "statments working!"
+git push -u origin statement2
 

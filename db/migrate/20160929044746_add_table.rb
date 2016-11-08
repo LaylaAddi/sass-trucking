@@ -69,6 +69,7 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :consignor_name
       t.string :consignee_name 
       t.integer :driver_statement_id
+      t.boolean :is_paid, default: false
 
       t.timestamps
     end

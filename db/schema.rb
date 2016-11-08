@@ -130,8 +130,9 @@ ActiveRecord::Schema.define(version: 20161106152459) do
     t.string   "consignor_name"
     t.string   "consignee_name"
     t.integer  "driver_statement_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.boolean  "is_paid",               default: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["company_profile_id"], name: "index_loads_on_company_profile_id", using: :btree
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
     t.index ["hrc_user_id"], name: "index_loads_on_hrc_user_id", using: :btree

@@ -149,7 +149,8 @@ class LoadsController < ApplicationController
                                     :total_hrc_expenses,
                                     :booking_fee,
                                     :invoice_price,
-                                    :driver_statement_id
+                                    :driver_statement_id,
+                                    :is_paid, { load_ids: [] }
                                     )
     end
 end

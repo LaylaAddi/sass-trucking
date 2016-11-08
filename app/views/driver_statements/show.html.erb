@@ -90,60 +90,31 @@
 <table class="table table-bordered table-striped table-condensed table-responsive">
 	<thead>
 		<tr>
-			<th>
-				HRC Income
-			</th>
+
 			<th>
 				Total Miles
-			</th>
-			<th>
-				Net Income
-			</th>
-			<th>
-				Net RPM
-			</th>
-			<th>
-				Booking Fees
-			</th>
-			<th>
-				Net + BF
 			</th>
 			<th>
 				Expenses
 			</th>
 			<th>
-				Gross Driver Income
+				Gross Income
 			</th>
 			<th>
-				Driver Net Income
+				Net Income
 			</th>
 			<th>
-				Driver Gross RPM
+				Gross RPM
 			</th>
 			<th>
-				Driver Net RPM
+				Net RPM
 			</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>
-				<%= number_to_currency(hrc_load_running_total) %>
-			</td>
-			<td>
 				<%= total_miles %>
-			</td>
-			<td>
-				<%= number_to_currency(hrc_net) %>
-			</td>
-			<td>
-				<%= number_to_currency(hrc_net / total_miles) %>
-			</td>
-			<td>
-				<%= number_to_currency(booking_fee_running_total) %>
-			</td>
-			<td>
-				<%= number_to_currency((booking_fee_running_total) + (hrc_net)) %>
 			</td>
 			<td>
 				<%= number_to_currency(expense_running_total) %>
@@ -166,5 +137,4 @@
 
 
 
-
-<%= link_to "#{@driver_statement.driver_user.first_name}' Statements", driver_user_driver_statements_path %>
+<%= link_to "Statements", driver_user_driver_statements_path %>
