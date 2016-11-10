@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_one :company_profile_membership
   has_one :company_profile, through: :company_profile_membership
-   
+
+  
   def full_name
     self.first_name+" "+self.last_name
   end

@@ -36,13 +36,12 @@ class DriverUsersController < UsersController
   	@active_loads = @search_active.result.order(:id).page(params[:page]).per(1000) 
   	
 
-    @complete = @driver.loads.where(["status_name = ?", "Complete"]) 
+    @loads_no_statement = @driver.loads.where("driver_statement_id is NULL")
+    @complete = @loads_no_statement.where(["status_name = ?", "Complete"])
   	@search_complete = @complete.search(params[:q])
   	@completed_loads = @search_complete.result.order(:id).page(params[:page]).per(1000) 
   	
-    @cancelled = @driver.loads.where(["status_name = ?", "Complete"])
-  	@search_cancelled = @cancelled.search(params[:q])
-  	@completed_loads = @search_cancelled.result.order(:id).page(params[:page]).per(1000) 
+
   	
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
@@ -56,7 +55,8 @@ class DriverUsersController < UsersController
   	@search_active = @active.search(params[:q])
   	@active_loads = @search_active.result.order(:id).page(params[:page]).per(1000) 
   	
-    @complete = @driver.loads.where(["status_name = ?", "Complete"])
+    @loads_no_statement = @driver.loads.where("driver_statement_id is NULL")
+    @complete = @loads_no_statement.loads.where(["status_name = ?", "Complete"])
   	@search_complete = @complete.search(params[:q])
   	@completed_loads = @search_complete.result.order(:id).page(params[:page]).per(1000) 
   	
@@ -106,7 +106,9 @@ class DriverUsersController < UsersController
                                         :profile_image,
                                         :emergency_contact,
                                         :emergency_contact_number,
-                                        :employment_status
+                                        :employment_status,
+                                        :flat_rpm_driver, 
+                                        :driver_ppm 
                                         )
                               
   end

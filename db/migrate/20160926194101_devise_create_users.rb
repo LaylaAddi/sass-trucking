@@ -24,10 +24,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :office, default: false
       t.boolean :maintenance, default: false  
       t.boolean :shipping_receiving, default: false 
+      t.boolean :flat_rpm_driver, default: false  
+      t.decimal :driver_ppm
       t.string :employment_status, default: "pending"
       t.string :time_zone 
       
-      
+
  
       
       ## Recoverable

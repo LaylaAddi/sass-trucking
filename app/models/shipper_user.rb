@@ -1,7 +1,12 @@
 class ShipperUser < User
-  
- ransack_alias :shipper_search_params, 
+  ransack_alias :shipper_search_params, 
   :first_name_or_last_name_or_email 
+
+  mount_uploader :image, UserImageUploader  
+  mount_uploader :profile_image, UserProfileImageUploader  
+  
+  
+ private 
   
   def self.as_csv
     CSV.generate do |csv|
@@ -17,4 +22,7 @@ class ShipperUser < User
     	ShipperUser.create! row.to_hash
   	end
   end  
+  
+
+  
 end

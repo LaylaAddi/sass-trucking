@@ -1,7 +1,7 @@
 class Load < ApplicationRecord
   
-  before_save :set_rate, :set_rate_to_driver
-  before_update :set_rate, :set_rate_to_driver 
+  before_save :set_booking_fee, :set_rate_to_driver_after_factor_fees
+  before_update :set_booking_fee, :set_rate_to_driver_after_factor_fees 
   belongs_to :hrc_user 
   belongs_to :driver_user, optional: true  
   belongs_to :company_profile 
@@ -19,34 +19,42 @@ class Load < ApplicationRecord
   validates_presence_of :origin_street,:origin_city, :origin_state, :destination_street, 
   :destination_city, :destination_state, :load_size, :percent_deducted, :miles, 
   :equipment_type, :status_name, :driver_user_id, :company_profile, :percent_deducted,
-  :booking_fee, :invoice_price, :consignor_name, :consignee_name
+  :rate_to_driver, :invoice_price, :consignor_name, :consignee_name
   
-  validates_numericality_of :percent_deducted
+  validates_numericality_of :percent_deducted 
   
   ransack_alias :load_search_params,
   :driver_user_first_name_or_driver_user_last_name_or_origin_city_or_destination_city_or_origin_state_or_destination_state_or_company_profile_company_name
 
- def set_rate
-   self.rate = self.invoice_price - self.booking_fee
+ def set_booking_fee
+   self.booking_fee = self.invoice_price - self.rate_to_driver
  end
- 
+
+
   def grpm
-    self.rate / self.miles 
+    self.invoice_price / self.miles 
   end
-
+  
+ 
   def ddbop #dollars deducted based on percent
-   self.rate * self.percent_deducted
+   self.rate_to_driver * self.percent_deducted
   end
   
-  def rapd #rate after percent deducted
-   self.rate - ddbop 
+  def booking_fee_plus_percent_in_dollars
+    self.booking_fee + ddbop
+  end
+  
+  def hrc_rpm
+    booking_fee_plus_percent_in_dollars / self.miles 
+  end
+  
+  def set_rate_to_driver_after_factor_fees
+   self.rate_to_driver_after_factor_fees = self.rate_to_driver - ddbop 
   end
   
 
-  def set_rate_to_driver
-    self.rate_to_driver = rapd
-  end
   
+
   def load_title
     self.origin_city + ", " + self.origin_state + " TO: " + self.destination_city + ", " + self.destination_state   
   end

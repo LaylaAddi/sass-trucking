@@ -1,4 +1,4 @@
-<h1>Editing Load<small> <%= @load.name %></small></h1>
+<h1>Editing Load<small> <%= @load.load_title %></small></h1>
 <%= simple_form_for(@load) do |f| %>
 <%= f.error_notification %>
 <div class="col-sm-12 col-sm-offset-0 shadow round animated">
@@ -38,7 +38,7 @@
          <div class="col-sm-3">
             <div class="form-group input-group">
                <span class="input-group-addon">$</span>
-               <%= f.input :booking_fee, label: false, placeholder: "Booking Fee"  %> 
+               <%= f.input :rate_to_driver, label: false, placeholder: "Rate To Driver"  %> 
             </div>
          </div>
          <div class="col-sm-2">

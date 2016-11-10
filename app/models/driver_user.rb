@@ -4,11 +4,21 @@ class DriverUser < User
   has_many :trailers 
   has_many :driver_statements, through: :loads
   has_many :driver_statements
- ransack_alias :driver_search_params,
+
+  ransack_alias :driver_search_params,
   :first_name_or_last_name_or_email 
 
- 
 
+
+  mount_uploader :image, UserImageUploader  
+  mount_uploader :profile_image, UserProfileImageUploader  
+  
+
+
+
+
+ private
+ 
   def self.as_csv
     CSV.generate do |csv|
       csv << column_names
@@ -22,6 +32,7 @@ class DriverUser < User
   	CSV.foreach(file.path, headers: true) do |row|
     	DriverUser.create! row.to_hash
   	end
-  end  
+  end   
+
   
 end

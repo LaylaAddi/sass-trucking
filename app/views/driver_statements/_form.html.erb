@@ -1,13 +1,80 @@
 <%= simple_form_for [@driver, @driver_statement] do |f|  %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :notes %>
-    <%= f.input :driver_user_id %>   
+
+   
+   
  
     <%= f.collection_check_boxes(:load_ids, @loads, :id, :id)%> 
-  </div>
 
+<div class="col-lg-12 animated">
+<div class="panel panel-default animated shadow">
+<div class="panel-heading animated">
+
+</div>
+<div class="panel-body animated"> 
+   <table class="table table-striped table-hover table-condensed table-responsive ">
+	<!--<thead>-->
+		<!--<tr>-->
+		<!--	<th>-->
+		<!--		[HEADER]-->
+		<!--	</th>-->
+		<!--	<th>-->
+		<!--		[HEADER]-->
+		<!--	</th>-->
+		<!--	<th>-->
+		<!--		[HEADER]-->
+		<!--	</th>-->
+		<!--	<th>-->
+		<!--		[HEADER]-->
+		<!--	</th>-->
+		<!--</tr>-->
+	<!--</thead>-->
+	<tbody>
+		<tr class="animated">
+			<td> 
+				<%= f.input :notes %></td>
+			</td>
+		</tr>
+		<tr class="animated">
+<td>
+<%= f.input :payment_status, label: false, 
+			        collection: ApplicationRecord::DriverStatementPayment, prompt: "Payment Status" %>
+</td>	
+
+			<td> 
+				<%= f.input :insurance_payment %></td>
+			</td>
+			<td> 
+				<%= f.input :trailer_rental %></td>
+			</td>
+			<td> 
+				<%= f.input :truck_rental %></td>
+			</td>
+			<td> 
+				<%= f.input :other %></td>
+			</td>			
+		</tr>
+		<tr class="animated"> 
+
+			<td>
+               <%= f.text_field :due_date, class: "bring_front",
+                  placeholder: "Payment Due On" %>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+</div>
+<div class="panel-footer animated">
+    <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-info btn-sm round" %>
+  </div>
+</div>
+</div>
+</div>
 
 
 <table class="table table-bordered table-striped table-condensed table-responsive">
@@ -61,7 +128,6 @@
       <td>
         <% load.transactions.each do |le| %>
         (<%= le.expense_type %> <%= number_to_currency(le.debit) %> 
-        <%= le.business_name %> <%= le.city %>)  
         <% expense_running_total = expense_running_total + le.debit %>
         <% end %>
       </td>
@@ -78,7 +144,7 @@
       <td><%= load.driver_statement_id %></td>
     </tr>
 <% end %>
-    <% hrc_load_running_total = hrc_load_running_total + load.rate %> 
+    <% hrc_load_running_total = hrc_load_running_total + load.invoice_price %> 
     <% booking_fee_running_total = booking_fee_running_total + load.booking_fee %> 
     <% driver_load_running_total = driver_load_running_total + load.rate_to_driver %> 
     <% total_miles = total_miles + load.miles %>

@@ -1,8 +1,8 @@
 class HrcUser < User
   has_many :loads
   has_many :driver_users, through: :loads
-
-  
+  mount_uploader :image, UserImageUploader  
+  mount_uploader :profile_image, UserProfileImageUploader  
  ransack_alias :hrc_search_params, 
   :first_name_or_last_name_or_email 
   

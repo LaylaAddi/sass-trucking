@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106152459) do
+ActiveRecord::Schema.define(version: 20160929044746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,14 @@ ActiveRecord::Schema.define(version: 20161106152459) do
   create_table "driver_statements", force: :cascade do |t|
     t.string   "notes"
     t.integer  "driver_user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "payment_status"
+    t.date     "due_date"
+    t.decimal  "insurance_payment"
+    t.decimal  "trailer_rental"
+    t.decimal  "truck_rental"
+    t.decimal  "other"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "load_addresses", force: :cascade do |t|
@@ -83,18 +89,19 @@ ActiveRecord::Schema.define(version: 20161106152459) do
   end
 
   create_table "loads", force: :cascade do |t|
-    t.string   "name"
     t.string   "commodity"
     t.string   "weight"
     t.string   "units"
     t.string   "load_size"
-    t.decimal  "rate"
-    t.decimal  "booking_fee"
-    t.decimal  "invoice_price"
-    t.decimal  "percent_deducted"
     t.integer  "miles"
+    t.decimal  "invoice_price"
+    t.decimal  "booking_fee"
+    t.decimal  "rate_told_to_driver"
+    t.decimal  "percent_deducted"
     t.decimal  "total_hrc_expenses"
     t.decimal  "rate_to_driver"
+    t.decimal  "rate_after_percent"
+    t.decimal  "rate_after_booking_fee"
     t.date     "pick_up_date"
     t.time     "pick_up_time"
     t.string   "pick_up_time_notes"
@@ -130,10 +137,11 @@ ActiveRecord::Schema.define(version: 20161106152459) do
     t.string   "consignor_name"
     t.string   "consignee_name"
     t.integer  "driver_statement_id"
-    t.boolean  "is_paid",               default: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.decimal  "rate_to_driver_after_factor_fees"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["company_profile_id"], name: "index_loads_on_company_profile_id", using: :btree
+    t.index ["driver_statement_id"], name: "index_loads_on_driver_statement_id", using: :btree
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree
     t.index ["hrc_user_id"], name: "index_loads_on_hrc_user_id", using: :btree
   end
@@ -251,8 +259,8 @@ ActiveRecord::Schema.define(version: 20161106152459) do
 
   create_table "transactions", force: :cascade do |t|
     t.string   "expense_type"
-    t.decimal  "debit"
-    t.decimal  "credit"
+    t.decimal  "debit",                default: "0.0"
+    t.decimal  "credit",               default: "0.0"
     t.string   "street"
     t.string   "city"
     t.string   "state"
@@ -260,8 +268,8 @@ ActiveRecord::Schema.define(version: 20161106152459) do
     t.integer  "transactionable_id"
     t.string   "transactionable_type"
     t.string   "business_name"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "trucks", force: :cascade do |t|
@@ -304,6 +312,8 @@ ActiveRecord::Schema.define(version: 20161106152459) do
     t.boolean  "office",                   default: false
     t.boolean  "maintenance",              default: false
     t.boolean  "shipping_receiving",       default: false
+    t.boolean  "flat_rpm_driver",          default: false
+    t.decimal  "driver_ppm"
     t.string   "employment_status",        default: "pending"
     t.string   "time_zone"
     t.string   "reset_password_token"

@@ -2,13 +2,25 @@
 <div class="container">
   <div class="user-profile">
     <div class="profile-header-background">
-      <%= image_tag("homeheader.jpg", class: "img-rounded img-responsive") %>  
+<% if @hrc_user.profile_image_url.present? %>
+              <%= image_tag @hrc_user.profile_image_url(:main) %>  
+              <% else %>
+<%= image_tag("homeheader.jpg", class: "img-rounded img-responsive") %>  
+              <% end %> 
+      
     </div>
     <div class="row">
       <div class="col-md-4">
         <div class="profile-info-left">
           <div class="text-center"> 
-                 <%= image_tag("noUserPhoto.jpg", class: "img-rounded img-responsive img-circle") %> 
+              <% if @hrc_user.image_url.present? %>
+              <%= image_tag @hrc_user.image_url(:main_image), 
+                class: "img-rounded img-responsive img-circle" %>
+              <% else %>
+              <%= image_tag("noUserPhoto.jpg", 
+                class: "img-rounded img-responsive img-circle") %> 
+              <% end %>
+ 
             <h2><%= @hrc_user.full_name %> <small>(<%= @hrc_user.type_of_user %>)</small></h2>
           </div>
           <div class="action-buttons">

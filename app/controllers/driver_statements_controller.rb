@@ -20,7 +20,7 @@ class DriverStatementsController < ApplicationController
     @driver = DriverUser.find(params[:driver_user_id])
     @driver_statement = @driver.driver_statements.new
     #@loads = @driver.loads.where(["status_name = ?", "Complete"]).order(:id) 
-    @loads = @driver.loads.where("driver_statement_id is  NULL")
+    @loads = @driver.loads.where("driver_statement_id is NULL")
   end
 
   def edit
@@ -82,6 +82,17 @@ class DriverStatementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def driver_statement_params
-      params.require(:driver_statement).permit(:notes, :driver_user_id, load_ids: [] )
+      params.require(:driver_statement).permit(
+          :notes,
+          :insurance_payment,
+          :trailer_rental,
+          :truck_rental,
+          :other,
+          :payment_status, 
+          :due_date, 
+          :driver_user_id, 
+          load_ids: [] 
+          )
     end
 end
+

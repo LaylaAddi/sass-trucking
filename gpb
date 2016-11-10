@@ -1,4 +1,4 @@
 git add -A
-git commit -m "statments working!"
-git push -u origin statement2
+git commit -m "bunch o stuff"
+git push -u origin statement3
 

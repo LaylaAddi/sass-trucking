@@ -22,18 +22,19 @@ class AddTable < ActiveRecord::Migration[5.0]
     end
     
  create_table :loads do |t|
-      t.string :name 
       t.string :commodity
       t.string :weight
       t.string :units
       t.string :load_size
-      t.decimal :rate
-      t.decimal :booking_fee
-      t.decimal :invoice_price
-      t.decimal :percent_deducted      
       t.integer :miles
+      t.decimal :invoice_price
+      t.decimal :booking_fee
+      t.decimal :rate_told_to_driver 
+      t.decimal :percent_deducted      
       t.decimal :total_hrc_expenses
       t.decimal :rate_to_driver
+      t.decimal :rate_after_percent
+      t.decimal :rate_after_booking_fee 
       t.date :pick_up_date
       t.time :pick_up_time
       t.string :pick_up_time_notes
@@ -68,8 +69,8 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.float :destination_longitude 
       t.string :consignor_name
       t.string :consignee_name 
-      t.integer :driver_statement_id
-      t.boolean :is_paid, default: false
+      t.integer :driver_statement_id, index: true
+      t.decimal :rate_to_driver_after_factor_fees
 
       t.timestamps
     end
@@ -94,8 +95,8 @@ class AddTable < ActiveRecord::Migration[5.0]
     
     create_table :transactions do |t|
       t.string :expense_type
-      t.decimal :debit
-      t.decimal :credit
+      t.decimal :debit, default: 0.00
+      t.decimal :credit, default: 0.00
       t.string :street
       t.string :city
       t.string :state
@@ -268,6 +269,24 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :door_type
       t.timestamps
     end
+    
+    create_table :driver_statements do |t|
+      t.string :notes
+      t.integer :driver_user_id 
+      t.string :payment_status
+      t.date :due_date
+      t.decimal :insurance_payment
+      t.decimal :trailer_rental
+      t.decimal :truck_rental
+      t.decimal :other
+      t.timestamps
+    end
+    
+    
+    
+    
+    
+    
   end
   
   

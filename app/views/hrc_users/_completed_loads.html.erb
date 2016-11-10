@@ -1,57 +1,79 @@
 <h1>Completed Loads</h1>
 
 <table class="table table-bordered table-striped table-condensed table-responsive">
-  <thead>
-    <tr>
+	<thead>
+		<tr>
       <th>ID</th>
       <th>Booked On</th>
       <th>Description</th>
+      <th>Driver</th>
+      <th>Debits</th>
+      <th>Credits</th>
+      <th>Weight</th>
+      <th>Load Size</th>
       <th>Rate</th>
       <th>Distance (Miles)</th>
-      <th>Load Expenses</th>
-      <th>Pick up time</th>
-      <th>Delivery time</th>
+      <th>Trailer Type</th>
       <th>Status</th>
+		</tr>
+	</thead>
 
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
+  <tbody> 
+    <% debit_running_total = 0.00 %>
+    <% credit_running_total = 0.00 %>
     <% expense_running_total = 0.00 %>
     <% hrc_load_running_total = 0.00 %>
     <% total_miles = 0 %>
     <% driver_load_running_total = 0.00 %>
+    <% booking_fee_running_total = 0.00 %>
     <% @completed_loads.each do |load| %>
     <tr>
-      
-      <td><%= load.id %></td>
-      <td><%= (load.created_at.strftime("%A %B %-d, %Y")) %></td>      
+      <td>
+        <%= link_to load do %>
+        <%= load.id %>
+        <% end %>
+      </td>
+      <td><%= (load.created_at.strftime("%A %B %-d, %Y")) %></td> 
       <td>
         <%= link_to load do %>
         <%= load.load_title %> 
         <% end %>
       </td>
-      <td><%= number_to_currency(load.rate_to_driver) %></td>
-      <td><%= load.miles %> </td>
       <td>
-        <% load.transactions.each do |le| %>
-        (<%= le.expense_type %> <%= number_to_currency(le.debit) %> 
-        <%= le.business_name %> <%= le.city %>)  
-        <% expense_running_total = expense_running_total + le.debit %>
+
+        <%= link_to driver_user_path(load.driver_user_id) do %>
+        <%= load.driver_user.full_name %>
+        <% end %>
+
+      </td>
+      <td>
+        <% load.transactions.each do |transaction| %>
+        <%= number_to_currency(transaction.debit) %> 
+        <% debit_running_total = debit_running_total + transaction.debit %>
         <% end %>
       </td>
+      
       <td>
-        <%= (load.pick_up_date.strftime("%A %B %-d, %Y")) %>
-        @ <%= (load.pick_up_time.strftime("%-l:%M %p")) %> 
+        <% load.transactions.each do |transaction| %>
+        <%= number_to_currency(transaction.credit) %> 
+
+        <% credit_running_total = credit_running_total + transaction.credit %>
+        <% end %>
       </td>
-      <td>
-        <%= (load.delivery_date.strftime("%A %B %-d, %Y")) %>
-        @ <%= (load.delivery_time.strftime("%-l:%M %p")) %>
-      </td>
+       <td><%= load.weight %></td>
+      <td><%= load.load_size %></td>
+
+      <td><%= number_to_currency(load.rate_to_driver_after_factor_fees) %></td>
+      <td><%= load.miles %> </td>
+
+
+      <td><%= load.equipment_type %></td>
       <td><%= load.status_name %></td>
+
     </tr>
-    <% hrc_load_running_total = hrc_load_running_total + load.rate %> 
-    <% driver_load_running_total = driver_load_running_total + load.rate_to_driver %> 
+    <% hrc_load_running_total = hrc_load_running_total + load.invoice_price %> 
+    <% booking_fee_running_total = booking_fee_running_total + load.booking_fee %> 
+    <% driver_load_running_total = driver_load_running_total + load.rate_to_driver_after_factor_fees %> 
     <% total_miles = total_miles + load.miles %>
     <% end %>
   </tbody>
@@ -59,20 +81,34 @@
 <br>
 <% driver_net = driver_load_running_total - expense_running_total %>
 <% hrc_net = hrc_load_running_total - driver_load_running_total %>
-<div class="col-lg-4">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <p>Total <%= number_to_currency(driver_load_running_total) %></p>
-      <p>Total Miles <%= total_miles %></p>
-    </div>
-    <div class="panel-body">
-      <p>Expenses <%= number_to_currency(expense_running_total) %></p>
+<% debit_total = debit_running_total - credit_running_total %>
+<% rate_after_expenses = driver_load_running_total - debit_total%>
+<br />
+<br /> 
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
 
-      <p>Driver Gross RPM <%= number_to_currency(driver_load_running_total / total_miles) %></p>
-      <p>Driver Net RPM <%= number_to_currency(driver_net / total_miles) %></p>
-    </div>
-    <div class="panel-footer">
-      <p>Income After Expenses <%= number_to_currency(driver_net) %></p>
-    </div>
-  </div>
-</div>
+			<th>Total Miles</th>
+			<th>Amount Before Expenses</th>
+			<th>Debits</th>
+			<th>Credits</th>
+			<th>Debit/Credit Total</th>
+			<th>Gross RPM</th>
+			<th>Net RPM</th>
+			<th>Payment Amount</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= total_miles %></td>
+			<td><%= number_to_currency(driver_load_running_total) %></td>
+			<td><%= number_to_currency(debit_running_total) %></td>
+			<td><%= number_to_currency(credit_running_total) %></td>
+			<td>- <%= number_to_currency(debit_total) %></td>
+			<td><%= number_to_currency(driver_load_running_total / total_miles) %></td>
+			<td><%= number_to_currency(rate_after_expenses / total_miles) %></td>
+			<td><strong><%= number_to_currency(driver_load_running_total - debit_total) %></strong></td>
+		</tr>
+	</tbody>
+</table>

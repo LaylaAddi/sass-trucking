@@ -4,89 +4,206 @@
     <% if @transactions.present? %>
     <tr>
       <th>ID</th>
-      <th>Business</th>
+
       <th>Entered On</th>
       <th>Type</th>
-      <th>Amount</th>
+      <th>Debit</th>
+      <th>Credit</th>
     </tr>
     <% end %>
   </thead>
   <tbody>
+    <% total_credits = 0.00 %>
+    <% total_debits = 0.00 %>
+    <% all_transactions = 0.00 %>
     <% running_total = 0.00 %>
+
     <% @transactions.each do |transaction| %>
     <tr>
       <td><%= transaction.id %></td>
-      <td><%= transaction.created_at.strftime("%B %-d, %Y at %-l:%M %p") %></td>
+      <td><%= transaction.created_at.strftime("%B %-d, %Y at %-l:%M %p %Z") %></td>
       <td><%= transaction.expense_type %></td>
       <td>
         <%= link_to load_transaction_path(@load, transaction) do %>
         <%= number_to_currency(transaction.debit) %>
         <% end %> 
       </td>
+      <td>
+        <%= link_to load_transaction_path(@load, transaction) do %>
+        <%= number_to_currency(transaction.credit) %>
+        <% end %> 
+      </td>
     </tr>
-    <% running_total = running_total + transaction.debit %>
+    <% total_credits = total_credits + transaction.credit %>
+    <% total_debits = total_debits + transaction.debit %>
     <% end %>
   </tbody>
 </table>
-<% net_dollars = @load.rapd - running_total %> 
-<% net_rpm = net_dollars / @load.miles %>  
 
-<table class="table table-bordered table-condensed table-responsive">
-  <thead>
-    <tr>
-      <% if current_hrc_user %>
-      <td class="text-center">
-        <strong>Invoice Price</strong><br />
-        <%= number_to_currency(@load.invoice_price) %>
-      </td>
-      <td class="text-center">
-        <strong>Booking Fee</strong><br />
-        <%= number_to_currency(@load.booking_fee) %>
-      </td>
-      <td class="text-center">
-        <strong>Rate After Fee</strong><br />
-        <%= number_to_currency(@load.rate) %>
-      </td>
-      <td class="text-center"> 
-        <strong>% to HRC</strong><br />
-        <%= number_to_percentage(@load.percent_deducted * 100) %>
-      </td>
-      <td class="text-center"> 
-        <strong>$ to HRC</strong><br />
-        <%= number_to_currency(@load.ddbop)  %>
-      </td>
-      <td class="text-center">
-        <strong>Gross RPM</strong><br />
-        <%= number_to_currency(@load.grpm) %>
-        <% end %>
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="text-center">
-        <strong>Driver Load Rate</strong><br />
-        <%= number_to_currency(@load.rate_to_driver) %>
-      </td>
-      <td class="text-center"> 
-        <strong>Driver RPM</strong><br /> 
-        <%= number_to_currency(@load.rate_to_driver / @load.miles)    %>
-      </td>
-      <td class="text-center"> 
-        <strong>Transactions</strong><br />
-        <%= number_to_currency(running_total) %>
-      </td>
-      <td class="text-center">
-        <strong>Rate After Transactions</strong><br />
-                <%= number_to_currency(@load.rate_to_driver - running_total) %> 
-        
-      </td>
-      <td class="text-center">
-        <strong>RPM After Transactions</strong><br />
-<%= number_to_currency(net_rpm) %>
- 
-      </td>
-    </tr>
-  </tbody>
+
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+				Invoice Price
+			</th>
+			<th>
+				Booking Fee
+			</th>
+			<th>
+				Rate To Driver
+			</th>
+			<th>
+				% to HRC
+			</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<%= number_to_currency(@load.invoice_price) %>
+			</td>
+			<td>
+				<%= number_to_currency(@load.booking_fee) %>
+			</td>
+			<td>
+				<%= number_to_currency(@load.rate_to_driver) %>
+			</td>
+			<td>
+				<%= number_to_percentage(@load.percent_deducted * 100) %>
+			</td>
+
+		</tr>
+	</tbody>
 </table>
 
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+				$ From %
+			</th>
+			<th>
+				$ To HRC
+			</th>
+			<th>
+			Miles
+			</th>
+			<th>
+				Gross RPM
+			</th>
+			<th>
+				HRC RPM
+			</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				 <%= number_to_currency(@load.ddbop)  %>
+			</td>
+			<td>
+				<%= number_to_currency(@load.booking_fee_plus_percent_in_dollars)  %>
+			</td>
+			<td>
+				<%= (@load.miles) %>
+			</td>
+			<td>
+				<%= number_to_currency(@load.grpm) %>
+			</td>
+			<td>
+				<%= number_to_currency(@load.hrc_rpm) %>
+			</td>
+
+		</tr>
+	</tbody>
+</table>
+Driver Section
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+				Load Rate
+			</th>
+			<th>
+				Paid Miles
+			</th>
+			<th>
+				Rate Per Mile
+			</th>
+
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				 <%= number_to_currency(@load.rate_to_driver_after_factor_fees)  %>
+			</td>
+			<td>
+				<%= @load.miles %>
+			</td>
+
+			<td>
+				<%= number_to_currency(@load.rate_to_driver_after_factor_fees / @load.miles)    %>
+			</td>
+
+
+		</tr>
+	</tbody>
+</table>
+    <% debit_credit_total = total_debits - total_credits %>
+    <% rate_after_expenses = (@load.rate_to_driver_after_factor_fees - debit_credit_total)%> 
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+		  
+			<th>
+				Total Debits
+			</th>
+			<th>
+				Total Credits
+			</th>
+			<th>
+				Total Debits/Credits
+			</th>
+			<th>
+				Rate After Expenses
+			</th>
+			<th>
+			Net RPM
+			</th>
+	
+
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		  
+			<td>
+				 -<%= number_to_currency(total_debits) %>
+			</td>
+			<td>
+			  +<%= number_to_currency(total_credits) %>
+				 
+			</td>
+			<td>
+				-<%= number_to_currency(debit_credit_total) %> 
+			</td>
+			<td>
+			  <%= number_to_currency(rate_after_expenses)  %>
+
+			</td>
+			<td>
+					  <%= number_to_currency(rate_after_expenses / @load.miles) %>
+			</td>
+
+
+		</tr>
+	</tbody>
+</table>
+
+        

@@ -10,8 +10,13 @@
 
 
 <p>
-  <strong>Amount:</strong>
-  <%= @transaction.debit %>
+  <strong>Debit Amount:</strong>
+  <%= number_to_currency(@transaction.debit) %>
+</p>
+
+<p>
+  <strong>Credit Amount:</strong>
+  <%= number_to_currency(@transaction.credit) %>
 </p>
 
 <p>

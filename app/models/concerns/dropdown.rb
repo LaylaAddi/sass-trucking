@@ -194,9 +194,15 @@ CompanyProfileMembershipStatus =
     ["Active", "Active" ],
     ["Pending", "Pending" ],
     ["Complete", "Complete" ],
-    ["Paid", "Paid" ],
     ["Cancelled", "Cancelled" ]
   ]
+  
+  DriverStatementPayment =
+  [
+    ["Paid", "Paid" ],
+    ["Not Paid", "Not Paid" ]
+  ]
+  
   
   LoadDocumentType =
   [

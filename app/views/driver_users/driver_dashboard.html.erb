@@ -1,8 +1,12 @@
 <%= render "layouts/view_partials/user_show_css" %>
 <div class="container">
   <div class="user-profile">
-    <div class="profile-header-background">
+    <div>
+      <% if @driver.image_url.present? %>
+      <%= image_tag(@driver.image, class: "img-rounded img-responsive") %>
+      <% else %>
       <%= image_tag("homeheader.jpg", class: "img-rounded img-responsive") %>  
+      <% end %>
     </div>
     <div class="row">
       <div class="col-md-4">
@@ -104,7 +108,7 @@
           <ul class="nav nav-pills nav-pills-custom-minimal custom-minimal-bottom">
             <li class="active"><a href="#activeLoads" data-toggle="tab">Active Loads</a></li>
             <li><a href="#CompletedLoads" data-toggle="tab">Completed Loads</a></li>
-            <li><a href="#PaidLoads" data-toggle="tab">Paid Loads</a></li>
+            <li><a href="#DriverStatement" data-toggle="tab">My Statements</a></li> 
             <li><a href="#Maps" data-toggle="tab">Maps</a></li>
             <li><a href="#Chat" data-toggle="tab">Chat</a></li>
           </ul>
@@ -115,8 +119,8 @@
             <div class="tab-pane fade" id="CompletedLoads">
               <%= render "completed_loads" %>
             </div>
-            <div class="tab-pane fade" id="PaidLoads">
-              <%= render "paid_loads" %>  
+            <div class="tab-pane fade" id="DriverStatement">
+              <%= render "driver_statements" %>  
             </div>
             <div class="tab-pane fade" id="Maps">
               <%= render "maps" %>

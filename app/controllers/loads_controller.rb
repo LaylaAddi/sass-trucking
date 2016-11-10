@@ -105,7 +105,6 @@ class LoadsController < ApplicationController
 
     def load_params
       params.require(:load).permit(
-                                    :name,
                                     :commodity, 
                                     :weight, 
                                     :units, 
@@ -150,7 +149,10 @@ class LoadsController < ApplicationController
                                     :booking_fee,
                                     :invoice_price,
                                     :driver_statement_id,
-                                    :is_paid, { load_ids: [] }
+                                    :rate_to_driver,
+                                    :rate_after_percent,
+                                    :rate_after_booking_fee,
+                                    :rate_to_driver_after_factor_fees
                                     )
     end
 end
