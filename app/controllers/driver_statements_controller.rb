@@ -91,6 +91,7 @@ class DriverStatementsController < ApplicationController
           :payment_status, 
           :due_date, 
           :driver_user_id, 
+          :payment_notes,
           load_ids: [] 
           )
     end

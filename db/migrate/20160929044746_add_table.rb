@@ -279,10 +279,19 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.decimal :trailer_rental
       t.decimal :truck_rental
       t.decimal :other
+      t.string :payment_notes
       t.timestamps
     end
     
-    
+    create_table :miles do |t|
+      t.integer :mileage
+      t.string :type
+      t.string :notes
+
+      t.integer :trailer_id, index: true
+      t.integer :truck_id, index: true
+      t.timestamps
+    end
     
     
     
