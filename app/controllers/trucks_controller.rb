@@ -13,7 +13,9 @@ class TrucksController < ApplicationController
 
 
   def show
-    @driver = @truck.driver_user
+    @truck_miles = @truck.truck_miles 
+    @truck_mile = TruckMile.new  
+    @driver = @truck.driver_user 
   end
 
 

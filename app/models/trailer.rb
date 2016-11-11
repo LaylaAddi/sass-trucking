@@ -1,6 +1,6 @@
 class Trailer < ApplicationRecord
   belongs_to :driver_user
-  
+  has_many :trailer_miles, dependent: :destroy
   validates_presence_of :number, :make, :vin
   validates_uniqueness_of :number, :vin 
   

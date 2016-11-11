@@ -13,6 +13,8 @@ class TrailersController < ApplicationController
 
 
   def show
+    @trailer_miles = @trailer.trailer_miles 
+    @trailer_mile = TrailerMile.new
   end
 
 

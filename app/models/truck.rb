@@ -1,6 +1,6 @@
 class Truck < ApplicationRecord
   belongs_to :driver_user
-  
+  has_many :truck_miles
   validates_presence_of :number, :make, :vin
   validates_uniqueness_of :number, :vin
   

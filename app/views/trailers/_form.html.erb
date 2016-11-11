@@ -1,6 +1,17 @@
 <%= simple_form_for(@trailer) do |f| %>
   <%= f.error_notification %>
-
+<div class="form-inputs">
+  <div class="col-xs-8 col-xs-offset-2 shadow animated">
+    <div class="panel panel-default shadow animated">
+      <div class="panel-heading shadow animated">
+        <% if @trailer.driver_user.present? %>
+          <h2>Trailer Driver <%= @trailer.driver_user.full_name %></h2>
+        <% else %>  
+          <h2>New Trailer</h2>
+        <% end %>      
+      </div>
+      <div class="panel-body">
+        <p>
   <div class="form-inputs">
     <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
       :id, :full_name, include_blank: "Select Driver"  %> 
@@ -17,8 +28,18 @@
     <%= f.input :notes %>
 
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+        </p>
+      </div>
+      <div class="panel-footer shadow animated">
+        <div class="form-actions">
+          <%= f.button :submit , class: "btn btn-info btn-sm round" %> 
+          <%= link_to 'All Trailers', trailers_path, class: "btn btn-success btn-sm round" %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 <% end %>
+
+
+
