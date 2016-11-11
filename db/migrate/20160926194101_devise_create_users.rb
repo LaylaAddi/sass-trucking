@@ -27,7 +27,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :flat_rpm_driver, default: false  
       t.decimal :driver_ppm
       t.string :employment_status, default: "pending"
-      t.string :time_zone 
+      t.string :time_zone  
       
 
  

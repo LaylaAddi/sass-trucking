@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     @driver_list = DriverUser.where(["employment_status = ?", "active"])  
   end
   
-  devise_group :user, contains: [:hrc_user, :shipper_user, :driver_user] 
+  devise_group :currentuser, contains: [:hrc_user, :shipper_user, :driver_user] 
   devise_group :hrc_user, contains: [:hrc_user] 
   before_action :authenticate_user!
 
