@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :driver_list 
-  around_filter :user_time_zone, if: :user
+  #around_filter :user_time_zone, if: :current_user
   
   
   def driver_list 
@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
   
   devise_group :user, contains: [:hrc_user, :shipper_user, :driver_user] 
   devise_group :hrc_user, contains: [:hrc_user] 
+  devise_group :shipper_user, contains: [:shipper_user] 
+  devise_group :driver_user, contains: [:driver_user] 
   before_action :authenticate_user!
 
   private

@@ -43,3 +43,8 @@ drivers have payments with total being for exapmple escrow at -1000 payment + 30
 created location and repair scaffold  need to add sub models 
 
 index on loads statements loads etc
+
+                  <label>Change my TimeZone</label>
+                  <br />
+                  <%= f.time_zone_select :time_zone, 
+                  ActiveSupport::TimeZone.us_zones %>
