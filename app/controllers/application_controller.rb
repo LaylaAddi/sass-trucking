@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :driver_list 
-  #around_filter :user_time_zone, if: :current_user
+  around_filter :user_time_zone, if: :current_user
   
   
   def driver_list 

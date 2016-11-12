@@ -129,9 +129,11 @@
          <hr>
           <div class="row">
             <div class="col-md-4">
-              <label><small></small></label>
+              <label><small>Choose TimeZone</small></label>
               <div class="form-group input-group">
 
+                  <%= f.time_zone_select :time_zone, 
+                  ActiveSupport::TimeZone.us_zones%>
               </div>
             </div>
             <div class="col-md-4">
