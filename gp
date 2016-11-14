@@ -1,6 +1,7 @@
 git add -A
-git commit -m "new push to move to branch"
+git commit -m "merge drivestate"
 git push -u origin master 
+git push dokku master
 
 
 
