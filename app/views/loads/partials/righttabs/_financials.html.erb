@@ -140,14 +140,23 @@ Driver Section
 	<tbody>
 		<tr>
 			<td>
-				 <%= number_to_currency(@load.rate_to_driver_after_factor_fees)  %>
+	       <% if @driver.company_driver?  %>
+				 <%= number_to_currency(@driver.driver_rpm)  %>/mile
+	       <% else %>
+	       <%= number_to_currency(@load.rate_to_driver_after_factor_fees)  %>
+	       <% end %>
 			</td>
 			<td>
 				<%= @load.miles %>
 			</td>
-
+				
 			<td>
-				<%= number_to_currency(@load.rate_to_driver_after_factor_fees / @load.miles)    %>
+	       <% if @driver.company_driver?  %>
+				 <%= number_to_currency(@driver.driver_rpm)  %>/mile
+	       <% else %>
+	       <%= number_to_currency(@load.rate_to_driver_after_factor_fees / @load.miles)    %>
+	       <% end %>
+
 			</td>
 
 

@@ -1,6 +1,6 @@
 class DriverStatementsController < ApplicationController
   before_action :set_driver_statement, only: [:show, :edit, :update, :destroy]
-  before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy] 
+  #before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy] 
   # GET /driver_statements
   # GET /driver_statements.json
   def index

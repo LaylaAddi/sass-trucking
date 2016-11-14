@@ -22,7 +22,7 @@ class LoadsController < ApplicationController
     @transactions = @load.transactions  
     @vendor_profile = VendorProfile.all
     @load_doc = @load.load_documents 
-
+    @driver = @load.driver_user
   end
 
 
