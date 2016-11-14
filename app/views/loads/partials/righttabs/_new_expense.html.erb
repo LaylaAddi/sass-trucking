@@ -6,10 +6,11 @@
     <div class="form-group input-group">
       <span class="input-group-addon"><i class="fa fa-money"></i></span>
 
-        <%= f.input :business_name, label: false, placeholder: "Biz Name (if no vendor)" %>
+     <%= f.input :expense_type, collection: Load::ExpenseType, label: false, placeholder: "Type" %> 
+      <%= f.input :business_name, label: false, placeholder: "Biz Name (if no vendor)" %>
       <%= f.input :debit, label: "Debit Amount" %>
       <%= f.input :credit, label: "Credit Amount" %>
-      <%= f.input :expense_type, collection: Load::ExpenseType, label: false, placeholder: "Type" %>
+      
 
     </div>
   </div>
