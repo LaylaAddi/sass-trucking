@@ -18,6 +18,8 @@ class DriverUsersRegistrations::RegistrationsController < Devise::RegistrationsC
                                           :state, 
                                           :zip,  
                                           :type,
+                                          :profile_bg,  
+                                          :profile_image,
                                           :emergency_contact,
                                           :emergency_contact_number,
                                           :time_zone 
@@ -39,7 +41,7 @@ class DriverUsersRegistrations::RegistrationsController < Devise::RegistrationsC
                                           :state, 
                                           :zip,  
                                           :type,
-                                          :image, 
+                                          :profile_bg, 
                                           :profile_image,
                                           :emergency_contact,
                                           :emergency_contact_number,

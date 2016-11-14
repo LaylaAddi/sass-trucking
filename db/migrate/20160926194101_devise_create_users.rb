@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :type
       t.string :emergency_contact
       t.string :emergency_contact_number
-      t.string :image  
+      t.string :profile_bg   
       t.string :profile_image
       t.boolean :company_profile_admin, default: false
       t.boolean :admin, default: false
@@ -26,7 +26,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :company_driver, default: false  
       t.boolean :owner_operator, default: false 
       t.boolean :shipping_receiving, default: false 
-      t.decimal :driver_rpm
+      t.decimal :driver_rpm, default: 0.00
       t.string :employment_status, default: "not_active"
       t.string :time_zone  
       

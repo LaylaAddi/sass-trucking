@@ -1,6 +1,6 @@
 class UserProfileImageUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
+  # Include RMagick or MiniMagick support: 
   # include CarrierWave::RMagick
    include CarrierWave::MiniMagick
 
@@ -30,12 +30,12 @@ class UserProfileImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :main do
-    process :resize_to_fit => [1000, 400]
+  version :main_image do
+    process :resize_to_fit => [200, 200]
   end
   
   version :small do
-    process :resize_to_fit => [100, 40] 
+    process :resize_to_fit => [30, 30]
   end
   
 

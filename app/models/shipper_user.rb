@@ -1,11 +1,9 @@
 class ShipperUser < User
   ransack_alias :shipper_search_params, 
   :first_name_or_last_name_or_email 
+  mount_uploader :profile_image, UserProfileImageUploader  
+  mount_uploader :profile_bg, UserBackgroundImageUploader  
 
-  mount_uploader :image, UserImageUploader  
-  mount_uploader :profile_image, UserProfileImageUploader   
-  
-  
  private 
   
   def self.as_csv

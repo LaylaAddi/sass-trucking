@@ -56,9 +56,9 @@ class Load < ApplicationRecord
   
 
   def load_title
-    self.origin_city + ", " + self.origin_state + " TO: " + self.destination_city + ", " + self.destination_state   
+    "Origin:  " + self.origin_city + ", " + self.origin_state + "  Destination:  " + self.destination_city + ", " + self.destination_state   
   end
-
+ 
   def self.as_csv
     CSV.generate do |csv|
       csv << column_names

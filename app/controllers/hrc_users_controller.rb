@@ -87,7 +87,7 @@ private
                                      :state, 
                                      :zip,  
                                      :type,
-                                     :image, 
+                                     :profile_b, 
                                      :profile_image,
                                      :emergency_contact,
                                      :emergency_contact_number,

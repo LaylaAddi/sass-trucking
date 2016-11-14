@@ -4,10 +4,7 @@
         <%= @driver.full_name %>
         <% end %>
 </h2>
-<p>
-  <strong>Notes:</strong>
-  <%= @driver_statement.notes %>
-</p>
+
 
 <p>
   <strong>Payment Status:</strong>
@@ -23,8 +20,10 @@
   <strong>Updated On:</strong>
   <%= @driver_statement.updated_at.strftime("%A %B %-d, %Y") %>
 </p>
-
-
+<p>
+  <strong>Notes:</strong>
+  <%= @driver_statement.notes %>
+</p>
 <table class="table table-bordered table-striped table-condensed table-responsive">
 	<thead>
 		<tr>
@@ -36,7 +35,6 @@
       <th>Distance (Miles)</th>
       <th>Debits</th>
       <th>Credits</th>
-      <th>Weight</th>
       <th>Load Size</th>
       <th>Trailer Type</th>
       <th>Status</th>
@@ -86,8 +84,7 @@
         <% credit_running_total = credit_running_total + transaction.credit %>
         <% end %>
       </td>
-       <td><%= load.weight %></td>
-      <td><%= load.load_size %></td>
+        <td><%= load.load_size %></td>
 
 
 
@@ -110,6 +107,34 @@
 <% rate_after_expenses = driver_load_running_total - debit_total%>
 <br />
 <br /> 
+
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>Total Miles</th>
+			<th>Gross $</th>
+			<th>Debits</th>
+			<th>Credits</th>
+			<th>Debit/Credit Total</th>
+			<th>Gross RPM</th>
+			<th>Net RPM</th>
+			<th>Net $</th> 
+		</tr>
+	</thead>
+<% net_after_otr_expense = driver_load_running_total - debit_total %>
+	<tbody>
+		<tr>
+			<td><%= total_miles %></td>
+			<td><%= number_to_currency(driver_load_running_total) %></td>
+			<td><%= number_to_currency(debit_running_total) %></td>
+			<td><%= number_to_currency(credit_running_total) %></td>
+			<td>- <%= number_to_currency(debit_total) %></td>
+			<td><%= number_to_currency(driver_load_running_total / total_miles) %></td>
+			<td><%= number_to_currency(rate_after_expenses / total_miles) %></td>
+			<td><%= number_to_currency(net_after_otr_expense) %></td>
+		</tr>
+	</tbody>
+</table>
 <table class="table table-bordered table-striped table-condensed table-responsive">
 	<thead>
 		<tr>
@@ -132,37 +157,11 @@
 		</tr>
 	</tbody>
 </table>
-<table class="table table-bordered table-striped table-condensed table-responsive">
-	<thead>
-		<tr>
-			<th>Total Miles</th>
-			<th>Gross $</th>
-			<th>Debits</th>
-			<th>Credits</th>
-			<th>Debit/Credit Total</th>
-			<th>Gross RPM</th>
-			<th>Net RPM</th>
-			<th>Net $</th>
-		</tr>
-	</thead>
-<% net_after_otr_expense = driver_load_running_total - debit_total %>
-	<tbody>
-		<tr>
-			<td><%= total_miles %></td>
-			<td><%= number_to_currency(driver_load_running_total) %></td>
-			<td><%= number_to_currency(debit_running_total) %></td>
-			<td><%= number_to_currency(credit_running_total) %></td>
-			<td>- <%= number_to_currency(debit_total) %></td>
-			<td><%= number_to_currency(driver_load_running_total / total_miles) %></td>
-			<td><%= number_to_currency(rate_after_expenses / total_miles) %></td>
-			<td><%= number_to_currency(net_after_otr_expense) %></td>
-		</tr>
-	</tbody>
-</table>
+
 <div class="pull-right">
   <strong>
   Payment Due  <%= number_to_currency(net_after_otr_expense - insurance_and_rentals) %>
   </strong>  
 </div>
 
-<%= link_to "Statements", driver_user_driver_statements_path %>
+<%= link_to "Edit", edit_driver_user_driver_statement_path(@driver, @driver_statement) %> 

@@ -3,10 +3,8 @@ class HrcUser < User
   has_many :driver_users, through: :loads
   ransack_alias :hrc_search_params, 
   :first_name_or_last_name_or_email 
-  mount_uploader :image, UserImageUploader  
   mount_uploader :profile_image, UserProfileImageUploader  
-  
-  
+  mount_uploader :profile_bg, UserBackgroundImageUploader  
   
   def self.as_csv
     CSV.generate do |csv|

@@ -8,8 +8,8 @@
 
         <%= f.input :business_name, label: false, placeholder: "Biz Name (if no vendor)" %>
       <%= f.input :expense_type, collection: Load::ExpenseType, label: false, placeholder: "Type" %>
-      <%= f.input :debit, label: false, placeholder: "Amount" %>
-      
+      <%= f.input :debit, label: false, placeholder: "Debit" %>
+            <%= f.input :credit, label: false, placeholder: "Credit" %>
     </div>
   </div>
   <div class="col-sm-6">

@@ -17,6 +17,8 @@ class ShipperUsersRegistrations::RegistrationsController < Devise::Registrations
                                           :state, 
                                           :zip,  
                                           :type,
+                                          :profile_bg,  
+                                          :profile_image,
                                           :emergency_contact,
                                           :emergency_contact_number,
                                           :time_zone 
@@ -38,7 +40,7 @@ class ShipperUsersRegistrations::RegistrationsController < Devise::Registrations
                                           :state, 
                                           :zip,  
                                           :type,
-                                          :image, 
+                                          :profile_bg,  
                                           :profile_image,
                                           :emergency_contact,
                                           :emergency_contact_number,

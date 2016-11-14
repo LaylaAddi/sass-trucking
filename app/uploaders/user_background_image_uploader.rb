@@ -1,6 +1,6 @@
-class UserImageUploader < CarrierWave::Uploader::Base
+class UserBackgroundImageUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support: 
+  # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
    include CarrierWave::MiniMagick
 
@@ -30,12 +30,12 @@ class UserImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :main_image do
-    process :resize_to_fit => [200, 200]
+  version :bg_main do
+    process :resize_to_fit => [1000, 410]
   end
   
-  version :small do
-    process :resize_to_fit => [30, 30]
+  version :bg_small do
+    process :resize_to_fit => [100, 40] 
   end
   
 

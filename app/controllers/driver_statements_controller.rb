@@ -20,7 +20,7 @@ class DriverStatementsController < ApplicationController
     @driver = DriverUser.find(params[:driver_user_id])
     @driver_statement = @driver.driver_statements.new
     #@loads = @driver.loads.where(["status_name = ?", "Complete"]).order(:id) 
-    @loads = @driver.loads.where("driver_statement_id is NULL").order(:load_id)
+    @loads = @driver.loads.where("driver_statement_id is NULL") 
   end
 
   def edit
@@ -37,10 +37,11 @@ class DriverStatementsController < ApplicationController
 
     respond_to do |format|
       if @driver_statement.save
-        format.html { redirect_to driver_user_driver_statements_path(@driver, @driver_statement), notice: 'Driver statement was successfully created.' }
+        format.html { redirect_to driver_user_driver_statement_path(@driver, @driver_statement), notice: 'Driver statement was successfully created.' }
         format.json { render :show, status: :created, location: @driver_statement }
       else
-        format.html { render :new }
+        flash[:error] = @driver_statement.errors.full_messages.to_sentence
+        format.html { redirect_to @driver }
         format.json { render json: @driver_statement.errors, status: :unprocessable_entity }
       end
     end
@@ -50,11 +51,13 @@ class DriverStatementsController < ApplicationController
   # PATCH/PUT /driver_statements/1.json
   def update
     @driver = DriverUser.find(params[:driver_user_id])
+    @loads = @driver.loads.where(["status_name = ?", "Complete"]) 
     respond_to do |format|
       if @driver_statement.update(driver_statement_params)
-        format.html { redirect_to driver_user_driver_statements_path(@driver, @driver_statement), notice: 'Driver statement was successfully updated.' }
+        format.html { redirect_to @driver, notice: 'Driver statement was successfully updated.' }
         format.json { render :show, status: :ok, location: @driver_statement }
       else
+        flash[:error] = @driver_statement.errors.full_messages.to_sentence
         format.html { render :edit }
         format.json { render json: @driver_statement.errors, status: :unprocessable_entity }
       end

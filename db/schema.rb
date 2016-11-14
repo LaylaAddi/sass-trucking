@@ -349,7 +349,7 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "type"
     t.string   "emergency_contact"
     t.string   "emergency_contact_number"
-    t.string   "image"
+    t.string   "profile_bg"
     t.string   "profile_image"
     t.boolean  "company_profile_admin",    default: false
     t.boolean  "admin",                    default: false
@@ -359,7 +359,7 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.boolean  "company_driver",           default: false
     t.boolean  "owner_operator",           default: false
     t.boolean  "shipping_receiving",       default: false
-    t.decimal  "driver_rpm"
+    t.decimal  "driver_rpm",               default: "0.0"
     t.string   "employment_status",        default: "not_active"
     t.string   "time_zone"
     t.string   "reset_password_token"

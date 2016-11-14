@@ -17,9 +17,11 @@
                     <br />
                       Status <%= @driver.employment_status %> 
                       <br />
+                      <span class='text-red'>
                       Company Driver <%= @driver.company_driver %>
                       <br />
                       Owner Operator <%= @driver.owner_operator %>
+                      </span>
                     </small>
                   </h2>
                 <%= link_to "Update Driver", edit_user_path(@driver), 
