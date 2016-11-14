@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.integer  "driver_user_id"
     t.string   "payment_status"
     t.date     "due_date"
-    t.decimal  "insurance_payment"
-    t.decimal  "trailer_rental"
-    t.decimal  "truck_rental"
-    t.decimal  "other"
+    t.decimal  "insurance_payment", default: "0.0"
+    t.decimal  "trailer_rental",    default: "0.0"
+    t.decimal  "truck_rental",      default: "0.0"
+    t.decimal  "other",             default: "0.0"
     t.string   "payment_notes"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "load_addresses", force: :cascade do |t|
@@ -252,6 +252,15 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.index ["truck_id"], name: "index_miles_on_truck_id", using: :btree
   end
 
+  create_table "trailer_images", force: :cascade do |t|
+    t.string   "notes"
+    t.string   "image_file"
+    t.integer  "trailer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trailer_id"], name: "index_trailer_images_on_trailer_id", using: :btree
+  end
+
   create_table "trailers", force: :cascade do |t|
     t.string   "year"
     t.string   "make"
@@ -265,6 +274,12 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.integer  "driver_user_id"
     t.string   "length"
     t.string   "door_type"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["driver_user_id"], name: "index_trailers_on_driver_user_id", using: :btree
@@ -278,11 +293,22 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "transactionable_id"
     t.string   "transactionable_type"
     t.string   "business_name"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+  end
+
+  create_table "truck_images", force: :cascade do |t|
+    t.string   "notes"
+    t.string   "image_file"
+    t.integer  "truck_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["truck_id"], name: "index_truck_images_on_truck_id", using: :btree
   end
 
   create_table "trucks", force: :cascade do |t|
@@ -296,6 +322,12 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "image"
     t.string   "notes"
     t.string   "service_status"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "driver_user_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -303,8 +335,8 @@ ActiveRecord::Schema.define(version: 20160929044746) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                    default: "",        null: false
-    t.string   "encrypted_password",       default: "",        null: false
+    t.string   "email",                    default: "",           null: false
+    t.string   "encrypted_password",       default: "",           null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "telephone"
@@ -324,15 +356,16 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.boolean  "dispatcher",               default: false
     t.boolean  "office",                   default: false
     t.boolean  "maintenance",              default: false
+    t.boolean  "company_driver",           default: false
+    t.boolean  "owner_operator",           default: false
     t.boolean  "shipping_receiving",       default: false
-    t.boolean  "flat_rpm_driver",          default: false
-    t.decimal  "driver_ppm"
-    t.string   "employment_status",        default: "pending"
+    t.decimal  "driver_rpm"
+    t.string   "employment_status",        default: "not_active"
     t.string   "time_zone"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",            default: 0,         null: false
+    t.integer  "sign_in_count",            default: 0,            null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -341,11 +374,11 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",          default: 0,         null: false
+    t.integer  "failed_attempts",          default: 0,            null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

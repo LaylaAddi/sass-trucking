@@ -20,7 +20,7 @@ class DriverStatementsController < ApplicationController
     @driver = DriverUser.find(params[:driver_user_id])
     @driver_statement = @driver.driver_statements.new
     #@loads = @driver.loads.where(["status_name = ?", "Complete"]).order(:id) 
-    @loads = @driver.loads.where("driver_statement_id is NULL")
+    @loads = @driver.loads.where("driver_statement_id is NULL").order(:load_id)
   end
 
   def edit

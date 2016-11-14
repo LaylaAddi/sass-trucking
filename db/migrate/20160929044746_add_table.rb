@@ -97,10 +97,12 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :expense_type
       t.decimal :debit, default: 0.00
       t.decimal :credit, default: 0.00
-      t.string :street
-      t.string :city
-      t.string :state
-      t.string :zip
+      t.string :street 
+      t.string :city 
+      t.string :state 
+      t.string :zip 
+      t.float :latitude
+      t.float :longitude
       t.integer :transactionable_id
       t.string  :transactionable_type
       t.string :business_name
@@ -207,7 +209,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :cad_driver_out_of_service_percent, null: false, default: ""
       t.string :us_inspections_prev_24, null: false, default: ""
       t.string :cad_inspections_prev_24, null: false, default: ""
-      
       t.string :crash_results_24_prior 
       t.string :cad_crash_results_24_prior 
       t.string :cad_crash_fatal 
@@ -248,6 +249,12 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :image
       t.string :notes
       t.string :service_status
+      t.string :street 
+      t.string :city 
+      t.string :state 
+      t.string :zip 
+      t.float :latitude
+      t.float :longitude
       t.integer :driver_user_id, index: true
 
 
@@ -267,6 +274,12 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.integer :driver_user_id, index: true
       t.string :length
       t.string :door_type
+      t.string :street 
+      t.string :city 
+      t.string :state 
+      t.string :zip 
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
     
@@ -275,10 +288,10 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.integer :driver_user_id 
       t.string :payment_status
       t.date :due_date
-      t.decimal :insurance_payment
-      t.decimal :trailer_rental
-      t.decimal :truck_rental
-      t.decimal :other
+      t.decimal :insurance_payment, default: 0
+      t.decimal :trailer_rental, default: 0
+      t.decimal :truck_rental, default: 0
+      t.decimal :other, default: 0
       t.string :payment_notes
       t.timestamps
     end
@@ -293,7 +306,19 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     
+    create_table :truck_images do |t|
+      t.string :notes
+      t.string :image_file
+      t.integer :truck_id, index: true
+      t.timestamps
+    end
     
+    create_table :trailer_images do |t|
+      t.string :notes
+      t.string :image_file
+      t.integer :trailer_id, index: true
+      t.timestamps
+    end
     
     
   end

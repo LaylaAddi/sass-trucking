@@ -13,8 +13,10 @@ class TrailersController < ApplicationController
 
 
   def show
-    @trailer_miles = @trailer.trailer_miles 
     @trailer_mile = TrailerMile.new
+    @trailer_miles = @trailer.trailer_miles 
+    @trailer_image = TrailerImage.new
+    @trailer_images = @trailer.trailer_images 
   end
 
 
@@ -88,7 +90,12 @@ class TrailersController < ApplicationController
                                       :notes,
                                       :length,
                                       :door_type,
-                                      :driver_user_id
+                                      :driver_user_id,
+                                      :city, 
+                                      :state, 
+                                      :zip, 
+                                      :latitude,
+                                      :longitude
                                       )
     end
 end

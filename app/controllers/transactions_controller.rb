@@ -92,7 +92,9 @@ class TransactionsController < ApplicationController
                                             :zip, 
                                             :business_name, 
                                             :transactionable_id,
-                                            :transactionable_type
+                                            :transactionable_type,
+                                            :latitude,
+                                            :longitude
                                             )
     end
 end

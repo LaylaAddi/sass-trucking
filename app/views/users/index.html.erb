@@ -4,12 +4,10 @@
 		<tr>
 			<th>ID</th>
 			<th>Name</th>
-			<th>Company</th>
 			<th>Position</th>
 			<th>Type</th>
 			<th>Employment Status</th>
-			<th>[HEADER]</th>
-			<th>[HEADER]</th>
+
 		</tr>
 	</thead>
 	<tbody>
@@ -17,7 +15,7 @@
 		<tr>
 			<td><%= user.id %></td>
 			<td><%= user.full_name %></td>
-			<td><%= truncate(user.user_position, lenght: 15) %> </td> 
+			<td><%= truncate(user.user_position, lenght: 25) %></td> 
 			<td><%= user.type_of_user %></td>
 			<td><%= user.employment_status %></td> 
 <td>

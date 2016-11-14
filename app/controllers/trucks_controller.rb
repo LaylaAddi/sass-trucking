@@ -13,8 +13,10 @@ class TrucksController < ApplicationController
 
 
   def show
-    @truck_miles = @truck.truck_miles 
+    @truck_image = TruckImage.new
+    @truck_images = @truck.truck_images
     @truck_mile = TruckMile.new  
+    @truck_miles = @truck.truck_miles 
     @driver = @truck.driver_user 
   end
 
@@ -90,7 +92,12 @@ class TrucksController < ApplicationController
                                     :image, 
                                     :notes, 
                                     :driver_user_id, 
-                                    :service_status
+                                    :service_status,
+                                    :city, 
+                                    :state, 
+                                    :zip, 
+                                    :latitude,
+                                    :longitude
                                     )
     end
 end

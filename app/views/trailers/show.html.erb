@@ -1,3 +1,11 @@
+<header class="jumbotron hero-spacer">
+  <% if @trailer.image_url.present? %>
+  <%= image_tag @trailer.image_url(:large) %>   
+  <% else %>
+  <%= image_tag("homeheader.jpg", class: "img-rounded img-responsive") %>  
+  <% end %> 
+</header>
+<hr>
 <div class="col-lg-12">
   <div class="panel panel-default animated round shadow">
     <div class="panel-heading animated round shadow">
@@ -64,7 +72,7 @@
             <td><%= mile.created_at.strftime("%A %B %-d, %Y") %> <%= mile.created_at.strftime("%-l:%M %p %Z") %></td>
             <td><%= mile.notes %></td>
             <td><%= link_to 'Edit', edit_trailer_trailer_mile_path(@trailer, mile),
-            class: "btn btn-success btn-xs round " %></td>
+              class: "btn btn-success btn-xs round " %></td>
           </tr>
         </tbody>
       </table>
@@ -74,28 +82,49 @@
   </div>
 </div>
 <strong> <% running_total %></strong>
-<%= simple_form_for [@trailer, @trailer_mile] do |f| %>
-<%= f.error_notification %>
-<div class="col-lg-4">
-  <div class="panel panel-default animated round shadow">
-    <div class="panel-heading animated round shadow">
-      Add Miles
-    </div>
-    <div class="panel-body">
-      <p>
-      <div class="form-inputs">
-        <%= f.input :mileage %>
-        <%= f.input :notes %>
+<div class="row">
+  <div class="col-xs-4">
+    <%= simple_form_for [@trailer, @trailer_mile] do |f| %>
+    <%= f.error_notification %>
+    <div class="col-lg-12">
+      <div class="panel panel-default animated round shadow">
+        <div class="panel-heading animated round shadow">
+          Add Miles
+        </div>
+        <div class="panel-body">
+          <p>
+          <div class="form-inputs">
+            <%= f.input :mileage %>
+            <%= f.input :notes %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Add Mileage Record", class: "btn btn-info btn-sm round"  %>
+          </div>
+          <% end %>
+          </p>
+        </div>
+        <div class="panel-footer animated round shadow">
+          <%= link_to 'Edit Trailer Info', edit_trailer_path(@trailer), class:"btn btn-hrcinfo btn-sm round" %> |
+          <%= link_to 'All Trailers', trailers_path, class:"btn btn-success btn-sm round" %>
+        </div>
       </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Add Mileage Record", class: "btn btn-info btn-sm round"  %>
-      </div>
-      <% end %>
-      </p>
-    </div>
-    <div class="panel-footer animated round shadow">
-      <%= link_to 'Edit Trailer Info', edit_trailer_path(@trailer), class:"btn btn-hrcinfo btn-sm round" %> |
-      <%= link_to 'All Trailers', trailers_path, class:"btn btn-success btn-sm round" %>
     </div>
   </div>
+  <div class="col-xs-8">
+    <%= simple_form_for [@trailer, @trailer_image] do |trailer_image| %>
+    <%= trailer_image.input :image_file, as: :file, label: "Add Image" %> 
+    <%= trailer_image.input :notes %>
+    <div class="form-actions">
+      <%= trailer_image.button :submit, "Add Image", class: "btn btn-info btn-xs round"  %> 
+    </div>
+    <% end %>
+    <% @trailer_images.each do |trailer_image|  %>
+    <%= link_to trailer_image.image_file_url(:large), target: '_blank' do %>
+    <%= image_tag(trailer_image.image_file_url(:small)) unless trailer_image.image_file_url.blank? %>
+    <% end %>
+    <br />
+    <%= (trailer_image.notes) %> 
+    <% end %>  
+  </div>
+</div>
 </div>

@@ -3,7 +3,7 @@ class ShipperUser < User
   :first_name_or_last_name_or_email 
 
   mount_uploader :image, UserImageUploader  
-  mount_uploader :profile_image, UserProfileImageUploader  
+  mount_uploader :profile_image, UserProfileImageUploader   
   
   
  private 

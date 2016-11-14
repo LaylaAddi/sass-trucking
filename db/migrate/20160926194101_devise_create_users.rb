@@ -23,10 +23,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :dispatcher, default: false
       t.boolean :office, default: false
       t.boolean :maintenance, default: false  
+      t.boolean :company_driver, default: false  
+      t.boolean :owner_operator, default: false 
       t.boolean :shipping_receiving, default: false 
-      t.boolean :flat_rpm_driver, default: false  
-      t.decimal :driver_ppm
-      t.string :employment_status, default: "pending"
+      t.decimal :driver_rpm
+      t.string :employment_status, default: "not_active"
       t.string :time_zone  
       
 

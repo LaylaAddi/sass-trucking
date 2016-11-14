@@ -19,11 +19,11 @@ class DriverUsersController < UsersController
       params[:driver_user].delete(:password_confirmation) 
     end
     
-    if @user.update!(user_params)
+    if @user.update(user_params)
       flash[:success] = "The user was updated"
-      redirect_to root_path
+      redirect_to @user
     else
-      flash[:error] = "There was a problem" 
+        flash[:error] = @user.errors.full_messages.to_sentence
       render :edit  
     end
   end 
@@ -107,8 +107,11 @@ class DriverUsersController < UsersController
                                         :emergency_contact,
                                         :emergency_contact_number,
                                         :employment_status,
-                                        :flat_rpm_driver, 
-                                        :driver_ppm 
+                                        :company_driver, 
+                                        :driver_rpm,
+                                        :time_zone,
+                                        :company_driver,
+                                        :owner_operator
                                         )
                               
   end

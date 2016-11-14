@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 
 
+
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users do
@@ -31,13 +32,15 @@ Rails.application.routes.draw do
   end 
   
   resources :trucks do
-    resources :truck_miles
-      collection {post :import}
+    resources :truck_images
+      resources :truck_miles
+        collection {post :import}
   end
   
   resources :trailers do
-    resources :trailer_miles
-      collection {post :import}
+    resources :trailer_images
+      resources :trailer_miles
+        collection {post :import}
   end
  
   resources :company_profiles do

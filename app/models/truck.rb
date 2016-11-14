@@ -1,8 +1,10 @@
 class Truck < ApplicationRecord
   belongs_to :driver_user
-  has_many :truck_miles
-  validates_presence_of :number, :make, :vin
+  has_many :truck_miles, dependent: :destroy
+  has_many :truck_images, dependent: :destroy
+  validates_presence_of :number, :make, :vin, :service_status
   validates_uniqueness_of :number, :vin
+  mount_uploader :image, TruckImageUploader  
   
   def self.as_csv
     CSV.generate do |csv|

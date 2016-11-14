@@ -48,3 +48,5 @@ index on loads statements loads etc
                   <br />
                   <%= f.time_zone_select :time_zone, 
                   ActiveSupport::TimeZone.us_zones %>
+                  
+                  company driver and rate settings (controller done and schema)

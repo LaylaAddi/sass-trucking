@@ -2,12 +2,14 @@ module Dropdown
   extend ActiveSupport::Concern   
   
 PercentageSelect =
-    ["Select %"], 
+    ['0%', ".00"], 
     ['5%', ".05"],
     ['8%', ".08"],
     ['10%', ".10"],
+    ['11%', ".11"],
     ['12%', ".12"],
     ['13%', ".13"],
+    ['14%', ".14"],
     ['15%', ".15"],
     ['18%', ".18"],
     ['20%', ".20"],
@@ -120,15 +122,9 @@ CompanyProfileMembershipStatus =
       
     EmploymentStatus =
   [
-    ["submitted", "submitted"],
-    ["pending", "pending"],
-    ["approved", "approved"],
-    ["declined", "declined"],
+
     ["active", "active"],
-    ["sick_leave", "sick_leave"],
-    ["suspended", "suspended"], 
-    ["vacation", "vacation"],
-    ["fired", "fired"]
+    ["not_active", "not_active"]
   ]  
   
     DeliveryStatus =
@@ -210,7 +206,32 @@ CompanyProfileMembershipStatus =
     ["BOL", "BOL"],
     ["Other", "Other"]
   ]
-      
+  
+  TruckTrailerStatus =
+  [
+    ["In Service", "In Service"],
+    ["Not In Service" "Not In Service"]
+  ]
+
  
+ DriverRpm =
+    [
+    "Set Rate", 
+    "0.00", 
+    ".35", 
+    ".36",
+    ".37",
+    ".38",
+    ".39",
+    ".40",
+    ".41",
+    ".42",
+    ".43",
+    ".44",
+    ".45",
+    ".46",
+    ".47",
+    ".48"
+    ]
 end
 

@@ -1,8 +1,10 @@
 class Trailer < ApplicationRecord
   belongs_to :driver_user
   has_many :trailer_miles, dependent: :destroy
-  validates_presence_of :number, :make, :vin
+  has_many :trailer_images, dependent: :destroy
+  validates_presence_of :number, :make, :vin, :service_status
   validates_uniqueness_of :number, :vin 
+  mount_uploader :image, TrailerImageUploader 
   
   def self.as_csv
     CSV.generate do |csv|

@@ -45,7 +45,8 @@ class DriverUsersRegistrations::RegistrationsController < Devise::RegistrationsC
                                           :emergency_contact_number,
                                           :time_zone,
                                           :flat_rpm_driver, 
-                                          :driver_ppm 
+                                          :driver_rpm,
+                                          :company_driver 
                                           )
                               
                               

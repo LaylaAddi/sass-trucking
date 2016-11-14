@@ -4,14 +4,15 @@ class DriverUser < User
   has_many :trailers 
   has_many :driver_statements, through: :loads
   has_many :driver_statements
-
+  validates :driver_rpm, :numericality => { :only_decimal => true,
+    :message => "Set A Rate - Select 0.00 if Owner Operator" } 
   ransack_alias :driver_search_params,
   :first_name_or_last_name_or_email 
 
-
-
   mount_uploader :image, UserImageUploader  
   mount_uploader :profile_image, UserProfileImageUploader  
+
+
   
 
 

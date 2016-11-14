@@ -46,23 +46,27 @@
           </div>
           <hr>
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <%= f.input :emergency_contact %> 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <%= f.input :emergency_contact_number %>  
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
+                  <label>Change User TimeZone</label>
+                  <br />
+                  <%= f.time_zone_select :time_zone, 
+                  ActiveSupport::TimeZone.us_zones %>
             </div>
           </div>
           <hr>
         </div>
         <div class="row">
           <div class="col-md-4">
-            <%= f.input :image %>  
+            <%= f.input :image, as: :file, label: "Profile Image" %>  
           </div>
           <div class="col-md-4">
-            <%= f.input :profile_image %>
+            <%= f.input :profile_image, as: :file, label: "Profile Background" %> 
           </div>
           <div class="col-md-4">
             <%= f.input :admin %>
@@ -72,9 +76,20 @@
             <%= f.input :maintenance %>
             <%= f.input :shipping_receiving %>
             <%= f.input :employment_status, collection: ApplicationRecord::EmploymentStatus %>
-            <%= f.input :flat_rpm_driver %>
-            <%= f.input :flat_rpm_driver %> 
-            <%= f.input :driver_ppm %>
+            <% if @user.type == "DriverUser" %>
+            <%= f.input :owner_operator %>
+            <%= f.input :company_driver %>
+            <% if @user.driver_rpm.present? %>
+            <strong> Current Driver Rate
+            <%= number_to_currency(@user.driver_rpm)  %>
+            </strong>
+            <% end %>
+            <%= f.input :driver_rpm, collection: ApplicationRecord::DriverRpm, 
+                label: false, prompt: "" %>
+            <br />
+
+            
+            <% end %>
             <%= f.input :type %>
 
           </div>
