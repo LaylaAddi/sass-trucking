@@ -25,10 +25,15 @@ Rails.application.routes.draw do
   resources :driver_users do
     collection {post :import}
       resources :driver_statements
+        resources :hrc_users do 
+          resources :loads, only: [:new, :create]
+
+        end
   end 
   
   resources :users do
     collection {post :import}
+
   end 
   
   resources :trucks do

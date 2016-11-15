@@ -27,14 +27,16 @@ class LoadsController < ApplicationController
 
 
   def new
-    @load = current_hrc_user.loads.build
-    @driver = DriverUser.where(["employment_status = ?", "active"]) 
+    @driver = DriverUser.find(params[:driver_user_id])
+    @hrc_user = HrcUser.find(params[:hrc_user_id]) 
+    @load = @driver.loads.build 
+
     @company_profile = CompanyProfile.all
   end
 
 
   def edit
-    @driver = DriverUser.where(["employment_status = ?", "active"])
+    @driver = DriverUser.find(params[:driver_user_id])
     @hrc_user = current_hrc_user
     @company_profile = CompanyProfile.all   
  
@@ -42,9 +44,10 @@ class LoadsController < ApplicationController
 
 
   def create
-    @driver = DriverUser.where(["employment_status = ?", "active"]) 
+    @driver = DriverUser.find(params[:driver_user_id])
+    @load = @driver.loads.build(load_params)
     @company_profile = CompanyProfile.all  
-    @load = current_hrc_user.loads.build(load_params)
+
     respond_to do |format|
       if @load.save
         format.html { redirect_to @load, notice: 'Load was successfully created.' }
@@ -119,6 +122,7 @@ class LoadsController < ApplicationController
                                     :equipment_type, 
                                     :status_name,
                                     :driver_user_id,
+                                    :hrc_user_id,
                                     :updated_by,
                                     :pick_up_notes,
                                     :delivery_notes,
@@ -156,4 +160,3 @@ class LoadsController < ApplicationController
                                     )
     end
 end
-

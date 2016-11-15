@@ -1,5 +1,5 @@
 <h3>New Load</h3>
-<%= simple_form_for(@load) do |f| %>
+<%= simple_form_for [@driver, @load] do |f| %>
 <%= f.error_notification %>
 <div class="col-sm-12 col-sm-offset-0 shadow round animated">
    <div class="well animated">
@@ -7,8 +7,9 @@
          <div class="col-sm-4">
             <div class="form-group input-group">  
                <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-               <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
-                  :id, :full_name, include_blank: "Select Driver"  %> 
+               <%= f.input :driver_user_id  %> 
+               <%= f.input :hrc_user_id  %> 
+
             </div>
          </div>
          <div class="col-sm-4">
