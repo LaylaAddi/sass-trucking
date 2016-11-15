@@ -2,8 +2,10 @@ class Load < ApplicationRecord
   
   before_save :set_booking_fee, :set_rate_to_driver_after_factor_fees
   before_update :set_booking_fee, :set_rate_to_driver_after_factor_fees 
+
+
   belongs_to :hrc_user 
-  belongs_to :driver_user, optional: true  
+  belongs_to :driver_user
   belongs_to :company_profile 
   has_many :load_addresses, dependent: :destroy  
   has_many :transactions, as: :transactionable
@@ -18,8 +20,8 @@ class Load < ApplicationRecord
   
   validates_presence_of :origin_street,:origin_city, :origin_state, :destination_street, 
   :destination_city, :destination_state, :load_size, :percent_deducted, :miles, 
-  :equipment_type, :status_name, :driver_user_id, :company_profile, :percent_deducted,
-  :rate_to_driver, :invoice_price, :consignor_name, :consignee_name
+  :equipment_type, :status_name, :driver_user_id, :company_profile, :percent_deducted, 
+  :invoice_price, :consignor_name, :consignee_name, :rate_to_driver
   
   validates_numericality_of :percent_deducted 
   
@@ -51,8 +53,6 @@ class Load < ApplicationRecord
   def set_rate_to_driver_after_factor_fees
    self.rate_to_driver_after_factor_fees = self.rate_to_driver - ddbop 
   end
-  
-
   
 
   def load_title

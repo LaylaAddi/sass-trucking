@@ -27,24 +27,24 @@ class LoadsController < ApplicationController
 
 
   def new
+    @driver = DriverUser.find(params[:driver_user_id])
     @load = current_hrc_user.loads.build
-    @driver = DriverUser.where(["employment_status = ?", "active"]) 
+    @hrc_user = current_hrc_user
     @company_profile = CompanyProfile.all
   end
 
 
   def edit
-    @driver = DriverUser.where(["employment_status = ?", "active"])
-    @hrc_user = current_hrc_user
     @company_profile = CompanyProfile.all   
- 
   end
 
 
   def create
-    @driver = DriverUser.where(["employment_status = ?", "active"]) 
-    @company_profile = CompanyProfile.all  
+    @driver = DriverUser.find(params[:driver_user_id])
     @load = current_hrc_user.loads.build(load_params)
+    @company_profile = CompanyProfile.all  
+
+
     respond_to do |format|
       if @load.save
         format.html { redirect_to @load, notice: 'Load was successfully created.' }
@@ -59,7 +59,7 @@ class LoadsController < ApplicationController
 
 
   def update
-    @driver = DriverUser.where(["employment_status = ?", "active"]) 
+
     @company_profile = CompanyProfile.all  
     respond_to do |format|
       if @load.update(load_params)
@@ -152,7 +152,8 @@ class LoadsController < ApplicationController
                                     :rate_to_driver,
                                     :rate_after_percent,
                                     :rate_after_booking_fee,
-                                    :rate_to_driver_after_factor_fees
+                                    :rate_to_driver_after_factor_fees,
+                                    :company_driver_rate
                                     )
     end
 end

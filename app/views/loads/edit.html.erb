@@ -1,4 +1,4 @@
-<h1>Editing Load<small> <%= @load.load_title %></small></h1>
+<h2>Editing Load<small> <%= @load.load_title %></small></h2>
 <%= simple_form_for(@load) do |f| %>
 <%= f.error_notification %>
 <div class="col-sm-12 col-sm-offset-0 shadow round animated">
@@ -7,9 +7,8 @@
          <div class="col-sm-4">
             <div class="form-group input-group">  
                <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-               <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
-                  :id, :full_name, include_blank: "Select Driver"  %> 
-            </div>
+               <h3><%= @load.driver_user.full_name %></h3>
+              </div>
          </div>
          <div class="col-sm-4">
             <div class="form-group input-group">

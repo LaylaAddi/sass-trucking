@@ -108,28 +108,7 @@
 <% rate_after_expenses = driver_load_running_total - debit_total%>
 <br />
 <br /> 
-<table class="table table-bordered table-striped table-condensed table-responsive">
-	<thead>
-		<tr>
-			<th>Insurance</th>
-			<th>Trailer Rental</th>
-			<th>Truck Rental</th>
-			<th>Other</th>
-			<th>Total</th>
-		</tr>
-	</thead>
-	<tbody>
-<% insurance_and_rentals = @driver_statement.insurance_payment + @driver_statement.trailer_rental + @driver_statement.truck_rental + @driver_statement.other %>
-		<tr>
-			<td><%= number_to_currency(@driver_statement.insurance_payment) %></td>
-			<td><%= number_to_currency(@driver_statement.trailer_rental) %></td>
-			<td><%= number_to_currency(@driver_statement.truck_rental) %></td>
-			<td><%= number_to_currency(@driver_statement.other) %></td>
-			<td><strong>- <%= number_to_currency(insurance_and_rentals) %></strong></td>
 
-		</tr>
-	</tbody>
-</table>
 <table class="table table-bordered table-striped table-condensed table-responsive">
 	<thead>
 		<tr>
@@ -153,6 +132,29 @@
 		</tr>
 	</tbody>
 </table>
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>Insurance</th>
+			<th>Trailer Rental</th>
+			<th>Truck Rental</th>
+			<th>Other</th>
+			<th>Total</th>
+		</tr>
+	</thead>
+	<tbody>
+<% insurance_and_rentals = @driver_statement.insurance_payment + @driver_statement.trailer_rental + @driver_statement.truck_rental + @driver_statement.other %>
+		<tr>
+			<td><%= number_to_currency(@driver_statement.insurance_payment) %></td>
+			<td><%= number_to_currency(@driver_statement.trailer_rental) %></td>
+			<td><%= number_to_currency(@driver_statement.truck_rental) %></td>
+			<td><%= number_to_currency(@driver_statement.other) %></td>
+			<td><strong>- <%= number_to_currency(insurance_and_rentals) %></strong></td>
+
+		</tr>
+	</tbody>
+</table>
+
 <div class="pull-right">
   <strong>
   Payment Due  <%= number_to_currency(net_after_otr_expense - insurance_and_rentals) %>
