@@ -45,7 +45,7 @@ class DriverUsersController < UsersController
   	
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
-
+    @hrc_user = current_hrc_user
   end
     
   def driver_dashboard

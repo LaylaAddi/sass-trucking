@@ -20,7 +20,7 @@
                 class: "btn btn-success btn-sm round" if current_hrc_user %>
               </div>
               <div class="col-xs-6">
-                <%= link_to "New Load", new_driver_user_load_path(@driver) %>
+                <%= link_to "New Load", new_driver_user_load_path(@driver, hrc_user_id: @hrc_user.id) %>
               </div>
             </div>
           </div>

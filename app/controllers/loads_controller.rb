@@ -22,14 +22,15 @@ class LoadsController < ApplicationController
     @transactions = @load.transactions  
     @vendor_profile = VendorProfile.all
     @load_doc = @load.load_documents 
-    @driver = @load.driver_user
+
   end
 
 
   def new
-    @driver = DriverUser.find(params[:driver_user_id])
-    @load = current_hrc_user.loads.build
-    @hrc_user = current_hrc_user
+    @driver = DriverUser.find(params[:driver_user_id]) 
+    @hrc_user = current_user
+    @load = @driver.loads.new 
+
     @company_profile = CompanyProfile.all
   end
 
@@ -41,7 +42,8 @@ class LoadsController < ApplicationController
 
   def create
     @driver = DriverUser.find(params[:driver_user_id])
-    @load = current_hrc_user.loads.build(load_params)
+    @hrc_user = current_hrc_user
+    @load = @driver.loads.create(load_params)
     @company_profile = CompanyProfile.all  
 
 
@@ -101,7 +103,6 @@ class LoadsController < ApplicationController
     def set_load
       @load = Load.find(params[:id])
     end
-
 
     def load_params
       params.require(:load).permit(
