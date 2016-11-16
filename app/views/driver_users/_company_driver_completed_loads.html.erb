@@ -11,7 +11,6 @@
       <th>Driver</th>
       <th>Debits</th>
       <th>Credits</th>
-      <th>Weight</th>
       <th>Load Size</th>
       <th>Rate</th>
       <th>Distance (Miles)</th>
@@ -42,30 +41,31 @@
         <% end %>
       </td>
       <td>
-
+ 
         <%= link_to driver_user_path(load.driver_user_id) do %>
         <%= load.driver_user.full_name %>
         <% end %>
 
       </td>
       <td>
-        <% load.transactions.each do |transaction| %>
+        <% load.transactions.each do |transaction| if transaction.expense_type == "Cash Advance"  %> 
         <%= number_to_currency(transaction.debit) %> 
         <% debit_running_total = debit_running_total + transaction.debit %>
+        <% end %>
         <% end %>
       </td>
       
       <td>
-        <% load.transactions.each do |transaction| %>
+        <% load.transactions.each do |transaction| if transaction.expense_type == "Cash Advance" %>
         <%= number_to_currency(transaction.credit) %> 
-
         <% credit_running_total = credit_running_total + transaction.credit %>
         <% end %>
+        <% end %>
       </td>
-       <td><%= load.weight %></td>
+
       <td><%= load.load_size %></td>
 
-      <td><%= number_to_currency(load.driver_user.driver_rpm) %></td> 
+      <td><%= number_to_currency(load.rate_after_booking_fee) %></td> 
       <td><%= load.miles %> </td>
 
 
@@ -98,7 +98,6 @@
 			<th>Debits</th>
 			<th>Credits</th>
 			<th>Debit/Credit Total</th>
-
 			<th>Payment Amount</th>
 		</tr>
 	</thead>

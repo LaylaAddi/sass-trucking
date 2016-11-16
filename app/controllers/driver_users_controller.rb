@@ -39,10 +39,9 @@ class DriverUsersController < UsersController
     @loads_no_statement = @driver.loads.where("driver_statement_id is NULL")
     @complete = @loads_no_statement.where(["status_name = ?", "Complete"])
   	@search_complete = @complete.search(params[:q])
-  	@completed_loads = @search_complete.result.order(:id).page(params[:page]).per(1000) 
-  	
 
-  	
+  	@completed_loads = @search_complete.result.order(:id).page(params[:page]).per(1000) 
+
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
 

@@ -1,16 +1,16 @@
 class Load < ApplicationRecord
   
-  before_save :set_booking_fee, :set_rate_to_driver_after_factor_fees
-  before_update :set_booking_fee, :set_rate_to_driver_after_factor_fees 
+
   belongs_to :hrc_user 
-  belongs_to :driver_user, optional: true  
+  belongs_to :driver_user 
   belongs_to :company_profile 
   has_many :load_addresses, dependent: :destroy  
   has_many :transactions, as: :transactionable
   accepts_nested_attributes_for :transactions 
   belongs_to :driver_statement, optional: true 
-  
   has_many :load_documents, dependent: :destroy  
+  before_save :set_booking_fee, :set_rate_to_driver_after_factor_fees, :company_driver_rate
+  before_update :set_booking_fee, :set_rate_to_driver_after_factor_fees, :company_driver_rate 
 
   
   before_validation :delivery_date, date: { after_or_equal_to: Proc.new { :pick_up_date }, 
@@ -26,9 +26,14 @@ class Load < ApplicationRecord
   ransack_alias :load_search_params,
   :driver_user_first_name_or_driver_user_last_name_or_origin_city_or_destination_city_or_origin_state_or_destination_state_or_company_profile_company_name
 
- def set_booking_fee
-   self.booking_fee = self.invoice_price - self.rate_to_driver
- end
+
+  def company_driver_rate
+    self.rate_after_booking_fee = driver_user.driver_rpm
+  end 
+
+  def set_booking_fee
+    self.booking_fee = self.invoice_price - self.rate_to_driver
+  end
 
 
   def grpm

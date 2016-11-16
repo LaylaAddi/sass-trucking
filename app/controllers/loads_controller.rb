@@ -23,6 +23,7 @@ class LoadsController < ApplicationController
     @vendor_profile = VendorProfile.all
     @load_doc = @load.load_documents 
     @driver = @load.driver_user
+    @cd_transactions = @load.transactions.where(["expense_type = ?", "Cash Advance"])
   end
 
 

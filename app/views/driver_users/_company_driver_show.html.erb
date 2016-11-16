@@ -10,8 +10,15 @@
           <div class="text-center">
             <%= image_tag("noUserPhoto.jpg", class: "img-rounded img-responsive img-circle") %> 
             <h2><%= @driver.full_name %> 
-            <br />
-            <small>(<%= @driver.type_of_user %>)</small></h2>
+              <br />
+              <small>
+                (<%= @driver.type_of_user %>) 
+                <span class="text-red">
+                rate <%= number_to_currency(@driver.driver_rpm) if current_hrc_user %>/mile
+                 
+                </span>
+              </small>
+            </h2>
           </div>
           <div class="action-buttons">
             <div class="row">

@@ -167,12 +167,8 @@ CompanyProfileMembershipStatus =
   ExpenseType =   
   [
     ['Fuel', 'Fuel'],
-    ['Food', 'Food'],
-    ['Maintenance', 'Maintenance'],
-    ['Repairs', 'Repairs'],
-    ['Insurance', 'Insurance'],
-    ['Trailer Rent', 'Trailer Rent'],
-    ['Other', 'Other']    
+    ['Cash Advance', 'Cash Advance'],
+    ['Other', 'Other'] 
   ]    
   
     EquipmentType =   
