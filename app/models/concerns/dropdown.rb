@@ -192,7 +192,8 @@ CompanyProfileMembershipStatus =
   DriverStatementPayment =
   [
     ["Paid", "Paid" ],
-    ["Not Paid", "Not Paid" ]
+    ["Not Paid", "Not Paid" ],
+    ["Void", "Void" ]
   ]
   
   
