@@ -142,14 +142,17 @@
       <% end %>
 <% insurance_and_rentals = @driver_statement.insurance_payment +  @driver_statement.trailer_rental + 
 @driver_statement.truck_rental + @driver_statement.other %>
+
 <% fuel_cash_other =  other_running_total + cash_running_total + fuel_running_total  %>
+
 <% invoice_expense = @driver_statement.insurance_payment + @driver_statement.trailer_rental + 
 @driver_statement.truck_rental + @driver_statement.other %>
+
 <% hrc_debit_total = hrc_debit_running_total - hrc_credit_running_total %>
 <% driver_net = driver_load_running_total - expense_running_total %>
 <% hrc_net = hrc_load_running_total - driver_load_running_total %>
 <% debit_total = debit_running_total - credit_running_total %>
-<% net_pay = driver_load_running_total - insurance_and_rentals %> 
+<% net_pay = driver_load_running_total - insurance_and_rentals - fuel_cash_other%> 
 <br /> 
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
@@ -200,13 +203,13 @@
     Other Deductions <div class="pull-right">- <%= number_to_currency(@driver_statement.other) %></div>
   </li>
   <li class="list-group-item">
-    Total Deductions <div class="pull-right">(<%= number_to_currency(insurance_and_rentals) %>)</div>
+    Total Deductions <div class="pull-right">(<%= number_to_currency(fuel_cash_other + insurance_and_rentals) %>)</div>
   </li>
   <li class="list-group-item">
     <strong>
       Pay 
         <div class="pull-right">
-          <%= number_to_currency(driver_load_running_total - insurance_and_rentals) %> 
+          <%= number_to_currency(driver_net) %> 
         </div>
     </strong>
   </li>
