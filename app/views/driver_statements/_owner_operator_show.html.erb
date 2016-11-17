@@ -144,12 +144,10 @@
 @driver_statement.truck_rental + @driver_statement.other %>
 
 <% fuel_cash_other =  other_running_total + cash_running_total + fuel_running_total  %>
-
 <% invoice_expense = @driver_statement.insurance_payment + @driver_statement.trailer_rental + 
 @driver_statement.truck_rental + @driver_statement.other %>
 
 <% hrc_debit_total = hrc_debit_running_total - hrc_credit_running_total %>
-<% driver_net = driver_load_running_total - expense_running_total %>
 <% hrc_net = hrc_load_running_total - driver_load_running_total %>
 <% debit_total = debit_running_total - credit_running_total %>
 <% net_pay = driver_load_running_total - insurance_and_rentals - fuel_cash_other%> 
@@ -209,7 +207,7 @@
     <strong>
       Pay 
         <div class="pull-right">
-          <%= number_to_currency(driver_net) %> 
+          <%= number_to_currency(net_pay) %> 
         </div>
     </strong>
   </li>
