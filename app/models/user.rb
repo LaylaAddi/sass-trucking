@@ -6,9 +6,25 @@ class User < ApplicationRecord
   has_one :company_profile_membership
   has_one :company_profile, through: :company_profile_membership
 
+  def is_company_driver
+    if self.company_driver == true
+      return "company"
+    end
+  end
+    
+  def is_owner_operator
+    if self.owner_operator == true 
+      return "owner"
+    end 
+  end
+
   
   def full_name
     self.first_name+" "+self.last_name
+  end
+  
+  def driver_name_and_type
+    "#{full_name} | #{is_company_driver} #{is_owner_operator}"
   end
   
   def profile_admin_user

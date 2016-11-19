@@ -9,8 +9,9 @@ class Load < ApplicationRecord
   accepts_nested_attributes_for :transactions 
   belongs_to :driver_statement, optional: true 
   has_many :load_documents, dependent: :destroy  
+  before_validation :set_company_driver_rate, :set_company_driver_percent 
   before_save :set_booking_fee, :set_rate_to_driver_after_factor_fees, :company_driver_rate
-  before_update :set_booking_fee, :set_rate_to_driver_after_factor_fees, :company_driver_rate 
+  before_update :set_booking_fee, :set_rate_to_driver_after_factor_fees, :company_driver_rate
 
   
   before_validation :delivery_date, date: { after_or_equal_to: Proc.new { :pick_up_date }, 
@@ -25,7 +26,18 @@ class Load < ApplicationRecord
   
   ransack_alias :load_search_params,
   :driver_user_first_name_or_driver_user_last_name_or_origin_city_or_destination_city_or_origin_state_or_destination_state_or_company_profile_company_name
-
+ 
+  def is_company_driver
+      driver_user.company_driver == true
+  end
+  
+  def set_company_driver_rate
+    self.rate_to_driver = 0.00 if is_company_driver
+  end
+  
+  def set_company_driver_percent
+    self.percent_deducted = 0.00 if is_company_driver
+  end
 
   def company_driver_rate
     self.rate_after_booking_fee = driver_user.driver_rpm

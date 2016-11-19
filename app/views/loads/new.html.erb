@@ -8,7 +8,7 @@
             <div class="form-group input-group">  
                <span class="input-group-addon"><i class="fa fa-truck"></i></span>
                <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
-                  :id, :full_name, include_blank: "Select Driver"  %> 
+                  :id, :driver_name_and_type, include_blank: "Select Driver"  %>   
             </div>
          </div>
          <div class="col-sm-4">

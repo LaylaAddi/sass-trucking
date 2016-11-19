@@ -105,7 +105,7 @@
     <div class="col-xs-9">
     <% fuel_running_total = 0.00 %>
     <% cash_running_total = 0.00 %>
-    <% other_running_total = 0.00%>
+    <% other_running_total = 0.00 %>
     
 
       <% @loads.each do |load| %>
@@ -148,7 +148,7 @@
 @driver_statement.truck_rental + @driver_statement.other %>
 
 <% hrc_debit_total = hrc_debit_running_total - hrc_credit_running_total %>
-<% hrc_net = hrc_load_running_total - driver_load_running_total %>
+
 <% debit_total = debit_running_total - credit_running_total %>
 <% net_pay = driver_load_running_total - insurance_and_rentals - fuel_cash_other%> 
 <br /> 
