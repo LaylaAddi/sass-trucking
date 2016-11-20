@@ -88,12 +88,6 @@ class Load < ApplicationRecord
 	def self.import(file)	
   	CSV.foreach(file.path, headers: true) do |row|
     	Load.create! row.to_hash     
-  	end
+    end
   end  
-
 end
-
-                                    
-
-
-                                 

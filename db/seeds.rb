@@ -258,3 +258,41 @@ email: "support@hrclogistics.com"
 )
 
 
+
+driver1 = DriverUser.create(
+password: "password",
+  password_confirmation: "password", 
+  first_name: "Al Farronte",
+  last_name: "Roberson",
+  email: "s.chesnowitz@gmail.com", 
+  cellphone: "716-986-4010",  
+  street: Faker::Address.street_name,
+  telephone: Faker::PhoneNumber.phone_number,
+  city: city_data.sample,
+  zip: "123456",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number,
+  employment_status: "active",
+  company_driver: true,
+  driver_rpm: 0.40
+)
+  puts driver1.inspect
+
+driver2 = DriverUser.create(
+password: "password",
+  password_confirmation: "password", 
+  first_name: "'Nino' Zefanias",
+  last_name: "Matavele",
+  email: "kathystevemail@gmail.com",
+  cellphone: "716-986-4010",  
+  street: Faker::Address.street_name,
+  telephone: Faker::PhoneNumber.phone_number,
+  city: city_data.sample,
+  zip: "123456",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number,
+  employment_status: "active",
+  owner_operator: true,
+  driver_rpm: 0.00 
+)
+  puts driver2.inspect

@@ -5,6 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_one :company_profile_membership
   has_one :company_profile, through: :company_profile_membership
+  validates_presence_of :cellphone, :first_name, :last_name 
+  
+  CELLPHONE_REGEX = /\A[0-9]*\Z/
+
+  validates_format_of :cellphone, with: CELLPHONE_REGEX
+
+  validates :cellphone, length: { is: 10 }
+  
 
   def is_company_driver
     if self.company_driver == true
