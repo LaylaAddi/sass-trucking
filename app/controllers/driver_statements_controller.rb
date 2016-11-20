@@ -41,7 +41,7 @@ class DriverStatementsController < ApplicationController
         format.json { render :show, status: :created, location: @driver_statement }
       else
         flash[:error] = @driver_statement.errors.full_messages.to_sentence
-        format.html { redirect_to @driver }
+        format.html { redirect_to request.referrer }  
         format.json { render json: @driver_statement.errors, status: :unprocessable_entity }
       end
     end
