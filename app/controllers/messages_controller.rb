@@ -22,4 +22,3 @@ class MessagesController < ApplicationController
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 end
-

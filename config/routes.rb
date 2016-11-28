@@ -76,7 +76,7 @@ Rails.application.routes.draw do
       post 'reply'
     end
   end
-
+  post 'twilio/voice' => 'twilio#voice'
   get 'hrc_dashboard', to: 'hrc_users#hrc_dashboard'
   get 'driver_dashboard', to: '_driver_users#driver_dashboard'
   get 'shipper_dashboard', to: 'shipper_users#shipper_dashboard'
