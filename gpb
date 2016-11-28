@@ -1,5 +1,5 @@
 git add -A
-git commit -m "fix statment starting text messages"
-git push -u origin textmessage 
+git commit -m "2waytext"
+git push -u origin 2waytext 
 
 .

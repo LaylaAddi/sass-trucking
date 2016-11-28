@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
 
 
+  get 'messages/reply'
+
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 
   resources :hrc_users do
@@ -68,7 +70,12 @@ Rails.application.routes.draw do
   end   
 
   resources :miles
-  
+
+  resource :messages do
+    collection do
+      post 'reply'
+    end
+  end
 
   get 'hrc_dashboard', to: 'hrc_users#hrc_dashboard'
   get 'driver_dashboard', to: '_driver_users#driver_dashboard'
