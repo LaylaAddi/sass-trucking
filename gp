@@ -1,5 +1,5 @@
 git add -A
-git commit -m "fix up filter loads to only complete on create statement"
+git commit -m "2waytext"
 git push -u origin master 
 git push dokku master
 
