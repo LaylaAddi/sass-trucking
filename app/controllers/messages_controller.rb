@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     from_number = params["From"]
     boot_twilio
     sms = @client.messages.create(
-      from: Rails.application.secrets.twilio_number,
+      from: ENV["twilio_number"], 
       to: from_number,
       body: "Hello there, thanks for texting me. Your number is #{from_number}."
     )
