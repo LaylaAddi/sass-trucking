@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     sms = @client.messages.create(
       from: ENV["twilio_number"], 
       to: from_number,
-      body: "Hello there, thanks for texting me. Your number is #{from_number}."
+      body: "GFYS the app is now able to text to you BeeYatches! #{from_number}."
     )
     
   end
