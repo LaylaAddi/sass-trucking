@@ -1,9 +1,12 @@
     <%= form_tag driver_user_notifications_path(@driver) do %>
+    <% unless @text_load.nil? %>
       <input name="load_title" type="hidden" value="<%= @text_load.load_title %>"></input>
+    <% end %>   
       <div class="form-group">
         <label for="name">Your Name</label>
         <input class="form-control" name="name" value="<%= @hrc_user.first_name %>"></input> 
       </div>
+      
       <div class="form-group">
         <label for="phone">Driver Cell</label>
         <input class="form-control" name="phone" value="<%= @driver.cellphone %>"></input>
