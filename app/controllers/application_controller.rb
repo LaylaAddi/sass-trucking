@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :null_session
+  protect_from_forgery prepend: true
   before_action :driver_list 
   around_filter :user_time_zone, if: :current_user
   
