@@ -30,21 +30,18 @@ class DriverUsersController < UsersController
   
   def show 
     @driver = DriverUser.find(params[:id]) 
+    @hrc_user = current_hrc_user
   	@driver_statements = @driver.driver_statements
     @active = @driver.loads.where(["status_name = ?", "Active"])
   	@search_active = @active.search(params[:q])
   	@active_loads = @search_active.result.order(:id).page(params[:page]).per(1000) 
-  	
-
     @loads_no_statement = @driver.loads.where("driver_statement_id is NULL")
     @complete = @loads_no_statement.where(["status_name = ?", "Complete"])
   	@search_complete = @complete.search(params[:q])
-
   	@completed_loads = @search_complete.result.order(:id).page(params[:page]).per(1000) 
-
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
-
+    @text_load = @active.last 
   end
     
   def driver_dashboard

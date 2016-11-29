@@ -1,0 +1,18 @@
+    <%= form_tag driver_user_notifications_path(@driver) do %>
+      <input name="house_title" type="hidden" value="<%= @text_load[:load_title] %>"></input>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input class="form-control" name="name" placeholder="John Appleseed"></input>
+      </div>
+      <div class="form-group">
+        <label for="phone">Your Phone Number</label>
+        <input class="form-control" name="phone" value="<%= @driver[:cellphone] %>"></input>
+      </div>
+      <div class="form-group">
+        <label for="message">How can we help?</label>
+        <input class="form-control" name="message"></input>
+      </div>
+      <button class="btn btn-primary" type="submit">Request Info</button>
+    <% end %>
+  </div>
+</div>
