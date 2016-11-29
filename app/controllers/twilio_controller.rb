@@ -1,6 +1,6 @@
 class TwilioController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:voice]
-  
+  skip_before_action :authenticate_user!
   
   def voice
     response = Twilio::TwiML::Response.new do |r|
