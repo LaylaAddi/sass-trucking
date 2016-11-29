@@ -1,5 +1,5 @@
 git add -A
-git commit -m "sending texts"
+git commit -m "driver statment validates_presence_of "
 git push -u origin master 
 git push dokku master
 
