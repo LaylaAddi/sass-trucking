@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   
   def driver_list 
-    @driver_list = DriverUser.where(["employment_status = ?", "active"]).order(:first_name)  
+    @driver_list = DriverUser.where(["employment_status = ?", "active"]).order('first_name ASC')   
   end
   
   devise_group :user, contains: [:hrc_user, :shipper_user, :driver_user] 
