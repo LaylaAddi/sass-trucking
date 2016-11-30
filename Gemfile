@@ -33,9 +33,7 @@ gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'twilio-ruby' 
 gem 'textris' 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-semantic'
-end
+gem 'redis'
 gem 'nexmo'
 
 group :development, :test do
