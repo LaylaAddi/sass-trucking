@@ -1,6 +1,6 @@
 class TextMessagesController < ApplicationController
   include ApplicationHelper
-  
+  skip_before_action :authenticate_user! 
   skip_before_action :verify_authenticity_token, :only => [:create]
 
   # If webhooks are set up as GET requests
