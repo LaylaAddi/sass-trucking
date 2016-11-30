@@ -296,3 +296,20 @@ password: "password",
   driver_rpm: 0.00 
 )
   puts driver2.inspect
+  
+  
+  
+  
+  
+10.times do |j|
+  number = "447555555#{rand(100..999)}"
+
+  10.times do |i|
+    Message.create!(
+      number: number,
+      text: Faker::Hipster.paragraph(1),
+      inbound: Faker::Boolean.boolean,
+      created_at: (i+j).hours.ago
+    )
+  end
+end

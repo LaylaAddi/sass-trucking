@@ -1,5 +1,5 @@
 git add -A
-git commit -m "sending texts"
-git push -u origin textristime 
+git commit -m "messagemodel"
+git push -u origin messagemodel 
 
 .

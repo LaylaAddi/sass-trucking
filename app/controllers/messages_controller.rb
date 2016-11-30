@@ -1,24 +1,28 @@
-class MessagesController < ApplicationController 
- skip_before_filter :verify_authenticity_token
- skip_before_filter :authenticate_user!, :only => "reply"
- 
-  def reply
-    message_body = params["Body"]
-    from_number = params["From"]
-    boot_twilio
-    sms = @client.messages.create(
-      from: ENV["twilio_number"], 
-      to: from_number,
-      body: "GFYS the app is now able to text to you BeeYatches! #{from_number}."
-    )
-    
+class MessagesController < ApplicationController
+  include ApplicationHelper
+
+  def index
+    @messages = Message.all
   end
- 
+
+  def show
+    @messages = Message.for_number(params[:id])
+    @new_message = Message.new(number: params[:id])
+  end
+
+  def create
+    message = Message.new(clean_params)
+    message.inbound = false
+
+    if message.save
+      send_cable(message)
+      send_sms(message)
+    end
+  end
+
   private
- 
-  def boot_twilio
-    account_sid = ENV['twilio_sid']
-    auth_token = ENV['twilio_token'] 
-    @client = Twilio::REST::Client.new account_sid, auth_token
+
+  def clean_params
+    params.require(:message).permit(:number, :text)
   end
 end

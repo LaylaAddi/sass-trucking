@@ -72,11 +72,10 @@ Rails.application.routes.draw do
 
   resources :miles
 
-  resource :messages do
-    collection do
-      post 'reply'
-    end
-  end
+  mount ActionCable.server => '/cable'
+
+  resources :messages
+  resources :text_messages
 
   get 'hrc_dashboard', to: 'hrc_users#hrc_dashboard'
   get 'driver_dashboard', to: '_driver_users#driver_dashboard'
