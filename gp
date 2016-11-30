@@ -1,6 +1,6 @@
 git add -A
-git commit -m "skip_before_filter :verify_authenticity_token"
+git commit -m "allow blank message"
 git push -u origin master 
-git push dokku master
+git push dokku master 
 
 
