@@ -8,8 +8,10 @@ class MessagesController < ApplicationController
   end
 
   def show
+
     @messages = Message.for_number(params[:id])
     @new_message = Message.new(number: params[:id])
+
   end
 
   def create
@@ -19,13 +21,14 @@ class MessagesController < ApplicationController
     if message.save
       send_cable(message)
       send_sms(message)
-      redirect_back(fallback_location: root_path)
+      redirect_to message_path(message.number)
     end
   end
 
   private
 
   def clean_params
-    params.require(:message).permit(:number, :text)
+    params.require(:message).permit(:number, :text, :driver_user_id)
   end
 end
+

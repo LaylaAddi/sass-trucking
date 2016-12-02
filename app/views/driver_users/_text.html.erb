@@ -1,20 +1,23 @@
 
-<%= simple_form_for [@driver, Message.new] do |f| %> 
+<%= simple_form_for Message.new do |f| %> 
 <%= f.input :number, input_html: { value:  '1'+@driver.cellphone } %>
-<%= f.submit 'Send' %>
-<%= f.text_area :text, rows: 3 %>
+<%= f.text_area :text, rows: 2 %>
+<a href="<% link_to message_path(@message.number) %>" target="_blank">
+
+<%= f.submit 'Send', :formtarget => "_blank" %>
+</a>
 <% end %>
 
 
-<h1>Messages from <%= params[:id] %></h1>
+<h1>Text History</h1>
 
 
 <% @driver_number = @driver.cellphone.last(10) %>
 <% @messages.each do |message| %>
-<% if @driver_number == message.number.last(10)  %>
+<% if @driver_number == message.number.last(10) %>
 <p>
 <%= local_time(message.created_at, format: '%B %e, %Y %l:%M%P %Z') %>
-  <%= message.text %>
+  <%= link_to message.text, message_path(message.number) %>
     <%= message.number.last(10) %>
 </p> 
 <% end %>

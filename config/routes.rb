@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
-
-
-
-
-
+  mount ActionCable.server => '/cable'
 
 
   get 'messages/reply'
@@ -28,7 +24,6 @@ Rails.application.routes.draw do
     collection {post :import}
       resources :driver_statements
         resources 'notifications', only: [:create] 
-          resources :messages, only: [:create]
   end 
   
   resources :users do
@@ -72,9 +67,6 @@ Rails.application.routes.draw do
   end   
 
   resources :miles
-
-  mount ActionCable.server => '/cable'
-
   resources :messages
   resources :text_messages
 
