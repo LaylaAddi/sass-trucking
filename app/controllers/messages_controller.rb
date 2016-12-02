@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
     if message.save
       send_cable(message)
       send_sms(message)
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 
