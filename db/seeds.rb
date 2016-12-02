@@ -126,7 +126,7 @@ steve = HrcUser.create(
   first_name: "Steve",
   last_name: "Chesnowtiz",
   email: "steve@hrclogistics.com",
-  cellphone: "716.986.4010",  
+  cellphone: "7169864010",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
@@ -144,7 +144,7 @@ kathy = HrcUser.create(
   first_name: "Kathy",
   last_name: "Rodriguez",
   email: "kathy@hrclogistics.com",
-  cellphone: "716.986.4324",  
+  cellphone: "7169864324",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
@@ -165,7 +165,7 @@ hrcuser = HrcUser.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  cellphone: Faker::PhoneNumber.phone_number,  
+  cellphone: "7169864010",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
@@ -206,7 +206,7 @@ shipperuser = ShipperUser.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  cellphone: Faker::PhoneNumber.phone_number,  
+  cellphone: "7169864010",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
@@ -265,7 +265,7 @@ password: "password",
   first_name: "Al Farronte",
   last_name: "Roberson",
   email: "s.chesnowitz@gmail.com", 
-  cellphone: "716-986-4010",  
+  cellphone: "7169864010",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
@@ -284,7 +284,7 @@ password: "password",
   first_name: "'Nino' Zefanias",
   last_name: "Matavele",
   email: "kathystevemail@gmail.com",
-  cellphone: "716-986-4010",  
+  cellphone: "7169864010",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
@@ -301,15 +301,15 @@ password: "password",
   
   
   
-10.times do |j|
-  number = "447555555#{rand(100..999)}"
+# 3.times do |j|
+#   number = "447555555#{rand(100..999)}"
 
-  10.times do |i|
-    Message.create!(
-      number: number,
-      text: Faker::Hipster.paragraph(1),
-      inbound: Faker::Boolean.boolean,
-      created_at: (i+j).hours.ago
-    )
-  end
-end
+#   3.times do |i|
+#     Message.create!(
+#       number: number,
+#       text: Faker::Hipster.paragraph(1),
+#       inbound: Faker::Boolean.boolean,
+#       created_at: (i+j).hours.ago
+#     )
+#   end
+# end
