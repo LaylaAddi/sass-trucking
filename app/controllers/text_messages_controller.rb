@@ -19,7 +19,9 @@ class TextMessagesController < ApplicationController
       text: params[:text],
       inbound: true
     )
-    send_cable(message)
+      ActionCable.server.broadcast 'texts',
+        message: message.text
+
     render json: { state: 200 }
   end
 end

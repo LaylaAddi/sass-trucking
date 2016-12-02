@@ -17,9 +17,13 @@ class MessagesController < ApplicationController
     message.inbound = false
 
     if message.save
-      send_cable(message)
-      send_sms(message)
-      redirect_to :back
+    Nexmo::Client.new.send_message(
+      from: ENV['NEXMO_NUMBER'],
+      to: message.number,
+      text: message.text
+    )
+
+      redirect_to :back 
     end
   end
 
