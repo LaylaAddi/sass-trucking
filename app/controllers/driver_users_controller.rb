@@ -42,7 +42,10 @@ class DriverUsersController < UsersController
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
     @text_load = @active.last 
+
     @messages = Message.all.order('created_at desc')
+    
+
   end
     
   def driver_dashboard
