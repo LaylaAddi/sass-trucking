@@ -1,19 +1,24 @@
-    <%= form_tag driver_user_notifications_path(@driver) do %>
-    <% unless @text_load.nil? %>
-      <input name="load_title" type="hidden" value="<%= @text_load.load_title %>"></input>
-    <% end %>   
-      <div class="form-group">
-        <label for="name">Your Name</label>
-        <input class="form-control" name="name" value="<%= @hrc_user.first_name %>"></input> 
-      </div>
-      
-      <div class="form-group">
-        <label for="phone">Driver Cell</label>
-        <input class="form-control" name="phone" value="<%= @driver.cellphone %>"></input>
-      </div>
-      <div class="form-group">
-        <label for="message">How can we help?</label>
-        <input class="form-control" name="message"></input>
-      </div>
-      <button class="btn btn-primary" type="submit">Request Info</button>
-    <% end %>
+
+<%= simple_form_for [@driver, Message.new] do |f| %> 
+<%= f.input :number, input_html: { value:  '1'+@driver.cellphone } %>
+<%= f.submit 'Send' %>
+<%= f.text_area :text, rows: 3 %>
+<% end %>
+
+
+<h1>Messages from <%= params[:id] %></h1>
+
+
+<% @driver_number = @driver.cellphone.last(10) %>
+<% @messages.each do |message| %>
+<% if @driver_number == message.number.last(10)  %>
+<p>
+<%= local_time(message.created_at, format: '%B %e, %Y %l:%M%P %Z') %>
+  <%= message.text %>
+    <%= message.number.last(10) %>
+</p> 
+<% end %>
+<% end %>
+    
+    
+    

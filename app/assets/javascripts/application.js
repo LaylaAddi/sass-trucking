@@ -15,3 +15,4 @@
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require_tree .
+//= require local_time 

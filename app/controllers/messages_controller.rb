@@ -19,6 +19,7 @@ class MessagesController < ApplicationController
     if message.save
       send_cable(message)
       send_sms(message)
+      redirect_to :back
     end
   end
 
