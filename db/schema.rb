@@ -244,9 +244,20 @@ ActiveRecord::Schema.define(version: 20161204155342) do
     t.string   "number"
     t.string   "text"
     t.boolean  "inbound"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "user"
+    t.string   "to_country"
+    t.string   "to_state"
+    t.string   "to_city"
+    t.string   "to_zip"
+    t.string   "from_country"
+    t.string   "from_state"
+    t.string   "from_city"
+    t.string   "from_zip"
+    t.string   "sms_message_sid"
+    t.string   "num_media"
+    t.string   "sms_sid"
   end
 
   create_table "miles", force: :cascade do |t|

@@ -1,7 +1,7 @@
 <%= simple_form_for Message.new do |f| %> 
-<%= f.input :number, input_html: { value:  @driver.cellphone } %>
-<%= f.hidden_field :user, input_html: { value:  @hrc_user.full_name } %>
-<div id="message_text">
+<%= f.input :number, input_html: { value:  @driver.cellphone } %> 
+<%= f.input :user, input_html: { value:  @hrc_user.full_name }, as: :hidden %>
+<div id="message_text"> 
 <%= f.text_area :text, rows: 2 %>
 </div>
 <br />
@@ -37,5 +37,4 @@
       </div>
 <% end %>
 <% end %>
-
 

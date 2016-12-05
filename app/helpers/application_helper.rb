@@ -1,10 +1,12 @@
 module ApplicationHelper
   def send_sms message
-    Nexmo::Client.new.send_message(
-      from: ENV['NEXMO_NUMBER'],
+@client = Twilio::REST::Client.new 
+
+@client.account.messages.create(
+      from: ENV['twilio_number'],
       to: message.number,
-      text: message.text
-    )
+      body: message.text
+)
   end
 
   def send_cable message

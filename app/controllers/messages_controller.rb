@@ -36,7 +36,24 @@ class MessagesController < ApplicationController
   private
 
   def clean_params
-    params.require(:message).permit(:number, :text, :driver_user_id, :user)
+    params.require(:message).permit(
+      :number, 
+      :text, 
+      :driver_user_id, 
+      :user, 
+      :body,
+      :to_country,
+      :to_state,
+      :to_city,
+      :to_zip,
+      :from_country,
+      :from_state,
+      :from_city,
+      :from_zip,
+      :sms_message_sid,
+      :num_media,
+      :sms_sid      
+      ) 
   end
 end
 

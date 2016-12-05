@@ -7,11 +7,11 @@ class User < ApplicationRecord
   has_one :company_profile, through: :company_profile_membership
   validates_presence_of :cellphone, :first_name, :last_name 
   
-  CELLPHONE_REGEX = /\A[0-9]*\Z/
+  # CELLPHONE_REGEX = /\A[0-9]*\Z/
 
-  validates_format_of :cellphone, with: CELLPHONE_REGEX
+  # validates_format_of :cellphone, with: CELLPHONE_REGEX
 
-  validates :cellphone, length: { is: 11 }
+  # validates :cellphone, length: { is: 10 }
   
 
   def is_company_driver

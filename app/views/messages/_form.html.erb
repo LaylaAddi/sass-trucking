@@ -2,8 +2,8 @@
 <div class="ui card">
   <div class="content">
     <%= simple_form_for(@new_message, remote: true, html: { class: 'ui form error' }) do |f| %>
-      <%= f.hidden_field :number %>
-        <%= f.hidden_field :user, input_html: { value:  @hrc_user.full_name } %>
+      <%= f.text_area :number %> 
+<%= f.input :user, input_html: { value:  @hrc_user.full_name }, as: :hidden %>
       <div class="field">
         <%= f.text_area :text, rows: 2 %>
       </div>

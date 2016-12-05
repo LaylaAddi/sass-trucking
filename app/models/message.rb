@@ -3,7 +3,7 @@ class Message < ApplicationRecord
   scope :by_date,           -> { order(created_at: :desc) }
   scope :recent_by_number,  -> { group(:number).having('created_at = MAX(created_at)') }
 
-  validates_presence_of :text
+  # validates_presence_of :text
     
   
     def sent_received

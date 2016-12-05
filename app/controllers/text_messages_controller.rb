@@ -15,11 +15,20 @@ class TextMessagesController < ApplicationController
 
   def create_message(params)
     message = Message.create!(
-      number: params[:msisdn],
-      text: params[:text],
+      number: params[:From],
+      text: params[:Body], 
+      from_country: params[:FromCountry], 
+      from_state: params[:FromState], 
+      from_city: params[:FromCity],
+      from_zip: params[:FromZip],
+      num_media: params[:NumMedia],
+      sms_sid: params[:SmsSid],
+      sms_message_sid: params[:SmsMessageSid],
       inbound: true
     )
     send_cable(message)
     render json: { state: 200 }
   end
 end
+
+
