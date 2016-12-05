@@ -45,6 +45,7 @@ class DriverUsersController < UsersController
     @text_load = @active.last 
     @message = Message.last
     @messages = Message.all.order('created_at desc')
+    
 
 
   end

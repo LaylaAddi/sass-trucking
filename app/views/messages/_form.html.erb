@@ -1,12 +1,14 @@
+
 <div class="ui card">
   <div class="content">
-    <%= form_for(@new_message, remote: true, html: { class: 'ui form error' }) do |f| %>
+    <%= simple_form_for(@new_message, remote: true, html: { class: 'ui form error' }) do |f| %>
       <%= f.hidden_field :number %>
+        <%= f.hidden_field :user, input_html: { value:  @hrc_user.full_name } %>
       <div class="field">
-        <%= f.text_area :text, rows: 3 %>
+        <%= f.text_area :text, rows: 2 %>
       </div>
       <div class="text right aligned">
-        <%= f.submit 'Send', class: 'ui submit button ' %>
+        <%= f.submit 'Send', class: "btn btn-success btn-sm round" %> 
       </div>
     <% end %>
   </div>

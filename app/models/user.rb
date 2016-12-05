@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates_format_of :cellphone, with: CELLPHONE_REGEX
 
-  validates :cellphone, length: { is: 10 }
+  validates :cellphone, length: { is: 11 }
   
 
   def is_company_driver

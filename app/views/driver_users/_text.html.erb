@@ -1,28 +1,41 @@
-
 <%= simple_form_for Message.new do |f| %> 
-<%= f.input :number, input_html: { value:  '1'+@driver.cellphone } %>
+<%= f.input :number, input_html: { value:  @driver.cellphone } %>
+<%= f.hidden_field :user, input_html: { value:  @hrc_user.full_name } %>
+<div id="message_text">
 <%= f.text_area :text, rows: 2 %>
+</div>
+<br />
+<% if !@message.nil? %>
 <a href="<% link_to message_path(@message.number) %>" target="_blank">
-
 <%= f.submit 'Send', :formtarget => "_blank" %>
 </a>
+<% end %>
+<% if @message.nil? %>
+<%= f.submit 'Send', :formtarget => "_blank" %>
+<% end %>
 <% end %>
 
 
 <h1>Text History</h1>
 
 
-<% @driver_number = @driver.cellphone.last(10) %>
+<% @driver_number = @driver.cellphone %>
 <% @messages.each do |message| %>
-<% if @driver_number == message.number.last(10) %>
-<p>
-<%= local_time(message.created_at, format: '%B %e, %Y %l:%M%P %Z') %>
-  <%= link_to message.text, message_path(message.number) %>
-    <%= message.number.last(10) %>
-</p> 
+<% if @driver_number == message.number %>
+<div class="mar-btm">
+          <a href="#" class="btn-link text-semibold media-heading box-inline"> </a>
+          <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> 
+          <%= message.sent_received %> 
+          <% if message.inbound == false %> 
+          by <%= message.user %>
+          <% end %> 
+          on <%= local_time(message.created_at, format: '%B %e, %Y %l:%M%P %Z') %> </p>
+        </div>
+        <p><%= message.text %></p>
+        <hr>
+
+      </div>
 <% end %>
 <% end %>
 
 
-    
-    

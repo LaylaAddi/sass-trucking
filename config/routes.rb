@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
 
-  get 'messages/reply'
+
 
   devise_for :hrc_users, 
   :controllers => { registrations: 'hrc_users_registrations/registrations'} 

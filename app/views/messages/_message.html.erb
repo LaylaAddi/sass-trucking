@@ -1,5 +1,31 @@
-<%= link_to "/messages/#{message.number}",
-      class: 'ui card message',
-      data: { number: message.number } do %>
-  <%= render 'messages/detail', message: message %>
-<% end %>
+
+<div class="ui card message">
+
+
+
+
+<div class="col-md-8 bootstrap snippets">
+
+<div class="panel">
+    <div class="panel-body">
+    <div class="media-block">
+      
+      <div class="media-body">
+        <div class="mar-btm">
+          <a href="#" class="btn-link text-semibold media-heading box-inline"> </a>
+          <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> 
+          <%= message.sent_received %> 
+          <% if message.inbound == false %> 
+          by <%= message.user %>
+          <% end %> 
+          on <%= local_time(message.created_at, format: '%B %e, %Y %l:%M%P %Z') %> </p>
+        </div>
+        <p><%= message.text %></p>
+        <hr>
+
+      </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>

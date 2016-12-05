@@ -1,5 +1,5 @@
 git add -A
-git commit -m "all working with nexmo"
+git commit -m "all working with nexmo and formatting"
 git push -u origin cablespeak
 
 .

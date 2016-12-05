@@ -17,3 +17,5 @@ jQuery ->
   $('#driver_statement_due_date').datepicker 
     dateFormat: 'yy-mm-dd' 
     
+jQuery ->   
+  $('#message_text').val('');
