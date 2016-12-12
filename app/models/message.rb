@@ -1,9 +1,11 @@
 class Message < ApplicationRecord
+ 
   scope :for_number,        -> (number) { where(number: number).by_date }
   scope :by_date,           -> { order(created_at: :desc) }
   scope :recent_by_number,  -> { group(:number).having('created_at = MAX(created_at)') }
 
-  # validates_presence_of :text
+  geocoded_by :address   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
     
   
     def sent_received
@@ -15,5 +17,10 @@ class Message < ApplicationRecord
         return "sent"
     end 
   end
+  
 
+  
+  def address 
+    [ from_city, from_state, from_zip].join(', ') 
+  end
 end

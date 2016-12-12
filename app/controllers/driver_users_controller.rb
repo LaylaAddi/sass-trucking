@@ -42,10 +42,10 @@ class DriverUsersController < UsersController
   	@completed_loads = @search_complete.result.order(:id).page(params[:page]).per(1000) 
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
-    @text_load = @active.last 
+    #@text_load = @active.last 
     @message = Message.last
     @messages = Message.all.order('created_at desc')
-    
+
 
 
   end

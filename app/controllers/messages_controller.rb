@@ -10,8 +10,13 @@ class MessagesController < ApplicationController
 
   def show
     @hrc_user = current_hrc_user
+
     @messages = Message.for_number(params[:id])
     @new_message = Message.new(number: params[:id])
+    @inbound = @messages.find_by(inbound: 'true') 
+ 
+    @driver = DriverUser.find_by_cellphone(params[:cellphone])
+    
 
   end
 

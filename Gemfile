@@ -30,11 +30,9 @@ gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'twilio-ruby' 
-gem 'textris' 
 gem 'redis'
-gem 'nexmo'
 gem 'local_time' 
-
+gem 'geocoder'
 
 group :development, :test do
   gem 'byebug', platform: :mri

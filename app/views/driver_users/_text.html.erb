@@ -1,5 +1,5 @@
 <%= simple_form_for Message.new do |f| %> 
-<%= f.input :number, input_html: { value:  @driver.cellphone } %> 
+<%= f.input :number, input_html: { value:  '+1'+@driver.cellphone } %> 
 <%= f.input :user, input_html: { value:  @hrc_user.full_name }, as: :hidden %>
 <div id="message_text"> 
 <%= f.text_area :text, rows: 2 %>
@@ -22,7 +22,7 @@
 <% @driver_number = @driver.cellphone %>
 <% @messages.each do |message| %>
 <% if @driver_number == message.number %>
-<div class="mar-btm">
+
           <a href="#" class="btn-link text-semibold media-heading box-inline"> </a>
           <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> 
           <%= message.sent_received %> 
@@ -30,11 +30,10 @@
           by <%= message.user %>
           <% end %> 
           on <%= local_time(message.created_at, format: '%B %e, %Y %l:%M%P %Z') %> </p>
-        </div>
+
         <p><%= message.text %></p>
         <hr>
 
-      </div>
 <% end %>
 <% end %>
 

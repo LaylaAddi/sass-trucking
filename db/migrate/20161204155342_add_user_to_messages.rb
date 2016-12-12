@@ -1,7 +1,8 @@
 class AddUserToMessages < ActiveRecord::Migration[5.0]
   def change
     add_column :messages, :user, :string
-
+    add_column :messages, :latitude, :float
+    add_column :messages, :longitude, :float 
     add_column :messages, :to_country, :string
     add_column :messages, :to_state, :string
     add_column :messages, :to_city, :string
