@@ -3,7 +3,8 @@ development:
   url: redis://:actioncable@redis-11617.c10.us-east-1-4.ec2.cloud.redislabs.com:11617
 
 test:
-  adapter: async
+  adapter: async 
 
 production:
-  url: redis://hrclogistics.com:6379
+  adapter: redis
+  url: redis://:actioncable@redis-11617.c10.us-east-1-4.ec2.cloud.redislabs.com:11617
