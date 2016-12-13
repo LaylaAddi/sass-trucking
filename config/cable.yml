@@ -6,4 +6,4 @@ test:
   adapter: async
 
 production:
-  url: redis://localhost:6379
+  url: redis://hrclogistics.com:6379
