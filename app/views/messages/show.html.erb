@@ -1,71 +1,14 @@
-<section id="top">
+<h1>Messages from <%= params[:id] %></h1>
 
-<h1>Messages from <%= params[:id] %>
 
-</h1>
-<a class="page-scroll" href="#map">View Map</a>
 <div class="ui one cards">
   <div class="panel">
-	<div class="panel-body">
-  <%= render 'form' %>
-  </div>
+    <div class="panel-body">
+      <%= render 'form' %>
+    </div>
   </div>
 </div>
-<section>
+
 <div class="ui one cards thread" data-number="<%= params[:id] %>">
   <%= render @messages.first(15) %>
-</div> 
-<div class="contact-map">
-    <div id="map-canvas" style="width: 100%; height: 400px">
-    </div>
 </div>
-<!--google map end-->
-
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false">
-</script>
-<div class="ui card message">
-
-
-<section id="map">
-<a class="page-scroll" href="#top">Send a text</a>
-<address>
-  <strong>
-    <%= link_to message_path, id: "map" do %>   
-    <% if !@inbound.nil? %>
-    Updated on <%= local_time(@inbound.created_at, format: '%B %e, %Y %l:%M%P %Z') %>
-    (click to refresh coordinates)
-    <% end %>
-<% end %> 
-  </strong>
-  <br>
-  @latitude <%= @inbound.latitude if !@inbound.nil? %><br>
-  @longitude <%= @inbound.longitude if !@inbound.nil? %> <br>
-  <%= @inbound.from_city if !@inbound.nil? %>, <%= @inbound.from_state if !@inbound.nil? %> 
-  <%= @inbound.from_zip if !@inbound.nil? %><br>
-</address>
-
-<script>
-
-  //google map
-  function initialize() {
-    var myLatlng = new google.maps.LatLng(<%= @inbound.latitude if !@inbound.nil? %>,<%= @inbound.longitude if !@inbound.nil? %>);
-    var mapOptions = {
-      zoom: 10,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Contact'
-    }
-                                       );
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
-
-
-</div> 
-</section>

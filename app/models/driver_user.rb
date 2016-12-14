@@ -2,6 +2,7 @@ class DriverUser < User
   has_many :loads
   has_many :trucks  
   has_many :trailers 
+  has_many :messages 
   has_many :driver_statements, through: :loads
   has_many :driver_statements
   validates :driver_rpm, :numericality => { :only_decimal => true, on: :update,

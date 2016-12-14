@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :driver_users do
     collection {post :import}
       resources :driver_statements
-        resources 'notifications', only: [:create] 
+        resources :messages, only: [:create, :show, :index]   
   end 
   
   resources :users do

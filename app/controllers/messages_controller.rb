@@ -5,24 +5,27 @@ class MessagesController < ApplicationController
  
   def index
     @hrc_user = current_hrc_user
-    @messages = Message.all
+    @driver = DriverUser.find(params[:driver_user_id])
+    @messages = @driver.messages
+    @incoming_messages = Message.for_number(params[:id])
+    @new_message = Message.new(number: params[:id])
+    @inbound = @messages.find_by(inbound: 'true') 
   end
 
   def show
     @hrc_user = current_hrc_user
-
-    @messages = Message.for_number(params[:id])
+    @driver = DriverUser.find(params[:driver_user_id])
+    @messages = @driver.messages.for_number(params[:id])
+    @incoming_messages = Message.for_number(params[:id])
     @new_message = Message.new(number: params[:id])
     @inbound = @messages.find_by(inbound: 'true') 
- 
-    @driver = DriverUser.find_by_cellphone(params[:cellphone])
-    
-
   end
 
   def create
     @hrc_user = current_hrc_user
-    message = Message.new(clean_params)
+    @driver = DriverUser.find(params[:driver_user_id])
+    message = @driver.messages.new(clean_params) 
+    messages = @driver.messages 
     message.inbound = false
 
     if message.save
@@ -30,7 +33,7 @@ class MessagesController < ApplicationController
       send_cable(message)
       send_sms(message)
 
-      redirect_to message_path(message.number)
+      redirect_to driver_user_message_path(@driver, messages) 
      else
        flash[:danger] = "There was a problem sending the message"
         redirect_back(fallback_location: root_path)

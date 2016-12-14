@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204155342) do
+ActiveRecord::Schema.define(version: 20161214035734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -260,6 +260,8 @@ ActiveRecord::Schema.define(version: 20161204155342) do
     t.string   "sms_message_sid"
     t.string   "num_media"
     t.string   "sms_sid"
+    t.string   "driver_user_id"
+    t.index ["driver_user_id"], name: "index_messages_on_driver_user_id", using: :btree
   end
 
   create_table "miles", force: :cascade do |t|

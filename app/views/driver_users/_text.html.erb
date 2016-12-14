@@ -1,4 +1,4 @@
-<%= simple_form_for Message.new do |f| %> 
+<%= simple_form_for [@driver, Message.new] do |f| %> 
 <%= f.input :number, input_html: { value:  '+1'+@driver.cellphone } %> 
 <%= f.input :user, input_html: { value:  @hrc_user.full_name }, as: :hidden %>
 <div id="message_text"> 
@@ -6,7 +6,7 @@
 </div>
 <br />
 <% if !@message.nil? %>
-<a href="<% link_to message_path(@message.number) %>" target="_blank">
+<a href="<% link_to message_path(@driver, @message.number) %>" target="_blank">
 <%= f.submit 'Send', :formtarget => "_blank" %>
 </a>
 <% end %>

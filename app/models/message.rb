@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+  belongs_to :driver_user
  
   scope :for_number,        -> (number) { where(number: number).by_date }
   scope :by_date,           -> { order(created_at: :desc) }
