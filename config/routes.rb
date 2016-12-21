@@ -69,6 +69,15 @@ Rails.application.routes.draw do
   resources :miles
   resources :messages
   resources :text_messages
+  resources :people
+  resources :conversations, only: [:index] do
+    resources :text_messages, module: :conversations, only: [:index, :create]
+  end
+
+
+  # Twilio Webhooks
+  post 'conversations/text_messages/reply', to: 'conversations/text_messages#reply'
+  
   get 'messages/reply'
   get 'hrc_dashboard', to: 'hrc_users#hrc_dashboard'
   get 'driver_dashboard', to: '_driver_users#driver_dashboard'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204155342) do
+ActiveRecord::Schema.define(version: 20161221075437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20161204155342) do
     t.string   "email"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "person_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_conversations_on_person_id", using: :btree
+    t.index ["user_id"], name: "index_conversations_on_user_id", using: :btree
   end
 
   create_table "driver_statements", force: :cascade do |t|
@@ -274,6 +283,32 @@ ActiveRecord::Schema.define(version: 20161204155342) do
     t.index ["truck_id"], name: "index_miles_on_truck_id", using: :btree
   end
 
+  create_table "people", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_people_on_user_id", using: :btree
+  end
+
+  create_table "text_messages", force: :cascade do |t|
+    t.string   "to"
+    t.string   "from"
+    t.string   "status"
+    t.string   "body"
+    t.string   "message_sid"
+    t.string   "account_sid"
+    t.string   "messaging_service_sid"
+    t.string   "direction"
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["conversation_id"], name: "index_text_messages_on_conversation_id", using: :btree
+    t.index ["user_id"], name: "index_text_messages_on_user_id", using: :btree
+  end
+
   create_table "trailer_images", force: :cascade do |t|
     t.string   "notes"
     t.string   "image_file"
@@ -423,4 +458,9 @@ ActiveRecord::Schema.define(version: 20161204155342) do
     t.datetime "updated_at",   null: false
   end
 
+  add_foreign_key "conversations", "people"
+  add_foreign_key "conversations", "users"
+  add_foreign_key "people", "users"
+  add_foreign_key "text_messages", "conversations"
+  add_foreign_key "text_messages", "users"
 end

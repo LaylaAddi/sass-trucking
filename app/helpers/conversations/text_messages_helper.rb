@@ -1,0 +1,2 @@
+module Conversations::TextMessagesHelper
+end

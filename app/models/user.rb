@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_one :company_profile_membership
   has_one :company_profile, through: :company_profile_membership
+  has_many :conversations
+  has_many :people 
   validates_presence_of :cellphone, :first_name, :last_name 
   
   # CELLPHONE_REGEX = /\A[0-9]*\Z/
