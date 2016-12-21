@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :conversations do
+    get 'text_messages/index'
+  end
+
+  get 'conversations/index'
+
   mount ActionCable.server => '/cable'
 
 
@@ -69,6 +75,16 @@ Rails.application.routes.draw do
   resources :miles
   resources :messages
   resources :text_messages
+  
+  resources :driver_users do
+    resources :conversations, only: [:index] do
+      resources :text_messages, module: :conversations, only: [:index, :create]
+    end
+  end
+
+# Twilio Webhooks
+post 'conversations/messages/reply', to: 'conversations/messages#reply'
+  
   get 'messages/reply'
   get 'hrc_dashboard', to: 'hrc_users#hrc_dashboard'
   get 'driver_dashboard', to: '_driver_users#driver_dashboard'

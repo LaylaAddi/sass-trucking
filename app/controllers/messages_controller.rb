@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   include ApplicationHelper
- skip_before_filter :verify_authenticity_token
+skip_before_filter :verify_authenticity_token
   before_action :authenticate_hrc_user! 
  
   def index
@@ -26,13 +26,13 @@ class MessagesController < ApplicationController
     message.inbound = false
 
     if message.save
-     flash[:success] = "Your Text has been sent"
+    flash[:success] = "Your Text has been sent"
       send_cable(message)
       send_sms(message)
 
       redirect_to message_path(message.number)
-     else
-       flash[:danger] = "There was a problem sending the message"
+    else
+      flash[:danger] = "There was a problem sending the message"
         redirect_back(fallback_location: root_path)
     end
   end

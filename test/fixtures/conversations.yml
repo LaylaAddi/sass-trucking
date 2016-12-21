@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  driver_user_id: 1
+  hrc_user_id: 1
+
+two:
+  driver_user_id: 1
+  hrc_user_id: 1

@@ -4,12 +4,16 @@ class DriverUser < User
   has_many :trailers 
   has_many :driver_statements, through: :loads
   has_many :driver_statements
+  has_many :conversations 
+  after_create :create_conversation!
   validates :driver_rpm, :numericality => { :only_decimal => true, on: :update,
     :message => "Set A Rate - Select 0.00 if Owner Operator" } 
   ransack_alias :driver_search_params,
   :first_name_or_last_name_or_email 
   mount_uploader :profile_image, UserProfileImageUploader  
   mount_uploader :profile_bg, UserBackgroundImageUploader  
+
+
 
 
 
@@ -33,7 +37,10 @@ class DriverUser < User
   	CSV.foreach(file.path, headers: true) do |row|
     	DriverUser.create! row.to_hash
   	end
-  end   
-
+  end  
+  
+  def create_conversation!
+    Conversation.find_or_create_by(driver_user: self)
+  end
   
 end

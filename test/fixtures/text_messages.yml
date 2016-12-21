@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  to: MyString
+  from: MyString
+  status: MyString
+  body: MyString
+  message_sid: MyString
+  account_sid: MyString
+  messaging_service_sid: MyString
+  direction: MyString
+  driver_user_id: 1
+  hrc_user_id: 1
+  conversation: one
+
+two:
+  to: MyString
+  from: MyString
+  status: MyString
+  body: MyString
+  message_sid: MyString
+  account_sid: MyString
+  messaging_service_sid: MyString
+  direction: MyString
+  driver_user_id: 1
+  hrc_user_id: 1
+  conversation: two

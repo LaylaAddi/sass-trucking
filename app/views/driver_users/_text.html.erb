@@ -1,3 +1,5 @@
+    <li><%= link_to "Conversations", driver_user_conversations_path(@driver) %></li> 
+
 <%= simple_form_for Message.new do |f| %> 
 <%= f.input :number, input_html: { value:  '+1'+@driver.cellphone } %> 
 <%= f.input :user, input_html: { value:  @hrc_user.full_name }, as: :hidden %>
