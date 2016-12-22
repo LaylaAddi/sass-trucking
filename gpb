@@ -1,4 +1,4 @@
 git add -A
-git commit -m "safty geo"
-git push -u origin geo
+git commit -m "added plate to trucks and trailers"
+git push -u origin phonepush
 

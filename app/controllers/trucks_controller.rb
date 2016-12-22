@@ -97,7 +97,8 @@ class TrucksController < ApplicationController
                                     :state, 
                                     :zip, 
                                     :latitude,
-                                    :longitude
+                                    :longitude,
+                                    :plate
                                     )
     end
 end
