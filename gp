@@ -1,5 +1,5 @@
 git add -A
-git commit -m "update text screen"
+git commit -m "added plate to trucks and trailers"
 git push -u origin master 
 git push dokku master 
 
