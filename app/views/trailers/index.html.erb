@@ -35,10 +35,13 @@
         <td><%= trailer.vin %></td>
         <td><%= trailer.image %></td>
         <td><%= trailer.notes %></td>
-        <td><%= trailer.driver_user_id %></td>
-        <td><%= link_to 'Show', trailer %></td>
-        <td><%= link_to 'Edit', edit_trailer_path(trailer) %></td>
-        <td><%= link_to 'Destroy', trailer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= trailer.driver_user.full_name %></td>
+        <td><%= link_to 'Show', trailer,
+        class: "btn btn-info btn-xs round" %></td>
+        <td><%= link_to 'Edit', edit_trailer_path(trailer),
+        class: "btn btn-primary btn-xs round" %></td>
+        <td><%= link_to 'Destroy', trailer, method: :delete, data: { confirm: 'Are you sure?' },
+        class: "btn btn-danger btn-xs round" %></td> 
       </tr>
     <% end %>
   </tbody>
