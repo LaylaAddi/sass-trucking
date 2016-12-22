@@ -207,7 +207,7 @@ CompanyProfileMembershipStatus =
   TruckTrailerStatus =
   [
     ["In Service", "In Service"],
-    ["Not In Service" "Not In Service"]
+    ["Not In Service", "Not In Service"]
   ]
 
  
