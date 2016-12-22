@@ -9,6 +9,7 @@
       <th>Year</th>
       <th>Make</th>
       <th>Model</th>
+      <th>Plate</th>
       <th>Color</th>
       <th>Number</th>
       <th>Service status</th>
@@ -23,9 +24,11 @@
   <tbody>
     <% @trailers.each do |trailer| %>
       <tr>
+        <td><%= trailer.id %></td>
         <td><%= trailer.year %></td>
         <td><%= trailer.make %></td>
         <td><%= trailer.model %></td>
+        <td><%= trailer.plate %></td>
         <td><%= trailer.color %></td>
         <td><%= trailer.number %></td>
         <td><%= trailer.service_status %></td>
