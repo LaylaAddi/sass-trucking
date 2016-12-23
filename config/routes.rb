@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :driver_checkins
   mount ActionCable.server => '/cable'
 
 

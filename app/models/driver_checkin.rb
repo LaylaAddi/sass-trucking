@@ -1,0 +1,2 @@
+class DriverCheckin < ApplicationRecord
+end

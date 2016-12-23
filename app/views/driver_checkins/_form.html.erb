@@ -1,0 +1,19 @@
+<%= simple_form_for(@driver_checkin) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :street %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zip %>
+    <%= f.input :latitude %>
+    <%= f.input :longitude %>
+    <%= f.input :status %>
+    <%= f.input :notes %>
+    <%= f.input :driver_user_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
