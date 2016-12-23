@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   mount ActionCable.server => '/cable'
 
 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
     collection {post :import}
       resources :driver_statements
         resources 'notifications', only: [:create] 
+          resources :driver_checkins
   end 
   
   resources :users do

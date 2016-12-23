@@ -113,15 +113,20 @@
       <div class="col-md-8">
         <div class="profile-info-right">
           <ul class="nav nav-pills nav-pills-custom-minimal custom-minimal-bottom">
-            <li class="active"><a href="#activeLoads" data-toggle="tab">Active Loads</a></li>
+            <li class="active"><a href="#checkins" data-toggle="tab">Check Ins</a></li>
+           <li><a href="#activeLoads" data-toggle="tab">Active Loads</a></li>
             <li><a href="#CompletedLoads" data-toggle="tab">Completed Loads</a></li>
             <li><a href="#DriverStatement" data-toggle="tab">Statements</a></li>
-            <li><a href="#Maps" data-toggle="tab">Maps</a></li>
-            <li><a href="#Text" data-toggle="tab">Text</a></li>
+            <% if !current_driver_user %>
+              <li><a href="#Text" data-toggle="tab">Text</a></li>
+            <% end %>
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active" id="activeLoads">
-              <%= render "company_driver_active_loads" %> 
+            <div class="tab-pane active" id="checkins">
+              <%= render "checkins" %> 
+            </div>
+            <div class="tab-pane fade" id="activeLoads">
+              <%= render "company_driver_active_loads" %>
             </div>
             <div class="tab-pane fade" id="CompletedLoads">
               <%= render "company_driver_completed_loads" %>
@@ -129,12 +134,11 @@
             <div class="tab-pane fade" id="DriverStatement">
               <%= render "driver_statements" %>  
             </div>
-            <div class="tab-pane fade" id="Maps">
-              <%= render "maps" %>
-            </div>
+            <% if !current_driver_user %>
             <div class="tab-pane fade" id="Text">
               <%= render "text" %> 
             </div>
+            <% end %>
           </div>
         </div>
       </div>

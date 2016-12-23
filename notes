@@ -43,10 +43,16 @@ drivers have payments with total being for exapmple escrow at -1000 payment + 30
 created location and repair scaffold  need to add sub models 
 
 index on loads statements loads etc
+<h1>Maps</h1>
 
-                  <label>Change my TimeZone</label>
-                  <br />
-                  <%= f.time_zone_select :time_zone, 
-                  ActiveSupport::TimeZone.us_zones %>
-                  
-                  company driver and rate settings (controller done and schema)
+
+
+
+<address>
+
+  @latitude <%= @inbound.latitude if !@inbound.nil? %><br>
+  @longitude <%= @inbound.longitude if !@inbound.nil? %> <br>
+  <%= @inbound.from_city if !@inbound.nil? %>, <%= @inbound.from_state if !@inbound.nil? %> 
+  <%= @inbound.from_zip if !@inbound.nil? %><br>
+</address>
+

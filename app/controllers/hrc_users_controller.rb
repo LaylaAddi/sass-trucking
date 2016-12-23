@@ -63,6 +63,12 @@ class HrcUsersController < UsersController
     @cancelled = @hrc_user.loads.where(["status_name = ?", "Complete"])
   	@search_cancelled = @cancelled.search(params[:q])
   	@completed_loads = @search_cancelled.result.order(:id).page(params[:page]).per(1000)
+  	
+    @city = request.location.city
+    @country = request.location.country_code
+    @user_ip = request.remote_ip
+    @user_latitude = request.location.latitude
+    @user_longitude = request.location.longitude
   end
   
   def import
