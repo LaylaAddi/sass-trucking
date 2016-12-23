@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222114357) do
+ActiveRecord::Schema.define(version: 20161223050203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -305,6 +305,7 @@ ActiveRecord::Schema.define(version: 20161222114357) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "plate"
+    t.string   "plate_state"
     t.index ["driver_user_id"], name: "index_trailers_on_driver_user_id", using: :btree
   end
 
@@ -355,6 +356,7 @@ ActiveRecord::Schema.define(version: 20161222114357) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "plate"
+    t.string   "plate_state"
     t.index ["driver_user_id"], name: "index_trucks_on_driver_user_id", using: :btree
   end
 
