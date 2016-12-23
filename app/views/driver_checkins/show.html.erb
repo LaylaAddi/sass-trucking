@@ -42,8 +42,8 @@
 
 <p>
   <strong>Driver user:</strong>
-  <%= @driver_checkin.driver_user_id %>
+  <%= @driver_checkin.driver_user_id %> 
 </p>
 
-<%= link_to 'Edit', edit_driver_checkin_path(@driver_checkin) %> |
-<%= link_to 'Back', driver_checkins_path %>
+<%= link_to 'Edit', edit_driver_user_driver_checkin_path(@driver, @driver_checkin) %> |
+<%= link_to 'Back', driver_user_driver_checkins_path %> 

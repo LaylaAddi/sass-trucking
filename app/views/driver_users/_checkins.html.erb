@@ -1,3 +1,6 @@
+<%= render "driver_checkins/form" %>
+<p id="notice"><%= notice %></p>
+
 <h1>Driver Checkins</h1>
 
 <table>
@@ -30,12 +33,11 @@
         <td><%= driver_checkin.driver_user_id %></td>
         <td><%= link_to 'Show', driver_user_driver_checkin_path(@driver, driver_checkin) %></td>
         <td><%= link_to 'Edit', edit_driver_user_driver_checkin_path(@driver, driver_checkin) %></td>
-                <td><%= link_to 'Destroy', driver_user_driver_checkin_path(@driver, driver_checkin), 
+        <td><%= link_to 'Destroy', driver_user_driver_checkin_path(@driver, driver_checkin), 
         method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      </tr> 
     <% end %>
   </tbody>
 </table>
 
 <br>
-

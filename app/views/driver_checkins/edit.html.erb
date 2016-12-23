@@ -2,5 +2,5 @@
 
 <%= render 'form', driver_checkin: @driver_checkin %>
 
-<%= link_to 'Show', @driver_checkin %> |
-<%= link_to 'Back', driver_checkins_path %>
+<%= link_to 'Show', driver_user_driver_checkin_path(@driver, @driver_checkin) %> |
+<%= link_to 'Back', driver_user_driver_checkin_path %> 

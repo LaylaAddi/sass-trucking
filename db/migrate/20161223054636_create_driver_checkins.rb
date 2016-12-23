@@ -9,7 +9,8 @@ class CreateDriverCheckins < ActiveRecord::Migration[5.0]
       t.float :longitude
       t.string :status
       t.string :notes
-      t.integer :driver_user_id
+      t.string :ip_address
+      t.integer :driver_user_id, index: true 
 
       t.timestamps
     end

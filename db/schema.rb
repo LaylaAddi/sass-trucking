@@ -55,9 +55,11 @@ ActiveRecord::Schema.define(version: 20161223054636) do
     t.float    "longitude"
     t.string   "status"
     t.string   "notes"
+    t.string   "ip_address"
     t.integer  "driver_user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["driver_user_id"], name: "index_driver_checkins_on_driver_user_id", using: :btree
   end
 
   create_table "driver_statements", force: :cascade do |t|
