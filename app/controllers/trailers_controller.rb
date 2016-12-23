@@ -96,7 +96,8 @@ class TrailersController < ApplicationController
                                       :zip, 
                                       :latitude,
                                       :longitude,
-                                      :plate
+                                      :plate,
+                                      :plate_state
                                       )
     end
 end

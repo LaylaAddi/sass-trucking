@@ -19,6 +19,8 @@
     <%= f.input :make %>
     <%= f.input :model %>
     <%= f.input :plate %>
+    <%= f.input :plate_state, 
+                  collection: ApplicationRecord::States, include_blank: "State" %>
     <%= f.input :color %>
     <%= f.input :number %>
     <%= f.input :vin %>
