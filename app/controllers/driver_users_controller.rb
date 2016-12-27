@@ -48,7 +48,7 @@ class DriverUsersController < UsersController
     @driver_checkins = @driver.driver_checkins
     @location = request.location
     @coordinates = Geocoder.coordinates(@location)  
-    @geoip = GeoIp.geolocation(@location)
+    # @geoip = GeoIp.geolocation(@location)
 
   end
     
