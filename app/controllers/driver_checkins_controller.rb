@@ -18,7 +18,7 @@ class DriverCheckinsController < ApplicationController
   def new
     @driver = current_driver_user
     @driver_checkin = @driver.driver_checkins.new
-    
+
   end
 
   # GET /driver_checkins/1/edit
@@ -37,6 +37,7 @@ class DriverCheckinsController < ApplicationController
         format.html { redirect_back fallback_location:  root_path, 
         notice: 'Driver checkin was successfully created.' }
         format.json { render :show, status: :created, location: @driver_checkin }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @driver_checkin.errors, status: :unprocessable_entity }
@@ -52,6 +53,7 @@ class DriverCheckinsController < ApplicationController
       if @driver_checkin.update(driver_checkin_params)
         format.html { redirect_to @driver_checkin, notice: 'Driver checkin was successfully updated.' }
         format.json { render :show, status: :ok, location: @driver_checkin }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @driver_checkin.errors, status: :unprocessable_entity }

@@ -1,4 +1,6 @@
-<%= simple_form_for [@driver, @driver_checkin] do |f| %> 
+<% if current_driver_user %>
+<%= simple_form_for [@driver, @driver_checkin], remote: true, 
+:with =>"getParameters();" do |f| %> 
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -6,48 +8,93 @@
     <%= f.input :city %>
     <%= f.input :state %>
     <%= f.input :zip %>
-    <%= f.input :latitude %>
-    <%= f.input :longitude %>
+    <%= f.input :ip_address, input_html: {value: @driver_ip } %>
+    <%= f.input :latitude, id:"email_field" %>
+    <%= f.input :longitude  %>
     <%= f.input :status %>
     <%= f.input :notes %>
     <%= f.input :driver_user_id %>
   </div>
+-------------------------------------------------------------
+<% @param = capture do %>
+   <%= javascript_tag "document.write(getParameter());" %>
 
+<% end %>
+
+
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+     </head>
+
+     <body>
+          <p>Address: <div id="address"></div></p>
+     </body>
+
+     <script type="text/javascript" charset="utf-8">
+
+     $(document).ready(function() {
+         var currgeocoder;
+
+         //Set geo location lat and long
+
+         navigator.geolocation.getCurrentPosition(function(position, html5Error) {
+
+             geo_loc = processGeolocationResult(position);
+             currLatLong = geo_loc.split(",");
+             initializeCurrent(currLatLong[0], currLatLong[1]);
+
+        });
+
+        //Get geo location result
+
+       function processGeolocationResult(position) {
+             html5Lat = position.coords.latitude; //Get latitude
+             html5Lon = position.coords.longitude; //Get longitude
+             html5TimeStamp = position.timestamp; //Get timestamp
+             html5Accuracy = position.coords.accuracy; //Get accuracy in meters
+             return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
+       }
+
+        //Check value is present or not & call google api function
+
+        function initializeCurrent(latcurr, longcurr) {
+             currgeocoder = new google.maps.Geocoder();
+             console.log(latcurr + "-- ######## --" + longcurr);
+
+             if (latcurr != '' && longcurr != '') {
+                 var myLatlng = new google.maps.LatLng(latcurr, longcurr);
+                 return getCurrentAddress(myLatlng);
+             }
+       }
+
+        //Get current address
+
+         function getCurrentAddress(location) {
+              currgeocoder.geocode({
+                  'location': location
+
+            }, function(results, status) {
+           
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log(results[0]);
+                    $("#address").html(results[0].formatted_address);
+
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+         }
+    });
+
+    </script>
+
+    
+--------------------------------------------------------------
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+
 <% end %>
-
-<%= @driver_latitude %> 
-<%= @driver_longitude %>
-<%= @country %>
-
-
-<div class="contact-map">
-    <div id="map-canvas" style="width: 100%; height: 400px">
-    </div>
-</div>
-<!--google map end-->
-
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script>
-
-<script>
-
-  function initialize() {
-    var myLatlng = new google.maps.LatLng(<%= @driver_latitude %>,<%= @driver_longitude %>);
-    var mapOptions = {
-      zoom: 10,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Contact'
-    }
-                                       );
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
+<% end %>

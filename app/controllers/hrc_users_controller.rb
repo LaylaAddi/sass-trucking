@@ -69,6 +69,7 @@ class HrcUsersController < UsersController
     @user_ip = request.remote_ip
     @user_latitude = request.location.latitude
     @user_longitude = request.location.longitude
+
   end
   
   def import
