@@ -10,8 +10,8 @@
   <div class="form-inputs">
     <%= f.input :street %>
     <%= f.input :city, input_html: { value: @city } %> 
-    <%= f.input :state %>
-    <%= f.input :zip %>
+    <%= f.input :state, label: "Region",  input_html: { value: @region } %>
+    <%= f.input :zip, input_html: { value: @postal_code }  %> 
     <%= f.input :ip_address, input_html: { value: @ip } %>
     <%= f.input :latitude, input_html: { value: @lat } %> 
     <%= f.input :longitude, input_html: { value: @lon } %>

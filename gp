@@ -1,5 +1,5 @@
 git add -A
-git commit -m ":ip_lookup => :ipinfo_io"
+git commit -m "added map to checkin show"
 git push -u origin master 
 git push dokku master    
 
