@@ -46,9 +46,13 @@ class DriverUsersController < UsersController
     @message = Message.last
     @messages = Message.all.order('created_at desc')
     @driver_checkins = @driver.driver_checkins
-    @location = request.location
-    @coordinates = Geocoder.coordinates(@location)  
-    # @geoip = GeoIp.geolocation(@location)
+    @ip = request.remote_ip 
+    @location = Geocoder.coordinates(@ip)
+    @lat = request.location.latitude 
+    @lon = request.location.longitude
+    @city = request.location.city
+    # @region = request.location.region
+    # @postal_code = request.location.city
 
   end
     
@@ -75,11 +79,11 @@ class DriverUsersController < UsersController
     
     @ip = request.remote_ip 
     @location = Geocoder.coordinates(@ip)
-    # @lat = request.location.latitude 
-    # @lon = request.location.longitude
-    # @city = request.location.city
-    #@region = request.location.region
-    #@postal_code = request.location.postal
+    @lat = request.location.latitude 
+    @lon = request.location.longitude
+    @city = request.location.city
+    # @region = request.location.region
+    #@postal_code = request.location.zip_code
   end
  
   def import
