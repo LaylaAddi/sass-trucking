@@ -11,17 +11,17 @@
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong>Region:</strong>
   <%= @driver_checkin.state %>
 </p>
 
 <p>
-  <strong>Zip:</strong>
+  <strong>Postal Code:</strong>
   <%= @driver_checkin.zip %>
 </p>
 
 <p>
-  <strong>ip address:</strong>
+  <strong>IP Address:</strong>
   <%= @driver_checkin.ip_address %>
 </p>
 
@@ -46,8 +46,9 @@
 </p>
 
 <p>
-  <strong>Driver user:</strong>
-  <%= @driver_checkin.driver_user_id %> 
+  <strong>Check In Date/Time</strong> 
+<%= local_time(@driver_checkin.created_at, format: '%B %e, %Y %l:%M%P %Z') %> 
+
 </p>
 
 <%= link_to 'Edit', edit_driver_user_driver_checkin_path(@driver, @driver_checkin) %> |

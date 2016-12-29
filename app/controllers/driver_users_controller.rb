@@ -78,8 +78,8 @@ class DriverUsersController < UsersController
     @lat = request.location.latitude 
     @lon = request.location.longitude
     @city = request.location.city
-    @region = request.location.region
-    @postal_code = request.location.postal
+    #@region = request.location.region
+    #@postal_code = request.location.postal
   end
  
   def import
