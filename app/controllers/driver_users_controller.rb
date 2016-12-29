@@ -73,11 +73,9 @@ class DriverUsersController < UsersController
     @driver_checkin = DriverCheckin.new
     @driver_checkins = @driver.driver_checkins
     
-    @ip = request.remote_ip
-    @country = Geocoder.search(request.remote_ip).first.country
-    @latitude = params[:data_value]
-    # @longitude = Geocoder.search(request.remote_ip).first.longitude
-    @city = Geocoder.search(request.remote_ip).first.state
+    @ip = request.remote_ip 
+    @location = Geocoder.coordinates(@ip)
+
 
 
   end
@@ -87,6 +85,13 @@ class DriverUsersController < UsersController
     flash[:success] = 'Drivers have been imported!'
     redirect_to driver_users_path
   end
+
+
+def newcoords
+  @latitude = (params[:latitude])
+  @longitude = (params[:longitude])
+end
+  
 
   
   private

@@ -18,7 +18,9 @@ class DriverCheckinsController < ApplicationController
   def new
     @driver = current_driver_user
     @driver_checkin = @driver.driver_checkins.new
-
+    @lat = result.latitude
+    @lon = result.longitude
+    @city = result.city
   end
 
   # GET /driver_checkins/1/edit
@@ -72,6 +74,9 @@ class DriverCheckinsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

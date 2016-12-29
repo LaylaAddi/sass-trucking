@@ -1,9 +1,10 @@
 class DriverCheckin < ApplicationRecord
   belongs_to :driver_user 
-  # geocoded_by :address   # can also be an IP address
-  # after_validation :geocode          # auto-fetch coordinates
-    
   
+  geocoded_by :ip_address,
+    :latitude => :latitude , :longitude => :longitude  
+  after_validation :geocode 
+
 
   
   # def address  

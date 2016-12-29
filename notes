@@ -48,11 +48,28 @@ index on loads statements loads etc
 
 
 
-<address>
+<button onclick="getLocation()">Try It</button>
 
-  @latitude <%= @inbound.latitude if !@inbound.nil? %><br>
-  @longitude <%= @inbound.longitude if !@inbound.nil? %> <br>
-  <%= @inbound.from_city if !@inbound.nil? %>, <%= @inbound.from_state if !@inbound.nil? %> 
-  <%= @inbound.from_zip if !@inbound.nil? %><br>
-</address>
+<p id="demo"></p>
 
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+
+   var my_email = 'shithead'
+   $(document).ready(function(){
+        $("#driver_checkin_street").val(my_email);
+   });
+</script>

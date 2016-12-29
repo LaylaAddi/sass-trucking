@@ -13,7 +13,6 @@ class DriverUser < User
   mount_uploader :profile_bg, UserBackgroundImageUploader  
 
 
-
   
 
 

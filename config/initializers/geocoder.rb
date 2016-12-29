@@ -1,6 +1,6 @@
 Geocoder.configure(
   # geocoding service
-  lookup: :google,
+  lookup: :ipinfo_io, 
 
   # geocoding service request timeout (in seconds)
 
