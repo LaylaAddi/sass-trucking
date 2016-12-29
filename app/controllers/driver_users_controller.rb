@@ -77,8 +77,8 @@ class DriverUsersController < UsersController
     @location = Geocoder.coordinates(@ip)
     @lat = request.location.latitude 
     @lon = request.location.longitude
-
-
+    @city = request.location.city
+    @zip_code = request.location
   end
  
   def import
