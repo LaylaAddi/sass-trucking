@@ -18,9 +18,7 @@ class DriverCheckinsController < ApplicationController
   def new
     @driver = current_driver_user
     @driver_checkin = @driver.driver_checkins.new
-    @lat = result.latitude
-    @lon = result.longitude
-    @city = result.city
+
   end
 
   # GET /driver_checkins/1/edit

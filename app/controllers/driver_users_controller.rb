@@ -75,7 +75,8 @@ class DriverUsersController < UsersController
     
     @ip = request.remote_ip 
     @location = Geocoder.coordinates(@ip)
-
+    @lat = request.location.latitude 
+    @lon = request.location.longitude
 
 
   end
