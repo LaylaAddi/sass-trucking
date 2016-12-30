@@ -1,5 +1,5 @@
 git add -A
-git commit -m "geocoded_by :ip_address"
+git commit -m "hidden fields"
 git push -u origin master 
 git push dokku master    
 

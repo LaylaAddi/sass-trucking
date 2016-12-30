@@ -1,9 +1,9 @@
 class DriverCheckin < ApplicationRecord
   #belongs_to :driver_user 
   
-geocoded_by :ip_address,
-  :latitude => :lat, :longitude => :lon
-after_validation :geocode
+# geocoded_by :ip_address,
+#   :latitude => :lat, :longitude => :lon
+# after_validation :geocode
 
 
   

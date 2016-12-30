@@ -1,33 +1,29 @@
-<button onclick="getLocation()">Get Location</button>
 
 <p id="demo"></p>
 
 <script>
-var x = document.getElementById("demo");
-
-function getLocation() {
+$(document).ready(function(){
+    var x = document.getElementById("demo");
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+          navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
+          x.innerHTML = "Geolocation is not supported by this browser.";
     }
-}
 
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
-}
+  function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude + 
+      "<br>Longitude: " + position.coords.longitude;
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+  
+      $("#driver_checkin_latitude").val(latitude);
+      $("#driver_checkin_longitude").val(longitude);
+  }
 
-var latitude = position.coords.latitude;
-var longitude = position.coords.latitude; 
+})
 
-$.ajax({
-        url: "/driver_user_newcoords_path?latitude="+latitude+"&longitude="+longitude,
-        success: function(data) {
-            // do something here like for example replace some arbitrary container's html with the stuff returned by server.
-            $("#container").html(data);
-        }
-    });
+
+
 </script>
 
 
@@ -46,8 +42,8 @@ $.ajax({
     <%= f.input :state, label: "Region",  input_html: { value: @region } %>
     <%= f.input :zip, input_html: { value: @postal_code }  %> 
     <%= f.input :ip_address, input_html: { value: @ip } %>
-    <%= f.input :latitude, input_html: { value: @lat } %> 
-    <%= f.input :longitude, input_html: { value: @lon } %>
+    <%= f.input :latitude, input_html: { value: @latitude } %> 
+    <%= f.input :longitude, input_html: { value: @longitude } %>
     <%= f.input :status %>
     <%= f.input :notes %> 
     <%= f.input :driver_user_id %>
@@ -59,4 +55,3 @@ $.ajax({
 
 <% end %>
 <% end %>
---------------------------------------------------
