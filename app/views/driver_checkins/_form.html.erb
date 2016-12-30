@@ -1,14 +1,43 @@
-<%= render "checkin_map" %>
+<button onclick="getLocation()">Get Location</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+
+var latitude = position.coords.latitude;
+var longitude = position.coords.latitude; 
+
+$.ajax({
+        url: "/driver_user_newcoords_path?latitude="+latitude+"&longitude="+longitude,
+        success: function(data) {
+            // do something here like for example replace some arbitrary container's html with the stuff returned by server.
+            $("#container").html(data);
+        }
+    });
+</script>
 
 
 <% if current_driver_user %>
-<%= simple_form_for [@driver, @driver_checkin] do |f| %> 
+<%= simple_form_for [@driver, @driver_checkin] do |f| %>  
 
 
-  <p>Inspect <%= request.location.inspect %></p>
+
   <p>IP <%= request.remote_ip %></p>
-  <p>Latitude: <%= %></p>
-  <p>Longitude: <%=  %></p> 
+
   
   
   <div class="form-inputs">
@@ -30,3 +59,4 @@
 
 <% end %>
 <% end %>
+--------------------------------------------------

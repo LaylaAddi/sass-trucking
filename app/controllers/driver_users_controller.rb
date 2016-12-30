@@ -45,12 +45,12 @@ class DriverUsersController < UsersController
     #@text_load = @active.last 
     @message = Message.last
     @messages = Message.all.order('created_at desc')
-    @driver_checkins = @driver.driver_checkins
-    @ip = request.remote_ip 
-    @location = Geocoder.coordinates(@ip)
-    @lat = request.location.latitude 
-    @lon = request.location.longitude
-    @city = request.location.city
+    # @driver_checkins = @driver.driver_checkins
+    # @ip = request.remote_ip 
+    # @location = Geocoder.coordinates(@ip)
+    # @lat = request.location.latitude 
+    # @lon = request.location.longitude
+    # @city = request.location.city
     # @region = request.location.region
     #@postal_code = request.location.zip_code
 
@@ -79,7 +79,9 @@ class DriverUsersController < UsersController
     
     @ip = request.remote_ip 
     @location = Geocoder.coordinates(@ip)
-    # @lat = request.location.latitude 
+    latitude = params[:latitude]
+    longitude = params[:longitude]
+    # @lat = request.location.latitude  
     # @lon = request.location.longitude
     # @city = request.location.city
     # @region = request.location.region
@@ -93,11 +95,7 @@ class DriverUsersController < UsersController
   end
 
 
-def newcoords
-  @latitude = (params[:latitude])
-  @longitude = (params[:longitude])
-end
-  
+
 
   
   private

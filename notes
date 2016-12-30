@@ -46,8 +46,6 @@ index on loads statements loads etc
 <h1>Maps</h1>
 
 
-
-
 <button onclick="getLocation()">Try It</button>
 
 <p id="demo"></p>
@@ -68,8 +66,15 @@ function showPosition(position) {
     "<br>Longitude: " + position.coords.longitude;
 }
 
-   var my_email = 'shithead'
-   $(document).ready(function(){
-        $("#driver_checkin_street").val(my_email);
-   });
+var latitude = position.coords.latitude;
+var longitude = position.coords.latitude; 
+var form_field_value = document.getElementById("checkin_street").value
+$.ajax({
+        url: "/checkin_lat_lng_path?latitude="+latitude+"&longitude="+longitude,
+        success: function(data) {
+            // do something here like for example replace some arbitrary container's html with the stuff returned by server.
+            $("#container").html(data);
+        }
+    });
 </script>
+
