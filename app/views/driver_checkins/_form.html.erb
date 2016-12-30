@@ -5,8 +5,8 @@
 <%= simple_form_for [@driver, @driver_checkin] do |f| %> 
 
 
-  <p>Inspect <%= request.location%></p>
-  <p>IP <%= request.remote_ip.inspect %></p>
+  <p>Inspect <%= request.location.inspect %></p>
+  <p>IP <%= request.remote_ip %></p>
   <p>Latitude: <%= %></p>
   <p>Longitude: <%=  %></p> 
   
