@@ -1,8 +1,8 @@
-Geocoder.configure(:maxmind => {:service => :city_isp_org},
+Geocoder.configure(:maxmind => {:service => :omni}, 
  
   # Geocoding options
    timeout: 3,                 # geocoding service timeout (secs)
-   :api_key => ENV["maxmind"],
+   :api_key => 't6WaXjtFy69O',
    :use_https => true
   # language: :en,              # ISO-639 language code
   # use_https: false,           # use HTTPS for lookup requests? (if supported)

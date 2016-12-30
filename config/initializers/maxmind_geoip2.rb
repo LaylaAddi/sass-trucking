@@ -1,80 +1,80 @@
-require 'geocoder/lookups/base'
-require 'geocoder/results/maxmind_geoip2'
+# require 'geocoder/lookups/base'
+# require 'geocoder/results/maxmind_geoip2'
 
-module Geocoder::Lookup
-  class MaxmindGeoip2 < Base
+# module Geocoder::Lookup
+#   class MaxmindGeoip2 < Base
 
-    def name
-      "MaxMind GeoIP2"
-    end
+#     def name
+#       "MaxMind GeoIP2"
+#     end
 
-    # Maxmind's GeoIP2 Precision Services only supports HTTPS,
-    # otherwise a `404 Not Found` HTTP response will be returned
-    def supported_protocols
-      [:https]
-    end
+#     # Maxmind's GeoIP2 Precision Services only supports HTTPS,
+#     # otherwise a `404 Not Found` HTTP response will be returned
+#     def supported_protocols
+#       [:https]
+#     end
 
-    def query_url(query)
-      "#{protocol}://geoip.maxmind.com/geoip/v2.1/#{configured_service!}/#{query.sanitized_text.strip}"
-    end
+#     def query_url(query)
+#       "#{protocol}://geoip.maxmind.com/geoip/v2.1/#{configured_service!}/#{query.sanitized_text.strip}"
+#     end
 
-    private # ---------------------------------------------------------------
+#     private # ---------------------------------------------------------------
 
-    ##
-    # Return the name of the configured service, or raise an exception.
-    #
-    def configured_service!
-      if s = configuration[:service] and services.include?(s) and configuration[:basic_auth][:user] and configuration[:basic_auth][:password]
-        return s
-      else
-        raise(
-          Geocoder::ConfigurationError,
-          "When using MaxMind GeoIP2 you MUST specify a service name and basic_auth: " +
-          "Geocoder.configure(:maxmind_geoip2 => {:service => ...}, " +
-          ":basic_auth => {:user ..., :password => ...}), " +
-          "where service is one of: #{services.inspect}"
-        )
-      end
-    end
+#     ##
+#     # Return the name of the configured service, or raise an exception.
+#     #
+#     def configured_service!
+#       if s = configuration[:service] and services.include?(s) and configuration[:basic_auth][:user] and configuration[:basic_auth][:password]
+#         return s
+#       else
+#         raise(
+#           Geocoder::ConfigurationError,
+#           "When using MaxMind GeoIP2 you MUST specify a service name and basic_auth: " +
+#           "Geocoder.configure(:maxmind_geoip2 => {:service => ...}, " +
+#           ":basic_auth => {:user ..., :password => ...}), " +
+#           "where service is one of: #{services.inspect}"
+#         )
+#       end
+#     end
 
-    def data_contains_error?(doc)
-      (["code", "error"] - doc.keys).empty?
-    end
+#     def data_contains_error?(doc)
+#       (["code", "error"] - doc.keys).empty?
+#     end
 
-    ##
-    # Service names used in URL.
-    #
-    def services
-      [
-        :country,
-        :city,
-        :insights,
-      ]
-    end
+#     ##
+#     # Service names used in URL.
+#     #
+#     def services
+#       [
+#         :country,
+#         :city,
+#         :insights,
+#       ]
+#     end
 
-    def results(query)
-      # don't look up a loopback address
-      return [] if query.loopback_ip_address?
-      doc = fetch_data(query)
-      if doc
-        if !data_contains_error?(doc)
-          return [doc]
-        else
-          Geocoder.log(:warn, "MaxMind GeoIP2 Geocoding API error: #{doc['code']} (#{doc['error']}).")
-        end
-      end
-      return []
-    end
-  end
-end
+#     def results(query)
+#       # don't look up a loopback address
+#       return [] if query.loopback_ip_address?
+#       doc = fetch_data(query)
+#       if doc
+#         if !data_contains_error?(doc)
+#           return [doc]
+#         else
+#           Geocoder.log(:warn, "MaxMind GeoIP2 Geocoding API error: #{doc['code']} (#{doc['error']}).")
+#         end
+#       end
+#       return []
+#     end
+#   end
+# end
 
-Geoip2.configure do |conf|
-    # Mandatory
-    conf.license_key = ENV["maxmind"]
-    conf.user_id = ENV["maxmind_id"]
+# Geoip2.configure do |conf|
+#     # Mandatory
+#     conf.license_key = ENV["maxmind"]
+#     conf.user_id = ENV["maxmind_id"]
 
-    # Optional
-    conf.host = 'geoip.maxmind.com' # Or any host that you would like to work with
-    conf.base_path = '/geoip/v2.0' # Or any other version of this API
-    conf.parallel_requests = 5 # Or any other amount of parallel requests that you would like to use
-end
+#     # Optional
+#     conf.host = 'geoip.maxmind.com' # Or any host that you would like to work with
+#     conf.base_path = '/geoip/v2.0' # Or any other version of this API
+#     conf.parallel_requests = 5 # Or any other amount of parallel requests that you would like to use
+# end
