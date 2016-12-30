@@ -3,10 +3,14 @@
 
 <% if current_driver_user %>
 <%= simple_form_for [@driver, @driver_checkin] do |f| %> 
-  <p>Inspect <%= request.location %></p>
-  <p>Inspect <%= request.location.inspect %></p>
-  <p>Latitude: <%= request.location.latitude %></p>
-  <p>Longitude: <%= request.location.longitude %></p> 
+
+
+  <p>Inspect <%= request.location%></p>
+  <p>IP <%= request.remote_ip.inspect %></p>
+  <p>Latitude: <%= %></p>
+  <p>Longitude: <%=  %></p> 
+  
+  
   <div class="form-inputs">
     <%= f.input :street %>
     <%= f.input :city, input_html: { value: @city } %> 

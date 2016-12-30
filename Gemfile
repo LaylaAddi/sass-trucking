@@ -35,7 +35,7 @@ gem 'local_time'
 gem 'geocoder'
 # gem 'geo_ip', '~> 0.6.2'
 # gem 'geoip', '~> 1.6', '>= 1.6.2'
-
+gem 'geoip2' 
 group :development, :test do
   gem 'byebug', platform: :mri
 end

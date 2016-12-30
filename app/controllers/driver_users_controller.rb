@@ -52,7 +52,7 @@ class DriverUsersController < UsersController
     @lon = request.location.longitude
     @city = request.location.city
     # @region = request.location.region
-    # @postal_code = request.location.city
+    #@postal_code = request.location.zip_code
 
   end
     
