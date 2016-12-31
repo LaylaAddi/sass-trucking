@@ -45,7 +45,7 @@ class DriverUsersController < UsersController
     #@text_load = @active.last 
     @message = Message.last
     @messages = Message.all.order('created_at desc')
-    # @driver_checkins = @driver.driver_checkins
+    @driver_checkins = @driver.driver_checkins
     # @ip = request.remote_ip 
     # @location = Geocoder.coordinates(@ip)
     # @lat = request.location.latitude 
@@ -74,13 +74,14 @@ class DriverUsersController < UsersController
   	
   	@trucks = @driver.trucks 
   	@trailers = @driver.trailers 
+  	
     @driver_checkin = DriverCheckin.new
     @driver_checkins = @driver.driver_checkins
     
     @ip = request.remote_ip 
     @location = Geocoder.coordinates(@ip)
-    latitude = params[:latitude]
-    longitude = params[:longitude]
+    # latitude = params[:latitude]
+    # longitude = params[:longitude]
     # @lat = request.location.latitude  
     # @lon = request.location.longitude
     # @city = request.location.city

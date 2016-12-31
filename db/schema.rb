@@ -10,31 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230171959) do
+ActiveRecord::Schema.define(version: 20161231073843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "checkins", force: :cascade do |t|
-    t.string   "street"
-    t.string   "city"
-    t.string   "state"
-    t.string   "postal"
-    t.string   "region"
-    t.string   "full_address"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "status"
-    t.string   "notes"
-    t.integer  "driver_user_id"
-    t.string   "lat"
-    t.string   "lng"
-    t.string   "latitude_str"
-    t.string   "longitude_str"
-    t.string   "ip_address"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
 
   create_table "company_profile_memberships", force: :cascade do |t|
     t.integer  "company_profile_id"
@@ -271,10 +250,9 @@ ActiveRecord::Schema.define(version: 20161230171959) do
     t.string   "review_date"
     t.string   "review_rating"
     t.string   "review_type"
-    t.string   "company_profile_id"
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
-    t.index ["company_profile_id"], name: "index_mcs_on_company_profile_id", using: :btree
+    t.integer  "company_profile_id"
   end
 
   create_table "messages", force: :cascade do |t|

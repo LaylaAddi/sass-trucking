@@ -205,7 +205,7 @@
   </li>
   <li class="list-group-item">
     <strong>
-      Pay 
+      Payment Due
         <div class="pull-right">
           <%= number_to_currency(net_pay) %> 
         </div>
@@ -242,8 +242,9 @@
                     <th>Ins/Rentals/Other</th>
                     <th>Fuel/Cash/Other</th>
                     <th>Paid to Driver</th>
+                    <th>HRC Net RPM</th>
                     <th>Company Cash</th>
-                    <th>HRC RPM</th>
+
                   </tr>
                 </thead>
                 <% net_after_otr_expense = driver_load_running_total - debit_total %>
@@ -257,10 +258,11 @@
                        <td>- <%= number_to_currency(insurance_and_rentals) %></td>
                     <td>- <%= number_to_currency(fuel_cash_other) %></td>
        
-                    <td>- <%= number_to_currency(money_paid_to_driver) %></td>
+                    <td>- <%= number_to_currency(net_pay) %></td>
                     <% hrc_cashola = (invoice_price_total  - insurance_and_rentals - money_paid_to_driver) %>
-                    <td><%= number_to_currency(hrc_cashola) %></td>
+
                     <td><%= number_to_currency(hrc_cashola / total_miles) %></td>
+                                        <td><%= number_to_currency(hrc_cashola) %></td>
                   </tr>
                 </tbody>
               </table>

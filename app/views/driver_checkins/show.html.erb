@@ -63,7 +63,7 @@
     </style>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <h3><%= @driver.full_name %><small> Checkin: <%= local_time(@driver_checkin.created_at, format: '%B %e, %Y %l:%M%P %Z') %> </small></h3>
     <div id="map"></div>
     <script>
       function initMap() {
