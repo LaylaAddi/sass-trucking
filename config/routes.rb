@@ -45,11 +45,10 @@ Rails.application.routes.draw do
  
   resources :company_profiles do
     collection {post :import}
-      resources :mcs 
-        resources :carrier_mcs 
-          resources :broker_mcs 
-            resources :us_dots
-              resources :company_profile_memberships
+      resources :carrier_mcs 
+        resources :broker_mcs 
+          resources :us_dots
+            resources :company_profile_memberships
   end
   
 

@@ -1,4 +1,4 @@
-class UsDotsController < McsController
+class UsDotsController < ApplicationController
   before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy] 
   def show
     @company_profile = CompanyProfile.find(params[:company_profile_id])
@@ -216,7 +216,7 @@ class UsDotsController < McsController
                           review_type: review_type                          
                          )
 
-      flash[:success] = "Your #{@us_dot.entity_type} number #{@us_dot.mc_mx_ff_numbers} with an Operating Status of #{@us_dot.operating_status} has been updated."
+      flash[:success] = "Your #{@us_dot.entity_type} number #{@us_dot.usdot_number} with an Operating Status of #{@us_dot.operating_status} has been updated."
       redirect_to @company_profile
     else
       flash[:danger] = "There was a problem saving your Authority"

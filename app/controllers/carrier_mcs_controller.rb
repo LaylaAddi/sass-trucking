@@ -1,4 +1,4 @@
-class CarrierMcsController < McsController
+class CarrierMcsController < ApplicationController
   before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy]
   
   def show

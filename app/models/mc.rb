@@ -1,7 +1,0 @@
-class Mc < ApplicationRecord
-end
-
-
-
-
-
