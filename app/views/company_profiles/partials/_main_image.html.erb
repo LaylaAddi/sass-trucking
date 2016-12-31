@@ -72,7 +72,7 @@
       US DOT <%= link_to @company_profile.us_dot_number, 
         company_profile_us_dot_path(@company_profile, @us_dot)  %>  
       <%=link_to "Update US DOT", 
-        edit_company_profile_us_dot_path(@company_profile, @us_dot) if current_user.try(:admin?) %>
+        edit_company_profile_us_dot_path(@company_profile, @us_dot)  %>
       <% end %>
     </p>
     <p>
@@ -80,7 +80,7 @@
       Broker MC <%= link_to @company_profile.broker_mc_number, 
         company_profile_broker_mc_path(@company_profile, @broker_mc)  %>  
       <%=link_to "Update Broker MC", 
-        edit_company_profile_broker_mc_path(@company_profile, @broker_mc) if current_user.try(:admin?) %>
+        edit_company_profile_broker_mc_path(@company_profile, @broker_mc)  %>
       <% end %>  
     </p>
     <p>
@@ -88,7 +88,7 @@
       Carrier MC <%= link_to @company_profile.carrier_mc_number, 
         company_profile_carrier_mc_path(@company_profile, @carrier_mc)  %>  
       <%=link_to "Update Carrier MC", 
-        edit_company_profile_carrier_mc_path(@company_profile, @carrier_mc) if current_user.try(:admin?) %>
+        edit_company_profile_carrier_mc_path(@company_profile, @carrier_mc)  %>
       <% end %>  
     </p>
   </div>
