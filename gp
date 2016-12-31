@@ -1,5 +1,5 @@
 git add -A
-git commit -m "updated statement calc for drivers and oo"
+git commit -m ".carrier_mc_number.present? "
 git push -u origin master 
 git push dokku master    
 
