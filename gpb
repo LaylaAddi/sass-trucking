@@ -1,5 +1,5 @@
 git add -A
-git commit -m ""
-git push -u origin newmc
+git commit -m "create_mcs"
+git push -u origin create_mcs
 
 

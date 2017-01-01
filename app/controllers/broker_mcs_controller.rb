@@ -7,12 +7,12 @@ class BrokerMcsController < ApplicationController
   
   def new 
     @company_profile = CompanyProfile.find(params[:company_profile_id])
-    @broker_mc = BrokerMc.new 
+    @broker_mc = @company_profile.broker_mcs.build
   end
   
   def create
     @company_profile = CompanyProfile.find(params[:company_profile_id])
-    @broker_mc = @company_profile.carrier_mcs.build(bmc_params) 
+    @broker_mc = @company_profile.broker_mcs.build(bmc_params)  
     @broker_mc.save
     #   flash[:success] = "Your #{@broker_mc.authority_type} with number #{@broker_mc.number} has been saved"
     #   redirect_to @company_profile
@@ -31,7 +31,7 @@ class BrokerMcsController < ApplicationController
     session.driver.options[:phantomjs] = Phantomjs.path 
     session.visit('https://safer.fmcsa.dot.gov/CompanySnapshot.aspx')
     session.choose('2')
-    session.fill_in('4', with: @company_profile.carrier_mc_number)
+    session.fill_in('4', with: @company_profile.broker_mc_number)
     session.find('input[type="SUBMIT"]').click
     
     
@@ -44,7 +44,7 @@ class BrokerMcsController < ApplicationController
       phone = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(7) > td').text
       mailing_address = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(8) > td').text
       usdot_number = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(9) > td:nth-child(2)').text
-      state_carrier_id_number = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(9) > td:nth-child(4)').text
+      #state_broker_id_number = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(9) > td:nth-child(4)').text
       mc_mx_ff_numbers = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(9) > td:nth-child(2)').text
       duns_number = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(10) > td:nth-child(4)').text
       power_units  = session.find(:css, 'body > p > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td > center:nth-child(3) > table > tbody > tr:nth-child(11) > td.queryfield').text
@@ -139,7 +139,7 @@ class BrokerMcsController < ApplicationController
                           phone: phone,
                           mailing_address: mailing_address,
                           usdot_number: usdot_number,
-                          state_carrier_id_number: state_carrier_id_number,	 
+                          #state_broker_id_number: state_broker_id_number,	 
                           mc_mx_ff_numbers: mc_mx_ff_numbers,
                           duns_number: duns_number,
                           power_units: power_units, 	
@@ -250,7 +250,7 @@ class BrokerMcsController < ApplicationController
                                         :phone,
                                         :mailing_address,
                                         :usdot_number,
-                                        :state_carrier_id_number,	 
+                                        :state_broker_id_number,	 
                                         :mc_mx_ff_numbers,
                                         :duns_number,
                                         :power_units, 	

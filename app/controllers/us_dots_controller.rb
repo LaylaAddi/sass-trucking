@@ -7,7 +7,7 @@ class UsDotsController < ApplicationController
 
   def new 
     @company_profile = CompanyProfile.find(params[:company_profile_id])
-    @us_dot = UsDot.new 
+    @us_dot = @company_profile.us_dots.build 
   end
   
   def create
