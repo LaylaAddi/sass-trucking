@@ -31,7 +31,7 @@ class BrokerMcsController < McsController
     session.driver.options[:phantomjs] = Phantomjs.path 
     session.visit('https://safer.fmcsa.dot.gov/CompanySnapshot.aspx')
     session.choose('2')
-    session.fill_in('4', with: @company_profile.carrier_mc_number)
+    session.fill_in('4', with: @company_profile.broker_mc_number)
     session.find('input[type="SUBMIT"]').click
     
     

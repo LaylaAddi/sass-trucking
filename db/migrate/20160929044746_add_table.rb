@@ -17,7 +17,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :updated_by
       t.string :contact
       t.string :email 
-
       t.timestamps
     end
     
@@ -71,7 +70,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :consignee_name 
       t.integer :driver_statement_id, index: true
       t.decimal :rate_to_driver_after_factor_fees
-
       t.timestamps
     end
     
@@ -89,7 +87,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :notes
       t.integer :load_id, index: true   
-
       t.timestamps
     end
     
@@ -106,7 +103,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.integer :transactionable_id
       t.string  :transactionable_type
       t.string :business_name
-
       t.timestamps
     end
     
@@ -115,7 +111,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.integer :user_id, index: true
       t.string :membership_type
       t.index [:user_id, :company_profile_id], name: 'user_company_profile'
-
       t.timestamps
     end
 
@@ -138,77 +133,77 @@ class AddTable < ActiveRecord::Migration[5.0]
     
 
     create_table :mcs do |t|
-      t.string :type, null: false, default: ""
-      t.string :entity_type, null: false, default: ""
-      t.string :operating_status, null: false, default: ""
-      t.string :out_of_service_date, null: false, default: ""
-      t.string :legal_name, null: false, default: ""
-      t.string :dba_name, null: false, default: ""
-      t.string :physical_address, null: false, default: ""
-      t.string :phone, null: false, default: ""
-      t.string :mailing_address, null: false, default: ""
-      t.string :usdot_number, null: false, default: ""
-      t.string :state_carrier_id_number, null: false, default: ""	 
-      t.string :mc_mx_ff_numbers, null: false, default: ""
-      t.string :duns_number, null: false, default: ""
-      t.string :power_units, null: false, default: "" 	
-      t.string :driver_count	, null: false, default: ""
-      t.string :mcs_150_form_date, null: false, default: ""
-      t.string :mcs_150_mileage_year, null: false, default: ""
-      t.string :general_freight, null: false, default: ""
-      t.string :household_goods, null: false, default: ""
-      t.string :metal_sheets_coils_rolls, null: false, default: ""
-      t.string :motor_vehicles, null: false, default: ""
-      t.string :drivetow_away, null: false, default: ""
-      t.string :logs_poles_beams_lumber, null: false, default: ""
-      t.string :building_materials, null: false, default: ""
-      t.string :mobile_homes, null: false, default: ""
-      t.string :machinery_large_objects, null: false, default: ""
-      t.string :fresh_produce, null: false, default: ""
-      t.string :safer_layout, null: false, default: ""
-      t.string :liquids_gases, null: false, default: ""
-      t.string :intermodal, null: false, default: "" 
-      t.string :passengers, null: false, default: ""
-      t.string :oilfield_equipment, null: false, default: ""
-      t.string :livestock, null: false, default: ""
-      t.string :grain_feed_hay, null: false, default: ""
-      t.string :coal_coke, null: false, default: ""
-      t.string :meat, null: false, default: ""
-      t.string :garbage_refuse, null: false, default: ""
-      t.string :us_mail, null: false, default: ""
-      t.string :chemicals, null: false, default: ""
-      t.string :commodities_dry_bulk, null: false, default: ""
-      t.string :refrigerated_food, null: false, default: ""
-      t.string :beverages, null: false, default: ""
-      t.string :paper_products, null: false, default: ""
-      t.string :utilities, null: false, default: ""
-      t.string :agricultural_farm_supplies, null: false, default: ""
-      t.string :construction, null: false, default: ""
-      t.string :water_well, null: false, default: ""
-      t.string :driver_inspections_count, null: false, default: ""
-      t.string :vehicle_inspections_count, null: false, default: ""
-      t.string :hazmat_inspections_count, null: false, default: ""
-      t.string :iep_inspections_count, null: false, default: ""
-      t.string :driver_inspections_out_service, null: false, default: ""
-      t.string :vehicle_inspections_out_service, null: false, default: ""
-      t.string :hazmat_inspections_out_service, null: false, default: ""
-      t.string :iep_inspections_out_service, null: false, default: ""
-      t.string :driver_inspections_out_service_percent, null: false, default: ""
-      t.string :vehicle_inspections_out_service_percent, null: false, default: ""
-      t.string :hazmat_inspections_out_service_percent, null: false, default: ""
-      t.string :iep_inspections_out_service_percent, null: false, default: ""
-      t.string :crash_fatal, null: false, default: ""
-      t.string :crash_injury, null: false, default: ""
-      t.string :crash_tow, null: false, default: ""
-      t.string :crash_total, null: false, default: ""
-      t.string :cad_vehicle_inspections, null: false, default: ""
-      t.string :cad_driver_inspections, null: false, default: ""
-      t.string :cad_vehicle_out_of_service, null: false, default: ""
-      t.string :cad_driver_out_of_service, null: false, default: ""
-      t.string :cad_vehicle_out_of_service_percent, null: false, default: ""
-      t.string :cad_driver_out_of_service_percent, null: false, default: ""
-      t.string :us_inspections_prev_24, null: false, default: ""
-      t.string :cad_inspections_prev_24, null: false, default: ""
+      t.string :type
+      t.string :entity_type
+      t.string :operating_status
+      t.string :out_of_service_date
+      t.string :legal_name
+      t.string :dba_name
+      t.string :physical_address
+      t.string :phone
+      t.string :mailing_address
+      t.string :usdot_number
+      t.string :state_carrier_id_number	 
+      t.string :mc_mx_ff_numbers
+      t.string :duns_number
+      t.string :power_units 	
+      t.string :driver_count	
+      t.string :mcs_150_form_date
+      t.string :mcs_150_mileage_year
+      t.string :general_freight
+      t.string :household_goods
+      t.string :metal_sheets_coils_rolls
+      t.string :motor_vehicles
+      t.string :drivetow_away
+      t.string :logs_poles_beams_lumber
+      t.string :building_materials
+      t.string :mobile_homes
+      t.string :machinery_large_objects
+      t.string :fresh_produce
+      t.string :safer_layout
+      t.string :liquids_gases
+      t.string :intermodal 
+      t.string :passengers
+      t.string :oilfield_equipment
+      t.string :livestock
+      t.string :grain_feed_hay
+      t.string :coal_coke
+      t.string :meat
+      t.string :garbage_refuse
+      t.string :us_mail
+      t.string :chemicals
+      t.string :commodities_dry_bulk
+      t.string :refrigerated_food
+      t.string :beverages
+      t.string :paper_products
+      t.string :utilities
+      t.string :agricultural_farm_supplies
+      t.string :construction
+      t.string :water_well
+      t.string :driver_inspections_count
+      t.string :vehicle_inspections_count
+      t.string :hazmat_inspections_count
+      t.string :iep_inspections_count
+      t.string :driver_inspections_out_service
+      t.string :vehicle_inspections_out_service
+      t.string :hazmat_inspections_out_service
+      t.string :iep_inspections_out_service
+      t.string :driver_inspections_out_service_percent
+      t.string :vehicle_inspections_out_service_percent
+      t.string :hazmat_inspections_out_service_percent
+      t.string :iep_inspections_out_service_percent
+      t.string :crash_fatal
+      t.string :crash_injury
+      t.string :crash_tow
+      t.string :crash_total
+      t.string :cad_vehicle_inspections
+      t.string :cad_driver_inspections
+      t.string :cad_vehicle_out_of_service
+      t.string :cad_driver_out_of_service
+      t.string :cad_vehicle_out_of_service_percent
+      t.string :cad_driver_out_of_service_percent
+      t.string :us_inspections_prev_24
+      t.string :cad_inspections_prev_24
       t.string :crash_results_24_prior 
       t.string :cad_crash_results_24_prior 
       t.string :cad_crash_fatal 
@@ -233,9 +228,7 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :file_type
       t.string :note
       t.integer :load_id, index: true
-
       t.timestamps
-      
     end
     
     create_table :trucks do |t|
@@ -255,9 +248,9 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :zip 
       t.float :latitude
       t.float :longitude
+      t.string :plate
+      t.string :plate_state
       t.integer :driver_user_id, index: true
-
-
       t.timestamps
     end  
     
@@ -271,7 +264,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :vin
       t.string :image
       t.string :notes
-      t.integer :driver_user_id, index: true
       t.string :length
       t.string :door_type
       t.string :street 
@@ -280,6 +272,9 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :zip 
       t.float :latitude
       t.float :longitude
+      t.string :plate
+      t.string :plate_state
+      t.integer :driver_user_id, index: true
       t.timestamps
     end
     
@@ -300,7 +295,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.integer :mileage
       t.string :type
       t.string :notes
-
       t.integer :trailer_id, index: true
       t.integer :truck_id, index: true
       t.timestamps
@@ -320,8 +314,44 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     
+    create_table :messages do |t|
+      t.string :number
+      t.string :text
+      t.boolean :inbound
+      t.string :user 
+      t.float :latitude
+      t.float :longitude
+      t.string :to_country
+      t.string :to_state
+      t.string :to_city
+      t.string :to_zip
+      t.string :from_country
+      t.string :from_state
+      t.string :from_city
+      t.string :from_zip
+      t.string :sms_message_sid
+      t.string :num_media
+      t.string :sms_sid 
+
+      t.timestamps
+    end
     
+    
+
+    create_table :driver_checkins do |t|
+      t.string :street
+      t.string :city
+      t.string :state
+      t.string :zip
+      t.float :latitude      
+      t.float :longitude 
+      t.string :status
+      t.string :notes
+      t.string :ip_address
+      t.integer :driver_user_id, index: true 
+
+      t.timestamps
+    end
+
   end
-  
-  
 end

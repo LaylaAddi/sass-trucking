@@ -1,3 +1,3 @@
-class CarrierMc < Mc
+class CarrierMc < Mc 
   belongs_to :company_profile
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161223054636) do
+ActiveRecord::Schema.define(version: 20160929044746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,77 +164,77 @@ ActiveRecord::Schema.define(version: 20161223054636) do
   end
 
   create_table "mcs", force: :cascade do |t|
-    t.string   "type",                                         default: "", null: false
-    t.string   "entity_type",                                  default: "", null: false
-    t.string   "operating_status",                             default: "", null: false
-    t.string   "out_of_service_date",                          default: "", null: false
-    t.string   "legal_name",                                   default: "", null: false
-    t.string   "dba_name",                                     default: "", null: false
-    t.string   "physical_address",                             default: "", null: false
-    t.string   "phone",                                        default: "", null: false
-    t.string   "mailing_address",                              default: "", null: false
-    t.string   "usdot_number",                                 default: "", null: false
-    t.string   "state_carrier_id_number",                      default: "", null: false
-    t.string   "mc_mx_ff_numbers",                             default: "", null: false
-    t.string   "duns_number",                                  default: "", null: false
-    t.string   "power_units",                                  default: "", null: false
-    t.string   "driver_count",                                 default: "", null: false
-    t.string   "mcs_150_form_date",                            default: "", null: false
-    t.string   "mcs_150_mileage_year",                         default: "", null: false
-    t.string   "general_freight",                              default: "", null: false
-    t.string   "household_goods",                              default: "", null: false
-    t.string   "metal_sheets_coils_rolls",                     default: "", null: false
-    t.string   "motor_vehicles",                               default: "", null: false
-    t.string   "drivetow_away",                                default: "", null: false
-    t.string   "logs_poles_beams_lumber",                      default: "", null: false
-    t.string   "building_materials",                           default: "", null: false
-    t.string   "mobile_homes",                                 default: "", null: false
-    t.string   "machinery_large_objects",                      default: "", null: false
-    t.string   "fresh_produce",                                default: "", null: false
-    t.string   "safer_layout",                                 default: "", null: false
-    t.string   "liquids_gases",                                default: "", null: false
-    t.string   "intermodal",                                   default: "", null: false
-    t.string   "passengers",                                   default: "", null: false
-    t.string   "oilfield_equipment",                           default: "", null: false
-    t.string   "livestock",                                    default: "", null: false
-    t.string   "grain_feed_hay",                               default: "", null: false
-    t.string   "coal_coke",                                    default: "", null: false
-    t.string   "meat",                                         default: "", null: false
-    t.string   "garbage_refuse",                               default: "", null: false
-    t.string   "us_mail",                                      default: "", null: false
-    t.string   "chemicals",                                    default: "", null: false
-    t.string   "commodities_dry_bulk",                         default: "", null: false
-    t.string   "refrigerated_food",                            default: "", null: false
-    t.string   "beverages",                                    default: "", null: false
-    t.string   "paper_products",                               default: "", null: false
-    t.string   "utilities",                                    default: "", null: false
-    t.string   "agricultural_farm_supplies",                   default: "", null: false
-    t.string   "construction",                                 default: "", null: false
-    t.string   "water_well",                                   default: "", null: false
-    t.string   "driver_inspections_count",                     default: "", null: false
-    t.string   "vehicle_inspections_count",                    default: "", null: false
-    t.string   "hazmat_inspections_count",                     default: "", null: false
-    t.string   "iep_inspections_count",                        default: "", null: false
-    t.string   "driver_inspections_out_service",               default: "", null: false
-    t.string   "vehicle_inspections_out_service",              default: "", null: false
-    t.string   "hazmat_inspections_out_service",               default: "", null: false
-    t.string   "iep_inspections_out_service",                  default: "", null: false
-    t.string   "driver_inspections_out_service_percent",       default: "", null: false
-    t.string   "vehicle_inspections_out_service_percent",      default: "", null: false
-    t.string   "hazmat_inspections_out_service_percent",       default: "", null: false
-    t.string   "iep_inspections_out_service_percent",          default: "", null: false
-    t.string   "crash_fatal",                                  default: "", null: false
-    t.string   "crash_injury",                                 default: "", null: false
-    t.string   "crash_tow",                                    default: "", null: false
-    t.string   "crash_total",                                  default: "", null: false
-    t.string   "cad_vehicle_inspections",                      default: "", null: false
-    t.string   "cad_driver_inspections",                       default: "", null: false
-    t.string   "cad_vehicle_out_of_service",                   default: "", null: false
-    t.string   "cad_driver_out_of_service",                    default: "", null: false
-    t.string   "cad_vehicle_out_of_service_percent",           default: "", null: false
-    t.string   "cad_driver_out_of_service_percent",            default: "", null: false
-    t.string   "us_inspections_prev_24",                       default: "", null: false
-    t.string   "cad_inspections_prev_24",                      default: "", null: false
+    t.string   "type"
+    t.string   "entity_type"
+    t.string   "operating_status"
+    t.string   "out_of_service_date"
+    t.string   "legal_name"
+    t.string   "dba_name"
+    t.string   "physical_address"
+    t.string   "phone"
+    t.string   "mailing_address"
+    t.string   "usdot_number"
+    t.string   "state_carrier_id_number"
+    t.string   "mc_mx_ff_numbers"
+    t.string   "duns_number"
+    t.string   "power_units"
+    t.string   "driver_count"
+    t.string   "mcs_150_form_date"
+    t.string   "mcs_150_mileage_year"
+    t.string   "general_freight"
+    t.string   "household_goods"
+    t.string   "metal_sheets_coils_rolls"
+    t.string   "motor_vehicles"
+    t.string   "drivetow_away"
+    t.string   "logs_poles_beams_lumber"
+    t.string   "building_materials"
+    t.string   "mobile_homes"
+    t.string   "machinery_large_objects"
+    t.string   "fresh_produce"
+    t.string   "safer_layout"
+    t.string   "liquids_gases"
+    t.string   "intermodal"
+    t.string   "passengers"
+    t.string   "oilfield_equipment"
+    t.string   "livestock"
+    t.string   "grain_feed_hay"
+    t.string   "coal_coke"
+    t.string   "meat"
+    t.string   "garbage_refuse"
+    t.string   "us_mail"
+    t.string   "chemicals"
+    t.string   "commodities_dry_bulk"
+    t.string   "refrigerated_food"
+    t.string   "beverages"
+    t.string   "paper_products"
+    t.string   "utilities"
+    t.string   "agricultural_farm_supplies"
+    t.string   "construction"
+    t.string   "water_well"
+    t.string   "driver_inspections_count"
+    t.string   "vehicle_inspections_count"
+    t.string   "hazmat_inspections_count"
+    t.string   "iep_inspections_count"
+    t.string   "driver_inspections_out_service"
+    t.string   "vehicle_inspections_out_service"
+    t.string   "hazmat_inspections_out_service"
+    t.string   "iep_inspections_out_service"
+    t.string   "driver_inspections_out_service_percent"
+    t.string   "vehicle_inspections_out_service_percent"
+    t.string   "hazmat_inspections_out_service_percent"
+    t.string   "iep_inspections_out_service_percent"
+    t.string   "crash_fatal"
+    t.string   "crash_injury"
+    t.string   "crash_tow"
+    t.string   "crash_total"
+    t.string   "cad_vehicle_inspections"
+    t.string   "cad_driver_inspections"
+    t.string   "cad_vehicle_out_of_service"
+    t.string   "cad_driver_out_of_service"
+    t.string   "cad_vehicle_out_of_service_percent"
+    t.string   "cad_driver_out_of_service_percent"
+    t.string   "us_inspections_prev_24"
+    t.string   "cad_inspections_prev_24"
     t.string   "crash_results_24_prior"
     t.string   "cad_crash_results_24_prior"
     t.string   "cad_crash_fatal"
@@ -251,8 +251,8 @@ ActiveRecord::Schema.define(version: 20161223054636) do
     t.string   "review_rating"
     t.string   "review_type"
     t.string   "company_profile_id"
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.index ["company_profile_id"], name: "index_mcs_on_company_profile_id", using: :btree
   end
 
@@ -260,8 +260,6 @@ ActiveRecord::Schema.define(version: 20161223054636) do
     t.string   "number"
     t.string   "text"
     t.boolean  "inbound"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.string   "user"
     t.float    "latitude"
     t.float    "longitude"
@@ -276,6 +274,8 @@ ActiveRecord::Schema.define(version: 20161223054636) do
     t.string   "sms_message_sid"
     t.string   "num_media"
     t.string   "sms_sid"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "miles", force: :cascade do |t|
@@ -309,7 +309,6 @@ ActiveRecord::Schema.define(version: 20161223054636) do
     t.string   "vin"
     t.string   "image"
     t.string   "notes"
-    t.integer  "driver_user_id"
     t.string   "length"
     t.string   "door_type"
     t.string   "street"
@@ -318,10 +317,11 @@ ActiveRecord::Schema.define(version: 20161223054636) do
     t.string   "zip"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
     t.string   "plate"
     t.string   "plate_state"
+    t.integer  "driver_user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["driver_user_id"], name: "index_trailers_on_driver_user_id", using: :btree
   end
 
@@ -368,11 +368,11 @@ ActiveRecord::Schema.define(version: 20161223054636) do
     t.string   "zip"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "plate"
+    t.string   "plate_state"
     t.integer  "driver_user_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.string   "plate"
-    t.string   "plate_state"
     t.index ["driver_user_id"], name: "index_trucks_on_driver_user_id", using: :btree
   end
 
