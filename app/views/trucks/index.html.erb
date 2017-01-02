@@ -33,7 +33,7 @@
         <td><%= truck.number %></td>
         <td><%= truck.vin %></td>
         <td><%= truck.notes %></td>
-        <% if truck.driver_user.full_name.present? %>
+        <% if !truck.driver_user.full_name.nil? %>
         <td><%= truck.driver_user.full_name %></td>
         <% end %>
 
