@@ -217,7 +217,7 @@ class BrokerMcsController < McsController
                          )
                          
       flash[:success] = "Your #{@broker_mc.entity_type} number #{@broker_mc.mc_mx_ff_numbers} with an Operating Status of #{@broker_mc.operating_status} has been updated."
-      redirect_to @company_profile
+      redirect_to company_profile_broker_mc_path(@company_profile, @broker_mc) 
     else
       flash[:danger] = "There was a problem saving your Authority"
       redirect_to @company_profile

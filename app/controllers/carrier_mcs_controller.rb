@@ -218,7 +218,7 @@ class CarrierMcsController < McsController
                          )
                          
       flash[:success] = "Your #{@carrier_mc.entity_type} number #{@carrier_mc.mc_mx_ff_numbers} with an Operating Status of #{@carrier_mc.operating_status} has been updated."
-      redirect_to @company_profile
+      redirect_to company_profile_carrier_mc_path(@company_profile, @carrier_mc)  
     else
       flash[:danger] = "There was a problem saving your Authority"
       redirect_to @company_profile

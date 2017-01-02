@@ -68,22 +68,24 @@
       <abbr title="Email">E:</abbr> <a href="mailto:#">name@example.com</a>
     </address>
     <p>
-      US DOT <%= link_to @company_profile.us_dot_number, 
-        company_profile_us_dot_path(@company_profile, @us_dot)  %>  
-      <%=link_to "Update US DOT", 
-        edit_company_profile_us_dot_path(@company_profile, @us_dot)  %>
-    </p>
-    <p>
-      Broker MC <%= link_to @company_profile.broker_mc_number, 
+      <% if @company_profile.broker_mc_number.present?  %> 
+        Broker MC <%= link_to @company_profile.broker_mc_number, 
         company_profile_broker_mc_path(@company_profile, @broker_mc)  %>  
-      <%=link_to "Update Broker MC", 
+      <%=link_to "Get and update from FMCSA", 
         edit_company_profile_broker_mc_path(@company_profile, @broker_mc)  %>
+      <% else %>
+        <%= @company_profile.company_name %> Does not have a Broker MC number on file. 
+      <% end %>
     </p>
     <p>
-      Carrier MC <%= link_to @company_profile.carrier_mc_number, 
+      <% if @company_profile.carrier_mc_number.present?  %>
+        Carrier MC <%= link_to @company_profile.carrier_mc_number, 
         company_profile_carrier_mc_path(@company_profile, @carrier_mc)  %>  
-      <%=link_to "Update Carrier MC", 
+      <%=link_to "Get and update from FMCSA", 
         edit_company_profile_carrier_mc_path(@company_profile, @carrier_mc) %>
+      <% else %>
+        <%= @company_profile.company_name %> Does not have a Carrier MC number on file. 
+      <% end %>
     </p>
   </div>
 </div>
