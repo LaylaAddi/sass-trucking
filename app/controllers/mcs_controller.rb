@@ -9,12 +9,12 @@ class McsController < ApplicationController
   
   def new 
     @company_profile = CompanyProfile.find(params[:company_id])
-    @mc = Mc.new 
+    @mc = @company_profile.mcs.build 
   end
   
   def create
     @company_profile = CompanyProfile.find(params[:company_id])
-    @mc = @company_profile.operating_authorities.build(oa_params)
+    @mc = @company_profile.mcs.build(oa_params)
     
     if @mc.save
       flash[:success] = "Your #{@mc.authority_type} with number #{@mc.number} has been saved"
@@ -45,7 +45,7 @@ class McsController < ApplicationController
     @company_profile = CompanyProfile.find(params[:company_id])
     @mc = Mc.find(params[:id]) 
     if @mc.update(name: name, address: address, telephone: telephone)
-      flash[:success] = "Your #{@mc.authority_type} with number #{@mc.number} has been updated"
+      flash[:success] = "Your #{@mc.type} with number #{@mc.number} has been updated"
       redirect_to @company_profile
     else
       flash[:danger] = "There was a problem saving your Authority"

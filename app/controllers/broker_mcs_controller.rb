@@ -7,12 +7,12 @@ class BrokerMcsController < McsController
   
   def new 
     @company_profile = CompanyProfile.find(params[:company_profile_id])
-    @broker_mc = BrokerMc.new 
+    @broker_mc = @company_profile.broker_mcs.build 
   end
   
   def create
     @company_profile = CompanyProfile.find(params[:company_profile_id])
-    @broker_mc = @company_profile.carrier_mcs.build(bmc_params) 
+    @broker_mc = @company_profile.broker_mcs.build(bmc_params) 
     @broker_mc.save
     #   flash[:success] = "Your #{@broker_mc.authority_type} with number #{@broker_mc.number} has been saved"
     #   redirect_to @company_profile

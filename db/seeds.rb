@@ -199,63 +199,63 @@ end
 #   puts driver.inspect
 # end
 
-10.times do
-shipperuser = ShipperUser.create(
-  password: "password",
-  password_confirmation: "password", 
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,
-  cellphone: "7169864010",  
-  street: Faker::Address.street_name,
-  telephone: Faker::PhoneNumber.phone_number,
-  city: city_data.sample,
-  zip: "123456",
-  emergency_contact: Faker::Name.first_name,
-  emergency_contact_number: Faker::PhoneNumber.phone_number,
-  dispatcher: boolean.sample,
-  office: boolean.sample,
-  maintenance: boolean.sample,
-  shipping_receiving: boolean.sample
-  )
-  puts shipperuser.inspect
-end
+# 10.times do
+# shipperuser = ShipperUser.create(
+#   password: "password",
+#   password_confirmation: "password", 
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   email: Faker::Internet.email,
+#   cellphone: "7169864010",  
+#   street: Faker::Address.street_name,
+#   telephone: Faker::PhoneNumber.phone_number,
+#   city: city_data.sample,
+#   zip: "123456",
+#   emergency_contact: Faker::Name.first_name,
+#   emergency_contact_number: Faker::PhoneNumber.phone_number,
+#   dispatcher: boolean.sample,
+#   office: boolean.sample,
+#   maintenance: boolean.sample,
+#   shipping_receiving: boolean.sample
+#   )
+#   puts shipperuser.inspect
+# end
 
 
-10.times do     
-companyprofile = CompanyProfile.create!(
-company_name: Faker::Company.name, 
-telephone: Faker::PhoneNumber.phone_number,
-street: Faker::Address.street_address,
-city: "CityVille",
-state: States.sample,
-zip: Faker::Address.zip,
-fax: Faker::PhoneNumber.phone_number,
-contact: Faker::Name.first_name, 
-website: Faker::Internet.url,
-broker_mc_number: "985484",
-carrier_mc_number: "985484",
-us_dot_number: "2921696",
-email: Faker::Internet.email
-  )
- puts companyprofile.inspect
-end
+# 10.times do     
+# companyprofile = CompanyProfile.create!(
+# company_name: Faker::Company.name, 
+# telephone: Faker::PhoneNumber.phone_number,
+# street: Faker::Address.street_address,
+# city: "CityVille",
+# state: States.sample,
+# zip: Faker::Address.zip,
+# fax: Faker::PhoneNumber.phone_number,
+# contact: Faker::Name.first_name, 
+# website: Faker::Internet.url,
+# broker_mc_number: "985484",
+# carrier_mc_number: "985484",
+# us_dot_number: "2921696",
+# email: Faker::Internet.email
+#   )
+# puts companyprofile.inspect
+# end
 
-hrcprofile = CompanyProfile.create!(
-company_name: "HRC Logistics LLC", 
-telephone: "4693012226",
-street: "14241 Dallas Parkway Suite 650",
-city: "Dallas",
-state: "Texas",
-zip: "75254",
-fax: "469.301.2226",
-contact: "Kathy", 
-website: "hrclogistics.com",
-broker_mc_number: "985484",
-carrier_mc_number: "985484",
-us_dot_number: "2921696",
-email: "support@hrclogistics.com"
-)
+# hrcprofile = CompanyProfile.create!(
+# company_name: "HRC Logistics LLC", 
+# telephone: "4693012226",
+# street: "14241 Dallas Parkway Suite 650",
+# city: "Dallas",
+# state: "Texas",
+# zip: "75254",
+# fax: "469.301.2226",
+# contact: "Kathy", 
+# website: "hrclogistics.com",
+# broker_mc_number: "985484",
+# carrier_mc_number: "985484",
+# us_dot_number: "2921696",
+# email: "support@hrclogistics.com"
+# )
 
 
 

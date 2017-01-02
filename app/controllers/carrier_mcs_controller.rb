@@ -8,7 +8,7 @@ class CarrierMcsController < McsController
   
   def new 
     @company_profile = CompanyProfile.find(params[:company_profile_id])
-    @carrier_mc = CarrierMc.new 
+    @carrier_mc = @company_profile.carrier_mcs.build
   end
   
   def create
