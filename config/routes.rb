@@ -71,6 +71,8 @@ Rails.application.routes.draw do
   resources :messages
   resources :text_messages
   resources :driver_checkins
+  
+  resources :driver_statements
   # get 'messages/reply'
   get 'hrc_dashboard', to: 'hrc_users#hrc_dashboard'
   get 'driver_dashboard', to: '_driver_users#driver_dashboard'

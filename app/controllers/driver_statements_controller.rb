@@ -4,8 +4,11 @@ class DriverStatementsController < ApplicationController
   # GET /driver_statements
   # GET /driver_statements.json
   def index
-    @driver = DriverUser.find(params[:driver_user_id])
-    @driver_statements = DriverStatement.all
+    # @driver = DriverUser.find(params[:driver_user_id])
+    @all_statements = DriverStatement.all
+  	@search_statements = @all_statements.search(params[:q])
+  	@driver_statements = @search_statements.result.order(:id).page(params[:page]).per(50)
+    
   end
 
   # GET /driver_statements/1

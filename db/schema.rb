@@ -10,31 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230171959) do
+ActiveRecord::Schema.define(version: 20161223054636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "checkins", force: :cascade do |t|
-    t.string   "street"
-    t.string   "city"
-    t.string   "state"
-    t.string   "postal"
-    t.string   "region"
-    t.string   "full_address"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "status"
-    t.string   "notes"
-    t.integer  "driver_user_id"
-    t.string   "lat"
-    t.string   "lng"
-    t.string   "latitude_str"
-    t.string   "longitude_str"
-    t.string   "ip_address"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
 
   create_table "company_profile_memberships", force: :cascade do |t|
     t.integer  "company_profile_id"

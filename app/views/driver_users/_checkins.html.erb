@@ -1,5 +1,5 @@
-<%= render "driver_checkins/form" %>
-<%= render "checkin_map" %>
+<%= render "driver_checkins/form" if current_driver_user %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Driver Checkins</h1>
@@ -19,7 +19,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+    <% if @driver_checkins.present? %>
   <tbody>
     <% @driver_checkins.each do |driver_checkin| %>
       <tr>
@@ -37,6 +37,7 @@
         <td><%= link_to 'Destroy', driver_user_driver_checkin_path(@driver, driver_checkin), 
         method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr> 
+    <% end %>
     <% end %>
   </tbody>
 </table>
