@@ -33,9 +33,16 @@
         <td><%= truck.number %></td>
         <td><%= truck.vin %></td>
         <td><%= truck.notes %></td>
-        <% if !truck.driver_user.full_name.nil? %>
-        <td><%= truck.driver_user.full_name %></td>
-        <% end %>
+        
+        <td>
+          <% if !truck.driver_user.first_name.nil? %>
+          <%= truck.driver_user.first_name %>
+          <% end %>
+          <% if !truck.driver_user.last_name.nil? %>
+          <%= truck.driver_user.last_name %>
+          <% end %>
+        </td>
+        
 
         <td><%= link_to 'Show', truck,
         class: "btn btn-info btn-xs round" %></td>
