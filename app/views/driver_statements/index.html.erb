@@ -2,24 +2,24 @@
 <%= paginate @statements if @statements.present? %>  
 <%= search_form_for @search_statements do |f| %>  
 <%= link_to "Reload", 
-  loads_path, class: 'btn btn-hrcprimary btn-xs round'%>
+  driver_statements_path, class: 'btn btn-hrcprimary btn-xs round'%> 
 <br />
 <div>
   <%= f.label :driver_statements_search_params_cont, "Search" %>  
   <%= f.text_field :driver_statements_search_params_cont %>     
 </div>
-
+  <%= f.submit "Search", class: 'btn btn-hrcsuccess btn-xs round' %> 
 
 <% end %>
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
       <th><%= sort_link @search_statements, :id, "ID" %></th>
-<th><%= sort_link @search_statements, :created_at, "Created On" %></th>
+
       <th><%= sort_link @search_statements, :first_name, "Driver Name" %></th>
       <th><%= sort_link @search_statements, :payment_status, "Payment Status" %></th>
-      <th>Created On</th>
-      <th>Due On</th>
+<th><%= sort_link @search_statements, :created_at, "Created On" %></th>
+<th><%= sort_link @search_statements, :due_date, "Due On" %></th>
     
       <th colspan="3"></th>
     </tr>

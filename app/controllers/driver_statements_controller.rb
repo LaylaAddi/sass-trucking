@@ -8,7 +8,10 @@ class DriverStatementsController < ApplicationController
     @all_statements = DriverStatement.all
   	@search_statements = @all_statements.search(params[:q])
   	@driver_statements = @search_statements.result.order(:id).page(params[:page]).per(50)
-    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @driver_statements.as_csv }  
+    end
   end
 
   # GET /driver_statements/1
@@ -78,6 +81,10 @@ class DriverStatementsController < ApplicationController
     end
   end
   
+  def import
+    DriverStatement.import(params[:file])
+    redirect_to driver_statements_path, notice: 'Statements have been uploaded.'
+  end   
 
 
   private

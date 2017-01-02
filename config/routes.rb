@@ -72,7 +72,9 @@ Rails.application.routes.draw do
   resources :text_messages
   resources :driver_checkins
   
-  resources :driver_statements
+  resources :driver_statements, only: [:index] do
+    collection {post :import}
+  end   
   # get 'messages/reply'
   get 'hrc_dashboard', to: 'hrc_users#hrc_dashboard'
   get 'driver_dashboard', to: '_driver_users#driver_dashboard'
