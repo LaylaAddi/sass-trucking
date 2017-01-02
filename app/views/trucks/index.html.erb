@@ -33,7 +33,9 @@
         <td><%= truck.number %></td>
         <td><%= truck.vin %></td>
         <td><%= truck.notes %></td>
+        <% if truck.driver_user.full_name.present? %>
         <td><%= truck.driver_user.full_name %></td>
+        <% end %>
 
         <td><%= link_to 'Show', truck,
         class: "btn btn-info btn-xs round" %></td>
