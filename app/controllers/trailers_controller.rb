@@ -69,6 +69,11 @@ class TrailersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def import
+    Trailer.import(params[:file])
+    redirect_to trailers_path, notice: 'Trailers have been uploaded.'
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

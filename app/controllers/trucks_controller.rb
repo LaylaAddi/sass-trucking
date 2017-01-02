@@ -6,7 +6,7 @@ class TrucksController < ApplicationController
     @trucks = Truck.all
   	
     respond_to do |format|
-      format.html
+      format.html 
       format.csv { send_data @trucks.as_csv }  
     end
   end
