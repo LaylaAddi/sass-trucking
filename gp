@@ -1,5 +1,5 @@
 git add -A
-git commit -m "write_attribute(:cellphone, cellphone.gsub(/\D/, ''))"
+git commit -m "rake assets:precompile"
 git push -u origin master 
 git push dokku master
 
