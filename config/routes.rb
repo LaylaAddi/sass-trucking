@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       resources :driver_statements
         resources 'notifications', only: [:create] 
           resources :driver_checkins
+            resources :messages
   end 
   
   resources :users do

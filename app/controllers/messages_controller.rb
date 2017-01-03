@@ -5,23 +5,28 @@ class MessagesController < ApplicationController
  
   def index
     @hrc_user = current_hrc_user
-    @messages = Message.all
-  end
-
-  def show
-    @hrc_user = current_hrc_user
-
+    @driver = DriverUser.find(params[:cellphone])
     @messages = Message.for_number(params[:id])
     @new_message = Message.new(number: params[:id])
     @inbound = @messages.find_by(inbound: 'true') 
  
-    @driver = DriverUser.find_by_cellphone(params[:cellphone])
+
+  end
+
+  def show
+    @hrc_user = current_hrc_user
+    @messages = Message.for_number(params[:id])
+    @new_message = Message.new(number: params[:id])
+    @inbound = @messages.find_by(inbound: 'true') 
+ 
+
     
 
   end
 
   def create
     @hrc_user = current_hrc_user
+
     message = Message.new(clean_params)
     message.inbound = false
 

@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
- 
+ belongs_to :driver_user, optional: true
+ belongs_to :hrc_user, optional: true
   scope :for_number,        -> (number) { where(number: number).by_date }
   scope :by_date,           -> { order(created_at: :desc) }
   scope :recent_by_number,  -> { group(:number).having('created_at = MAX(created_at)') }
