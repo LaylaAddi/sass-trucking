@@ -1,5 +1,5 @@
 git add -A
-git commit -m "Trailer.import(params[:file])"
+git commit -m "working on sending text"
 git push -u origin master 
 
 
