@@ -26,14 +26,10 @@ class MessagesController < ApplicationController
     message.inbound = false
 
     if message.save
-     flash[:success] = "Your Text has been sent"
-      send_cable(message)
-      send_sms(message)
+      ActionCable.server.broadcast 'room_channel',
+                                   content:  message.text
+      head :ok
 
-      redirect_to message_path(message.number)
-     else
-       flash[:danger] = "There was a problem sending the message"
-        redirect_back(fallback_location: root_path)
     end
   end
      

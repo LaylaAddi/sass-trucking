@@ -78,3 +78,5 @@ $.ajax({
     });
 </script>
 
+
+<%= local_time(message.created_at, format: '%B %e, %Y %l:%M%P %Z') %>
