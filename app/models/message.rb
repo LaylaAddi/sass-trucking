@@ -20,7 +20,8 @@ class Message < ApplicationRecord
   end
   
 
-  
+
+
   def address 
     [ from_city, from_state, from_zip].join(', ') 
   end

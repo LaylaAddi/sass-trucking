@@ -14,7 +14,9 @@ class DriverUser < User
   mount_uploader :profile_bg, UserBackgroundImageUploader  
 
 
-  
+  def plus_one_cell
+    '+1'+self.cellphone 
+  end
 
 
 

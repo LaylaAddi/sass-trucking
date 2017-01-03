@@ -18,10 +18,6 @@ class MessagesController < ApplicationController
     @messages = Message.for_number(params[:id])
     @new_message = Message.new(number: params[:id])
     @inbound = @messages.find_by(inbound: 'true') 
- 
-
-    
-
   end
 
   def create
@@ -35,7 +31,7 @@ class MessagesController < ApplicationController
       send_cable(message)
       send_sms(message)
 
-      redirect_to message_path(message.number)
+        redirect_back(fallback_location: root_path)
      else
        flash[:danger] = "There was a problem sending the message"
         redirect_back(fallback_location: root_path)

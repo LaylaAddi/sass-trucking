@@ -3,7 +3,7 @@
   <div class="content">
     <%= simple_form_for [@driver, @new_message] do |f| %>
     
-      <%= f.input :number, as: :hidden  %> 
+      <%= f.input :number %> 
 <%= f.input :user, input_html: { value:  @hrc_user.full_name }, as: :hidden %>
       <div class="field">
         <%= f.text_field :text %>
