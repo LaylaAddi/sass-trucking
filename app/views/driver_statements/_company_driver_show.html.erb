@@ -17,7 +17,7 @@
 </p>
 <p>
   <strong>Updated On:</strong>
-  <%= @driver_statement.updated_at.strftime("%A %B %-d, %Y %-l:%M %p %Z") %>
+  <%= local_time(@driver_statement.updated_at, format: '%B %e, %Y %l:%M%P %Z') %>
 </p>
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
@@ -27,7 +27,7 @@
       <th>Description</th>
       <th>Rate</th>
       <th>Distance (Miles)</th>
-      <th>Total $</th>
+      <th>Pay to <%= @driver.first_name %></th>
       <th>Debits</th>
       <th>Credits</th>
       <th>Load Size</th>
@@ -80,20 +80,17 @@
         <% credit_running_total = credit_running_total + transaction.credit %>
         <% end %>
         <% end %>
-        <!--HRC Tranactions Start-->
-        <% load.transactions.each do |hrc_transaction|  %>
-        <% number_to_currency(hrc_transaction.debit) %> 
-        <% hrc_debit_running_total = hrc_debit_running_total + hrc_transaction.debit %>
-        <% end %>
       </td>
-      <td>
-        <% load.transactions.each do |hrc_transaction|  %>
-        <% number_to_currency(hrc_transaction.credit) %> 
-        <% hrc_credit_running_total = hrc_credit_running_total + hrc_transaction.credit %>
-        <% end %>
-      </td>
+      <!--HRC Tranactions Start-->
+      <% load.transactions.each do |hrc_transaction|  %>
+      <% number_to_currency(hrc_transaction.debit) %> 
+      <% hrc_debit_running_total = hrc_debit_running_total + hrc_transaction.debit %>
+      <% end %>
+      <% load.transactions.each do |hrc_transaction|  %>
+      <% number_to_currency(hrc_transaction.credit) %> 
+      <% hrc_credit_running_total = hrc_credit_running_total + hrc_transaction.credit %>
+      <% end %>
       <!--HRC Tranactions End-->
-      </td>
       <td><%= load.load_size %></td>
       <td><%= load.equipment_type %></td>
       <td><%= load.status_name %></td>
@@ -111,27 +108,6 @@
 <% hrc_debit_total = hrc_debit_running_total - hrc_credit_running_total %>
 <% rate_after_expenses = driver_load_running_total - debit_total%>
 <br /> 
-<table class="table table-bordered table-striped table-condensed table-responsive">
-  <thead>
-    <tr>
-      <th>Insurance</th>
-      <th>Trailer Rental</th>
-      <th>Truck Rental</th>
-      <th>Other</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% insurance_and_rentals = @driver_statement.insurance_payment + @driver_statement.trailer_rental + @driver_statement.truck_rental + @driver_statement.other %>
-    <tr>
-      <td><%= number_to_currency(@driver_statement.insurance_payment) %></td>
-      <td><%= number_to_currency(@driver_statement.trailer_rental) %></td>
-      <td><%= number_to_currency(@driver_statement.truck_rental) %></td>
-      <td><%= number_to_currency(@driver_statement.other) %></td>
-      <td><strong>- <%= number_to_currency(insurance_and_rentals) %></strong></td>
-    </tr>
-  </tbody>
-</table>
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
@@ -157,7 +133,7 @@
 </table>
 <div class="pull-right">
   <strong>
-  Payment Due  <%= number_to_currency(net_after_otr_expense - insurance_and_rentals) %>
+  Payment Due  <%= number_to_currency(net_after_otr_expense) %>
   </strong>  
 </div>
 <div class="col-lg-12">
@@ -178,6 +154,27 @@
               <table class="table table-bordered table-striped table-condensed table-responsive">
                 <thead>
                   <tr>
+                    <th>Insurance</th>
+                    <th>Trailer Rental</th>
+                    <th>Truck Rental</th>
+                    <th>Other</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% insurance_and_rentals = @driver_statement.insurance_payment + @driver_statement.trailer_rental + @driver_statement.truck_rental + @driver_statement.other %>
+                  <tr>
+                    <td><%= number_to_currency(@driver_statement.insurance_payment) %></td>
+                    <td><%= number_to_currency(@driver_statement.trailer_rental) %></td>
+                    <td><%= number_to_currency(@driver_statement.truck_rental) %></td>
+                    <td><%= number_to_currency(@driver_statement.other) %></td>
+                    <td><strong>- <%= number_to_currency(insurance_and_rentals) %></strong></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-bordered table-striped table-condensed table-responsive">
+                <thead>
+                  <tr>
                     <th>Invoice Total</th>
                     <th>Total Miles</th>
                     <th>GRPM</th>
@@ -185,6 +182,7 @@
                     <th>Credits</th>
                     <th>Debit/Credit Total</th>
                     <th>Paid to Driver</th>
+                    <th>NRPM</th>
                     <th>Company Cash</th>
                   </tr>
                 </thead>
@@ -199,6 +197,7 @@
                     <td><%= number_to_currency(hrc_credit_running_total) %></td>
                     <td>- <%= number_to_currency(hrc_debit_total) %></td>
                     <td>- <%= number_to_currency(driver_load_running_total) %></td>
+                    <td><%= number_to_currency(hrc_after_expense / total_miles) %></td>
                     <td><strong><%= number_to_currency(hrc_after_expense) %></strong></td>
                   </tr>
                 </tbody>
