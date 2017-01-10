@@ -59,7 +59,9 @@ Rails.application.routes.draw do
     collection {post :import}
       resources :load_documents, only: [:new, :create, :update] 
         resources :transactions
-          resources :load_addresses
+          resources :addresses 
+                    resources :load_origin_addresses 
+                              resources :load_destination_addresses 
   end 
   
   resources :load_documents
@@ -72,11 +74,11 @@ Rails.application.routes.draw do
   resources :messages
   resources :text_messages
   resources :driver_checkins
-  
   resources :driver_statements, only: [:index] do
     collection {post :import}
   end   
-  # get 'messages/reply'
+  
+
   get 'hrc_dashboard', to: 'hrc_users#hrc_dashboard'
   get 'driver_dashboard', to: '_driver_users#driver_dashboard'
   get 'shipper_dashboard', to: 'shipper_users#shipper_dashboard'

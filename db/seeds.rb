@@ -138,13 +138,14 @@ steve = HrcUser.create(
   employment_status: "active"
   )
   puts steve.inspect
+  
 kathy = HrcUser.create(
   password: "password",
   password_confirmation: "password", 
   first_name: "Kathy",
   last_name: "Rodriguez",
   email: "kathy@hrclogistics.com",
-  cellphone: "7169864324",  
+  cellphone: "7169864010",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
   city: city_data.sample,
@@ -156,15 +157,14 @@ kathy = HrcUser.create(
   employment_status: "active"
   )
   puts kathy.inspect
-  
-  
-10.times do
-hrcuser = HrcUser.create(
+
+
+leadfoot = DriverUser.create(
   password: "password",
   password_confirmation: "password", 
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,
+  first_name: "Joe The Driver",
+  last_name: "Leadfoot",
+  email: "leadfoot@hrclogistics.com", 
   cellphone: "7169864010",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,
@@ -172,14 +172,58 @@ hrcuser = HrcUser.create(
   zip: "123456",
   emergency_contact: Faker::Name.first_name,
   emergency_contact_number: Faker::PhoneNumber.phone_number,
-  office: "false",
-  maintenance: "false",
-  shipping_receiving: "false",
   dispatcher: "true",
-  admin: "false"
+  admin: "true",
+  employment_status: "active",
+  company_driver: true,
+  driver_rpm: 0.40
   )
-  puts hrcuser.inspect
-end
+  puts leadfoot.inspect
+  
+  slowmoe = DriverUser.create(
+  password: "password",
+  password_confirmation: "password", 
+  first_name: "Slow",
+  last_name: "Moe",
+  email: "slowmoe@hrclogistics.com", 
+  cellphone: "7169864010",  
+  street: Faker::Address.street_name,
+  telephone: Faker::PhoneNumber.phone_number,
+  city: city_data.sample,
+  zip: "123456",
+  emergency_contact: Faker::Name.first_name,
+  emergency_contact_number: Faker::PhoneNumber.phone_number,
+  dispatcher: "true",
+  admin: "true",
+  employment_status: "active",
+  owner_operator: true,
+  driver_rpm: 0.00
+  )
+  puts slowmoe.inspect
+  
+  
+# 10.times do
+# hrcuser = HrcUser.create(
+#   password: "password",
+#   password_confirmation: "password", 
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   email: Faker::Internet.email,
+#   cellphone: "7169864010",  
+#   street: Faker::Address.street_name,
+#   telephone: Faker::PhoneNumber.phone_number,
+#   city: city_data.sample,
+#   zip: "123456",
+#   emergency_contact: Faker::Name.first_name,
+#   emergency_contact_number: Faker::PhoneNumber.phone_number,
+#   office: "false",
+#   maintenance: "false",
+#   shipping_receiving: "false",
+#   dispatcher: "true",
+#   admin: "false"
+#   )
+#   puts hrcuser.inspect
+# end
 # 50.times do
 # driver = DriverUser.create(
 # password: "password",
@@ -222,24 +266,24 @@ end
 # end
 
 
-# 10.times do     
-# companyprofile = CompanyProfile.create!(
-# company_name: Faker::Company.name, 
-# telephone: Faker::PhoneNumber.phone_number,
-# street: Faker::Address.street_address,
-# city: "CityVille",
-# state: States.sample,
-# zip: Faker::Address.zip,
-# fax: Faker::PhoneNumber.phone_number,
-# contact: Faker::Name.first_name, 
-# website: Faker::Internet.url,
-# broker_mc_number: "985484",
-# carrier_mc_number: "985484",
-# us_dot_number: "2921696",
-# email: Faker::Internet.email
-#   )
-# puts companyprofile.inspect
-# end
+3.times do     
+companyprofile = CompanyProfile.create!(
+company_name: Faker::Company.name, 
+telephone: Faker::PhoneNumber.phone_number,
+street: Faker::Address.street_address,
+city: "CityVille",
+state: States.sample,
+zip: Faker::Address.zip,
+fax: Faker::PhoneNumber.phone_number,
+contact: Faker::Name.first_name, 
+website: Faker::Internet.url,
+broker_mc_number: "985484",
+carrier_mc_number: "985484",
+us_dot_number: "2921696",
+email: Faker::Internet.email
+  )
+puts companyprofile.inspect
+end
 
 # hrcprofile = CompanyProfile.create!(
 # company_name: "HRC Logistics LLC", 
@@ -259,43 +303,43 @@ end
 
 
 
-driver1 = DriverUser.create(
-password: "password",
-  password_confirmation: "password", 
-  first_name: "Kathy",
-  last_name: "Bums",
-  email: "s.chesnowitz@gmail.com", 
-  cellphone: "+17169864324",   
-  street: Faker::Address.street_name,
-  telephone: Faker::PhoneNumber.phone_number,
-  city: city_data.sample,
-  zip: "123456",
-  emergency_contact: Faker::Name.first_name,
-  emergency_contact_number: Faker::PhoneNumber.phone_number,
-  employment_status: "active",
-  company_driver: true,
-  driver_rpm: 0.40
-)
-  puts driver1.inspect
+# driver1 = HrcUser.create(
+# password: "password",
+#   password_confirmation: "password", 
+#   first_name: "Kathy",
+#   last_name: "Bums",
+#   email: "ss.chesnowitz@gmail.com", 
+#   cellphone: "+17169864324",   
+#   street: Faker::Address.street_name,
+#   telephone: Faker::PhoneNumber.phone_number,
+#   city: city_data.sample,
+#   zip: "123456",
+#   emergency_contact: Faker::Name.first_name,
+#   emergency_contact_number: Faker::PhoneNumber.phone_number,
+#   employment_status: "active",
+#   company_driver: true,
+#   driver_rpm: 0.40
+# )
+#   puts driver1.inspect
 
-driver2 = DriverUser.create(
-password: "password",
-  password_confirmation: "password", 
-  first_name: "Steve C",
-  last_name: "Chezzie",
-  email: "kathystevemail@gmail.com",
-  cellphone: "+17169864010",  
-  street: Faker::Address.street_name,
-  telephone: Faker::PhoneNumber.phone_number,
-  city: city_data.sample,
-  zip: "123456",
-  emergency_contact: Faker::Name.first_name,
-  emergency_contact_number: Faker::PhoneNumber.phone_number,
-  employment_status: "active",
-  owner_operator: true,
-  driver_rpm: 0.00 
-)
-  puts driver2.inspect
+# driver2 = DriverUser.create(
+# password: "password",
+#   password_confirmation: "password", 
+#   first_name: "Steve C",
+#   last_name: "Chezzie",
+#   email: "ksathystevemail@gmail.com",
+#   cellphone: "+17169864010",  
+#   street: Faker::Address.street_name,
+#   telephone: Faker::PhoneNumber.phone_number,
+#   city: city_data.sample,
+#   zip: "123456",
+#   emergency_contact: Faker::Name.first_name,
+#   emergency_contact_number: Faker::PhoneNumber.phone_number,
+#   employment_status: "active",
+#   owner_operator: true,
+#   driver_rpm: 0.00 
+# )
+#   puts driver2.inspect
   
   
   

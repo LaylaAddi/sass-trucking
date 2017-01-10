@@ -1,9 +1,9 @@
-class LoadAddressesController < ApplicationController
-  before_action :set_load_address, only: [:show, :edit, :update, :destroy]
+class LoadOriginAddressesController < AddressesController
+  before_action :set_address, only: [:show, :edit, :update, :destroy]
   before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy]
   
   def index
-    @load_addresses = LoadAddress.all
+    @addresses = Address.all
   end
 
   def show
@@ -11,7 +11,8 @@ class LoadAddressesController < ApplicationController
 
   def new
     @load = Load.find(params[:load_id])
-    @load_address = @load.load_addresses.build
+    @address = @load.load_origin_addresses.new 
+    
   end
 
   def edit
@@ -21,15 +22,15 @@ class LoadAddressesController < ApplicationController
 
   def create
     @load = Load.find(params[:load_id])
-    @load_address = @load.load_addresses.new(load_address_params)
+    @address = @load.load_origin_addresses.new(address_params)
 
     respond_to do |format|
-      if @load_address.save
+      if @address.save
         format.html { redirect_to @load, notice: 'Load address was successfully created.' }
-        format.json { render :show, status: :created, location: @load_address }
+        format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
-        format.json { render json: @load_address.errors, status: :unprocessable_entity }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,20 +38,20 @@ class LoadAddressesController < ApplicationController
   def update
     @load = Load.find(params[:load_id])
     respond_to do |format|
-      if @load_address.update(load_address_params)
+
+      if @address.update(address_params)
         format.html { redirect_to @load, notice: 'Load address was successfully updated.' }
-        format.json { render :show, status: :ok, location: @load_address }
+        format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }
-        format.json { render json: @load_address.errors, status: :unprocessable_entity }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
       end
     end
   end
-
-
+  
   def destroy
     @load = Load.find(params[:load_id])
-    @load_address.destroy
+    @address.destroy
     respond_to do |format|
       format.html { redirect_to load_path(@load), notice: 'Load address was successfully destroyed.' }
       format.json { head :no_content }
@@ -58,12 +59,14 @@ class LoadAddressesController < ApplicationController
   end
 
   private
-    def set_load_address
-      @load_address = LoadAddress.find(params[:id])
+    def set_address
+      @address = Address.find(params[:id])
     end
+    
 
-    def load_address_params
-      params.require(:load_address).permit(
+
+    def address_params
+      params.require(:load_origin_address).permit(  
         :address_type, 
         :street, 
         :latitude, 
@@ -76,7 +79,12 @@ class LoadAddressesController < ApplicationController
         :contact, 
         :phone, 
         :load_id,
-        :notes            
+        :notes,
+        :type,
+        :order
         )
+        
     end
+
 end
+

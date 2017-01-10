@@ -5,7 +5,11 @@
         <%= link_to @load.company_profile.company_name, 
         company_profile_path(@company_profile) if current_hrc_user %>
         <br />
-        <small><%= @load.load_title %> (<%= @load.miles %> Miles)</small>
+        <small>
+
+
+          <%= @load.load_title %> 
+        (<%= @load.miles %> Miles)</small>
       </h3>
        <%= link_to 'Edit Load', edit_load_path(@load), class: "btn btn-hrcinfo btn-sm round pull-right" %>
     </div>

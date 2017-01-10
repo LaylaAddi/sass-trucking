@@ -64,6 +64,8 @@ class HrcUsersController < UsersController
   	@search_cancelled = @cancelled.search(params[:q])
   	@completed_loads = @search_cancelled.result.order(:id).page(params[:page]).per(1000)
   	
+
+  	
     # @city = request.location.city
     # @country = request.location.country_code
     # @user_ip = request.remote_ip

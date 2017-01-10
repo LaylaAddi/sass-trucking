@@ -1,21 +1,22 @@
 <%= render "loads/partials/statuses" %>
+
 <div class="row">
   <div class="col-sm-6">
     <p>
     <h4>Pick Up</h4>
     <address>
-      <strong><%= @load.consignor_name %></strong><br>
-      <%= @load.origin_street %><br>
-      <%= @load.origin_city  %> <%= @load.origin_state  %> <%= @load.origin_zip  %><br>
-      <small>Phone: </small><%= @load.origin_phone  %><br />
-      <small>Contact: </small><%= @load.origin_contact  %>
+      <strong><%= @load_origin_address.company %></strong><br>
+      <%= @load_origin_address.street %><br>
+      <%= @load_origin_address.city  %> <%= @load_origin_address.state  %> <%= @load_origin_address.zip  %><br>
+      <small>Phone: </small><%= @load_origin_address.phone  %><br />
+      <small>Contact: </small><%= @load_origin_address.contact  %>
     </address>
     <h4>Pick Up Time Details</h4>
     <p>
       <% if @load.pick_up_date.present? %>
       <%= (@load.pick_up_date.strftime("%A %B %-d, %Y")) %><br> 
       <% if @load.pick_up_time == "2000-01-01 00:00:00" %>
-      <span class="text-red">See notes for details</span>
+      <span class="text-green">See notes for details</span>
       <% else %>
 Appointment Booked @ <%= (@load.pick_up_time.strftime("%-l:%M %p %Z")) %><br /> 
 See notes for more details
@@ -24,18 +25,24 @@ See notes for more details
       <span>(see pick up notes)</span>
       <% else %>
       <% end %>
+<% if @load_origin_addresses.present? %><br />  
+      <strong class="text-red">This load has multiple Pick Ups!</strong>
+      <% else %>
+      <% end %>
       <% else %>
       No Pick Up Date Set
       <% end %>
   </div>
+  
+  
   <div class="col-sm-6">
     <h4>Delivery</h4>
     <address>
-      <strong><%= @load.consignee_name%></strong><br>
-      <%= @load.destination_street %><br>
-      <%= @load.destination_city  %> <%= @load.destination_state  %> <%= @load.destination_zip  %><br>
-      <small>Phone: </small><%= @load.destination_phone %><br />
-      <small>Contact: </small><%= @load.destination_contact %>
+      <strong><%= @load_destination_address.company %></strong><br>
+      <%= @load_destination_address.street %><br>
+      <%= @load_destination_address.city  %> <%= @load_destination_address.state  %> <%= @load_destination_address.zip  %><br>
+      <small>Phone: </small><%= @load_destination_address.phone %><br />
+      <small>Contact: </small><%= @load_destination_address.contact %>
     </address>
     <h4>Delivery Time Details</h4>
     <p>
@@ -51,8 +58,8 @@ See notes for more details
       <span>(see delivery notes)</span>
       <% else %>
       <% end %>
-      <% if @load.load_addresses.present? %><br />
-      <strong class="text-red">This load has multiple stops!</strong>
+      <% if @load_destination_addresses.present? %><br />  
+      <strong class="text-red">This load has multiple deliveries!</strong>
       <% else %>
       <% end %>
       <% else %>
@@ -89,8 +96,12 @@ See notes for more details
     No special instructions were entered.
     <% end %>
     <hr>
+<%= link_to "Add Pickup Address", new_load_load_origin_address_path(@load, @address), 
+  class: "btn btn-success round btn-xs" %>
+<%= link_to "Add Delivery Address", new_load_load_destination_address_path(@load, @address), 
+  class: "btn btn-danger round btn-xs pull-right" %> 
   </div>
 </div>
 <p><%= render "loads/partials/lefttabs/address" %></p>
-<%= link_to "Add Address", new_load_load_address_path(@load), 
-  class: "btn btn-success round btn-xs" %>
+<br />
+

@@ -12,6 +12,11 @@ class DriverCheckinsController < ApplicationController
   # GET /driver_checkins/1.json
   def show
     @driver = DriverUser.find(params[:driver_user_id]) 
+    #   @hash = Gmaps4rails.build_markers(@driver_checkin) do |driver, marker|
+    # marker.lat driver.latitude
+    # marker.lng driver.longitude
+    # marker.infowindow driver.created_at
+end
   end
 
   # GET /driver_checkins/new
