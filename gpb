@@ -1,5 +1,5 @@
 git add -A
-git commit -m "repush calculations to master for drivers"
-git push -u origin phonegaptest
+git commit -m "RE set up sti addresses for loads"
+git push -u origin 1address
 
 

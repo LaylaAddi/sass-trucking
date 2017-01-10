@@ -73,8 +73,8 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     
-    create_table :load_addresses do |t|
-      t.string :address_type
+    create_table :addresses do |t|
+      t.string :type
       t.string :street
       t.float :latitude
       t.float :longitude
@@ -82,11 +82,18 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :city
       t.string :state
       t.string :zip
-      t.string :company
+      t.string :company 
       t.string :contact
       t.string :phone
       t.string :notes
+      t.integer :order, index: true
       t.integer :load_id, index: true   
+      t.integer :trailer_id, index: true 
+      t.integer :truck_id, index: true 
+      t.integer :driver_checkin_id, index: true 
+      t.integer :driver_user_id, index: true 
+      t.integer :hrc_user_id, index: true  
+      
       t.timestamps
     end
     
@@ -332,6 +339,8 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :sms_message_sid
       t.string :num_media
       t.string :sms_sid 
+      t.integer :hrc_user_id, index: true
+      t.integer :driver_user_id, index: true
 
       t.timestamps
     end

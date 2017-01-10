@@ -17,20 +17,35 @@ class LoadsController < ApplicationController
 
 
   def show
-    @addresses = @load.load_addresses
     @company_profile = @load.company_profile    
     @transactions = @load.transactions  
     @vendor_profile = VendorProfile.all
     @load_doc = @load.load_documents 
     @driver = @load.driver_user
     @cd_transactions = @load.transactions.where(["expense_type = ?", "Cash Advance"])
+    
+    
+    @all_origin_addresses = @load.load_origin_addresses.all
+    @load_origin_address = @all_origin_addresses.find_by(order: "1")  
+
+    @all_destination_addresses = @load.load_destination_addresses.all
+    @load_destination_address = @all_destination_addresses.find_by(order: "12")  
+
+
+    @load_origin_addresses = @load.load_origin_addresses.where.not(order: "1").order('created_at ASC')
+    @load_destination_addresses = @load.load_destination_addresses.where.not(order: "12").order('created_at ASC')
+   
+    @distance = Geocoder::Calculations.distance_between([@load_origin_address.latitude,@load_origin_address.longitude], [@load_destination_address.latitude,@load_destination_address.longitude]) 
   end
 
 
   def new
-    @load = current_hrc_user.loads.build
+    @load = current_hrc_user.loads.build 
+    @load.load_origin_addresses.build
+    @load.load_destination_addresses.build
     @driver = DriverUser.where(["employment_status = ?", "active"]) 
     @company_profile = CompanyProfile.all
+
   end
 
 
@@ -38,6 +53,10 @@ class LoadsController < ApplicationController
     @driver = DriverUser.where(["employment_status = ?", "active"])
     @hrc_user = current_hrc_user
     @company_profile = CompanyProfile.all   
+    @load_origin_address = @load.load_origin_addresses.first
+    @load_destination_address = @load.load_destination_addresses.first  
+    @load_origin_addresses = @load.load_origin_addresses.all
+    @load_destination_addresses = @load.load_destination_addresses.all
  
   end
 
@@ -46,6 +65,7 @@ class LoadsController < ApplicationController
     @driver = DriverUser.where(["employment_status = ?", "active"]) 
     @company_profile = CompanyProfile.all  
     @load = current_hrc_user.loads.build(load_params)
+
     respond_to do |format|
       if @load.save
         format.html { redirect_to @load, notice: 'Load was successfully created.' }
@@ -153,8 +173,34 @@ class LoadsController < ApplicationController
                                     :rate_to_driver,
                                     :rate_after_percent,
                                     :rate_after_booking_fee,
-                                    :rate_to_driver_after_factor_fees
-                                    )
+                                    :rate_to_driver_after_factor_fees, 
+                                    load_origin_addresses_attributes: 
+                                      [
+                                      :street,
+                                      :city, 
+                                      :state, 
+                                      :zip,
+                                      :type,
+                                      :company,
+                                      :notes,
+                                      :contact,
+                                      :phone,
+                                      :order
+                                      ],
+                                      load_destination_addresses_attributes:  
+                                        [
+                                        :street,
+                                        :city, 
+                                        :state, 
+                                        :zip,
+                                        :type,
+                                        :company,
+                                        :notes,
+                                        :contact,
+                                        :phone,
+                                        :order
+                                        ]
+                                        )
     end
 end
 

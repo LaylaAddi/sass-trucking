@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103074835) do
+ActiveRecord::Schema.define(version: 20160929044746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "type"
+    t.string   "street"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "company"
+    t.string   "contact"
+    t.string   "phone"
+    t.string   "notes"
+    t.integer  "order"
+    t.integer  "load_id"
+    t.integer  "trailer_id"
+    t.integer  "truck_id"
+    t.integer  "driver_checkin_id"
+    t.integer  "driver_user_id"
+    t.integer  "hrc_user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["driver_checkin_id"], name: "index_addresses_on_driver_checkin_id", using: :btree
+    t.index ["driver_user_id"], name: "index_addresses_on_driver_user_id", using: :btree
+    t.index ["hrc_user_id"], name: "index_addresses_on_hrc_user_id", using: :btree
+    t.index ["load_id"], name: "index_addresses_on_load_id", using: :btree
+    t.index ["order"], name: "index_addresses_on_order", using: :btree
+    t.index ["trailer_id"], name: "index_addresses_on_trailer_id", using: :btree
+    t.index ["truck_id"], name: "index_addresses_on_truck_id", using: :btree
+  end
 
   create_table "company_profile_memberships", force: :cascade do |t|
     t.integer  "company_profile_id"
@@ -74,25 +105,6 @@ ActiveRecord::Schema.define(version: 20170103074835) do
     t.string   "payment_notes"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-  end
-
-  create_table "load_addresses", force: :cascade do |t|
-    t.string   "address_type"
-    t.string   "street"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "street2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "company"
-    t.string   "contact"
-    t.string   "phone"
-    t.string   "notes"
-    t.integer  "load_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["load_id"], name: "index_load_addresses_on_load_id", using: :btree
   end
 
   create_table "load_documents", force: :cascade do |t|
@@ -274,10 +286,12 @@ ActiveRecord::Schema.define(version: 20170103074835) do
     t.string   "sms_message_sid"
     t.string   "num_media"
     t.string   "sms_sid"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.integer  "hrc_user_id"
     t.integer  "driver_user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["driver_user_id"], name: "index_messages_on_driver_user_id", using: :btree
+    t.index ["hrc_user_id"], name: "index_messages_on_hrc_user_id", using: :btree
   end
 
   create_table "miles", force: :cascade do |t|
