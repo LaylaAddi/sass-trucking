@@ -3,16 +3,14 @@
   
   mapster.MAP_OPTIONS = {
     center: {
-      lat: <%= @load_origin_address.latitude %>,
-      lng: <%= @load_origin_address.longitude %> 
+      lat: 37.791350,
+      lng: -122.435883
     },
     zoom: 10,
     disableDefaultUI: false,
     scrollwheel: true,
     draggable: true,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    maxZoom: 15,
-    minZoom: 7,
     zoomControlOptions: {
       position: google.maps.ControlPosition.LEFT_BOTTOM,
       style: google.maps.ZoomControlStyle.DEFAULT

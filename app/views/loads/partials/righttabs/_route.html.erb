@@ -1,12 +1,16 @@
- <%= render "loads/mapfiles/style" %> 
+<%= render "loads/mapfiles/style" %> 
+
 
 <div style='width: 400px;'> 
   <div id="map-canvas" style='width: 400px; height: 400px;'></div>
 </div>
 <script src="//maps.google.com/maps/api/js?key=AIzaSyBUuN5lRHj62IomskWhMdvJ9MRJnEI--18">
 </script> 
-
+<% render "loads/mapfiles/markerclusterer" %>
+<% render "loads/mapfiles/list" %>
+<%= render "loads/mapfiles/mapster" %>
 <%= render "loads/mapfiles/map-options" %>
+<% render "loads/mapfiles/jqueryui-mapster" %>
 <%= render "loads/mapfiles/script" %>
 
 

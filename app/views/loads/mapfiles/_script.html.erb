@@ -1,11 +1,39 @@
 <script>
-(function(window, google, mapster) {
+(function(window, mapster) {
   
   // map options
   var options = mapster.MAP_OPTIONS,
   element = document.getElementById('map-canvas'),
   // map
-  map = new google.maps.Map(element, options);
+  map = mapster.create(element, options);
+
+  var marker = map.addMarker({
+    lat: <%= @load_origin_address.latitude %>,
+    lng: <%= @load_origin_address.longitude %>,
+    content: '<div style="color: #f00;">I like food</div>'
+  });
   
-}(window, google, window.Mapster));
+  var marker2 = map.addMarker({
+    lat: <%= @load_destination_address.latitude %>,
+    lng: <%= @load_destination_address.longitude %>,
+    content: 'I like rice'
+  });
+  
+  var marker3 = map.addMarker({
+    lat: 37.781350,
+    lng: -122.485883,
+    content: 'I like rice'
+  });
+  
+  //map._removeMarker(marker2);
+  
+  //console.log(map.markers);
+  
+  var found = map.findMarkerByLat(37.781350);
+  
+  console.log(found);
+  
+
+}(window, window.Mapster));
+
 </script> 
