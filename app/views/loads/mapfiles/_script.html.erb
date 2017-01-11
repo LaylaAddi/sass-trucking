@@ -2,6 +2,7 @@
 (function(window, mapster) {
   
   // map options
+  
   var options = mapster.MAP_OPTIONS,
   element = document.getElementById('map-canvas'),
   // map
@@ -18,18 +19,19 @@
     lng: <%= @load_destination_address.longitude %>,
     content: 'I like rice'
   });
-  
+ 
   var marker3 = map.addMarker({
-    lat: 37.781350,
-    lng: -122.485883,
-    content: 'I like rice'
+    lat: <%= @driver_checkins.last.latitude %>,
+    lng: <%= @driver_checkins.last.longitude %>, 
+    content: 'Last Checkin @ <%= local_time(@driver_checkins.last.created_at, format: '%B %e, %Y %l:%M%P %Z') %>'
+
   });
   
   //map._removeMarker(marker2);
   
   //console.log(map.markers);
   
-  var found = map.findMarkerByLat(37.781350);
+  var found = map.findMarkerByLat(<%= @load_origin_address.latitude %>);
   
   console.log(found);
   

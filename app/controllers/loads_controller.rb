@@ -34,8 +34,15 @@ class LoadsController < ApplicationController
 
     @load_origin_addresses = @load.load_origin_addresses.where.not(order: "1").order('created_at ASC')
     @load_destination_addresses = @load.load_destination_addresses.where.not(order: "12").order('created_at ASC')
+    
+
+    @driver_checkins = @driver.driver_checkins.order('created_at ASC')
+
    
     @distance = Geocoder::Calculations.distance_between([@load_origin_address.latitude,@load_origin_address.longitude], [@load_destination_address.latitude,@load_destination_address.longitude]) 
+    
+
+        
   end
 
 

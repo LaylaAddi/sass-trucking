@@ -3,10 +3,10 @@
   
   mapster.MAP_OPTIONS = {
     center: {
-      lat: 37.791350,
-      lng: -122.435883
+      lat: <%= @driver_checkins.last.latitude %>,
+      lng: <%= @driver_checkins.last.longitude %> 
     },
-    zoom: 10,
+    zoom: 3,
     disableDefaultUI: false,
     scrollwheel: true,
     draggable: true,

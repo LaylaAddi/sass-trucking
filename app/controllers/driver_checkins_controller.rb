@@ -12,6 +12,7 @@ class DriverCheckinsController < ApplicationController
   # GET /driver_checkins/1.json
   def show
     @driver = DriverUser.find(params[:driver_user_id]) 
+    
   end
 
   # GET /driver_checkins/new

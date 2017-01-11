@@ -14,6 +14,8 @@
 <%= render "loads/mapfiles/script" %>
 
 
+<%= @driver_checkins.last.latitude %>
+ 
 <p>Distance <%= @distance.to_i %></p>  
 <p>@load_origin_address.latitud <%= @load_origin_address.latitude %></p>
 <p>@load_origin_address.longitude <%= @load_origin_address.longitude %></p>
