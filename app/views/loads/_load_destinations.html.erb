@@ -1,0 +1,4 @@
+<% @load_destination_addresses.each do |destination| %>
+<option value="<%= destination.destination_address %>"><%= destination.destination_city_state %></option> 
+
+<% end %>
