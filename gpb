@@ -1,5 +1,5 @@
 git add -A
 git commit -m "maps working "
-git push -u origin gmaps3
+git push -u origin map_cleanup
 
  
