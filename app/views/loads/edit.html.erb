@@ -1,5 +1,5 @@
-<h1>Editing Load<small> <%= @load_origin_address.city_state %>
-<%= @load_destination_address.city_state %> 
+<h1>Editing Load<small> <%= @load_origin_address.origin_city_state %>
+<%= @load_destination_address.destination_city_state %>  
 </small>
 </h1>
 <%= simple_form_for(@load) do |f| %>
@@ -111,7 +111,7 @@
       <small>Notes: </small><%= @load_origin_address.notes %>
       
     </address>
-        <%= link_to "Edit Pick Up Address", edit_load_load_origin_address_path(@load, @load_origin_address), 
+        <%= link_to "Edit Pick Up Address", edit_load_address_path(@load, @load_origin_address), 
         class: "btn btn-success btn-xs round" %> 
             </div>
          </div>
@@ -120,7 +120,7 @@
                <span class="input-group-addon">
                   <p class="vertical-text">Consignee</p>
                </span>
-  <h4>Destination </h4>
+  <h4>Destination </h4> 
     <address>
       <strong><%= @load_destination_address.company %></strong><br>
       <%= @load_destination_address.street %><br>
@@ -129,7 +129,7 @@
       <small>Contact: </small><%= @load_destination_address.contact %><br />
       <small>Notes: </small><%= @load_destination_address.notes %>
     </address>
-        <%= link_to "Edit Destination Address", edit_load_load_destination_address_path(@load, @load_destination_address),
+        <%= link_to "Edit Destination Address", edit_load_address_path(@load, @load_destination_address),    
         class: "btn btn-danger btn-xs round" %>
             </div>
          </div>
