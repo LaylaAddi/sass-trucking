@@ -1,0 +1,71 @@
+<form id="distance_form">
+   <input id="origin" type="text" name="origin" class="hidden"/>
+   <input id="destination" type="text" name="destination" class="hidden"/>
+   <input id="setVal" type="submit" value="Calculate", class: "btn btn-info btn-sm round"/> 
+</form>
+
+<div id="result">
+</div>
+
+<script>
+$(function() {
+
+  function calculateDistance(origin, destination) {
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+    {
+      origins: [origin],
+      destinations: [destination],
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.IMPERIAL,
+      avoidHighways: false,
+      avoidTolls: false
+    }, callback);
+  }
+
+  function callback(response, status) {
+    if (status != google.maps.DistanceMatrixStatus.OK) {
+      $('#result').html(err);
+    } else {
+      var origin = response.originAddresses[0];
+      var destination = response.destinationAddresses[0];
+      if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
+        $('#result').html("Better get on a plane. There are no roads between " 
+                          + origin + " and " + destination);
+      } else {
+        var distance = response.rows[0].elements[0].distance;
+        var distance_value = distance.value;
+        var distance_text = distance.text;
+        var miles = distance_text.substring(0, distance_text.length - 3);
+        var sVal = miles
+        var iNum = parseFloat(sVal.replace(/,/g, ''));
+
+        $('#result').html("It is " + miles + " miles from " + origin + " to " + destination);
+              $("#load_agent_fee").val(iNum); 
+      }
+    }
+  }
+    
+  $('#distance_form').click(function(e){ 
+    
+      event.preventDefault();
+      // var originStreet = $('#originStreet').val('<%= @load_origin_address.zip %>');
+      // var originCity = $('#originCity').val('<%= @load_origin_address.zip %>');
+      var originState = $('#originState').val('<%= @load_origin_address.state %>'); 
+      // var originPostal = $('#originZip').val('<%= @load_origin_address.zip %>');
+      // var destinationStreet = $('#destinationStreet').val('<%= @load_destination_address.zip %>');
+      // var destinationCity = $('#destinationCity').val('<%= @load_destination_address.zip %>');
+      var destinationState = $('#destinationState').val('<%= @load_destination_address.state %>');
+      // var destinationPostal = $('#destinationZip').val('<%= @load_destination_address.zip %>');
+      // var origin = originState;
+      // var destination = destinationState;
+      
+      // var origin = (originStreet + originCity + originState + originPostal);
+      // var destination = (destinationStreet + destinationCity + destinationState + destinationPostal);
+      var distance_text = calculateDistance(origin, destination);
+
+  });
+ 
+});  
+</script>
+

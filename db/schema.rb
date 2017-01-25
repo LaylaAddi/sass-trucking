@@ -131,9 +131,10 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.decimal  "rate_to_driver"
     t.decimal  "rate_after_percent"
     t.decimal  "rate_after_booking_fee"
+    t.decimal  "agent_fee",                        default: "0.0"
     t.date     "pick_up_date"
     t.time     "pick_up_time"
-    t.string   "pick_up_time_notes"
+    t.string   "broker_shipper_load_id"
     t.string   "pick_up_notes"
     t.date     "delivery_date"
     t.time     "delivery_time"
@@ -167,8 +168,8 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "consignee_name"
     t.integer  "driver_statement_id"
     t.decimal  "rate_to_driver_after_factor_fees"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.index ["company_profile_id"], name: "index_loads_on_company_profile_id", using: :btree
     t.index ["driver_statement_id"], name: "index_loads_on_driver_statement_id", using: :btree
     t.index ["driver_user_id"], name: "index_loads_on_driver_user_id", using: :btree

@@ -1,4 +1,4 @@
 <% @load_origin_addresses.each do |origin| %>
-<option value="<%= origin.origin_address %>"><%= origin.origin_city_state %></option>
+<option value="<%= origin.origin_address %>"><% origin.origin_city_state %></option>
 
 <% end %>

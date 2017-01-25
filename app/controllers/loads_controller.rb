@@ -23,7 +23,7 @@ class LoadsController < ApplicationController
     @load_doc = @load.load_documents 
     @driver = @load.driver_user
     @cd_transactions = @load.transactions.where(["expense_type = ?", "Cash Advance"])
-    
+     
     
     @all_origin_addresses = @load.load_origin_addresses.all
     @load_origin_address = @all_origin_addresses.find_by(order: "1")  
@@ -37,7 +37,36 @@ class LoadsController < ApplicationController
     
 
     @driver_checkins = @driver.driver_checkins.order('created_at ASC')
+    
+    @last_checkin = @driver.driver_checkins.order('created_at ASC').last
+    
+    
 
+    
+    #gets latitude column
+    @lat = @driver.driver_checkins.pluck(:latitude)
+    #gets latest record
+    @latitude = @lat.last(1)
+
+    # logic to provide default values if no checkin present
+    if 
+      @latitude.present? 
+      #join removes brackets from array - only shows coords
+      @driver_latitude = @latitude.join(', ')
+    else
+      @driver_latitude = "41.881832"
+    end
+    
+
+    @lng = @driver.driver_checkins.pluck(:longitude)
+    @longitude = @lng.last(1)
+
+    if 
+      @longitude.present? 
+      @driver_longitude = @longitude.join(', ')
+    else
+      @driver_longitude = "-87.623177"
+    end
    
     @distance = Geocoder::Calculations.distance_between([@load_origin_address.latitude,@load_origin_address.longitude], [@load_destination_address.latitude,@load_destination_address.longitude]) 
     
@@ -57,13 +86,48 @@ class LoadsController < ApplicationController
 
 
   def edit
+    @load_driver = @load.driver_user
     @driver = DriverUser.where(["employment_status = ?", "active"])
     @hrc_user = current_hrc_user
     @company_profile = CompanyProfile.all   
-    @load_origin_address = @load.load_origin_addresses.first
-    @load_destination_address = @load.load_destination_addresses.first  
+    
+    @all_origin_addresses = @load.load_origin_addresses.all
+    @load_origin_address = @all_origin_addresses.find_by(order: "1")  
+    
+    @all_destination_addresses = @load.load_destination_addresses.all
+    @load_destination_address = @all_destination_addresses.find_by(order: "12")
+    
     @load_origin_addresses = @load.load_origin_addresses.all
     @load_destination_addresses = @load.load_destination_addresses.all
+    
+    @driver_checkins = @load_driver.driver_checkins.order('created_at ASC')
+    
+    @last_checkin = @load_driver.driver_checkins.order('created_at ASC').last
+    #gets latitude column
+    @lat = @load_driver.driver_checkins.pluck(:latitude)
+    #gets latest record
+    @latitude = @lat.last(1)
+
+    # logic to provide default values if no checkin present
+    if 
+      @latitude.present? 
+      #join removes brackets from array - only shows coords
+      @driver_latitude = @latitude.join(', ')
+    else
+      @driver_latitude = "41.881832"
+    end
+    
+
+    @lng = @load_driver.driver_checkins.pluck(:longitude)
+    @longitude = @lng.last(1)
+
+    if 
+      @longitude.present? 
+      @driver_longitude = @longitude.join(', ')
+    else
+      @driver_longitude = "-87.623177"
+    end
+   
  
   end
 
@@ -171,7 +235,7 @@ class LoadsController < ApplicationController
                                     :consignor_name,
                                     :consignee_name,
                                     :company_profile_id,
-                                    :pick_up_time_notes,
+                                    :broker_shipper_load_id,
                                     :delivery_time_notes,
                                     :total_hrc_expenses,
                                     :booking_fee,
@@ -181,6 +245,7 @@ class LoadsController < ApplicationController
                                     :rate_after_percent,
                                     :rate_after_booking_fee,
                                     :rate_to_driver_after_factor_fees, 
+                                    :agent_fee, 
                                     load_origin_addresses_attributes: 
                                       [
                                       :street,

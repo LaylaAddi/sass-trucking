@@ -26,7 +26,7 @@ class LoadOriginAddressesController < AddressesController
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @load, notice: 'Load address was successfully created.' }
+        format.html { redirect_to edit_load_path(@load), notice: 'Load address was successfully created.' }
         format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class LoadOriginAddressesController < AddressesController
     respond_to do |format|
 
       if @address.update(address_params)
-        format.html { redirect_to @load, notice: 'Load address was successfully updated.' }
+        format.html { redirect_to edit_load_path(@load), notice: 'Load address was successfully updated.' }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }

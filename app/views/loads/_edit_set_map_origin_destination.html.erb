@@ -1,0 +1,32 @@
+<input id="originStreet"  class="combineOrigin hidden" />
+<input id="originCity"  class="combineOrigin hidden" />
+<input id="originState"  class="combineOrigin " />
+<input id="originZip"  class="combineOrigin hidden" />
+<br />
+<input id="destinationStreet"  class="combineDestination hidden" /> 
+<input id="destinationCity"  class="combineDestination hidden" />
+<input id="destinationState"  class="combineDestination " />
+<input id="destinationZip"  class="combineDestination hidden" />
+
+
+
+<script>
+  $(function() {                                       
+    $("#load_load_origin_addresses_attributes_0_state").change(function() {                  
+        $('#originState').val(this.value);                  
+    });
+});
+</script>
+
+
+
+    
+
+
+<script>
+  $(function() {                                       
+    $("#load_load_destination_addresses_attributes_0_state").change(function() {                  
+        $('#destinationState').val(this.value);                  
+    });
+});
+</script>

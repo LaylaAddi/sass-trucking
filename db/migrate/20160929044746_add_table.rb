@@ -34,9 +34,10 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.decimal :rate_to_driver
       t.decimal :rate_after_percent
       t.decimal :rate_after_booking_fee 
+      t.decimal :agent_fee, default: 0.00 
       t.date :pick_up_date
       t.time :pick_up_time
-      t.string :pick_up_time_notes
+      t.string :broker_shipper_load_id
       t.string :pick_up_notes
       t.date :delivery_date
       t.time :delivery_time
