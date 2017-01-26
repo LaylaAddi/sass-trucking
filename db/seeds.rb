@@ -357,3 +357,102 @@ end
 #     )
 #   end
 # end
+
+DriverCheckin.create(
+  #Toronto
+  driver_user_id: 3,
+  latitude: 43.761539,
+  longitude: -79.411079,
+  notes: "Toronto"
+  )    
+
+  
+# DriverCheckin.create(
+#   #detroit
+#   driver_user_id: 3,
+#   latitude: 42.331429,
+#   longitude: -83.045753,
+#   notes: "detroit"
+#   )    
+  
+# DriverCheckin.create(
+#   #cleveland
+#   driver_user_id: 3,
+#   latitude: 41.505493,
+#   longitude: -81.681290,
+#   notes: "cleveland"
+#   )    
+  
+# DriverCheckin.create(
+#   #pitsburgh
+#   driver_user_id: 3,
+#   latitude: 40.442532,
+#   longitude: -79.960175,
+#   notes: "pitsburgh"
+#   )      
+  
+
+  
+  
+  
+  
+# DriverCheckin.create(driver_user_id: 3, notes: "Cheektowaga, NY, USA",	    latitude: 42.902615, longitude:	-78.744576)
+# DriverCheckin.create(driver_user_id: 3, notes: "Eldorado Springs, CO",     	latitude: 39.932117, longitude:	-105.281639)
+# DriverCheckin.create(driver_user_id: 3, notes: "Twin Falls, Idaho",    	    latitude: 42.562786, longitude:	-114.460503)
+# DriverCheckin.create(driver_user_id: 3, notes: "Huntington, WV, USA",	      latitude: 38.413651, longitude:	-82.446732)
+# DriverCheckin.create(driver_user_id: 3, notes: "Danbury, CT, USA",	        latitude: 41.394966, longitude:	-73.454079)
+# DriverCheckin.create(driver_user_id: 3, notes: "New Haven, CT, USA"	,       latitude: 41.308273, longitude:	-72.927887)
+# DriverCheckin.create(driver_user_id: 3, notes: "Nampa, Idaho, USA",	        latitude: 43.565468, longitude:	-116.560822)
+# DriverCheckin.create(driver_user_id: 3, notes: "New Iberia, LA, USA",	      latitude: 30.005417, longitude:	-91.818665)
+# DriverCheckin.create(driver_user_id: 3, notes: "Wilkes-Barre, PA",     	    latitude: 41.245708, longitude:	-75.881241)
+# DriverCheckin.create(driver_user_id: 3, notes: "Petersburg, VA, USA",	      latitude: 37.227928, longitude:	-77.401924)
+# DriverCheckin.create(driver_user_id: 3, notes: "Grand Rapids, MI",     	    latitude: 42.963795, longitude:	-85.670006)
+# DriverCheckin.create(driver_user_id: 3, notes: "Lexington, Kentucky, US",	  latitude: 38.047989, longitude:	-84.501640)
+# DriverCheckin.create(driver_user_id: 3, notes: "Hamden, CT, USA",	          latitude: 41.385826, longitude:	-72.904243)
+# DriverCheckin.create(driver_user_id: 3, notes: "Moscow, Idaho, USA",	      latitude: 46.731705, longitude:	-116.999939)
+# DriverCheckin.create(driver_user_id: 3, notes: "Pine Bluff, AR",           	latitude: 34.224400, longitude:	-92.019211)
+# DriverCheckin.create(driver_user_id: 3, notes: "Tuba City, Arizona",     	  latitude: 36.136906, longitude:	-111.240173)
+# DriverCheckin.create(driver_user_id: 3, notes: "Medford, OR, USA",	        latitude: 42.326515, longitude:	-122.875595)
+# DriverCheckin.create(driver_user_id: 3, notes: "Franklin, TN, USA",	        latitude: 35.925064, longitude:	-86.868889)
+# DriverCheckin.create(driver_user_id: 3, notes: "Portland, OR, USA",	        latitude: 45.523064, longitude:	-122.676483)
+# DriverCheckin.create(driver_user_id: 3, notes: "Philadelphia, PA, USA",	    latitude: 39.952583, longitude:	-75.165222)
+# DriverCheckin.create(driver_user_id: 3, notes: "Miami, FL, USA"	,           latitude: 25.761681, longitude:	-80.191788)
+# DriverCheckin.create(driver_user_id: 3, notes: "Boston, MA, USA",	          latitude: 42.361145, longitude:	-71.057083)
+# DriverCheckin.create(driver_user_id: 3, notes: "Phoenix, AZ, USA",	        latitude: 33.448376, longitude:	-112.074036)
+# DriverCheckin.create(driver_user_id: 3, notes: "Erie, PA, USA",	            latitude: 42.129223, longitude:	-80.085060)
+# DriverCheckin.create(driver_user_id: 3, notes: "Victorville, CA, USA",	    latitude: 34.536217, longitude:	-117.292763)
+# DriverCheckin.create(driver_user_id: 3, notes: "Wilmington, DE, USA",	      latitude: 39.739071, longitude:	-75.539787)
+# DriverCheckin.create(driver_user_id: 3, notes: "Fontana, CA, USA",	        latitude: 34.092232, longitude:	-117.435051)
+# DriverCheckin.create(driver_user_id: 3, notes: "Jacksonville, FL, USA",	    latitude: 30.332184, longitude:	-81.655647)
+# DriverCheckin.create(driver_user_id: 3, notes: "Soulsbyville, CA, USA",	    latitude: 37.984646, longitude:	-120.263802)
+# DriverCheckin.create(driver_user_id: 3, notes: "Corvallis, OR, USA",	      latitude: 44.564568, longitude:	-123.262047)
+# DriverCheckin.create(driver_user_id: 3, notes: "Des Plaines, IL, USA",     	latitude: 42.033363, longitude:	-87.883400)
+# DriverCheckin.create(driver_user_id: 3, notes: "Richmond, CA, USA",	        latitude: 37.935757, longitude:	-122.347748)
+# DriverCheckin.create(driver_user_id: 3, notes: "Grifton, NC, USA",	        latitude: 35.372662, longitude:	-77.437462)
+# DriverCheckin.create(driver_user_id: 3, notes: "Redmond, WA, USA",	        latitude: 47.673988, longitude:	-122.121513)
+# DriverCheckin.create(driver_user_id: 3, notes: "San Leandro, Oakland, CA", 	latitude: 37.725685, longitude:	-122.156830)
+# DriverCheckin.create(driver_user_id: 3, notes: "Russellville, AL, USA",	    latitude: 34.501942, longitude:	-87.731789)
+# DriverCheckin.create(driver_user_id: 3, notes: "Dothan, AL, USA",	          latitude: 31.223812, longitude:	-85.393356)
+# DriverCheckin.create(driver_user_id: 3, notes: "Tampa, FL, USA",	          latitude: 27.964157, longitude:	-82.452606)
+# DriverCheckin.create(driver_user_id: 3, notes: "Kenosha, WI, USA",	        latitude: 42.588081, longitude:	-87.822899)
+# DriverCheckin.create(driver_user_id: 3, notes: "Springfield, OR, USA",	    latitude: 44.046204, longitude:	-123.023346)
+# DriverCheckin.create(driver_user_id: 3, notes: "Revere, MA, USA",	          latitude: 42.408428, longitude:	-71.011993)
+# DriverCheckin.create(driver_user_id: 3, notes: "New Haven, CT, USA",	      latitude: 41.310726, longitude:	-72.929916)
+# DriverCheckin.create(driver_user_id: 3, notes: "Port Orange, FL",    	      latitude: 29.138315, longitude:	-80.995613)
+# DriverCheckin.create(driver_user_id: 3, notes: "Manhattan, KS, USA",	      latitude: 39.183609, longitude:	-96.571671)
+# DriverCheckin.create(driver_user_id: 3, notes: "Baldwin Park, CA",     	    latitude: 34.085285, longitude:	-117.960899)
+
+
+
+DriverCheckin.create(driver_user_id: 3, notes: "Rochester",	    latitude: 43.161030, longitude:	-77.610924)
+DriverCheckin.create(driver_user_id: 3, latitude: 41.505493, longitude: -81.681290, notes: "cleveland")  
+DriverCheckin.create(driver_user_id: 3, latitude: 40.442532, longitude: -79.960175,  notes: "pitsburgh" )   
+
+DriverCheckin.create(driver_user_id: 3, notes: "Washington",     	latitude: 38.889931, longitude:	-77.009003)
+
+DriverCheckin.create(driver_user_id: 3, notes: "Richmond VA",    	    latitude: 37.646152, longitude:	-77.511429)
+DriverCheckin.create(driver_user_id: 3, notes: "Norfolk VA",	      latitude: 36.8507689 , longitude:	-76.2858726)
+DriverCheckin.create(driver_user_id: 3, notes: "Charlotte, NC, USA", latitude: 35.227085, longitude: -80.843124)
+DriverCheckin.create(driver_user_id: 3, notes: "Charleston, South Carolina, USA", latitude: 32.784618, longitude: -79.940918 )
+DriverCheckin.create(driver_user_id: 3, notes: "Savannah, GA, USA", latitude: 32.076176,  longitude: -81.088371)
+DriverCheckin.create(driver_user_id: 3,latitude: 30.332184,longitude: -81.655647,notes: "jacksonville") 

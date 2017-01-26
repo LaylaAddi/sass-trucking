@@ -168,6 +168,7 @@ CompanyProfileMembershipStatus =
   [
     ['Fuel', 'Fuel'],
     ['Cash Advance', 'Cash Advance'],
+    ['Booking Fee', 'Booking Fee'],
     ['Other', 'Other'] 
   ]    
   
