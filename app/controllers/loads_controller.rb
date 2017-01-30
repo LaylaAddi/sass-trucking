@@ -97,8 +97,8 @@ class LoadsController < ApplicationController
     @all_destination_addresses = @load.load_destination_addresses.all
     @load_destination_address = @all_destination_addresses.find_by(order: "12")
     
-    @load_origin_addresses = @load.load_origin_addresses.all
-    @load_destination_addresses = @load.load_destination_addresses.all
+    @load_origin_addresses = @load.load_origin_addresses.where.not(order: "1").order('created_at ASC')
+    @load_destination_addresses = @load.load_destination_addresses.where.not(order: "12").order('created_at ASC')
     
     @driver_checkins = @load_driver.driver_checkins.order('created_at ASC')
     

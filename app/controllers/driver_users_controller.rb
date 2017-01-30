@@ -45,7 +45,7 @@ class DriverUsersController < UsersController
     #@text_load = @active.last 
     @message = Message.last
     @messages = Message.all.order('created_at desc')
-    @driver_checkins_14 = @driver.driver_checkins.order('created_at asc').last(14) 
+    @driver_checkins_14 = @driver.driver_checkins.order('created_at asc').last(9)  
     # @ip = request.remote_ip 
     # @location = Geocoder.coordinates(@ip)
     # @lat = request.location.latitude 

@@ -8,6 +8,8 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
+      <th>Time</th>
       <th>Street</th>
       <th>City</th>
       <th>State</th>
@@ -22,8 +24,10 @@
   </thead>
     <% if @driver_checkins_14.present? %> 
   <tbody>
-    <% @driver_checkins_14.each do |driver_checkin| %>
-      <tr>
+    <% @driver_checkins_14.each do |driver_checkin| %> 
+      <tr>  
+        <td><%= driver_checkin.id %></td>
+        <td><%= local_time(driver_checkin.updated_at, format: '%B %e, %Y %l:%M%P %Z') %></td>
         <td><%= driver_checkin.street %></td>
         <td><%= driver_checkin.city %></td>
         <td><%= driver_checkin.state %></td>
@@ -50,8 +54,7 @@
         width: 100%;
        }
     </style>
-ONE <%= @lat_1 %>
-TWO <%= @lat_2 %>
+
     <div id="map"></div>
     <div id="right-panel">
     <div>
