@@ -116,7 +116,9 @@ CompanyProfileMembershipStatus =
   'Washington', 
   'West Virginia',
   'Wisconsin', 
-  'Wyoming'
+  'Wyoming',
+  "Ontario",
+  "British Colombia"
   ]
 
       
@@ -232,22 +234,13 @@ CompanyProfileMembershipStatus =
     ".48"
     ]
     
- PickupOrder =
+ PickupDelivery =
     [
-    ["2", 2 ], 
-    ["3", 3 ],
-    ["4", 4 ],
-    ["5", 5 ],
-    ["6", 6 ] 
+    ["Pick Up", "Pick Up" ], 
+    ["Delivery", "Delivery" ],
+    ["Pick Up/Delivery", "Pick Up/Delivery" ]
     ]
     
- DeliveryOrder =
-    [
-    ["2", 7 ], 
-    ["3", 8 ],
-    ["4", 9 ],
-    ["5", 10 ],
-    ["6", 11 ] 
-    ]
+
 end
 

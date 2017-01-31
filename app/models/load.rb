@@ -75,14 +75,21 @@ class Load < ApplicationRecord
    self.rate_to_driver_after_factor_fees = self.rate_to_driver - ddbop 
   end
   
-
-  
-   def load_title
-      return "Origin: " + self.load_origin_addresses.find_by(order: "1").city + ", " + self.load_origin_addresses.find_by(order: "1").state +  
-      " Destination: " + self.load_destination_addresses.find_by(order: "12").city + ", " + self.load_destination_addresses.find_by(order: "12").state
-    end
-  
  
+  
+  def load_title
+    return "Origin: " + self.origin_city + ", " + self.origin_state +  
+    " Destination: " + self.destination_city + ", " + self.destination_state
+  end
+  
+  def origin_address
+    return self.origin_street + ", " + self.origin_city + ", " + self.origin_state + ", " + self.origin_zip
+  end
+  
+  def destination_address
+    return self.destination_street + ", " + self.destination_city + ", " + self.destination_state + ", " + self.destination_zip
+  end
+  
   def self.as_csv
     CSV.generate do |csv|
       csv << column_names

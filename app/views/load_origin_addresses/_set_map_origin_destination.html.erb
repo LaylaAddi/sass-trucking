@@ -1,0 +1,50 @@
+<input id="originStreet"  class="combineOrigin" />
+<input id="originCity"  class="combineOrigin" />
+<input id="originState"  class="combineOrigin" />
+<input id="originZip"  class="combineOrigin" />
+<br />
+<input id="destinationStreet"  class="combineDestination" /> 
+<input id="destinationCity"  class="combineDestination" />
+<input id="destinationState"  class="combineDestination" />
+<input id="destinationZip"  class="combineDestination" />
+
+
+<script>
+    $(document).ready(function() {
+            $("#originStreet").val($("#origin_address_street").val());
+            $("#originCity").val($("#origin_address_city").val());
+            $("#originState").val($("#origin_address_state").val());
+            $("#originZip").val($("#origin_address_zip").val());
+            });
+</script>
+
+<script>
+  $(function() {                                      
+    $("#load_origin_address_street").change(function() {                  
+        $('#destinationStreet').val(this.value);                 
+    });
+});
+</script>
+    
+<script>
+  $(function() {                                       
+    $("#load_origin_address_city").change(function() {                  
+        $('#destinationCity').val(this.value);                  
+    });
+});
+</script>
+
+<script>
+  $(function() {                                       
+    $("#load_origin_address_state").change(function() {                  
+        $('#destinationState').val(this.value);                  
+    });
+});
+</script>
+<script>
+  $(function() {                                       
+    $("#load_origin_address_zip").change(function() {                 
+        $('#destinationZip').val(this.value);                  
+    });
+});
+</script>

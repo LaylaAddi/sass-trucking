@@ -10,6 +10,7 @@
           <%= f.input :order, collection: ApplicationRecord::DeliveryOrder,  
           prompt: 'Select Destination Order', label: false %>
           <%= f.input :type, disabled: true, label: false, as: :hidden %>
+          <%= f.input :miles  %> 
         </div>
       </div>
     </div>

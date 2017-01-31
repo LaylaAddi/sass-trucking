@@ -8,6 +8,7 @@
           <span class="input-group-addon"><i class="fa fa-location-arrow"></i></span>
           <%= f.input :address_type, label: false, 
           collection: ApplicationRecord::AddressType, label: false, prompt: "Origin/Destination" %>
+          <%= f.input :miles  %>
         </div>
       </div>
     </div>

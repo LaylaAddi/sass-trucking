@@ -41,7 +41,6 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :pick_up_notes
       t.date :delivery_date
       t.time :delivery_time
-      t.string :delivery_time_notes 
       t.string :delivery_notes      
       t.string :equipment_type
       t.string :status_name 
@@ -87,6 +86,8 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :contact
       t.string :phone
       t.string :notes
+      t.string :pick_up_delivery
+      t.integer :miles
       t.integer :order, index: true
       t.integer :load_id, index: true   
       t.integer :trailer_id, index: true 

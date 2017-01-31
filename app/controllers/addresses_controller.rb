@@ -80,7 +80,8 @@ class AddressesController < ApplicationController
         :load_id,
         :notes,
         :type,
-        :order
+        :order,
+        :miles
         )
         
     end

@@ -101,21 +101,21 @@
           <label>Pick Up Date </label><br />
           <%= f.text_field :pick_up_date, class: "bring_front",
             placeholder: " Select Date" %>
-          <%= f.simple_fields_for :load_origin_addresses do |origin| %>
-          <%= origin.input :order, :input_html => { :value => 1 }, as: :hidden %> 
-          <%= origin.input :type, as: :hidden %> 
-          <%= origin.input :company, label: false, placeholder: "Pick Up Company Name" %>
-          <%= origin.input :street, label: false, placeholder: "Street Address" %>
-          <%= origin.input :city, label: false, placeholder: "City"  %>  
-          <%= origin.input :state, label: false, 
+
+
+          <%= f.input :consignor_name, label: false, placeholder: "Pick Up Company Name" %>
+          <%= f.input :origin_street, label: false, placeholder: "Street Address" %>
+          <%= f.input :origin_city, label: false, placeholder: "City"  %>  
+          <%= f.input :origin_state, label: false, 
             collection: ApplicationRecord::States, include_blank: "State" %>
-          <%= origin.input :zip, label: false, placeholder: "zip code" %>   
-          <%= origin.input :phone, label: false, placeholder: "Telephone" %>
-          <%= origin.input :contact, label: false, placeholder: "Contact Person" %>
-          <%= origin.input :notes, label: false, placeholder: "Notes" %>
-          <% end %>
+          <%= f.input :origin_zip, label: false, placeholder: "zip code" %>   
+          <%= f.input :origin_phone, label: false, placeholder: "Telephone" %>
+          <%= f.input :origin_contact, label: false, placeholder: "Contact Person" %>
+          <%= f.input :pick_up_notes, label: false, placeholder: "Pick Up Notes" %>
+
         </div>
       </div>
+                
       <div class="col-sm-6">
         <div class="form-group input-group">
           <span class="input-group-addon">
@@ -124,28 +124,16 @@
           <label>Delivery Date </label><br />
           <%= f.text_field :delivery_date, class: "bring_front", 
             placeholder: " Select Date" %>
-          <%= f.simple_fields_for :load_destination_addresses do |destination| %>
-          <%= destination.input :order, :input_html => { :value => 12 }, as: :hidden %> 
-          <%= destination.input :type, as: :hidden %> 
-          <%= destination.input :company, label: false, placeholder: "Deliver to Company Name" %>
-          <%= destination.input :street, label: false, placeholder: "Street Address" %>
-          <%= destination.input :city, label: false, placeholder: "City"  %>  
-          <%= destination.input :state, label: false, 
+
+          <%= f.input :consignee_name, label: false, placeholder: "Deliver to Company Name" %>
+          <%= f.input :destination_street, label: false, placeholder: "Street Address" %>
+          <%= f.input :destination_city, label: false, placeholder: "City"  %>  
+          <%= f.input :destination_state, label: false, 
             collection: ApplicationRecord::States, include_blank: "State" %>
-          <%= destination.input :zip, label: false, placeholder: "zip code" %> 
-          <%= destination.input :phone, label: false, placeholder: "Telephone" %>
-          <%= destination.input :contact, label: false, placeholder: "Contact Person" %>
-          <%= destination.input :notes, label: false, placeholder: "Notes" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <div class="form-group input-group">
-          <span class="input-group-addon"><i class="fa fa-warning"></i></span>
-          <%= f.input :special_instructions, label: false, 
-            placeholder: "Special Instructions" %>
+          <%= f.input :destination_zip, label: false, placeholder: "zip code" %> 
+          <%= f.input :destination_phone, label: false, placeholder: "Telephone" %>
+          <%= f.input :destination_contact, label: false, placeholder: "Contact Person" %>
+          <%= f.input :delivery_notes, label: false, placeholder: "Delivery Notes" %>
         </div>
       </div>
     </div>
@@ -164,23 +152,21 @@
               <div class="col-sm-6 col-sm-offset-0">
                 <div class="form-group input-group">
                   <span class="input-group-addon">
-                    <p class="vertical-text">Pick Up Time/Notes</p>
+                    <p class="vertical-text">Pick Up Time</p>
                   </span>
                   <%= f.input :pick_up_time, label: false, discard_month: true, 
                     discard_day: true, discard_year: true, 
                     prompt: {hour: 'Choose Hour', minute: 'Choose Minute'}, ampm: true %>
-                  <%= f.input :pick_up_notes, label: false, placeholder: "Pick Up Notes" %>
                 </div>
               </div>
               <div class="col-sm-6 col-sm-offset-0">
                 <div class="form-group input-group">
                   <span class="input-group-addon">
-                    <p class="vertical-text">Delivery Time/Notes</p>
+                    <p class="vertical-text">Delivery Time</p>
                   </span>
                   <%= f.input :delivery_time, label: false,  discard_month: true, 
                     discard_day: true, discard_year: true, 
                     prompt: {hour: 'Choose Hour', minute: 'Choose Minute'}, ampm: true %>
-                  <%= f.input :delivery_notes, label: false, placeholder: "Delivery Notes" %>  
                 </div>
               </div>
             </div>

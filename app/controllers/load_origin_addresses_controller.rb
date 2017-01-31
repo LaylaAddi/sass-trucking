@@ -12,7 +12,8 @@ class LoadOriginAddressesController < AddressesController
   def new
     @load = Load.find(params[:load_id])
     @address = @load.load_origin_addresses.new 
-    
+    @all_origin_addresses = @load.load_origin_addresses.all
+    @load_origin_address = @all_origin_addresses.find_by(order: "1")  
   end
 
   def edit
@@ -81,7 +82,9 @@ class LoadOriginAddressesController < AddressesController
         :load_id,
         :notes,
         :type,
-        :order
+        :order,
+        :miles,
+        :pick_up_delivery
         )
         
     end

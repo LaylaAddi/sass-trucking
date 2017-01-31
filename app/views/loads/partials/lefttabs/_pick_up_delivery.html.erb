@@ -5,11 +5,11 @@
     <p>
     <h4>Pick Up</h4>
     <address>
-      <strong><%= @load_origin_address.company %></strong><br>
-      <%= @load_origin_address.street %><br>
-      <%= @load_origin_address.city  %> <%= @load_origin_address.state  %> <%= @load_origin_address.zip  %><br>
-      <small>Phone: </small><%= @load_origin_address.phone  %><br />
-      <small>Contact: </small><%= @load_origin_address.contact  %>
+      <strong><%= @load.consignee_name %></strong><br>
+      <%= @load.origin_street %><br>
+      <%= @load.origin_city  %> <%= @load.origin_state  %> <%= @load.origin_zip  %><br>
+      <small>Phone: </small><%= @load.origin_phone  %><br />
+      <small>Contact: </small><%= @load.origin_contact  %>
     </address>
     <h4>Pick Up Time Details</h4>
     <p>
@@ -38,11 +38,11 @@ See notes for more details
   <div class="col-sm-6">
     <h4>Delivery</h4>
     <address>
-      <strong><%= @load_destination_address.company %></strong><br>
-      <%= @load_destination_address.street %><br>
-      <%= @load_destination_address.city  %> <%= @load_destination_address.state  %> <%= @load_destination_address.zip  %><br>
-      <small>Phone: </small><%= @load_destination_address.phone %><br />
-      <small>Contact: </small><%= @load_destination_address.contact %>
+      <strong><%= @load.consignor_name %></strong><br>
+      <%= @load.destination_street %><br>
+      <%= @load.destination_city  %> <%= @load.destination_state  %> <%= @load.destination_zip  %><br>
+      <small>Phone: </small><%= @load.destination_phone %><br />
+      <small>Contact: </small><%= @load.destination_contact %>
     </address>
     <h4>Delivery Time Details</h4>
     <p>

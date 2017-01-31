@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "contact"
     t.string   "phone"
     t.string   "notes"
+    t.string   "pick_up_delivery"
+    t.integer  "miles"
     t.integer  "order"
     t.integer  "load_id"
     t.integer  "trailer_id"

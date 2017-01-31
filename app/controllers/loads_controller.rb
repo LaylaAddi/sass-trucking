@@ -68,7 +68,7 @@ class LoadsController < ApplicationController
       @driver_longitude = "-87.623177"
     end
    
-    @distance = Geocoder::Calculations.distance_between([@load_origin_address.latitude,@load_origin_address.longitude], [@load_destination_address.latitude,@load_destination_address.longitude]) 
+    #@distance = Geocoder::Calculations.distance_between([@load_origin_address.latitude,@load_origin_address.longitude], [@load_destination_address.latitude,@load_destination_address.longitude]) 
     
 
         
@@ -86,6 +86,7 @@ class LoadsController < ApplicationController
 
 
   def edit
+
     @load_driver = @load.driver_user
     @driver = DriverUser.where(["employment_status = ?", "active"])
     @hrc_user = current_hrc_user
@@ -127,8 +128,7 @@ class LoadsController < ApplicationController
     else
       @driver_longitude = "-87.623177"
     end
-   
- 
+
   end
 
 

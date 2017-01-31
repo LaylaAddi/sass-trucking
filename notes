@@ -31,6 +31,17 @@ show - hide div expense input jquery
 trailer maint
 truck maint
 
+<script>
+    $(document).ready(function() {
+            $("#distance").val($("#load_broker_shipper_load_id").val());
+            });
+</script>
+
+  $(function() {                                       
+    $("#load_origin_address_state").change(function() {                  
+        $('#destinationState').val(this.value);                  
+    });
+});
 
 broker users
 broker user admin can assign other broker users

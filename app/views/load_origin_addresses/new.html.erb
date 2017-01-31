@@ -7,10 +7,26 @@
       <div class="col-sm-4">
         <div class="form-group input-group">   
           <span class="input-group-addon"><i class="fa fa-location-arrow"></i></span>
-          <%= f.input :order, collection: ApplicationRecord::PickupOrder, 
-          prompt: 'Select Pick Up Order', label: false %> 
-          <%= f.input :type, disabled: true, label: false, as: :hidden  %> 
+          <%= f.input :pick_up_delivery, collection: ApplicationRecord::PickupDelivery, 
+          prompt: 'Select Pick Up/Delivery', label: false  %> 
+          <%= f.input :type %> 
         </div>
+      </div>
+
+      <div class="col-sm-4">
+         <h4>Pick Up</h4>
+          <address>
+            <strong><%= @load_origin_address.company %></strong><br> 
+            <div><%= @load_origin_address.street %></div>
+            <div><%= @load_origin_address.city  %></div>
+            <div><%= @load_origin_address.state  %></div>
+            <div><%= @load_origin_address.zip  %></div>
+            <br>
+            <small>Phone: </small><%= @load_origin_address.phone  %><br />
+            <small>Contact: </small><%= @load_origin_address.contact  %><br />
+            <small>Notes: </small><%= @load_origin_address.notes %>
+          </address>
+
       </div>
     </div>
     <div class="row">
@@ -40,12 +56,7 @@
           <%= f.input :street, label: false, placeholder: "Street Address" %>
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="form-group input-group">
-          <span class="input-group-addon"><i class="fa fa-map-pin"></i></span>
-          <%= f.input :street2, label: false, placeholder: "Street Address Contineud..." %>
-        </div>
-      </div>
+
     </div>
     <div class="row">
       <div class="col-sm-4">
@@ -73,6 +84,8 @@
         <div class="form-group input-group">
           <span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
           <%= f.input :notes, label: false, placeholder: "Notes" %>
+          <br>
+                    <%= f.input :miles  %>
         </div>
       </div>
     </div>
@@ -81,4 +94,8 @@
     <%= link_to 'Back to Load', load_path(@load), class: 'btn btn-hrcprimary btn-sm round' %>
     <% end %>
   </div>
+      <%= render "calculate_distance" %>
 </div>
+
+<%= render "new_map" %>
+

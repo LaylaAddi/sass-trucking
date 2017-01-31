@@ -2,7 +2,7 @@ class LoadOriginAddress < Address
   belongs_to :load
   geocoded_by :origin_address
   after_validation :geocode  
-  validates_presence_of :city, :state, :street 
+  validates_presence_of :city, :state, :street, :type 
  
 
   def origin_address
