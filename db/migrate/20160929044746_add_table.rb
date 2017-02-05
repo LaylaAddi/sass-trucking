@@ -371,6 +371,22 @@ class AddTable < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    
+    create_table :app_variables do |t|
+      t.string :app_name
+      t.string :app_logo
+      t.string :app_logo_name
+      t.string :app_tab_name
+      t.string :app_slogan
+      t.string :app_favi
+      t.text :app_terms
+      t.text :app_conditions
+      t.string :theme
+     
+
+
+      t.timestamps
+    end
 
   end
 end

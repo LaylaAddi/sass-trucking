@@ -1,6 +1,12 @@
 
 <% if current_hrc_user %> 
 <li> 
+  <%= link_to app_variables_path do %>
+    <span class="fa fa-user-plus"></span> 
+      App Admin 
+  <% end %>
+</li>
+<li> 
   <%= link_to root_path do %>
     <span class="fa fa-dashboard"></span> 
       Dashboard 

@@ -1,0 +1,22 @@
+<%= simple_form_for(@app_variable) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :app_name %>
+    <%= f.input :app_logo %>
+    <%= f.input :app_logo_name %>
+    <%= f.input :app_tab_name %>
+    <%= f.input :app_slogan %>
+    <%= f.input :app_favi %>
+    <%= f.input :app_terms %>
+    <%= f.input :app_conditions %>
+    <%= f.input :theme, collection: ApplicationRecord::Theme, 
+            label: false, include_blank: "Application Theme"%>
+    
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

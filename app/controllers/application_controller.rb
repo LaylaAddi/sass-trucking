@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true
-  before_action :driver_list 
+  before_action :driver_list, :app_variable
+   
   around_filter :user_time_zone, if: :current_user
   
+  def app_variable
+    @app_variable = AppVariable.first
+  end
   
   def driver_list 
     @driver_list = DriverUser.where(["employment_status = ?", "active"]).order('first_name ASC')   

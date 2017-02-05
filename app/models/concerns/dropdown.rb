@@ -241,7 +241,25 @@ CompanyProfileMembershipStatus =
     ["Pick Up/Delivery", "PUD" ],  
     ["Final Destination", "FD" ] 
     ]
-    
 
+Theme = 
+[    
+["Cerulean", "Cerulean"],
+["Cosmo", "Cosmo"],
+["Cyborg", "Cyborg"],
+["Darkly", "Darkly"], 
+["Flatly", "Flatly"],
+["Journal", "Journal"],
+["Lumen", "Lumen"],
+["Paper", "Paper"],
+["Readable", "Readable"],
+["Sandstone", "Sandstone"],
+["Simplex", "Simplex"],
+["Slate", "Slate"],
+["Spacelab", "Spacelab"],
+["Superhero", "Superhero"],
+["United", "United"],
+["Yeti", "Yeti"]
+]
 end
 

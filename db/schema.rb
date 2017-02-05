@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.index ["truck_id"], name: "index_addresses_on_truck_id", using: :btree
   end
 
+  create_table "app_variables", force: :cascade do |t|
+    t.string   "app_name"
+    t.string   "app_logo"
+    t.string   "app_logo_name"
+    t.string   "app_tab_name"
+    t.string   "app_slogan"
+    t.string   "app_favi"
+    t.text     "app_terms"
+    t.text     "app_conditions"
+    t.string   "theme"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "company_profile_memberships", force: :cascade do |t|
     t.integer  "company_profile_id"
     t.integer  "user_id"
@@ -429,6 +443,7 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.decimal  "driver_rpm",               default: "0.0"
     t.string   "employment_status",        default: "not_active"
     t.string   "time_zone"
+    t.boolean  "app_agree_terms"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

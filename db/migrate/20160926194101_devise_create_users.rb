@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.string :telephone
-      t.string :extention
+      t.string :extention 
       t.string :cellphone
       t.string :street 
       t.string :city 
@@ -29,7 +29,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.decimal :driver_rpm, default: 0.00
       t.string :employment_status, default: "not_active"
       t.string :time_zone  
-      
+      t.boolean :app_agree_terms
 
  
       

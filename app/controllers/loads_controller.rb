@@ -66,7 +66,6 @@ class LoadsController < ApplicationController
   def new
     @load = current_hrc_user.loads.build 
     @load.load_origin_addresses.build
-    @load.load_destination_addresses.build
     @driver = DriverUser.where(["employment_status = ?", "active"]) 
     @company_profile = CompanyProfile.all
   end
