@@ -22,10 +22,15 @@ class Load < ApplicationRecord
   before_validation :delivery_date, date: { after_or_equal_to: Proc.new { :pick_up_date }, 
   message: "(error) Delivery can't be before pick up" }, on: :create
   
-  validates_presence_of  :load_size, :percent_deducted, :miles, 
-  :equipment_type, :status_name, :driver_user_id, :company_profile, :percent_deducted,
-  :rate_to_driver, :invoice_price
+ 
   
+  validates_presence_of  :load_size, :percent_deducted, :pick_up_date,
+  :equipment_type, :status_name, :driver_user_id, :company_profile, :percent_deducted,
+  :rate_to_driver, :invoice_price, :origin_street, :origin_city, :origin_state
+
+  validates :destination_street, :destination_city, :miles, :destination_state, :delivery_date,
+  presence: true, unless: :has_multiple_pd?
+
   validates_numericality_of :percent_deducted 
   
   ransack_alias :load_search_params,
@@ -34,7 +39,7 @@ class Load < ApplicationRecord
 
    
   def is_company_driver
-      driver_user.company_driver == true
+      driver_user.try(:company_driver) == true
   end
   
   def set_company_driver_rate
@@ -75,19 +80,48 @@ class Load < ApplicationRecord
    self.rate_to_driver_after_factor_fees = self.rate_to_driver - ddbop 
   end
   
- 
+
   
-  def load_title
-    return "Origin: " + self.origin_city + ", " + self.origin_state +  
-    " Destination: " + self.destination_city + ", " + self.destination_state
+
+    
+  def destination
+    load_origin_addresses.where(["address_category_id = ?", 4]).last 
   end
+  def destination_map
+    load_origin_addresses('created_at desc').last 
+  end
+
   
+  def title
+    if self.destination_city.present? && self.destination_state.present?
+      " Origin: " + self.origin_city + " " + self.origin_state + " " + "Destination: " + 
+      self.destination_city + " " + self.destination_state
+    elsif self.origin_city.present? && self.origin_state.present? && destination.present?
+       " Origin: " + self.origin_city + " " + self.origin_state + " " + "Destination: " + 
+      destination.city + " " + destination.state
+    elsif self.origin_city.present? && self.origin_state.present? && !destination.present?
+       " Origin: " + self.origin_city + " " + self.origin_state + " " + "Destination: *None Set*" 
+    end
+  end
+
   def origin_address
     return self.origin_street + ", " + self.origin_city + ", " + self.origin_state + ", " + self.origin_zip
   end
   
   def destination_address
+    if destination.try(:city).blank? and destination.try(:state).blank?
     return self.destination_street + ", " + self.destination_city + ", " + self.destination_state + ", " + self.destination_zip
+    else
+    destination.street + " " + destination.city + " " + destination.state + " " + destination.zip  
+    end
+  end
+  
+  def org_destination_add
+    if destination.try(:city).blank? and destination.try(:state).blank?
+    return self.destination_street + ", " + self.destination_city + ", " + self.destination_state + ", " + self.destination_zip
+    else
+    destination.street + " " + destination.city + " " + destination.state + " " + destination.zip  
+    end
   end
   
   def self.as_csv

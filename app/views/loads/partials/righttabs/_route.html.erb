@@ -7,29 +7,30 @@
   </select>
   <select multiple id="waypoints">
   <%= render "loads/load_origins" %>
-  <%= render "loads/load_destinations" %> 
+
   </select>
   <select id="end">
-    <option value="<%= @load.destination_address %>"><%= @load.destination_address %></option>
+    <option value="<%= @load.destination_address %>"><%= @load.destination_address %></option> 
   </select>
 </div>
 <div class="shadow animated">
   <div id="directions-panel">
   </div>
 </div>
-
+<p>
 <% if @last_checkin.present? %>
-<%= local_time(@last_checkin.created_at, format: '%B %e, %Y %l:%M%P %Z') %> 
+Last Checkin: <%= local_time(@last_checkin.created_at, format: '%B %e, %Y %l:%M%P %Z') %> 
 <% end %>
+</p>
 <script>
   function initMap() {
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var elements = document.getElementsByTagName("waypoints"); 
-    var driverLatLng = {lat: <%= @last_checkin.latitude %>, lng: <%= @last_checkin.longitude %>}; 
+    var driverLatLng = {lat: <%= @driver_latitude %>, lng: <%= @driver_longitude %>}; 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 8,
-      center: "Chicago"
+      center: {lat: 41.881832, lng: -87.623177}
     });
     directionsDisplay.setMap(map);
   

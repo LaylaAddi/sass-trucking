@@ -1,6 +1,6 @@
 class LoadsController < ApplicationController
   before_action :validate_admin_user, only: [:destroy]
-  before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy] 
+  before_action :validate_hrc_user, only: [:edit, :update, :new, :new_multiple, :destroy] 
   before_action :set_load, only: [:show, :edit, :update, :destroy]
 
 
@@ -8,6 +8,7 @@ class LoadsController < ApplicationController
     @all_loads = Load.all
   	@search_loads = @all_loads.search(params[:q])
   	@loads = @search_loads.result.order(:id).page(params[:page]).per(1000)
+    # @destination = @load.load_origin_addresses.where(["pick_up_delivery = ?", "Delivery(Last Destination)"]).last
   	
     respond_to do |format|
       format.html
@@ -16,33 +17,24 @@ class LoadsController < ApplicationController
   end
 
 
-  def show
+  def show 
+    @destination = @load.load_origin_addresses.last
+    
+    if @load.has_multiple_pd? && !@destination 
+      redirect_to new_load_load_origin_address_path(@load) and return
+    end
+
     @company_profile = @load.company_profile    
     @transactions = @load.transactions  
     @vendor_profile = VendorProfile.all
     @load_doc = @load.load_documents 
-    @driver = @load.driver_user
+    @driver = @load.driver_user 
     @cd_transactions = @load.transactions.where(["expense_type = ?", "Cash Advance"])
-     
-    
-    @all_origin_addresses = @load.load_origin_addresses.all
-    @load_origin_address = @all_origin_addresses.find_by(order: "1")  
-
-    @all_destination_addresses = @load.load_destination_addresses.all
-    @load_destination_address = @all_destination_addresses.find_by(order: "12")  
-
-
-    @load_origin_addresses = @load.load_origin_addresses.where.not(order: "1").order('created_at ASC')
-    @load_destination_addresses = @load.load_destination_addresses.where.not(order: "12").order('created_at ASC')
-    
+    @load_origin_addresses = @load.load_origin_addresses.order('created_at ASC')
 
     @driver_checkins = @driver.driver_checkins.order('created_at ASC')
-    
     @last_checkin = @driver.driver_checkins.order('created_at ASC').last
-    
-    
 
-    
     #gets latitude column
     @lat = @driver.driver_checkins.pluck(:latitude)
     #gets latest record
@@ -56,7 +48,6 @@ class LoadsController < ApplicationController
     else
       @driver_latitude = "41.881832"
     end
-    
 
     @lng = @driver.driver_checkins.pluck(:longitude)
     @longitude = @lng.last(1)
@@ -69,9 +60,6 @@ class LoadsController < ApplicationController
     end
    
     #@distance = Geocoder::Calculations.distance_between([@load_origin_address.latitude,@load_origin_address.longitude], [@load_destination_address.latitude,@load_destination_address.longitude]) 
-    
-
-        
   end
 
 
@@ -81,25 +69,17 @@ class LoadsController < ApplicationController
     @load.load_destination_addresses.build
     @driver = DriverUser.where(["employment_status = ?", "active"]) 
     @company_profile = CompanyProfile.all
-
   end
 
 
-  def edit
 
+  def edit
     @load_driver = @load.driver_user
     @driver = DriverUser.where(["employment_status = ?", "active"])
     @hrc_user = current_hrc_user
     @company_profile = CompanyProfile.all   
-    
-    @all_origin_addresses = @load.load_origin_addresses.all
-    @load_origin_address = @all_origin_addresses.find_by(order: "1")  
-    
-    @all_destination_addresses = @load.load_destination_addresses.all
-    @load_destination_address = @all_destination_addresses.find_by(order: "12")
-    
-    @load_origin_addresses = @load.load_origin_addresses.where.not(order: "1").order('created_at ASC')
-    @load_destination_addresses = @load.load_destination_addresses.where.not(order: "12").order('created_at ASC')
+    @load_origin_addresses = @load.load_origin_addresses.order('created_at ASC')
+
     
     @driver_checkins = @load_driver.driver_checkins.order('created_at ASC')
     
@@ -128,7 +108,6 @@ class LoadsController < ApplicationController
     else
       @driver_longitude = "-87.623177"
     end
-
   end
 
 
@@ -179,6 +158,9 @@ class LoadsController < ApplicationController
     redirect_to loads_path, notice: 'Loads have been uploaded.'
   end  
 
+
+
+
   private
     def validate_admin_user
       if !current_hrc_user.admin? 
@@ -188,16 +170,19 @@ class LoadsController < ApplicationController
     end
     
 
-
-
     def set_load
       @load = Load.find(params[:id])
     end
+    
+ 
+  
+
 
 
     def load_params
       params.require(:load).permit(
                                     :commodity, 
+                                    :has_multiple_pd,
                                     :weight, 
                                     :units, 
                                     :load_size, 
@@ -232,8 +217,8 @@ class LoadsController < ApplicationController
                                     :origin_contact,
                                     :destination_phone,
                                     :destination_contact,
-                                    :consignor_name,
-                                    :consignee_name,
+                                    :shipper_company_name, 
+                                    :receiver_company_name,
                                     :company_profile_id,
                                     :broker_shipper_load_id,
                                     :delivery_time_notes,
@@ -253,26 +238,13 @@ class LoadsController < ApplicationController
                                       :state, 
                                       :zip,
                                       :type,
-                                      :company,
+                                      :company_name, 
                                       :notes,
-                                      :contact,
                                       :phone,
+                                      :contact,
                                       :order
-                                      ],
-                                      load_destination_addresses_attributes:  
-                                        [
-                                        :street,
-                                        :city, 
-                                        :state, 
-                                        :zip,
-                                        :type,
-                                        :company,
-                                        :notes,
-                                        :contact,
-                                        :phone,
-                                        :order
-                                        ]
-                                        )
+                                      ]
+                                      )
     end
 end
 

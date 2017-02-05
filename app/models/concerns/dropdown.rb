@@ -236,9 +236,10 @@ CompanyProfileMembershipStatus =
     
  PickupDelivery =
     [
-    ["Pick Up", "Pick Up" ], 
-    ["Delivery", "Delivery" ],
-    ["Pick Up/Delivery", "Pick Up/Delivery" ]
+    ["Pick Up", "PU" ],
+    ["Delivery", "D" ],
+    ["Pick Up/Delivery", "PUD" ],  
+    ["Final Destination", "FD" ] 
     ]
     
 

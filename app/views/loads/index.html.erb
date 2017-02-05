@@ -68,8 +68,8 @@
       <%= local_time(load.created_at, format: '%B %e, %Y %l:%M%P %Z') %> 
       </td> 
       <td>
-        <%= link_to load do %>
-        <%= load.load_title %> 
+        <%= link_to load_path(load) do %>
+        <%= load.title %>  
         <% end %>
       </td>
       <td>

@@ -1,77 +1,49 @@
+<div>
+Equipment: <%= @load.equipment_type %>
 
-<p>
-<h3></h3>
-<p>
-<div class="row">
-  <div class="col-sm-9">
-
-  </div>
-  <div class="col-sm-3">
-    Equipment: <%= @load.equipment_type %>
-  </div>
-</div>
-</p>
-<p>
   Booked by: <%= link_to @load.hrc_user.full_name, 
     user_path(@load.hrc_user_id) %>
-</p>
-<p>
+
   Updated by:
   <% if @load.updated_by.present? %>
   <%= @load.updated_by %>
   <% else %>
   No Updates
   <% end %>  
-</p>
-<p>
-<div class="row">
-  <div class="col-sm-9">
+
+
     Commodity:
     <%= @load.commodity %>
-  </div>
-  <div class="col-sm-3">
+
     Load size:
     <%= @load.load_size %>
-  </div>
-</div>
-</p>
-<p>
-<div class="row">
-  <div class="col-sm-9">
+
+
     Weight:
     <%= @load.weight %>
-  </div>
-  <div class="col-sm-3">
+
   <% @load.units %>
-  </div>
-</div>
-</p>
-<p>
-<div class="row">
-  <div class="col-sm-9">
+
+
       <% @load.invoice_price %>
-  </div>
-  <div class="col-sm-3">
+
     Distance:
     <%= @load.miles %>
-  </div>
-</div>
-</p>
-<p>
+
+
   Dimentions: 
   <% if @load.dimentions.present? %>
   <%= @load.dimentions %>
   <% else %>
   None Given
   <% end %>
-</p>
-<p>
+
   Special Instructions:
   <% if @load.special_instructions.present? %>
   <%= @load.special_instructions %>
   <% else %>
   No Special Instructions
   <% end %>
-</p>
 
+</div>
 

@@ -7,6 +7,7 @@ class AddressesController < ApplicationController
   end
 
   def show
+    @load = Load.find(params[:load_id])
   end
 
   def new
@@ -66,11 +67,10 @@ class AddressesController < ApplicationController
 
     def address_params
       params.require(:address).permit(
-        :address_type, 
+        :type, 
         :street, 
         :latitude, 
         :longitude, 
-        :street2, 
         :city, 
         :state, 
         :zip, 
@@ -80,10 +80,11 @@ class AddressesController < ApplicationController
         :load_id,
         :notes,
         :type,
-        :order,
-        :miles
+        :pick_up_delivery,
+        :miles,
+        :pick_up_date
         )
-        
+       
     end
 
 end

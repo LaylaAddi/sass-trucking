@@ -3,37 +3,34 @@
     <div class="panel-heading">
       <h3>
         <%= link_to @load.company_profile.company_name, 
-        company_profile_path(@company_profile) if current_hrc_user %>
+          company_profile_path(@company_profile) if current_hrc_user %>
         <br />
         <small>
-
-
-          <%= @load.load_title %> 
-        (<%= @load.miles %> Miles)</small>
+        <%= @load.title %>  
+        (<%= @load.miles %> Miles)
+        </small>
       </h3>
-       <%= link_to 'Edit Load', edit_load_path(@load), class: "btn btn-hrcinfo btn-sm round pull-right" %>
+      <%= link_to 'Edit Load', edit_load_path(@load), class: "btn btn-hrcinfo btn-sm round pull-right" %>
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
       <!-- Nav tabs -->
       <ul class="nav nav-pills">
         <li class="active"><a href="#pud" data-toggle="tab">Pick Up/Delivery</a></li>
-        <li><a href="#overview" data-toggle="tab">Overview</a></li>
-        <li><a href="#documents" data-toggle="tab">Documents</a></li>     
+        <li><a href="#details" data-toggle="tab">Details</a></li>
+        <li><a href="#documents" data-toggle="tab">Documents</a></li>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
-
         <div class="tab-pane fade in active" id="pud"> 
-        <%= render "loads/partials/lefttabs/pick_up_delivery" %>
+          <%= render "loads/partials/lefttabs/pick_up_delivery" %>
         </div>
-        <div class="tab-pane fade in active" id="overview">
+        <div class="tab-pane fade" id="details">
           <%= render "loads/partials/lefttabs/details" %>
         </div>
-        <div class="tab-pane fade in active" id="documents">
+        <div class="tab-pane fade" id="documents">
           <%= render "loads/partials/lefttabs/documents" %>
         </div>
-
       </div>
     </div>
     <!-- /.panel-body -->

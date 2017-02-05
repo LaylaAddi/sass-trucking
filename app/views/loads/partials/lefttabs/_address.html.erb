@@ -1,18 +1,39 @@
 <% @load_origin_addresses.each do |origin| %> 
-<div class="col-lg-6">
-  <div class="panel panel-success">
+<div class="col-sm-6">
+ 
+  <div class="panel panel-info"> 
+
+
+
     <div class="panel-heading">
-      Additional Pick Up! 
+<h4>
+<% if origin.address_category_id == 1 %>
+<span class="label label-success round">
+   Pick Up
+</span>
+<% elsif origin.address_category_id == 2 %>
+<span class="label label-primary round">
+   Delivery
+</span>         
+<% elsif origin.address_category_id == 3 %>
+<span class="label label-warning round">
+   Pick Up & Delivery
+<% elsif origin.address_category_id == 4 %>
+<span class="label label-danger round">
+   Final Delivery - Last Stop
+<% end %>
+</span>      
+</h4>
+   <%= local_time(origin.pick_up_date, format:  '%B %e, %Y') %>
     </div>
     <div class="panel-body">
       <p>
       <address>
         <strong><%= origin.company %></strong><br>
-        <%= origin.street %> <%= origin.street2 %><br>
-        <%= origin.city  %> <%= origin.state  %> <%= origin.zip  %><br>
+        <%= origin.street %><br>
+        <%= origin.city  %>, <%= origin.state  %>, <%= origin.zip  %><br>
         <small>Phone: </small><%= origin.phone  %><br />
         <small>Contact: </small><%= origin.contact  %><br />
-        <%= origin.latitude  %>
       </address>
       <% if origin.notes.present? %>
       <strong>Notes</strong>
@@ -39,46 +60,5 @@
     </div>
   </div>
 </div>
+<hr>
 <% end %>
-<%  @load_destination_addresses.each do |destination| %> 
-<div class="col-lg-6">
-  <div class="panel panel-danger">
-    <div class="panel-heading">
-      Additional Delivery!
-    </div>
-    <div class="panel-body">
-      <p>
-      <address>
-        <strong><%= destination.company %></strong><br>
-        <%= destination.street %> <%= destination.street2 %><br>
-        <%= destination.city  %> <%= destination.state  %> <%= destination.zip  %><br>
-        <small>Phone: </small><%= destination.phone  %><br />
-        <small>Contact: </small><%= destination.contact  %><br />
-      </address>
-      <% if destination.notes.present? %>
-      <strong>Notes</strong>
-      <%= destination.notes %>  
-      <% else %>
-      <% end %>
-      </p>
-      <div class="btn-group pull-right activity-actions">
-        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-th"></i>
-        <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-          <li>
-            <%= link_to "Edit Me", edit_load_address_path(@load, destination) %> 
-          </li>
-          <li>
-            <%= link_to "Delete Me", load_address_path(@load, destination), method: :delete %>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="panel-footer">
-    </div>
-  </div>
-</div>
-<% end %>
-

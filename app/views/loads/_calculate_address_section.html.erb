@@ -1,0 +1,55 @@
+
+<table class="table table-bordered table-striped table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+				ID
+			</th>
+			<th>
+				City, State 
+			</th>
+			<th>
+				Location Type
+			</th>
+			<th>
+				Miles
+			</th>
+
+		</tr>
+	</thead>
+	<tbody>
+	  <% total_miles = 0 %>
+<% @load_origin_addresses.each do |address| %>
+		<tr>
+			<td>
+				<%= address.id %>
+			</td>
+			<td>
+			  <%= link_to load_load_origin_address_path(@load, address) do %>
+				<%= address.city %>, <%= address.state %>
+				<% end %> 
+			</td>
+			<td>
+				<%= address.pick_up_delivery %> 
+			</td>
+			<td>
+				<%= address.miles %>
+			</td>
+
+			
+		</tr><br>
+	<% total_miles = total_miles + address.miles %>
+		<% end %>
+	</tbody>
+</table>
+	<input class="pull-right" id="miles" value="<%= total_miles %>"></input>
+	     <%= f.input :miles, label: false, placeholder: "Total Miles" %>
+    <div class="form-actions pull-right">
+      <%= f.button :submit, class: "btn btn-success btn-sm round" %>
+      <% link_to 'All Loads', loads_path, class: "btn btn-info btn-sm round" %>
+    </div>
+<script>
+    $(document).ready(function() {
+            $("#load_miles").val($("#miles").val());
+            });
+</script>

@@ -15,12 +15,18 @@ ActiveRecord::Schema.define(version: 20160929044746) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "address_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "addresses", force: :cascade do |t|
+    t.integer  "address_category_id"
     t.string   "type"
-    t.string   "street"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "street2"
+    t.string   "street"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
@@ -29,21 +35,21 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "phone"
     t.string   "notes"
     t.string   "pick_up_delivery"
+    t.date     "pick_up_date"
     t.integer  "miles"
-    t.integer  "order"
     t.integer  "load_id"
     t.integer  "trailer_id"
     t.integer  "truck_id"
     t.integer  "driver_checkin_id"
     t.integer  "driver_user_id"
     t.integer  "hrc_user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["address_category_id"], name: "index_addresses_on_address_category_id", using: :btree
     t.index ["driver_checkin_id"], name: "index_addresses_on_driver_checkin_id", using: :btree
     t.index ["driver_user_id"], name: "index_addresses_on_driver_user_id", using: :btree
     t.index ["hrc_user_id"], name: "index_addresses_on_hrc_user_id", using: :btree
     t.index ["load_id"], name: "index_addresses_on_load_id", using: :btree
-    t.index ["order"], name: "index_addresses_on_order", using: :btree
     t.index ["trailer_id"], name: "index_addresses_on_trailer_id", using: :btree
     t.index ["truck_id"], name: "index_addresses_on_truck_id", using: :btree
   end
@@ -120,11 +126,12 @@ ActiveRecord::Schema.define(version: 20160929044746) do
   end
 
   create_table "loads", force: :cascade do |t|
+    t.boolean  "has_multiple_pd",                  default: false
     t.string   "commodity"
     t.string   "weight"
     t.string   "units"
     t.string   "load_size"
-    t.integer  "miles"
+    t.integer  "miles",                            default: 0
     t.decimal  "invoice_price"
     t.decimal  "booking_fee"
     t.decimal  "rate_told_to_driver"
@@ -140,7 +147,6 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "pick_up_notes"
     t.date     "delivery_date"
     t.time     "delivery_time"
-    t.string   "delivery_time_notes"
     t.string   "delivery_notes"
     t.string   "equipment_type"
     t.string   "status_name"
@@ -166,8 +172,8 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "destination_contact"
     t.float    "destination_latitude"
     t.float    "destination_longitude"
-    t.string   "consignor_name"
-    t.string   "consignee_name"
+    t.string   "shipper_company_name"
+    t.string   "receiver_company_name"
     t.integer  "driver_statement_id"
     t.decimal  "rate_to_driver_after_factor_fees"
     t.datetime "created_at",                                       null: false

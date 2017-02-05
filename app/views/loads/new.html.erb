@@ -93,6 +93,24 @@
     </div>
     <hr>
     <div class="row">
+<div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary round">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-stop-circle fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"></div>
+                                    <div> <h3><%= f.input :has_multiple_pd, label: "Multiple Addresses" %></h3></div>
+                                    <small>(Loads with multple stops)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+               </div>  
+    <div class="row">
       <div class="col-sm-6">
         <div class="form-group input-group">
           <span class="input-group-addon">
@@ -101,9 +119,7 @@
           <label>Pick Up Date </label><br />
           <%= f.text_field :pick_up_date, class: "bring_front",
             placeholder: " Select Date" %>
-
-
-          <%= f.input :consignor_name, label: false, placeholder: "Pick Up Company Name" %>
+          <%= f.input :shipper_company_name, label: false, placeholder: "Pick Up Company Name" %>
           <%= f.input :origin_street, label: false, placeholder: "Street Address" %>
           <%= f.input :origin_city, label: false, placeholder: "City"  %>  
           <%= f.input :origin_state, label: false, 
@@ -112,71 +128,35 @@
           <%= f.input :origin_phone, label: false, placeholder: "Telephone" %>
           <%= f.input :origin_contact, label: false, placeholder: "Contact Person" %>
           <%= f.input :pick_up_notes, label: false, placeholder: "Pick Up Notes" %>
-
         </div>
       </div>
-                
-      <div class="col-sm-6">
-        <div class="form-group input-group">
-          <span class="input-group-addon">
-            <p class="vertical-text">Consignee</p>
-          </span>
-          <label>Delivery Date </label><br />
-          <%= f.text_field :delivery_date, class: "bring_front", 
-            placeholder: " Select Date" %>
-
-          <%= f.input :consignee_name, label: false, placeholder: "Deliver to Company Name" %>
-          <%= f.input :destination_street, label: false, placeholder: "Street Address" %>
-          <%= f.input :destination_city, label: false, placeholder: "City"  %>  
-          <%= f.input :destination_state, label: false, 
-            collection: ApplicationRecord::States, include_blank: "State" %>
-          <%= f.input :destination_zip, label: false, placeholder: "zip code" %> 
-          <%= f.input :destination_phone, label: false, placeholder: "Telephone" %>
-          <%= f.input :destination_contact, label: false, placeholder: "Contact Person" %>
-          <%= f.input :delivery_notes, label: false, placeholder: "Delivery Notes" %>
-        </div>
-      </div>
-    </div>
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="heading1">
-          <h4 class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
-            Add Time Info
-            </a>
-          </h4>
-        </div>
-        <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-6 col-sm-offset-0">
-                <div class="form-group input-group">
-                  <span class="input-group-addon">
-                    <p class="vertical-text">Pick Up Time</p>
-                  </span>
-                  <%= f.input :pick_up_time, label: false, discard_month: true, 
-                    discard_day: true, discard_year: true, 
-                    prompt: {hour: 'Choose Hour', minute: 'Choose Minute'}, ampm: true %>
-                </div>
-              </div>
-              <div class="col-sm-6 col-sm-offset-0">
-                <div class="form-group input-group">
-                  <span class="input-group-addon">
-                    <p class="vertical-text">Delivery Time</p>
-                  </span>
-                  <%= f.input :delivery_time, label: false,  discard_month: true, 
-                    discard_day: true, discard_year: true, 
-                    prompt: {hour: 'Choose Hour', minute: 'Choose Minute'}, ampm: true %>
-                </div>
-              </div>
-            </div>
+      <div id="idToHide">
+        <div class="col-sm-6">
+          <div class="form-group input-group">
+            <span class="input-group-addon">
+              <p class="vertical-text">Consignee</p>
+            </span>
+            <label>Delivery Date </label><br />
+            <%= f.text_field :delivery_date, class: "bring_front", 
+              placeholder: " Select Date" %>
+            <%= f.input :receiver_company_name, label: false, placeholder: "Deliver to Company Name" %>
+            <%= f.input :destination_street, label: false, placeholder: "Street Address" %>
+            <%= f.input :destination_city, label: false, placeholder: "City"  %>  
+            <%= f.input :destination_state, label: false, 
+              collection: ApplicationRecord::States, include_blank: "State" %>
+            <%= f.input :destination_zip, label: false, placeholder: "zip code" %> 
+            <%= f.input :destination_phone, label: false, placeholder: "Telephone" %>
+            <%= f.input :destination_contact, label: false, placeholder: "Contact Person" %>
+            <%= f.input :delivery_notes, label: false, placeholder: "Delivery Notes" %>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
+      <div id="idToHide">
       <div class="col-sm-3 col-sm-offset-0">
         <%= f.input :miles, label: false, placeholder: "Total Miles" %>
+      </div>
       </div>
     </div>
     <div class="form-actions pull-right">
@@ -184,7 +164,18 @@
       <% link_to 'All Loads', loads_path, class: "btn btn-info btn-sm round" %>
     </div>
     <% end %>
-    <%= render "calculate_distance" %>
+
+<div id="idToHide2"><%= render "calculate_distance" %></div>
   </div>
 </div>
-<%= render "new_map" %>
+<div id="idToHide3"><%= render "new_map" %></div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $("#load_has_multiple_pd").click(function(){
+        $("#idToHide, #idToHide2, #idToHide3").fadeToggle( "slow", "linear" ); 
+    });
+});
+</script>
+

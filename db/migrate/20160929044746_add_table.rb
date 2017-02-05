@@ -21,11 +21,12 @@ class AddTable < ActiveRecord::Migration[5.0]
     end
     
  create_table :loads do |t|
+      t.boolean :has_multiple_pd, default: false  
       t.string :commodity
       t.string :weight
       t.string :units
       t.string :load_size
-      t.integer :miles
+      t.integer :miles, default: 0.00  
       t.decimal :invoice_price
       t.decimal :booking_fee
       t.decimal :rate_told_to_driver 
@@ -66,19 +67,19 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :destination_contact        
       t.float :destination_latitude
       t.float :destination_longitude 
-      t.string :consignor_name
-      t.string :consignee_name 
+      t.string :shipper_company_name 
+      t.string :receiver_company_name
       t.integer :driver_statement_id, index: true
       t.decimal :rate_to_driver_after_factor_fees
       t.timestamps
     end
     
     create_table :addresses do |t|
+      t.integer :address_category_id, index: true 
       t.string :type
-      t.string :street
       t.float :latitude
       t.float :longitude
-      t.string :street2
+      t.string :street
       t.string :city
       t.string :state
       t.string :zip
@@ -87,15 +88,15 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :notes
       t.string :pick_up_delivery
+      t.date :pick_up_date
       t.integer :miles
-      t.integer :order, index: true
       t.integer :load_id, index: true   
       t.integer :trailer_id, index: true 
       t.integer :truck_id, index: true 
       t.integer :driver_checkin_id, index: true 
       t.integer :driver_user_id, index: true 
       t.integer :hrc_user_id, index: true  
-      
+   
       t.timestamps
     end
     
@@ -360,6 +361,13 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :notes
       t.string :ip_address
       t.integer :driver_user_id, index: true 
+
+      t.timestamps
+    end
+    
+    create_table :address_categories do |t|
+      t.string :name
+
 
       t.timestamps
     end

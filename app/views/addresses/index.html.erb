@@ -5,40 +5,37 @@
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
-      <th>Address type</th> 
+      <th>id</th> 
       <th>Street</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Street2</th>
       <th>City</th>
       <th>State</th>
       <th>Zip</th>
       <th>Company</th>
       <th>Contact</th>
       <th>Phone</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
       <th>Load</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @load_addresses.each do |load_address| %>
+    <% @addresses.each do |load_address| %>
       <tr>
-        <td><%= load_address.address_type %></td>
+        <td><%= load_address.id %></td>
         <td><%= load_address.street %></td>
-        <td><%= load_address.latitude %></td>
-        <td><%= load_address.longitude %></td>
-        <td><%= load_address.street2 %></td>
         <td><%= load_address.city %></td>
         <td><%= load_address.state %></td>
         <td><%= load_address.zip %></td>
         <td><%= load_address.company %></td>
         <td><%= load_address.contact %></td>
         <td><%= load_address.phone %></td>
-        <td><%= load_address.load_id %></td>
-        <td><%= link_to 'Show', load_address %></td>
-        <td><%= link_to 'Edit', edit_load_address_path(load_address) %></td>
-        <td><%= link_to 'Destroy', load_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= load_address.latitude %></td>
+        <td><%= load_address.longitude %></td>     
+        <td><%= load_address.load_id %></td> 
+
+        
       </tr>
     <% end %>
   </tbody>

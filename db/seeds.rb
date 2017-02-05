@@ -1,3 +1,7 @@
+fast_food = AddressCategory.where(name: "Pick Up").first_or_create(name: "Pick Up")
+seafood = AddressCategory.where(name: "Delivery").first_or_create(name: "Delivery")
+steak = AddressCategory.where(name: "P and D").first_or_create(name: "P and D")
+chinese = AddressCategory.where(name: "Pick Up").first_or_create(name: "Final Destination")
 
    States =  
   [
