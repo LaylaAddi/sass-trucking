@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 20160929044746) do
     t.string   "app_favi"
     t.text     "app_terms"
     t.text     "app_conditions"
-    t.string   "theme"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "theme",          default: "Flatly"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "company_profile_memberships", force: :cascade do |t|

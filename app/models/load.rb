@@ -81,14 +81,11 @@ class Load < ApplicationRecord
   end
   
 
-  
-
-    
   def destination
     load_origin_addresses.where(["address_category_id = ?", 4]).last 
   end
   def destination_map
-    load_origin_addresses('created_at desc').last 
+    load_origin_addresses('created_at desc').last  
   end
 
   
@@ -116,13 +113,7 @@ class Load < ApplicationRecord
     end
   end
   
-  def org_destination_add
-    if destination.try(:city).blank? and destination.try(:state).blank?
-    return self.destination_street + ", " + self.destination_city + ", " + self.destination_state + ", " + self.destination_zip
-    else
-    destination.street + " " + destination.city + " " + destination.state + " " + destination.zip  
-    end
-  end
+
   
   def self.as_csv
     CSV.generate do |csv|

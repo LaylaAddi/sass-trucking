@@ -1,30 +1,26 @@
 <% @load_origin_addresses.each do |origin| %> 
+<% unless origin == @load_origin_addresses.where(address_category_id: 4) %>
 <div class="col-sm-6">
- 
-  <div class="panel panel-info"> 
-
-
-
+  <div class="panel panel-info">
     <div class="panel-heading">
-<h4>
-<% if origin.address_category_id == 1 %>
-<span class="label label-success round">
-   Pick Up
-</span>
-<% elsif origin.address_category_id == 2 %>
-<span class="label label-primary round">
-   Delivery
-</span>         
-<% elsif origin.address_category_id == 3 %>
-<span class="label label-warning round">
-   Pick Up & Delivery
-<% elsif origin.address_category_id == 4 %>
-<span class="label label-danger round">
-   Final Delivery - Last Stop
-<% end %>
-</span>      
-</h4>
-   <%= local_time(origin.pick_up_date, format:  '%B %e, %Y') %>
+      <h4>
+        <% if origin.address_category_id == 1 %>
+        <span class="label label-success round">
+        Pick Up
+        </span>
+        <% elsif origin.address_category_id == 2 %>
+        <span class="label label-primary round">
+        Delivery
+        </span>
+        <br /> 
+        <br /> 
+        <% elsif origin.address_category_id == 3 %>
+        <span class="label label-warning round">
+        Pick Up & Delivery
+        </span>    
+      </h4>
+      <% end %>
+      <%= local_time(origin.pick_up_date, format:  '%B %e, %Y') %>
     </div>
     <div class="panel-body">
       <p>
@@ -38,7 +34,6 @@
       <% if origin.notes.present? %>
       <strong>Notes</strong>
       <%= origin.notes %>  
-      <% else %>
       <% end %>
       </p>
       <div class="btn-group pull-right activity-actions">
@@ -48,10 +43,10 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
           <li>
-            <%= link_to "Edit Me", edit_load_address_path(@load, origin) %>
+            <%= link_to "Edit Address", edit_load_address_path(@load, origin) %>
           </li>
           <li>
-            <%= link_to "Delete Me", load_address_path(@load, origin), method: :delete %>
+            <%= link_to "Delete Address", load_address_path(@load, origin), method: :delete %>
           </li>
         </ul>
       </div>
@@ -60,5 +55,5 @@
     </div>
   </div>
 </div>
-<hr>
+<% end %>
 <% end %>

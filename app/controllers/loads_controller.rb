@@ -17,10 +17,11 @@ class LoadsController < ApplicationController
   end
 
 
-  def show 
-    @destination = @load.load_origin_addresses.last
+  def show  
+
+    @destination = @load.load_origin_addresses.where(["address_category_id = ?", 4]).last  
     
-    if @load.has_multiple_pd? && !@destination 
+    if @load.has_multiple_pd? && !@destination.present? 
       redirect_to new_load_load_origin_address_path(@load) and return
     end
 

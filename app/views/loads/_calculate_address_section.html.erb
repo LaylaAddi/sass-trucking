@@ -1,4 +1,3 @@
-
 <table class="table table-bordered table-striped table-condensed table-responsive">
 	<thead>
 		<tr>
@@ -42,8 +41,15 @@
 		<% end %>
 	</tbody>
 </table>
-	<input class="pull-right" id="miles" value="<%= total_miles %>"></input>
-	     <%= f.input :miles, label: false, placeholder: "Total Miles" %>
+<div class="row">
+<div class="col-sm-3 pull-right">
+<%= f.input :miles, label: "Total Miles" %>
+	<input class="pull-right hidden" id="miles" value="<%= total_miles %>"></input>
+</div> 
+</div>
+<hr>
+<br>
+
     <div class="form-actions pull-right">
       <%= f.button :submit, class: "btn btn-success btn-sm round" %>
       <% link_to 'All Loads', loads_path, class: "btn btn-info btn-sm round" %>

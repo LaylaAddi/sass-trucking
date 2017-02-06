@@ -381,7 +381,7 @@ class AddTable < ActiveRecord::Migration[5.0]
       t.string :app_favi
       t.text :app_terms
       t.text :app_conditions
-      t.string :theme
+      t.string :theme, default: "Flatly"
      
 
 
