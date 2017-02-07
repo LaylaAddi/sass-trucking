@@ -2,15 +2,26 @@
     padding-top: 80px;
 }
 
-.logopad {
-  padding-top: 2px; 
+.pad-top-12 {
+  padding-top: 12px;  
 }
+
+.pad-bottom-12 { 
+  padding-bottom: 12px;  
+}
+
+
+// sets height of navbar
+// .navbar .nav > li > a {
+//   line-height: 40px;
+// }
+
 
 
 body {
   overflow-x: hidden;
   padding-bottom: 80px;
-  padding-top: 60px;
+  padding-top: 120px; 
 }
 
 
@@ -74,4 +85,5 @@ animation: AnimationName 6s ease infinite;
 .text-red {
   color: #ff0039;
 }
+
 

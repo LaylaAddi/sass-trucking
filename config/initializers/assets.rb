@@ -2,7 +2,8 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
-Rails.application.config.assets.precompile += %w( creative/manifest.js creative/manifest.css )
+Rails.application.config.assets.precompile += %w( creative/manifest.js creative/manifest_teal.css )
+Rails.application.config.assets.precompile += %w( creative/manifest.js creative/manifest_red.css )
 Rails.application.config.assets.precompile += %w( application_cerulean.css )
 Rails.application.config.assets.precompile += %w( application_cosmo.css )
 Rails.application.config.assets.precompile += %w( application_cyborg.css )

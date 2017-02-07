@@ -132,6 +132,7 @@ class LoadsController < ApplicationController
   def update
     @driver = DriverUser.where(["employment_status = ?", "active"]) 
     @company_profile = CompanyProfile.all  
+    @load_origin_addresses = @load.load_origin_addresses.order('created_at ASC')
     respond_to do |format|
       if @load.update(load_params)
         format.html { redirect_to @load, notice: 'Load was successfully updated.' }

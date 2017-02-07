@@ -6,7 +6,6 @@
       <th>ID</th>
       <th>Booked On</th>
       <th>Description</th>
-      <th>Driver</th>
       <th>Debits</th>
       <th>Credits</th>
       <th>Weight</th>
@@ -38,13 +37,6 @@
         <%= link_to load do %>
         <%= @title %> 
         <% end %>
-      </td>
-      <td>
-
-        <%= link_to driver_user_path(load.driver_user_id) do %>
-        <%= load.driver_user.full_name %>
-        <% end %>
-
       </td>
       <td>
         <% load.transactions.each do |transaction| %>

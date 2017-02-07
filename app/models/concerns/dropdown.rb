@@ -261,5 +261,13 @@ Theme =
 ["United", "United"],
 ["Yeti", "Yeti"]
 ]
+
+FeColor = 
+[    
+["Red", "Red"],
+["Teal", "Teal"],
+["Cyborg", "Cyborg"],
+["Darkly", "Darkly"]
+]
 end
 

@@ -30,9 +30,8 @@ class Load < ApplicationRecord
 
   validates :destination_street, :destination_city, :miles, :destination_state, :delivery_date,
   presence: true, unless: :has_multiple_pd?
-
+  validates :percent_deducted, presence: true, unless: :is_company_driver
   validates_numericality_of :percent_deducted 
-  
   ransack_alias :load_search_params,
   :driver_user_first_name_or_driver_user_last_name_or_origin_city_or_destination_city_or_origin_state_or_destination_state_or_company_profile_company_name_or_broker_shipper_load_id
  

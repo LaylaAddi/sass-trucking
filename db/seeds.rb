@@ -466,8 +466,8 @@ DriverCheckin.create(driver_user_id: 3,latitude: 30.332184,longitude: -81.655647
 AppVariable.create(
 app_name: "Acme App Name",
 app_logo: "",
-app_logo_name: "Logo Name",
-app_tab_name: "Tab Name",
+app_logo_text: "Logo Name",
+app_tab_text: "Tab Name",
 app_slogan: "ACME Slogan",
 app_favi: "",
 app_terms: "TERMS  Lorem ipsum dolor sit amet, sed ex stet aperiam, ut sensibus assentior vituperata est. Ius an error partiendo democritum. Eros mediocrem ne usu, ea omnium saperet qui. Graecis torquatos reformidans cum et.

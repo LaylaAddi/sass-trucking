@@ -7,17 +7,17 @@
 
 <p>
   <strong>App logo:</strong>
-  <%= @app_variable.app_logo %>
+ <%= image_tag(@app_variable.app_logo_url(:small)) %>
 </p>
 
 <p>
   <strong>App logo name:</strong>
-  <%= @app_variable.app_logo_name %>
+  <%= @app_variable.app_logo_text %>
 </p>
 
 <p>
   <strong>App tab name:</strong>
-  <%= @app_variable.app_tab_name %>
+  <%= @app_variable.app_tab_text %>
 </p>
 
 <p>
