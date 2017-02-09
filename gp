@@ -1,5 +1,5 @@
 git add -A
-git commit -m "completed map calculators for loads"
+git commit -m "update to driver statements and JQ added to remove percent and rate when company driver"
 git push -u origin master     
     
 
