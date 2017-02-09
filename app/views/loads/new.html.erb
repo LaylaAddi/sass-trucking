@@ -1,10 +1,4 @@
-<script>
-$( document ).ready(function() {
-if($("select.load_rate_to_driver option:selected").filter(":contains('company')").length === 0) {
-    $("#load_rate_to_driver").hide();
-}
-});
-</script>
+
 
 
 <h3>New Load</h3>
@@ -43,6 +37,7 @@ if($("select.load_rate_to_driver option:selected").filter(":contains('company')"
           <%= f.input :invoice_price, label: "Invoice Price"  %> 
         </div>
       </div>
+      <div id="onlyCompany">
       <div class="col-sm-3">
         <div class="form-group input-group">
           <%= f.input :rate_to_driver, label: "Rate to O/O"  %>  
@@ -55,6 +50,7 @@ if($("select.load_rate_to_driver option:selected").filter(":contains('company')"
           <!--<span class="input-group-addon"><i class="fa fa-percent"></i></span>-->
         </div>
       </div>
+      </div><!-- end "only Company" JQ-->
       <div class="col-sm-3">
         <div class="form-group input-group">
           <!--<span class="input-group-addon"><i class="fa fa-clock-o"></i> </span>-->
@@ -179,7 +175,18 @@ if($("select.load_rate_to_driver option:selected").filter(":contains('company')"
 </div>
 <div id="idToHide3"><%= render "new_map" %></div>
 </div>
-
+<script>
+$(document).ready(function() {
+    $('select[id="load_driver_user_id"]').change(function() {
+        var str = $('select[id="load_driver_user_id"] option:selected').text();
+        if (str.indexOf("company") >= 0) { 
+            $('#onlyCompany').fadeToggle( "slow", "linear" ); 
+        } else {
+            $('#onlyCompany').fadeToggle( "slow", "linear" ); 
+        }
+    });
+});
+</script>
 <script>
 $(document).ready(function(){
     $("#load_has_multiple_pd").click(function(){

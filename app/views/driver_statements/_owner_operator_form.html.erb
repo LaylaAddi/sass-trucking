@@ -1,3 +1,9 @@
+<script>
+  $(function(){
+    $('#included input:checkbox').attr('checked', 'checked');
+});
+</script>
+
 <%= simple_form_for [@driver, @driver_statement] do |f|  %>
 
 
@@ -8,8 +14,10 @@
         <%= link_to driver_user_path(@driver) do %>
         <%= @driver.full_name %>
         <% end %>
-        <%= f.collection_check_boxes(:load_ids, @loads, :id, :id)%>
 </h2>
+    </div>
+    <div id="included">
+      Load ID; <%= f.collection_check_boxes(:load_ids, @loads, :id, :id) %>
     </div>
     <div class="panel-body animated">
       <table class="table table-striped table-hover table-condensed table-responsive ">
@@ -107,7 +115,7 @@
       <td><%= (load.created_at.strftime("%A %B %-d, %Y")) %></td>
       <td>
         <%= link_to load do %>
-        <%= load.load_title %> 
+        <%= load.title %> 
         <% end %>
       </td>
       <td>
